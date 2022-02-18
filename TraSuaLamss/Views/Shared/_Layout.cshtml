@@ -1,42 +1,176 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    @Styles.Render("~/Content/Template/asssets/css")
+    @Scripts.Render("~/bundels/modernizr")
+
+    <!--
+
+    TemplateMo 558 Klassy Cafe
+
+    https://templatemo.com/tm-558-klassy-cafe
+
+    -->
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" type="text/css" href="~/Content/Template/assets/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="~/Content/Template/assets/css/font-awesome.css">
+
+    <link rel="stylesheet" href="~/Content/Template/assets/css/templatemo-klassy-cafe.css">
+
+    <link rel="stylesheet" href="~/Content/Template/assets/css/owl-carousel.css">
+
+    <link rel="stylesheet" href="~/Content/Template/assets/css/lightbox.css">
+
 </head>
+
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-            </div>
+
+    <!-- ***** Preloader Start ***** -->
+    <div id="preloader">
+        <div class="jumper">
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
     </div>
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+    <!-- ***** Preloader End ***** -->
+    <!-- ***** Header Area Start ***** -->
+    <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="dndx">
+                    <a href="#">Đăng nhập</a>/<a href="#">Đăng xuất</a>
+                </div>
+                <div class="search">
+                    <input class="width" type="text" placeholder="Tìm kiếm...." maxlength="128" />
+                    <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
+                </div>
+                <div class="col-8">
+                    <nav class="main-nav">
+                        <a href="index.html" class="logo">
+                            <img src="~/Content/Template/assets/images/loading.gif">
+                        </a>
+                        <!-- ***** Menu Start ***** -->
+                        <ul class="nav">
+                            <li><a href="#home" class="active">TRANG CHỦ</a></li>
+                            <li><a href="#about">GIỚI THIỆU</a></li>
+                            <li class="submenu">
+                                <a href="javascript:;">SẢN PHẨM</a>
+                                <ul>
+                                    <li><a href="#">Loại 1</a></li>
+                                    <li><a href="#">Loại 2</a></li>
+                                    <li><a href="#">Loại 3</a></li>
+                                    <li><a href="#">Loại 4</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="#contact">LIÊN HỆ</a></li>
+                            <li><a href="#account">TÀI KHOẢN</a></li>
+                        </ul>
+                        <a class='menu-trigger'>
+                            <span>Menu</span>
+                        </a>
+                        <!-- ***** Menu End ***** -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- ***** Header Area End ***** -->
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+
+
+
+
+    @RenderBody()
+
+    <!-- ***** Footer Start ***** -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-xs-12">
+                    <div class="right-text-content">
+                        VỀ CHÚNG TÔI<br />
+                        <a href="#">LIÊN HỆ</a>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xs-12">
+                    <div class="right-text-content">
+                        TRÀ SỮA LAMSS<br />
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="logo">
+                        <a href="index.html"><img src="~/Content/Template/assets/images/loading.gif" alt=""></a><br />
+                        <p>©Rikkei copyright </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xs-12">
+                    <div class="left-text-content">
+                        <p>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="~/Content/Template/assets/js/jquery-2.1.0.min.js"></script>
+
+    <!-- Bootstrap -->
+    <script src="~/Content/Template/assets/js/popper.js"></script>
+    <script src="~/Content/Template/assets/js/bootstrap.min.js"></script>
+
+    <!-- Plugins -->
+    <script src="~/Content/Template/assets/js/owl-carousel.js"></script>
+    <script src="~/Content/Template/assets/js/accordions.js"></script>
+    <script src="~/Content/Template/assets/js/datepicker.js"></script>
+    <script src="~/Content/Template/assets/js/scrollreveal.min.js"></script>
+    <script src="~/Content/Template/assets/js/waypoints.min.js"></script>
+    <script src="~/Content/Template/assets/js/jquery.counterup.min.js"></script>
+    <script src="~/Content/Template/assets/js/imgfix.min.js"></script>
+    <script src="~/Content/Template/assets/js/slick.js"></script>
+    <script src="~/Content/Template/assets/js/lightbox.js"></script>
+    <script src="~/Content/Template/assets/js/isotope.js"></script>
+
+    <!-- Global Init -->
+    <script src="~/Content/Template/assets/js/custom.js"></script>
+    <script>
+
+        $(function () {
+            var selectedClass = "";
+            $("p").click(function () {
+                selectedClass = $(this).attr("data-rel");
+                $("#portfolio").fadeTo(50, 0.1);
+                $("#portfolio div").not("." + selectedClass).fadeOut();
+                setTimeout(function () {
+                    $("." + selectedClass).fadeIn();
+                    $("#portfolio").fadeTo(50, 1);
+                }, 500);
+
+            });
+        });
+
+    </script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
