@@ -133,10 +133,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CHITIETDONHANGsController.cs" />
     <Compile Include="Controllers\DONHANGsController.cs" />
+    <Compile Include="Controllers\DSSANPHAMController.cs" />
     <Compile Include="Controllers\GIOHANGsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KHACHHANGsController.cs" />
@@ -257,9 +259,16 @@
     <Content Include="Views\CHITIETDONHANGs\Details.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Edit.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Index.cshtml" />
+    <Content Include="Views\DSSANPHAM\Index.cshtml" />
+    <Content Include="Views\DSSANPHAM\Details.cshtml" />
+    <Content Include="Views\DSSANPHAM\TraSua.cshtml" />
+    <Content Include="Views\DSSANPHAM\Tra.cshtml" />
+    <Content Include="Views\DSSANPHAM\CaPhe.cshtml" />
+    <Content Include="Views\DSSANPHAM\DoAnVat.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
