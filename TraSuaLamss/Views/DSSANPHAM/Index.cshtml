@@ -24,7 +24,14 @@
         border: 1px solid #999;
     }
 
-
+    .tim{
+        height:35px;
+        width:175px;
+    }
+    .timgia {
+        height: 30px;
+        width: 100px;
+    }
 
     td p span a {
         height: 40px;
@@ -58,7 +65,7 @@
                     @using (Html.BeginForm())
                     {
                         <p>
-                            <span style="font-size:24px">Tìm theo tên  <input id="Name" name="Name" type="text" style="height:30px;width:175px" placeholder="Nhập tên sản phẩm" /></span>
+                            <span style="font-size:24px">Tìm theo tên @Html.TextBox("Name", ViewBag.currentFilter as string, new {@class = "tim"})</span>
                             <input type="submit" value="Tìm" style="height:30px;width:50px" />
                         </p>
                     }
@@ -67,13 +74,13 @@
                 <div>
                     @using (Html.BeginForm())
                     {
-                        <p style="font-size:24px">
-                            <span style="margin-bottom:5px">Khoảng giá</span><br />
-                            <input id="first" name="first" type="text" placeholder="Giá đầu" style="height:30px;width:100px" />&nbsp;-&nbsp;
-                            <input id="end" name="end" type="text" placeholder="Giá cuối" style="height:30px;width:100px" />
-                            <span style="color:red;font-size:12px">@ViewBag.Error</span><br />
-                            <span><input type="submit" value="Áp dụng" style="height:30px;margin:10px 0 0 70px" /></span>
-                        </p>
+                    <p style="font-size:24px">
+                        <span style="margin-bottom:5px">Khoảng giá</span><br />
+                        <span>@Html.TextBox("first", ViewBag.currentFilter1 as string, new { @class = "timgia" })</span>&nbsp;-&nbsp;
+                        <span>@Html.TextBox("end", ViewBag.currentFilter2 as string, new { @class = "timgia" })</span>
+                        <span style="color:red;font-size:12px">@ViewBag.Error</span><br />
+                        <span><input type="submit" value="Áp dụng" style="height:30px;margin:10px 0 0 70px" /></span>
+                    </p>
                     }
                 </div>
 
@@ -95,7 +102,7 @@
                 </div>
                 <br />
                 Trang @(Model.PageCount<Model.PageNumber?0 : Model.PageNumber)/@Model.PageCount
-                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.currentFilter, currentFilter1 = ViewBag.currentFilter1, currentFilter2 = ViewBag.currentFilter2 }))
             </td>
         </tr>
 
