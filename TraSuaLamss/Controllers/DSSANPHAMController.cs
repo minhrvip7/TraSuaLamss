@@ -24,8 +24,35 @@ namespace TraSuaLamss.Controllers
             return false;
         }
         // GET: DSSANPHAM
-        public ActionResult Index(int? page, string Name, string first, string end)
+        public ActionResult Index(int? page, string Name, string first, string end,string currentFilter, string currentFilter1, string currentFilter2)
         {
+            if (Name != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                Name = currentFilter;
+            }
+            if (first != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                first = currentFilter1;
+            }
+            if (end != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                end = currentFilter2;
+            }
+            ViewBag.currentFilter1 = first;
+            ViewBag.currentFilter2 = end;
+            ViewBag.currentFilter = Name;
             var sanpham = LaySanPham();
             int pagesize = 8;
             int pageNumber = (page ?? 1);
@@ -33,7 +60,6 @@ namespace TraSuaLamss.Controllers
 
             if (!String.IsNullOrEmpty(Name))
             {
-
                 sanpham = sanpham.Where(p => p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
                 return View(sanpham.ToPagedList(pageNumber, pagesize));
             }
@@ -47,7 +73,7 @@ namespace TraSuaLamss.Controllers
             }
             catch (Exception)
             {
-                ViewBag.Error = "Không hợp lệ";
+                ViewBag.Error = "Giá không hợp lệ";
 
             }
             return View(sanpham.ToPagedList(pageNumber, pagesize));
@@ -60,8 +86,35 @@ namespace TraSuaLamss.Controllers
                       select tr;
             return View(tra.Single());
         }
-        public ActionResult TraSua(int? page, string Name, string first, string end)
+        public ActionResult TraSua(int? page, string Name, string first, string end, string currentFilter, string currentFilter1, string currentFilter2)
         {
+            if (Name != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                Name = currentFilter;
+            }
+            if (first != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                first = currentFilter1;
+            }
+            if (end != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                end = currentFilter2;
+            }
+            ViewBag.currentFilter1 = first;
+            ViewBag.currentFilter2 = end;
+            ViewBag.currentFilter = Name;
             var sanpham = (from sp in db.SANPHAMs
                            join l in db.PHANLOAIs on sp.MaLoai equals l.MaLoai
                            where l.TenLoai == "Trà sữa"
@@ -90,8 +143,35 @@ namespace TraSuaLamss.Controllers
             }
             return View(sanpham.ToPagedList(pageNumber, pagesize));
         }
-        public ActionResult Tra(int? page, string Name, string first, string end)
+        public ActionResult Tra(int? page, string Name, string first, string end, string currentFilter, string currentFilter1, string currentFilter2)
         {
+            if (Name != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                Name = currentFilter;
+            }
+            if (first != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                first = currentFilter1;
+            }
+            if (end != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                end = currentFilter2;
+            }
+            ViewBag.currentFilter1 = first;
+            ViewBag.currentFilter2 = end;
+            ViewBag.currentFilter = Name;
             var sanpham = (from sp in db.SANPHAMs
                            join l in db.PHANLOAIs on sp.MaLoai equals l.MaLoai
                            where l.TenLoai == "Trà"
@@ -120,8 +200,35 @@ namespace TraSuaLamss.Controllers
             }
             return View(sanpham.ToPagedList(pageNumber, pagesize));
         }
-        public ActionResult CaPhe(int? page, string Name, string first, string end)
+        public ActionResult CaPhe(int? page, string Name, string first, string end, string currentFilter, string currentFilter1, string currentFilter2)
         {
+            if (Name != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                Name = currentFilter;
+            }
+            if (first != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                first = currentFilter1;
+            }
+            if (end != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                end = currentFilter2;
+            }
+            ViewBag.currentFilter1 = first;
+            ViewBag.currentFilter2 = end;
+            ViewBag.currentFilter = Name;
             var sanpham = (from sp in db.SANPHAMs
                            join l in db.PHANLOAIs on sp.MaLoai equals l.MaLoai
                            where l.TenLoai == "Cà phê"
@@ -150,8 +257,35 @@ namespace TraSuaLamss.Controllers
             }
             return View(sanpham.ToPagedList(pageNumber, pagesize));
         }
-        public ActionResult DoAnVat(int? page, string Name, string first, string end)
+        public ActionResult DoAnVat(int? page, string Name, string first, string end, string currentFilter, string currentFilter1, string currentFilter2)
         {
+            if (Name != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                Name = currentFilter;
+            }
+            if (first != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                first = currentFilter1;
+            }
+            if (end != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                end = currentFilter2;
+            }
+            ViewBag.currentFilter1 = first;
+            ViewBag.currentFilter2 = end;
+            ViewBag.currentFilter = Name;
             var sanpham = (from sp in db.SANPHAMs
                            join l in db.PHANLOAIs on sp.MaLoai equals l.MaLoai
                            where l.TenLoai == "Đồ ăn vặt"
