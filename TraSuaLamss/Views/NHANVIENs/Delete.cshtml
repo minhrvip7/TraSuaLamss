@@ -4,93 +4,110 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2 style="padding-left:2%">Xóa</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3 style="padding-left:2%">Chi tiết thông tin về nhân viên </h3>
 <div>
-    <h4>NHANVIEN</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="padding-left:10%">
         <dt>
-            @Html.DisplayNameFor(model => model.TAIKHOAN.Password)
+            Mã nhân viên:
+            @*@Html.DisplayNameFor(model => model.MaNV)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TAIKHOAN.Password)
+            &emsp;@Html.DisplayFor(model => model.MaNV)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.TenNV)
+            Họ và Tên:
+            @*@Html.DisplayNameFor(model => model.TenNV)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TenNV)
+            &emsp;@Html.DisplayFor(model => model.TenNV)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.GioiTinh)
+            Tên đăng nhập:
+            @*@Html.DisplayNameFor(model => model.TAIKHOAN.Username)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.GioiTinh)
+            &emsp;@Html.DisplayFor(model => model.TAIKHOAN.Username)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.NgaySinh)
+            Giới tính:
+            @*@Html.DisplayNameFor(model => model.GioiTinh)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NgaySinh)
+            &emsp;@Html.DisplayFor(model => model.GioiTinh)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            Ngày sinh:
+            @*@Html.DisplayNameFor(model => model.NgaySinh)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            &emsp;@Html.DisplayFor(model => model.NgaySinh)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
+            Email:
+            @*@Html.DisplayNameFor(model => model.Email)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DiaChi)
+            &emsp;@Html.DisplayFor(model => model.Email)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.DienThoai)
+            Địa chỉ:
+            @*@Html.DisplayNameFor(model => model.DiaChi)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DienThoai)
+            &emsp;@Html.DisplayFor(model => model.DiaChi)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.STK)
+            Điện thoại:
+            @*@Html.DisplayNameFor(model => model.DienThoai)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.STK)
+            &emsp;@Html.DisplayFor(model => model.DienThoai)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.Luong)
+            Số tài khoản:
+            @*@Html.DisplayNameFor(model => model.STK)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Luong)
+            &emsp;@Html.DisplayFor(model => model.STK)
         </dd>
+        <br />
+        <dt>
+            Tiền Lương:
+            @*@Html.DisplayNameFor(model => model.Luong)*@
+        </dt>
 
+        <dd>
+            &emsp;@Html.DisplayFor(model => model.Luong)
+        </dd>
+        <br />
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+        <div class="form-actions no-color" style="padding-left:5%">
+            <input style="color:red" type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở lại danh sách", "Index")
         </div>
     }
 </div>

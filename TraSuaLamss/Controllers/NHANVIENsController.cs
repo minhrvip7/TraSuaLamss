@@ -7,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TraSuaLamss.Models;
+using PagedList;
+using System.Data.OleDb;
+using System.Data.Entity.Validation;
 
 namespace TraSuaLamss.Controllers
 {
@@ -15,10 +18,20 @@ namespace TraSuaLamss.Controllers
         private TraSuaContext db = new TraSuaContext();
 
         // GET: NHANVIENs
-        public ActionResult Index()
+        public ActionResult Index(string searchStr, int? page)
         {
             var nHANVIENs = db.NHANVIENs.Include(n => n.TAIKHOAN);
-            return View(nHANVIENs.ToList());
+            //Tìm kiếm
+            if (!String.IsNullOrEmpty(searchStr))
+            {
+                nHANVIENs = nHANVIENs.Where(e => e.TenNV.Contains(searchStr));
+            }
+            //Sắp xếp trước khi phân trang
+            nHANVIENs = nHANVIENs.OrderBy(e => e.MaNV);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(nHANVIENs.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: NHANVIENs/Details/5
