@@ -56,7 +56,7 @@ namespace TraSuaLamss.Controllers
             var sanpham = LaySanPham();
             int pagesize = 8;
             int pageNumber = (page ?? 1);
-            ViewBag.Loai = "Tất cả sản phẩm";
+            ViewBag.Loai = "TẤT CẢ SẢN PHẨM";
 
             if (!String.IsNullOrEmpty(Name))
             {
@@ -121,7 +121,7 @@ namespace TraSuaLamss.Controllers
                            select sp).ToList();
             int pagesize = 8;
             int pageNumber = (page ?? 1);
-            ViewBag.Loai = "Trà sữa";
+            ViewBag.Loai = "TRÀ SỮA";
             if (!String.IsNullOrEmpty(Name))
             {
 
@@ -178,7 +178,7 @@ namespace TraSuaLamss.Controllers
                            select sp).ToList();
             int pagesize = 8;
             int pageNumber = (page ?? 1);
-            ViewBag.Loai = "Trà";
+            ViewBag.Loai = "TRÀ";
             if (!String.IsNullOrEmpty(Name))
             {
 
@@ -235,7 +235,7 @@ namespace TraSuaLamss.Controllers
                            select sp).ToList();
             int pagesize = 8;
             int pageNumber = (page ?? 1);
-            ViewBag.Loai = "Cà phê";
+            ViewBag.Loai = "CÀ PHÊ";
             if (!String.IsNullOrEmpty(Name))
             {
 
@@ -292,7 +292,7 @@ namespace TraSuaLamss.Controllers
                            select sp).ToList();
             int pagesize = 8;
             int pageNumber = (page ?? 1);
-            ViewBag.Loai = "Đồ ăn vặt";
+            ViewBag.Loai = "ĐỒ ĂN VẶT";
             if (!String.IsNullOrEmpty(Name))
             {
                 sanpham = sanpham.Where(p => p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
