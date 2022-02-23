@@ -1,0 +1,33 @@
+﻿@model List<TraSuaLamss.Models.XemGioHang>
+@{
+    ViewBag.Title = "Giohang";
+}
+
+<style>
+    td {
+        padding: 10px 30px 10px 10px;
+    }
+</style>
+<h2 align="center" style="font-family:'Times New Roman'">Giỏ hàng</h2>
+<table align="center">
+    <tr style="text-align:center">
+        <td colspan="2">Sản phẩm</td>
+        <td>Đơn giá</td>
+        <td>Số lượng</td>
+        <td>Số tiền</td>
+        <td>Thao tác</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.SANPHAM.TenSP</td>
+            <td><img src="@item.SANPHAM.Anh" /></td>
+            <td style="text-align:center">@item.SANPHAM.GiaBan</td>
+            <td style="text-align:center"><button>-</button> @item.Soluong <button>+</button></td>
+            <td style="text-align:center">@item.SANPHAM.GiaBan*@item.Soluong</td>
+            <td style="text-align:center"><a href="#">Xóa</a><br /><a href="#">Mua tiếp</a></td>
+        </tr>
+    }
+</table>
+
+

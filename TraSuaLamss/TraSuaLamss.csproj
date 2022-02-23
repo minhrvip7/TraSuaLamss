@@ -165,6 +165,7 @@
     <Compile Include="Models\SANPHAM.cs" />
     <Compile Include="Models\TAIKHOAN.cs" />
     <Compile Include="Models\TraSuaContext.cs" />
+    <Compile Include="Models\XemGioHang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -347,6 +348,7 @@
     <Content Include="Views\CHITIETDONHANGs\Details.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Edit.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Index.cshtml" />
+    <Content Include="Views\GIOHANGs\Giohang.cshtml" />
     <Content Include="Views\LichSuGiaoDich\Details.cshtml" />
     <Content Include="Views\LichSuGiaoDich\Index.cshtml" />
   </ItemGroup>
