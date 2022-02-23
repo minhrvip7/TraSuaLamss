@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -78,11 +79,7 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Abstractions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
@@ -142,6 +139,7 @@
     <Compile Include="Controllers\DONHANGsController.cs" />
     <Compile Include="Controllers\DSSANPHAMController.cs" />
     <Compile Include="Controllers\GIOHANGsController.cs" />
+    <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KHACHHANGsController.cs" />
     <Compile Include="Controllers\LichSuGiaoDichController.cs" />
@@ -216,6 +214,7 @@
     <Content Include="Content\Template\assets\images\menu-item-03.jpg" />
     <Content Include="Content\Template\assets\images\menu-item-04.jpg" />
     <Content Include="Content\Template\assets\images\menu-item-05.jpg" />
+    <Content Include="Content\Template\assets\images\Menuorder.png" />
     <Content Include="Content\Template\assets\images\next.png" />
     <Content Include="Content\Template\assets\images\prev.png" />
     <Content Include="Content\Template\assets\images\reservation-bg.jpg" />
@@ -349,6 +348,8 @@
     <Content Include="Views\CHITIETDONHANGs\Details.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Edit.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Index.cshtml" />
+    <Content Include="Views\Home\View.cshtml" />
+    <Content Include="Views\GioiThieu\Index.cshtml" />
     <Content Include="Views\GIOHANGs\Giohang.cshtml" />
     <Content Include="Views\LichSuGiaoDich\Details.cshtml" />
     <Content Include="Views\LichSuGiaoDich\Index.cshtml" />
