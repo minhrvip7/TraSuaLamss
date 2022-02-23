@@ -12,6 +12,6 @@ namespace TraSuaLamss.Models
         public string HinhAnh { get; set; }
         public decimal GiaBan { get; set; }
         public int Soluong { get; set; }
-        public decimal 
+        public decimal ThanhTien { get { return GiaBan * Soluong; } }
     }
 }
