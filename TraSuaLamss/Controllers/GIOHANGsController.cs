@@ -13,12 +13,22 @@ namespace TraSuaLamss.Controllers
     public class GIOHANGsController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
-
         // GET: GIOHANGs
         public ActionResult Index()
         {
             var gIOHANGs = db.GIOHANGs.Include(g => g.KHACHHANG).Include(g => g.SANPHAM);
             return View(gIOHANGs.ToList());
+        }
+
+        public ActionResult Giohang()
+        {
+            var GiohangView = (from e in db.GIOHANGs
+                               join d in db.SANPHAMs
+                               on e.MaSP equals d.MaSP
+                               where e.MaKH == "KH001"
+                               select new {d.MaSP,d.TenSP,d.GiaBan,d.MoTa,d.Anh,d.MaNL,d.MaLoai,e.Soluong }).ToList();
+
+            return View();
         }
 
         // GET: GIOHANGs/Details/5
