@@ -1,9 +1,41 @@
+/*
+/*
+
+TemplateMo 558 Klassy Cafe
 
 https://templatemo.com/tm-558-klassy-cafe
 
+*/
+
+/* ---------------------------------------------
+Table of contents
+------------------------------------------------
+01. font & reset css
+02. reset
+03. global styles
+04. header
+05. banner
+06. features
+07. testimonials
+08. contact
+09. footer
+10. preloader
+11. search
+12. portfolio
+
+--------------------------------------------- */
+/* 
+---------------------------------------------
+font & reset css
+--------------------------------------------- 
+*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
-
+/* 
+---------------------------------------------
+reset
+--------------------------------------------- 
+*/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
@@ -144,7 +176,34 @@ body {
         opacity: 0.9;
     }
 
+.section-heading h6 {
+    position: relative;
+    font-size: 15px;
+    color: #fb5849;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding-left: 40px;
+}
 
+    .section-heading h6:before {
+        width: 30px;
+        height: 1px;
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 8px;
+        background-color: #fb5849;
+    }
+
+.section-heading h2 {
+    line-height: 40px;
+    margin-top: 20px;
+    margin-bottom: 25px;
+    font-size: 30px;
+    font-weight: 900;
+    color: #2a2a2a;
+}
 
 
 /* 
@@ -868,7 +927,6 @@ ul.slick-dots {
     -ms-user-select: none;
     user-select: none;
     -webkit-touch-callout: none;
-    -khtml-user-select: none;
     -ms-touch-action: pan-y;
     touch-action: pan-y;
     -webkit-tap-highlight-color: transparent
@@ -886,9 +944,7 @@ ul.slick-dots {
         outline: none
     }
 
-    .slick-list.dragging {
-        cursor: hand
-    }
+
 
 .slick-slider .slick-track, .slick-slider .slick-list {
     -webkit-transform: translate3d(0,0,0);
