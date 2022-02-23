@@ -20,11 +20,11 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.SANPHAM.TenSP</td>
-            <td><img src="@item.SANPHAM.Anh" /></td>
-            <td style="text-align:center">@item.SANPHAM.GiaBan</td>
-            <td style="text-align:center"><button>-</button> @item.Soluong <button>+</button></td>
-            <td style="text-align:center">@item.SANPHAM.GiaBan*@item.Soluong</td>
+            <td>@item.TenSP</td>
+            <td></td>
+            <td style="text-align:center">@item.GiaBan</td>
+            <td style="text-align:center">@item.Soluong</td>
+            <td style="text-align:center">@item.ThanhTien</td>
             <td style="text-align:center"><a href="#">Xóa</a><br /><a href="#">Mua tiếp</a></td>
         </tr>
     }
