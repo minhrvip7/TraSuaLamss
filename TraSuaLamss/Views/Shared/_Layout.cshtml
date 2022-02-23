@@ -52,20 +52,21 @@
                     <a href="#">Đăng nhập</a>/<a href="#">Đăng xuất</a>
                 </div>
                 <div class="search">
-                    <input class="width" type="text" placeholder="Tìm kiếm...." maxlength="128" />
+                    @Html.TextBox("SearchString","",new { @class="searchbox"})
+                    
                     <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
                 </div>
                 <div class="col-8">
                     <nav class="main-nav">
-                        <a href="index.html" class="logo">
+                        <a href="/Home/Index" class="logo">
                             <img src="~/Content/Template/assets/images/loading.gif">
                         </a>
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
-                            <li><a href="#home" class="active">TRANG CHỦ</a></li>
-                            <li><a href="#about">GIỚI THIỆU</a></li>
+                            <li><a href="/Home/Index" class="active">TRANG CHỦ</a></li>
+                            <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
                             <li class="submenu">
-                                <a href="javascript:;">SẢN PHẨM</a>
+                                <a href="/SANPHAMs/Index">SẢN PHẨM</a>
                                 <ul>
                                     <li><a href="#">Loại 1</a></li>
                                     <li><a href="#">Loại 2</a></li>
@@ -73,8 +74,8 @@
                                     <li><a href="#">Loại 4</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#contact">LIÊN HỆ</a></li>
-                            <li><a href="#account">TÀI KHOẢN</a></li>
+                            <li><a href="/LIENHEs/Index">LIÊN HỆ</a></li>
+                            <li><a href="/TAIKHOANs/Index">TÀI KHOẢN</a></li>
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -86,12 +87,14 @@
         </div>
     </header>
     <!-- ***** Header Area End ***** -->
+ 
+        @RenderBody()
+    
 
 
 
 
 
-    @RenderBody()
 
     <!-- ***** Footer Start ***** -->
     <footer>
@@ -100,7 +103,8 @@
                 <div class="col-lg-4 col-xs-12">
                     <div class="right-text-content">
                         VỀ CHÚNG TÔI<br />
-                        <a href="#">LIÊN HỆ</a>
+                        <a href="/LIENHEs/Index">LIÊN HỆ</a><br />
+                        <a href="/GioiThieu/Index">GIỚI THIỆU</a>
 
                     </div>
                 </div>
