@@ -2,7 +2,7 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Tra Sua";
+    ViewBag.Title = "TRA SUA";
     Layout = null;
 
 }
@@ -24,9 +24,15 @@
         border: 1px solid #999;
     }
 
+    #danhmuc {
+        border: 1px solid #999;
+        height: 280px;
+    }
+
     .tim {
-        height: 35px;
+        height: 30px;
         width: 175px;
+        padding-left: 5px
     }
 
     .timgia {
@@ -35,15 +41,15 @@
     }
 
     td p span a {
-        height: 40px;
-        line-height: 40px;
+        height: 30px;
+        line-height: 30px;
         font-size: 24px;
         display: block;
-        padding-top: 10px;
+        padding-top: 15px;
         text-decoration: none;
         color: #000;
         border-bottom: 2px solid #FFF;
-        margin-left: 5px;
+        margin-left: 10px;
     }
 
         td p span a:hover {
@@ -55,40 +61,45 @@
     <table>
         <tr>
             <td width="256px" valign="top">
-                <p>
-                    <span><a href="/DSSANPHAM/Index">tất cả sản phẩm</a></span>
-                    <span><a href="/DSSANPHAM/TraSua">Trà sữa</a></span>
-                    <span><a href="/DSSANPHAM/Tra">Trà</a></span>
-                    <span><a href="/DSSANPHAM/CaPhe">Cà phê</a></span>
-                    <span><a href="/DSSANPHAM/DoAnVat">Đồ ăn vặt</a></span>
-                </p>
-                <div style="margin-top:20px">
-                    @using (Html.BeginForm())
-                    {
-                        <p>
-                            <span style="font-size:24px">Tìm theo tên @Html.TextBox("Name", ViewBag.currentFilter as string, new { @class = "tim" })</span>
-                            <input type="submit" value="Tìm" style="height:30px;width:50px" />
-                        </p>
-                    }
+                <p style="margin-top:55px;font-size:22px;font-weight:bold">DANH MỤC SẢN PHẨM</p>
+                <div id="danhmuc">
+                    <p>
+                        <span><a href="/DSSANPHAM/Index">tất cả sản phẩm</a></span>
+                        <span><a href="/DSSANPHAM/TraSua">Trà sữa</a></span>
+                        <span><a href="/DSSANPHAM/Tra">Trà</a></span>
+                        <span><a href="/DSSANPHAM/CaPhe">Cà phê</a></span>
+                        <span><a href="/DSSANPHAM/DoAnVat">Đồ ăn vặt</a></span>
+                    </p>
                 </div>
+                <p style="font-size:22px;font-weight:bold;margin-top: 50px">TÌM KIẾM SẢN PHẨM</p>
+                <div style="border: 1px solid #999">
+                    <div style="margin-top: 20px;">
+                        @using (Html.BeginForm())
+                        {
+                            <p>
+                                <span style="font-size:24px;">Tìm theo tên <span style="padding-left:5px">@Html.TextBox("Name", ViewBag.currentFilter as string, new { @class = "tim" })</span></span>
+                                <input type="submit" value="Tìm" style="height:30px;width:50px" />
+                            </p>
+                        }
+                    </div>
 
-                <div>
-                    @using (Html.BeginForm())
-                    {
-                        <p style="font-size:24px">
-                            <span style="margin-bottom:5px">Khoảng giá</span><br />
-                            <span>@Html.TextBox("first", ViewBag.currentFilter1 as string, new { @class = "timgia" })</span>&nbsp;-&nbsp;
-                            <span>@Html.TextBox("end", ViewBag.currentFilter2 as string, new { @class = "timgia" })</span>
-                            <span style="color:red;font-size:12px">@ViewBag.Error</span><br />
-                            <span><input type="submit" value="Áp dụng" style="height:30px;margin:10px 0 0 70px" /></span>
-                        </p>
-                    }
+                    <div>
+                        @using (Html.BeginForm())
+                        {
+                            <p style="font-size:24px">
+                                <span style="margin-bottom: 5px; padding-left: 5px">Khoảng giá</span><br />
+                                <span style=" padding-left: 5px">@Html.TextBox("first", ViewBag.currentFilter1 as string, new { @class = "timgia" })</span>&nbsp;-&nbsp;
+                                <span>@Html.TextBox("end", ViewBag.currentFilter2 as string, new { @class = "timgia" })</span>
+                                <span style="color:red;font-size:12px">@ViewBag.Error</span><br />
+                                <span><input type="submit" value="Áp dụng" style="height:30px;margin:10px 0 0 80px" /></span>
+                            </p>
+                        }
+                    </div>
                 </div>
-
 
             </td>
             <td width="1024px">
-                <p style="font-size:24px;padding-left:5px">@ViewBag.Loai</p>
+                <p style="font-size:22px;padding-left:5px;">@ViewBag.Loai</p>
                 <div style="height:700px">
                     @foreach (var sp in Model)
                     {
