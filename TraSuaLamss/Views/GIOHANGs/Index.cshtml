@@ -3,43 +3,55 @@
 @{
     ViewBag.Title = "Index";
 }
+<style>
+    table {
+        padding: 0px 100px 0px 100px;
+    }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    td {
+        padding: 10px 20px 10px 20px;
+    }
+</style>
+<h2 align="center">Giỏ hàng</h2>
+<br />
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.KHACHHANG.TenKH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SANPHAM.TenSP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Soluong)
-        </th>
-        <th></th>
+    <tr style="text-align:center">
+        <td>Chọn</td>
+        <td>Sản phẩm</td>
+        <td>Hình ảnh</td>
+        <td>Đơn giá</td>
+        <td>Số lượng</td>
+        <td>Số tiền</td>
+        <td>Thao tác</td>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.KHACHHANG.TenKH)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SANPHAM.TenSP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Soluong)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-        </td>
-    </tr>
-}
+
+
+    @foreach (var item in Model)
+    {
+        @*<tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DONHANG.PhuongThucThanhToan)
+                </td>
+                <td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MaGH })
+                </td>
+            </tr>*@
+        <tr>
+            <td style="text-align:center"><input type="checkbox" /></td>
+            <td>...</td>
+            <td style="text-align:center">...</td>
+            <td style="text-align:center">...</td>
+            <td style="text-align:center">...</td>
+            <td style="text-align:center"><button> - </button> 1 <button> + </button></td>
+            <td style="text-align:center">...</td>
+            <td style="text-align:center"><a href="#">Xóa</a><br /><a href="#">Mua tiếp</a></td>
+        </tr>
+    }
 
 </table>
+<br />
+<p style="float:right">@Html.ActionLink("Đặt hàng", "Dathang")</p>
+<br />
+<br />
