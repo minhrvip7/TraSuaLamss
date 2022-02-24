@@ -15,19 +15,34 @@
         <td>Đơn giá</td>
         <td>Số lượng</td>
         <td>Số tiền</td>
-        <td>Thao tác</td>
+        <td colspan="2">Thao tác</td>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.TenSP</td>
-            <td></td>
-            <td style="text-align:center">@item.GiaBan</td>
-            <td style="text-align:center">@item.Soluong</td>
-            <td style="text-align:center">@item.ThanhTien</td>
-            <td style="text-align:center"><a href="#">Xóa</a><br /><a href="#">Mua tiếp</a></td>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <td>@item.TenSP</td>
+                <td></td>
+                <td style="text-align:center">@item.GiaBan</td>
+                <td style="text-align:center"><button type="submit" value="Giam">-</button> @item.Soluong <button type="submit" value="Tang">+</button></td>
+                <td style="text-align:center">@item.ThanhTien</td>
+
+
+                <td style="text-align:center">
+                    <button type="submit" value="Delete">Xóa</button>
+                </td>
+                <td style="text-align:center">@Html.ActionLink("Mua tiếp", "Index")</td>
+
+            }
+
         </tr>
     }
 </table>
-
-
+<br />
+<br />
+<p style="float:right"><button type="submit">Đặt hàng</button></p>
+<br />
+<br />

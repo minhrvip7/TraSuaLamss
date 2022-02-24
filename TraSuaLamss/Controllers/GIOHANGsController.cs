@@ -22,18 +22,13 @@ namespace TraSuaLamss.Controllers
 
         public ActionResult Giohang()
         {
-            var GiohangView = (from e in db.GIOHANGs
-                               join d in db.SANPHAMs
-                               on e.MaSP equals d.MaSP
-                               where e.MaKH == "KH001"
-                               select new { d.MaSP, d.TenSP, d.GiaBan, d.MoTa, d.Anh, d.MaNL, d.MaLoai, e.Soluong }).ToList();
-            List<XemGioHang> x = new List<XemGioHang>();
-            foreach (var item in GiohangView)
-            {
-                XemGioHang sp = new XemGioHang { TenSP = item.TenSP, GiaBan = Convert.ToDecimal(item.GiaBan), HinhAnh = item.Anh, Soluong = item.Soluong };
-                x.Add(sp);
-            }
-            return View(x);
+            List<XemGioHang> GiohangView = (from e in db.GIOHANGs
+                                            join d in db.SANPHAMs
+                                            on e.MaSP equals d.MaSP
+                                            where e.MaKH == "KH001"
+                                            select new XemGioHang { TenSP = d.TenSP, HinhAnh = d.Anh, GiaBan = d.GiaBan, Soluong = e.Soluong }).ToList();
+
+            return View(GiohangView);
         }
 
         // GET: GIOHANGs/Details/5

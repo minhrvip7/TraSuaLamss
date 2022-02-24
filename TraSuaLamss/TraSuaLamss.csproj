@@ -333,11 +333,8 @@
     <Content Include="Views\KHACHHANGs\Details.cshtml" />
     <Content Include="Views\KHACHHANGs\Edit.cshtml" />
     <Content Include="Views\KHACHHANGs\Index.cshtml" />
-    <Content Include="Views\GIOHANGs\Create.cshtml" />
     <Content Include="Views\GIOHANGs\Delete.cshtml" />
-    <Content Include="Views\GIOHANGs\Details.cshtml" />
     <Content Include="Views\GIOHANGs\Edit.cshtml" />
-    <Content Include="Views\GIOHANGs\Index.cshtml" />
     <Content Include="Views\DONHANGs\Create.cshtml" />
     <Content Include="Views\DONHANGs\Delete.cshtml" />
     <Content Include="Views\DONHANGs\Details.cshtml" />
