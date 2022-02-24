@@ -1,0 +1,33 @@
+﻿@model IEnumerable<TraSuaLamss.Models.SANPHAM>
+@using TraSuaLamss.Controllers
+@using TraSuaLamss.Models
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    string key = Request.QueryString["key"];
+    List<SANPHAM> result = new List<SANPHAM>();
+}
+<br />
+<br />
+<br />
+<br />
+<br />
+<h2>Search @key</h2>
+
+
+@{
+    if (key == "")
+    {
+        <h3>vui long nhap tu khoa</h3>
+    }
+    else
+    {
+        result = new SANPHAMsController().SearhByKey(key);
+        foreach(var item in )
+                {
+                    <p>@item.TenSP</p>
+                }
+    }
+
+}
+
