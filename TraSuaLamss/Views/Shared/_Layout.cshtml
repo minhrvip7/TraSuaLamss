@@ -15,9 +15,10 @@
                     <a href="#">Đăng nhập</a>/<a href="#">Đăng xuất</a>
                 </div>
                 <div class="search">
-                    @Html.TextBox("SearchString","",new { @class="searchbox"})
-                    
-                    <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
+                    <form name="frmSearch" id="frmSearch" action="/SANPHAMs/Search" method="post">
+                        <input type="text" name="searchkey" placeholder="Nhap tu khoa" class="form-control" />
+                        <input type="submit" name="submit" value="Tim kiem" />
+                    </form>
                 </div>
                 <div class="col-8">
                     <nav class="main-nav">

@@ -23,6 +23,13 @@ namespace TraSuaLamss.Controllers
 
         }
 
+        [HttpPost]
+        public ActionResult Search(string searchkey)
+        {
+            var lstResult = db.SANPHAMs.SqlQuery("Select * from SANPHAM where TenSP like '%" + searchkey + "%'").ToList();
+            return View(lstResult);
+        }
+
         // GET: SANPHAMs/Details/5
         public ActionResult Details(string id)
         {
@@ -36,6 +43,10 @@ namespace TraSuaLamss.Controllers
                 return HttpNotFound();
             }
             return View(sANPHAM);
+        }
+        public List<SANPHAM> SearhByKey(string key)
+        {
+            return db.SANPHAMs.SqlQuery("Select * from SANPHAM where TenSP like '%"+key+"%'").ToList();
         }
 
         // GET: SANPHAMs/Create

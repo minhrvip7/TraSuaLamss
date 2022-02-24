@@ -149,7 +149,9 @@
     <Compile Include="Controllers\NHANVIENsController.cs" />
     <Compile Include="Controllers\PHANLOAIsController.cs" />
     <Compile Include="Controllers\SANPHAMsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TAIKHOANsController.cs" />
+    <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -349,7 +351,6 @@
     <Content Include="Views\CHITIETDONHANGs\Details.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Edit.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Index.cshtml" />
-    <Content Include="Views\Home\View.cshtml" />
     <Content Include="Views\GioiThieu\Index.cshtml" />
     <Content Include="Views\GIOHANGs\Giohang.cshtml" />
     <Content Include="Views\LichSuGiaoDich\Details.cshtml" />
@@ -362,9 +363,12 @@
     <Content Include="Views\DSSANPHAM\Tra.cshtml" />
     <Content Include="Views\DSSANPHAM\CaPhe.cshtml" />
     <Content Include="Views\DSSANPHAM\DoAnVat.cshtml" />
+    <Content Include="Views\SANPHAMs\Search.cshtml" />
+    <Content Include="Views\Home\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\TimKiem\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
