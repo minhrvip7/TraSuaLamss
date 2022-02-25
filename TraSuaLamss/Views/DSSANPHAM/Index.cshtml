@@ -2,7 +2,7 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "TAT CA SAN PHAM";
     Layout = null;
 
 }
@@ -102,9 +102,11 @@
                     @foreach (var sp in Model)
                     {
                         <div id="product">
-                            <a href="@Url.Action("Details","DSSANPHAM",new { id=sp.MaSP })">
-                                <img src="~/@sp.Anh" width="215" height="280" />
+                            <a style="text-decoration: none;font-size:16px" href="@Url.Action("Details","DSSANPHAM",new { id=sp.MaSP, loai = sp.MaLoai })">
+                                <p style="color:red;position:absolute;">@sp.GiaBan đ</p>
+                                <img src="~/wwwroot/Images/h0.png" width="215" height="280" />
                                 <p style="font-size:16px"><span>@sp.TenSP</span></p>
+
                             </a>
                         </div>
                     }

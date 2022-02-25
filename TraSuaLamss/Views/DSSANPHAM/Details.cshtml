@@ -1,4 +1,4 @@
-﻿@model TraSuaLamss.Models.SANPHAM
+﻿@model IEnumerable<TraSuaLamss.Models.SANPHAM> 
 @{
     ViewBag.Title = "Details";
     Layout = null;
@@ -6,10 +6,10 @@
 
 <style type="text/css">
     #datmua a {
-        clear: both;
+       
         background-color: red;
         color: white;
-        width: 120px;
+        width: 150px;
         height: 40px;
         line-height: 40px;
         display: block;
@@ -26,22 +26,60 @@
             background-color: gray;
             color: red;
         }
+    #product {
+        width: 222px;
+        height: 320px;
+        float: left;
+        display: block;
+        padding: 5px;
+        margin-left:20px;
+        text-align: left;
+        background-color: #fff;
+        border: 1px solid #999;
+    }
 </style>
 
-<table border="0" style="width:100%">
+<table border="0" style="width:1280px">
     <tr>
-        <td style="width:40%">
-            <img style="float:right;padding-right:20px" src="~/@Model.Anh" width="300" />
+        <td style="width:50%">
+            <img style="float:right;padding-right:20px" src="~/@ViewBag.Anh" width="300" height="350" />
         </td>
-        <td style="width:60%" valign="top">
-            <p style="font-weight:bold;color:black;font-size:36px;line-height:50px">@Model.TenSP</p>
-            <p style="font-size:24px"><span style="color:red">@Model.GiaBan đ</span></p>
-            <p style="font-size: 18px">Phân loại : <span style="">@Model.PHANLOAI.TenLoai</span></p>
-            <p style="font-size: 18px">Nguyên liệu : <span style="">@Model.NGUYENLIEU.TenNL</span></p>
+        <td style="width:50%" valign="top">
+            <p style="font-weight:bold;color:black;font-size:36px;line-height:50px">@ViewBag.TenSP</p>
+            <p style="font-size:24px"><span style="color:red">@ViewBag.GiaBan đ</span></p>
+            <p style="font-size: 18px">Phân loại : <span style="">@ViewBag.TenLoai</span></p>
+            <p style="font-size: 18px">Nguyên liệu : <span style="">@ViewBag.TenNL</span></p>
             <hr style="width:50%;float:left;" />
-            <p style="clear: left; font-size: 18px">Mô tả : <span style="">@Model.MoTa</span></p>
+            <p style="clear: left; font-size: 18px">Mô tả : <span style="">@ViewBag.MoTa</span></p>
+            <p style="font-size:18px">
+                <span>số lượng :</span>
+                <input style="height:24px;width:50px" type="number" min="1" value="1" id="txtSoLuong" />
+            </p>
+
             <div id="datmua">
-                <a href="@Url.Action("ThemGioHang","GioHang",new { id = Model.MaSP })">ĐẶT MUA</a>
+                <p>
+                    <a href="@Url.Action("ThemGioHang","GioHang",new { id = @ViewBag.MaSP })">THÊM GIỎ HÀNG</a>
+                    <a style="margin-left:30px" href="@Url.Action("DatMua","GioHang",new { id = @ViewBag.MaSP })">ĐẶT MUA</a>
+                </p>
+                
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <p style="font-size:24px;margin-left:20px;margin-top:20px">Các sản phẩm @ViewBag.TenLoai khác</p>
+            <div>
+                @foreach (var sp in Model)
+                {
+                    <div id="product">
+                        <a style="text-decoration: none;font-size:16px" href="@Url.Action("Details","DSSANPHAM",new { id=sp.MaSP, loai = sp.MaLoai })">
+                            <p style="color:red;position:absolute;">@sp.GiaBan đ</p>
+                            <img src="~/wwwroot/Images/h0.png" width="215" height="280" />
+                            <p style="font-size:16px"><span>@sp.TenSP</span></p>
+
+                        </a>
+                    </div>
+                }
             </div>
         </td>
     </tr>
