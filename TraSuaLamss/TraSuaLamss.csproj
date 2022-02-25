@@ -67,6 +67,11 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -178,12 +183,14 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Img\icon-call.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Template\assets\css\bootstrap.min.css" />
     <Content Include="Content\Template\assets\css\flex-slider.css" />
     <Content Include="Content\Template\assets\css\font-awesome.css" />
     <Content Include="Content\Template\assets\css\lightbox.css" />
     <Content Include="Content\Template\assets\css\owl-carousel.css" />
+    <Content Include="Content\Template\assets\css\Style.css" />
     <Content Include="Content\Template\assets\css\templatemo-klassy-cafe.css" />
     <Content Include="Content\Template\assets\fonts\flexslider-icon.svg" />
     <Content Include="Content\Template\assets\fonts\fontawesome-webfont.svg" />
@@ -339,6 +346,7 @@
     <Content Include="Views\CHITIETDONHANGs\Details.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Edit.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Index.cshtml" />
+    <Content Include="Views\DONHANGs\LichSuGiaoDich.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
