@@ -248,6 +248,7 @@
     <Content Include="Content\Template\assets\fonts\slick.woff" />
     <Content Include="Content\Template\prepros-6.config" />
     <Content Include="Content\Template\prepros.config" />
+    <Content Include="wwwroot\Images\h0.png" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
