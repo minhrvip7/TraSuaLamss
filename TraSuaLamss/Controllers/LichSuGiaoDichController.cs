@@ -32,12 +32,12 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var giaoDich = (from s in db.DONHANGs where s.MaKH == "KH001" select s).Where(x => x.MaDH == id);
-            if (giaoDich == null)
+            DONHANG dONHANG = db.DONHANGs.Find(id);
+            if (dONHANG == null)
             {
                 return HttpNotFound();
             }
-            return View(giaoDich.ToList());
+            return View(dONHANG);
         }
     }
 }
