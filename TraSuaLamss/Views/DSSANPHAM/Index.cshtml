@@ -119,9 +119,7 @@
                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.currentFilter, currentFilter1 = ViewBag.currentFilter1, currentFilter2 = ViewBag.currentFilter2 }))
             </td>
         </tr>
-
     </table>
-
 </div>
 
 @if (ViewBag.Error != null)
