@@ -142,6 +142,7 @@
     <Compile Include="Controllers\GIOHANGsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KHACHHANGsController.cs" />
+    <Compile Include="Controllers\LichSuGiaoDichController.cs" />
     <Compile Include="Controllers\LIENHEsController.cs" />
     <Compile Include="Controllers\NGUYENLIEUxController.cs" />
     <Compile Include="Controllers\NHACUNGCAPsController.cs" />
@@ -346,7 +347,8 @@
     <Content Include="Views\CHITIETDONHANGs\Details.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Edit.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Index.cshtml" />
-    <Content Include="Views\DONHANGs\LichSuGiaoDich.cshtml" />
+    <Content Include="Views\LichSuGiaoDich\Details.cshtml" />
+    <Content Include="Views\LichSuGiaoDich\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

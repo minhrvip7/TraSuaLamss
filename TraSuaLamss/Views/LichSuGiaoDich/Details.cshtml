@@ -1,0 +1,76 @@
+﻿@model TraSuaLamss.Models.DONHANG
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>LichSuGiaoDich</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ThanhTien)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhuongThucThanhToan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThanhToan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChiGiaoHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhTrangGiaoHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayGiao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaKH)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GhiChu)
+        </th>
+        <th></th>
+    </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayFor(model => model.ThanhTien)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.PhuongThucThanhToan)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ThanhToan)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.DiaChiGiaoHang)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.TinhTrangGiaoHang)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.NgayDat)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.NgayGiao)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.MaKH)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.GhiChu)
+            </td>
+        </tr>
+
+</table>
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaDH }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
