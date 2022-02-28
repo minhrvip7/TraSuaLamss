@@ -154,6 +154,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CHITIETDONHANG.cs" />
+    <Compile Include="Models\DangKyModel.cs" />
+    <Compile Include="Models\DangNhapModel.cs" />
     <Compile Include="Models\DONHANG.cs" />
     <Compile Include="Models\GIOHANG.cs" />
     <Compile Include="Models\KHACHHANG.cs" />
@@ -345,7 +347,8 @@
     <Content Include="Views\CHITIETDONHANGs\Details.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Edit.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Index.cshtml" />
-    <Content Include="Views\GIOHANGs\Giohang.cshtml" />
+    <Content Include="Views\Home\DangKy.cshtml" />
+    <Content Include="Views\Home\DangNhap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
