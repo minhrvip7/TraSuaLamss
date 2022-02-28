@@ -1,0 +1,48 @@
+﻿@model List<TraSuaLamss.Models.XemGioHang>
+@{
+    ViewBag.Title = "Giohang";
+}
+
+<style>
+    td {
+        padding: 10px 30px 10px 10px;
+    }
+</style>
+<h2 align="center" style="font-family:'Times New Roman'">Giỏ hàng</h2>
+<table align="center">
+    <tr style="text-align:center">
+        <td colspan="2">Sản phẩm</td>
+        <td>Đơn giá</td>
+        <td>Số lượng</td>
+        <td>Số tiền</td>
+        <td colspan="2">Thao tác</td>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <td>@item.TenSP</td>
+                <td></td>
+                <td style="text-align:center">@item.GiaBan</td>
+                <td style="text-align:center"><button type="submit" value="Giam">-</button> @item.Soluong <button type="submit" value="Tang">+</button></td>
+                <td style="text-align:center">@item.ThanhTien</td>
+
+
+                <td style="text-align:center">
+                    <button type="submit" value="Delete">Xóa</button>
+                </td>
+                <td style="text-align:center">@Html.ActionLink("Mua tiếp", "Index")</td>
+
+            }
+
+        </tr>
+    }
+</table>
+<br />
+<br />
+<p style="float:right"><button type="submit">Đặt hàng</button></p>
+<br />
+<br />
