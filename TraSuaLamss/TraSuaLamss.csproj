@@ -364,6 +364,7 @@
     <Content Include="Views\DSSANPHAM\CaPhe.cshtml" />
     <Content Include="Views\DSSANPHAM\DoAnVat.cshtml" />
     <Content Include="Views\SANPHAMs\Search.cshtml" />
+    <Content Include="Views\GIOHANGs\Giohang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
