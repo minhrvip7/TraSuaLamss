@@ -17,8 +17,10 @@ namespace TraSuaLamss.Controllers
         // GET: SANPHAMs
         public ActionResult Index()
         {
-            var sANPHAMs = db.SANPHAMs.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI);
-            return View(sANPHAMs.ToList());
+            
+                var sANPHAMs = db.SANPHAMs.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI);
+                return View(sANPHAMs.ToList());
+
         }
 
         // GET: SANPHAMs/Details/5
