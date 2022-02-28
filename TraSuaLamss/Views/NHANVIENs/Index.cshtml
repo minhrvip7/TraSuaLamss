@@ -1,81 +1,134 @@
-﻿@model IEnumerable<TraSuaLamss.Models.NHANVIEN>
+﻿@model PagedList.IPagedList<TraSuaLamss.Models.NHANVIEN>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
 }
+<style>
+    .center2 {
+        margin: auto;
+        width: 0%;
+        padding: 0px;
+    }
 
-<h2>Index</h2>
+</style>
+<section id="team" class="team section-bg">
+    <h2 style="padding-left:2%">Danh sách nhân viên</h2>
+    <br />
+    <br />
+    <br />
+    <br />
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TAIKHOAN.Password)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TenNV)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GioiTinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgaySinh)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DienThoai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.STK)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Luong)
-        </th>
-        <th></th>
-    </tr>
+    <div class="btm btn-default" style="padding-left:5%">
+        @Html.ActionLink("Thêm mới", "Create")
+    </div>
+    <p>
+        @using (Html.BeginForm())
+        {
+            <div style="margin-top:-50px; margin-bottom:60px">
+                <p style="padding-left:800px">
+                    Tìm nhân viên:@Html.TextBox("searchstr")
+                    <input type="submit" value="Tìm kiếm" />
+                </p>
+            </div>
+        }
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Mã
+                @*@Html.DisplayNameFor(model => model.MaNV)*@
+            </th>
+            <th>
+                Họ và Tên
+                @*@Html.DisplayNameFor(model => model.TenNV)*@
+            </th>
+            <th>
+                Tài khoản
+                @*@Html.DisplayNameFor(model => model.Username)*@
+            </th>
+            <th>
+                Giới tính
+                @*@Html.DisplayNameFor(model => model.GioiTinh)*@
+            </th>
+            <th>
+                Ngày sinh
+                @*@Html.DisplayNameFor(model => model.NgaySinh)*@
+            </th>
+            <th>
+                Email
+                @*@Html.DisplayNameFor(model => model.Email)*@
+            </th>
+            <th>
+                Địa chỉ
+                @*@Html.DisplayNameFor(model => model.DiaChi)*@
+            </th>
+            <th>
+                Số điện thoại
+                @*@Html.DisplayNameFor(model => model.DienThoai)*@
+            </th>
+            <th>
+                STK
+                @*@Html.DisplayNameFor(model => model.STK)*@
+            </th>
+            <th>
+                Tiền lương
+                @*@Html.DisplayNameFor(model => model.Luong)*@
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TAIKHOAN.Password)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenNV)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GioiTinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgaySinh)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DienThoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.STK)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Luong)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaNV }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaNV }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaNV })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaNV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenNV)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TAIKHOAN.Username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GioiTinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgaySinh)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DienThoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.STK)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Luong)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaNV }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.MaNV }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaNV })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+    <br />
+    <br />
+    <centrer>
+        <div style="text-align:center">Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber) / @Model.PageCount</div>
+        <div class="center2" style="text-align:center"><strong>@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))</strong> </div>
+    </centrer>
+
+    <br />
+    <p style="padding-left:5%">
+        @Html.ActionLink("Trờ lại", "Index")
+    </p>
+</section>

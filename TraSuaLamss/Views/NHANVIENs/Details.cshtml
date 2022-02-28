@@ -4,87 +4,105 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<h2 style="padding-left:2%">Thông tin chi tiết</h2>
 
 <div>
-    <h4>NHANVIEN</h4>
+    <h4 style="padding-left:2%">Nhân viên</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal"   style="padding-left:10%">
         <dt>
-            @Html.DisplayNameFor(model => model.TAIKHOAN.Password)
+            Mã nhân viên:
+            @*@Html.DisplayNameFor(model => model.MaNV)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TAIKHOAN.Password)
+            &emsp;@Html.DisplayFor(model => model.MaNV)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.TenNV)
+            Họ và Tên:
+            @*@Html.DisplayNameFor(model => model.TenNV)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TenNV)
+            &emsp;@Html.DisplayFor(model => model.TenNV)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.GioiTinh)
+            Tên đăng nhập:
+            @*@Html.DisplayNameFor(model => model.TAIKHOAN.Username)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.GioiTinh)
+            &emsp;@Html.DisplayFor(model => model.TAIKHOAN.Username)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.NgaySinh)
+            Giới tính:
+            @*@Html.DisplayNameFor(model => model.GioiTinh)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NgaySinh)
+            &emsp;@Html.DisplayFor(model => model.GioiTinh)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            Ngày sinh:
+            @*@Html.DisplayNameFor(model => model.NgaySinh)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            &emsp;@Html.DisplayFor(model => model.NgaySinh)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.DiaChi)
+            Email:
+            @*@Html.DisplayNameFor(model => model.Email)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DiaChi)
+            &emsp;@Html.DisplayFor(model => model.Email)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.DienThoai)
+            Địa chỉ:
+            @*@Html.DisplayNameFor(model => model.DiaChi)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DienThoai)
+            &emsp;@Html.DisplayFor(model => model.DiaChi)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.STK)
+            Điện thoại:
+            @*@Html.DisplayNameFor(model => model.DienThoai)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.STK)
+            &emsp;@Html.DisplayFor(model => model.DienThoai)
         </dd>
-
+        <br />
         <dt>
-            @Html.DisplayNameFor(model => model.Luong)
+            Số tài khoản:
+            @*@Html.DisplayNameFor(model => model.STK)*@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Luong)
+            &emsp;@Html.DisplayFor(model => model.STK)
         </dd>
+        <br />
+        <dt>
+            Tiền Lương:
+            @*@Html.DisplayNameFor(model => model.Luong)*@
+        </dt>
 
+        <dd>
+            &emsp;@Html.DisplayFor(model => model.Luong)
+        </dd>
+        <br />
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaNV }) |
-    @Html.ActionLink("Back to List", "Index")
+<p   style="padding-left:5%">
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaNV }) |
+    @Html.ActionLink("Trở lại danh sách", "Index")
 </p>

@@ -21,6 +21,7 @@ namespace TraSuaLamss.Controllers
             return View(dONHANGs.ToList());
         }
 
+
         // GET: DONHANGs/Details/5
         public ActionResult Details(string id)
         {
