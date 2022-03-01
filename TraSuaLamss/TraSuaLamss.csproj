@@ -136,7 +136,6 @@
     <Compile Include="Controllers\CHITIETDONHANGsController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
-    <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\LIENHEsController.cs" />
@@ -325,6 +324,12 @@
     <Content Include="Views\CHITIETDONHANGs\Edit.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Index.cshtml" />
     <Content Include="Views\GioHang\Giohang.cshtml" />
+    <Content Include="Views\DSSANPHAMS\CaPhe.cshtml" />
+    <Content Include="Views\DSSANPHAMS\Details.cshtml" />
+    <Content Include="Views\DSSANPHAMS\DoAnVat.cshtml" />
+    <Content Include="Views\DSSANPHAMS\Index.cshtml" />
+    <Content Include="Views\DSSANPHAMS\Tra.cshtml" />
+    <Content Include="Views\DSSANPHAMS\TraSua.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
