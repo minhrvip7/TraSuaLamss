@@ -10,112 +10,116 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class DONHANGsController : Controller
+    public class SanPhamController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: DONHANGs
+        // GET: SANPHAMs
         public ActionResult Index()
         {
-            var dONHANGs = db.DONHANGs.Include(d => d.KHACHHANG);
-            return View(dONHANGs.ToList());
+            var sANPHAMs = db.SANPHAMs.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI);
+            return View(sANPHAMs.ToList());
         }
 
-        // GET: DONHANGs/Details/5
+        // GET: SANPHAMs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
-            if (dONHANG == null)
+            SanPham sANPHAM = db.SANPHAMs.Find(id);
+            if (sANPHAM == null)
             {
                 return HttpNotFound();
             }
-            return View(dONHANG);
+            return View(sANPHAM);
         }
 
-        // GET: DONHANGs/Create
+        // GET: SANPHAMs/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL");
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai");
             return View();
         }
 
-        // POST: DONHANGs/Create
+        // POST: SANPHAMs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DONHANG dONHANG)
+        public ActionResult Create([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sANPHAM)
         {
             if (ModelState.IsValid)
             {
-                db.DONHANGs.Add(dONHANG);
+                db.SANPHAMs.Add(sANPHAM);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
-            return View(dONHANG);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            return View(sANPHAM);
         }
 
-        // GET: DONHANGs/Edit/5
+        // GET: SANPHAMs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
-            if (dONHANG == null)
+            SanPham sANPHAM = db.SANPHAMs.Find(id);
+            if (sANPHAM == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
-            return View(dONHANG);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            return View(sANPHAM);
         }
 
-        // POST: DONHANGs/Edit/5
+        // POST: SANPHAMs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DONHANG dONHANG)
+        public ActionResult Edit([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sANPHAM)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dONHANG).State = EntityState.Modified;
+                db.Entry(sANPHAM).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
-            return View(dONHANG);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            return View(sANPHAM);
         }
 
-        // GET: DONHANGs/Delete/5
+        // GET: SANPHAMs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
-            if (dONHANG == null)
+            SanPham sANPHAM = db.SANPHAMs.Find(id);
+            if (sANPHAM == null)
             {
                 return HttpNotFound();
             }
-            return View(dONHANG);
+            return View(sANPHAM);
         }
 
-        // POST: DONHANGs/Delete/5
+        // POST: SANPHAMs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            DONHANG dONHANG = db.DONHANGs.Find(id);
-            db.DONHANGs.Remove(dONHANG);
+            SanPham sANPHAM = db.SANPHAMs.Find(id);
+            db.SANPHAMs.Remove(sANPHAM);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

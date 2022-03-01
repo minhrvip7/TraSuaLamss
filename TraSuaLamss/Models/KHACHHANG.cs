@@ -13,8 +13,8 @@ namespace TraSuaLamss.Models
         public KHACHHANG()
         {
             CHITIETDONHANGs = new HashSet<CHITIETDONHANG>();
-            DONHANGs = new HashSet<DONHANG>();
-            GIOHANGs = new HashSet<GIOHANG>();
+            DONHANGs = new HashSet<DonHang>();
+            GIOHANGs = new HashSet<GioHang>();
         }
 
         [Key]
@@ -51,10 +51,10 @@ namespace TraSuaLamss.Models
         public virtual ICollection<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DONHANG> DONHANGs { get; set; }
+        public virtual ICollection<DonHang> DONHANGs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GIOHANG> GIOHANGs { get; set; }
+        public virtual ICollection<GioHang> GIOHANGs { get; set; }
 
         public virtual TAIKHOAN TAIKHOAN { get; set; }
     }
