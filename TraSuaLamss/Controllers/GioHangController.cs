@@ -15,6 +15,7 @@ namespace TraSuaLamss.Controllers
         private TraSuaContext db = new TraSuaContext();
         public ActionResult Giohang(string KHID)
         {
+            KHID = "KH001";
             var list = (from e in db.GioHang
                         join d in db.SanPham
                         on e.MaSP equals d.MaSP
@@ -26,35 +27,27 @@ namespace TraSuaLamss.Controllers
         {
             return View();
         }
-
-        public ActionResult Add(string KHID, string HangID, int soluong)
+        public ActionResult Add(string MaKhach, string MaHang, int soluong)
         {
-            
-            var list = (from e in db.GioHang
-                        join d in db.SanPham
-                        on e.MaSP equals d.MaSP
-                        where e.MaKH == KHID
-                        select new XemGioHang { GH = e, SP = d }).ToList();
-            if (list.Exists(e => e.SP.MaSP == HangID))
+            var list = (from e in db.GioHang select e).ToList();
+            if (list.Exists(e => e.MaSP == MaHang && e.MaKH == MaKhach))
             {
-                foreach (var item in list)
+                foreach (var item in db.GioHang)
                 {
-                    if (item.SP.MaSP == HangID)
+                    if (item.MaKH == MaKhach && item.MaSP == MaHang)
                     {
-                        item.GH.Soluong += soluong;
+                        item.Soluong += soluong;
                     }
+                    db.SaveChanges();
                 }
             }
             else
             {
-                var hang = (from e in db.GioHang
-                            join d in db.SanPham
-                            on e.MaSP equals d.MaSP
-                            select new XemGioHang { GH = e, SP = d }).FirstOrDefault();
-                list.Add(hang);
-                db.GioHang.Add(hang.GH);
+                GioHang giohangnew = new GioHang { MaKH = MaKhach, MaSP = MaHang, Soluong = soluong };
+                db.GioHang.Add(giohangnew);
+                db.SaveChanges();
             }
-            return View();
+            return RedirectToAction("Giohang");
         }
     }
 }
