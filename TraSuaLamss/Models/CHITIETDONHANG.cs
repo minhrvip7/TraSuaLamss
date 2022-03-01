@@ -24,7 +24,7 @@ namespace TraSuaLamss.Models
 
         public decimal DonGia { get; set; }
 
-        public virtual KHACHHANG KHACHHANG { get; set; }
+        public virtual KhachHang KHACHHANG { get; set; }
 
         public virtual SanPham SANPHAM { get; set; }
     }

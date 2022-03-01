@@ -13,15 +13,15 @@ namespace TraSuaLamss.Models
         }
 
         public virtual DbSet<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
-        public virtual DbSet<DonHang> DONHANGs { get; set; }
-        public virtual DbSet<GioHang> GIOHANGs { get; set; }
-        public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
+        public virtual DbSet<DonHang> DonHang { get; set; }
+        public virtual DbSet<GioHang> GioHang { get; set; }
+        public virtual DbSet<KhachHang> KhachHang { get; set; }
         public virtual DbSet<LIENHE> LIENHEs { get; set; }
         public virtual DbSet<NGUYENLIEU> NGUYENLIEUx { get; set; }
         public virtual DbSet<NHACUNGCAP> NHACUNGCAPs { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<PHANLOAI> PHANLOAIs { get; set; }
-        public virtual DbSet<SanPham> SANPHAMs { get; set; }
+        public virtual DbSet<SanPham> SanPham { get; set; }
         public virtual DbSet<TAIKHOAN> TAIKHOANs { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -78,33 +78,33 @@ namespace TraSuaLamss.Models
                 .Property(e => e.MaSP)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<KHACHHANG>()
+            modelBuilder.Entity<KhachHang>()
                 .Property(e => e.MaKH)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<KHACHHANG>()
+            modelBuilder.Entity<KhachHang>()
                 .Property(e => e.Username)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<KHACHHANG>()
+            modelBuilder.Entity<KhachHang>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<KHACHHANG>()
+            modelBuilder.Entity<KhachHang>()
                 .Property(e => e.DienThoai)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<KHACHHANG>()
+            modelBuilder.Entity<KhachHang>()
                 .HasMany(e => e.CHITIETDONHANGs)
                 .WithRequired(e => e.KHACHHANG)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<KHACHHANG>()
+            modelBuilder.Entity<KhachHang>()
                 .HasMany(e => e.DONHANGs)
                 .WithRequired(e => e.KHACHHANG)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<KHACHHANG>()
+            modelBuilder.Entity<KhachHang>()
                 .HasMany(e => e.GIOHANGs)
                 .WithRequired(e => e.KHACHHANG)
                 .WillCascadeOnDelete(false);

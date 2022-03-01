@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: SANPHAMs
         public ActionResult Index()
         {
-            var sANPHAMs = db.SANPHAMs.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI);
+            var sANPHAMs = db.SanPham.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI);
             return View(sANPHAMs.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SANPHAMs.Find(id);
+            SanPham sANPHAM = db.SanPham.Find(id);
             if (sANPHAM == null)
             {
                 return HttpNotFound();
@@ -53,7 +53,7 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.SANPHAMs.Add(sANPHAM);
+                db.SanPham.Add(sANPHAM);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -70,7 +70,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SANPHAMs.Find(id);
+            SanPham sANPHAM = db.SanPham.Find(id);
             if (sANPHAM == null)
             {
                 return HttpNotFound();
@@ -105,7 +105,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SANPHAMs.Find(id);
+            SanPham sANPHAM = db.SanPham.Find(id);
             if (sANPHAM == null)
             {
                 return HttpNotFound();
@@ -118,8 +118,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            SanPham sANPHAM = db.SANPHAMs.Find(id);
-            db.SANPHAMs.Remove(sANPHAM);
+            SanPham sANPHAM = db.SanPham.Find(id);
+            db.SanPham.Remove(sANPHAM);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

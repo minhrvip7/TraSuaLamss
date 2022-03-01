@@ -13,16 +13,13 @@ namespace TraSuaLamss.Controllers
     public class GioHangController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
-        private const string HangSession = "HangSession";
-        private const string KHSession = "KHSession";
-        public ActionResult Giohang()
+        public ActionResult Giohang(string KHID)
         {
-            var hang = Session[HangSession];
-            var list = new List<XemGioHang>();
-            if (hang != null)
-            {
-                list=(List<XemGioHang>)hang;
-            }
+            var list = (from e in db.GioHang
+                        join d in db.SanPham
+                        on e.MaSP equals d.MaSP
+                        where e.MaKH == KHID
+                        select new XemGioHang { GH = e, SP = d }).ToList();
             return View(list);
         }
         public ActionResult Dathang()
@@ -30,40 +27,34 @@ namespace TraSuaLamss.Controllers
             return View();
         }
 
-        public ActionResult Add(string HangID, int soluong)
+        public ActionResult Add(string KHID, string HangID, int soluong)
         {
-            var hang = Session[HangSession];
-            if (hang == null)
+            
+            var list = (from e in db.GioHang
+                        join d in db.SanPham
+                        on e.MaSP equals d.MaSP
+                        where e.MaKH == KHID
+                        select new XemGioHang { GH = e, SP = d }).ToList();
+            if (list.Exists(e => e.SP.MaSP == HangID))
             {
-                var list = (List<XemGioHang>)hang;
-                if (list.Exists(x => x.SP.MaSP == HangID))
+                foreach (var item in list)
                 {
-                    foreach (var item in list)
+                    if (item.SP.MaSP == HangID)
                     {
-                        if (item.SP.MaSP==HangID)
-                        {
-                            item.Soluong += soluong;
-                        }
+                        item.GH.Soluong += soluong;
                     }
-                }
-                else
-                {
-                    var item = new XemGioHang();
-                    item.SP.MaSP = HangID;
-                    item.Soluong = soluong;
-                    list.Add(item);
                 }
             }
             else
             {
-                var item = new XemGioHang();
-                item.SP.MaSP = HangID;
-                item.Soluong = soluong;
-                var list = new List<XemGioHang>();
-                list.Add(item);
-                Session[HangSession] = list;
+                var hang = (from e in db.GioHang
+                            join d in db.SanPham
+                            on e.MaSP equals d.MaSP
+                            select new XemGioHang { GH = e, SP = d }).FirstOrDefault();
+                list.Add(hang);
+                db.GioHang.Add(hang.GH);
             }
-            return RedirectToAction("Giohang");
+            return View();
         }
     }
 }

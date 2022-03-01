@@ -39,8 +39,8 @@ namespace TraSuaLamss.Controllers
         // GET: CHITIETDONHANGs/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH");
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP");
             return View();
         }
 
@@ -58,8 +58,8 @@ namespace TraSuaLamss.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
             return View(cHITIETDONHANG);
         }
 
@@ -75,8 +75,8 @@ namespace TraSuaLamss.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
             return View(cHITIETDONHANG);
         }
 
@@ -93,8 +93,8 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
             return View(cHITIETDONHANG);
         }
 

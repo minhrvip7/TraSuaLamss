@@ -139,7 +139,7 @@
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\KHACHHANGsController.cs" />
+    <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\LIENHEsController.cs" />
     <Compile Include="Controllers\NGUYENLIEUxController.cs" />
     <Compile Include="Controllers\NHACUNGCAPsController.cs" />
@@ -153,7 +153,7 @@
     <Compile Include="Models\CHITIETDONHANG.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Models\GioHang.cs" />
-    <Compile Include="Models\KHACHHANG.cs" />
+    <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\LIENHE.cs" />
     <Compile Include="Models\NGUYENLIEU.cs" />
     <Compile Include="Models\NHACUNGCAP.cs" />
@@ -238,11 +238,11 @@
     <Content Include="Views\LIENHEs\Details.cshtml" />
     <Content Include="Views\LIENHEs\Edit.cshtml" />
     <Content Include="Views\LIENHEs\Index.cshtml" />
-    <Content Include="Views\KHACHHANGs\Create.cshtml" />
-    <Content Include="Views\KHACHHANGs\Delete.cshtml" />
-    <Content Include="Views\KHACHHANGs\Details.cshtml" />
-    <Content Include="Views\KHACHHANGs\Edit.cshtml" />
-    <Content Include="Views\KHACHHANGs\Index.cshtml" />
+    <Content Include="Views\KhachHang\Create.cshtml" />
+    <Content Include="Views\KhachHang\Delete.cshtml" />
+    <Content Include="Views\KhachHang\Details.cshtml" />
+    <Content Include="Views\KhachHang\Edit.cshtml" />
+    <Content Include="Views\KhachHang\Index.cshtml" />
     <Content Include="Views\DonHang\Create.cshtml" />
     <Content Include="Views\DonHang\Delete.cshtml" />
     <Content Include="Views\DonHang\Details.cshtml" />

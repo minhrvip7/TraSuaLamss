@@ -43,6 +43,6 @@ namespace TraSuaLamss.Models
         [StringLength(100)]
         public string GhiChu { get; set; }
 
-        public virtual KHACHHANG KHACHHANG { get; set; }
+        public virtual KhachHang KHACHHANG { get; set; }
     }
 }

@@ -7,54 +7,51 @@
 
 }
 <style>
-    table {
-        padding: 0px 100px 0px 100px;
+    td {
+        padding: 10px 20px 10px 10px;
     }
 
-    td {
-        padding: 10px 20px 10px 20px;
-    }
+        td.td-center {
+            text-align: center;
+        }
 </style>
 <h2 align="center">Giỏ hàng</h2>
 <br />
 @if (Model.Count > 0)
 {
-<div style="float:right">Số lượng sản phẩm trong giỏ hàng: @Model.Count</div>
-<table class="table">
-    <tr style="text-align:center">
-        <td>Mã sản phẩm</td>
-        <td>Sản phẩm</td>
-        <td>Hình ảnh</td>
-        <td>Đơn giá</td>
-        <td>Số lượng</td>
-        <td>Thành tiền</td>
-        <td>Thao tác</td>
-    </tr>
-    @*<tr>
-        <td style="text-align:center">Mã sản phẩm</td>
-        <td>Tên sản phẩm</td>
-        <td style="text-align:center"></td>
-        <td style="text-align:center">Giá bán</td>
-        <td style="text-align:center"><input value="Số lượng" type="number" /></td>
-        <td style="text-align:center">Thành tiền</td>
-        <td style="text-align:center"><a href="#">Xóa</a><br /><a href="#">Mua tiếp</a></td>
-    </tr>*@
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td style="text-align:center">@item.SP.MaSP</td>
-            <td>@item.SP.TenSP</td>
-            <td style="text-align:center">@item.SP.Anh</td>
-            <td style="text-align:center">@item.SP.GiaBan</td>
-            <td style="text-align:center"><input value="@item.Soluong" type="number" /></td>
-            <td style="text-align:center">@item.SP.GiaBan</td>
-
-            <td style="text-align:center"><a href="#">Xóa</a><br /><a href="#">Mua tiếp</a></td>
-        </tr>
-    }
-
-</table>
+    <div style="float:right">Số lượng sản phẩm trong giỏ hàng: @Model.Count</div>
+    <br />
     <table align="center">
+        <thead>
+            <tr>
+                <td>Mã sản phẩm</td>
+                <td>Sản phẩm</td>
+                <td></td>
+                <td class="td-center">Đơn giá</td>
+                <td class="td-center">Số lượng</td>
+                <td class="td-center">Thành tiền</td>
+                <td class="td-center">Thao tác</td>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>@item.SP.MaSP</td>
+                    <td>@item.SP.TenSP</td>
+                    <td>@item.SP.Anh</td>
+                    <td class="td-center">@item.SP.GiaBan</td>
+                    <td class="td-center"><input value="@item.GH.Soluong" type="number" /></td>
+                    <td class="td-center">@(Convert.ToDecimal(item.SP.GiaBan)* item.GH.Soluong)</td>
+
+                    <td class="td-center"><a href="#">Xóa</a><br /><a href="#">Mua tiếp</a></td>
+                </tr>
+            </tbody>
+        }
+
+    </table>
+    <br />
+    <table style="float:right">
         <tr>
             <td><button>Tiếp tục mua hàng</button></td>
             <td><button>Cập nhật</button></td>

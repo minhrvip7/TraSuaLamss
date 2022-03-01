@@ -7,10 +7,10 @@ namespace TraSuaLamss.Models
     using System.Data.Entity.Spatial;
 
     [Table("KHACHHANG")]
-    public partial class KHACHHANG
+    public partial class KhachHang
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KHACHHANG()
+        public KhachHang()
         {
             CHITIETDONHANGs = new HashSet<CHITIETDONHANG>();
             DONHANGs = new HashSet<DonHang>();
