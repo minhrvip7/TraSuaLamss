@@ -43,14 +43,25 @@
             <p style="font-size:18px">
                 <span>số lượng :</span>
                 <input type="number" style="height:24px;width:50px" min="1" value="1" id="txtSoLuong" />
+                <script type="text/javascript">
+                    var fullName = $("#txtSoLuong");
+                    var anchorInfo = $("a");
+
+                    fullName.on("keyup", function () {
+                        var value = $(this).val();
+                        anchorInfo.attr("info", value);
+                        //logging the keystrokes getting to the Info attribute
+                        console.log(anchorInfo.attr("info"));
+                    });
+                </script>
             </p>
-            
             <div id="datmua">
-                <a href="@Url.Action("Add","GioHang",new { MaKhach="KH001",MaHang=Model.MaSP, soluong=1})">ĐẶT MUA</a>
+                <a href="@Url.Action("Add","GioHang",new { MaKhach="KH001",MaHang=Model.MaSP, soluong=Convert.ToInt32(("#txtSoLuong")) })">ĐẶT MUA</a>
             </div>
         </td>
     </tr>
 </table>
 <br />
+
 
 
