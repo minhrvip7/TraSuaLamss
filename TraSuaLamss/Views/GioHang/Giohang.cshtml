@@ -3,10 +3,27 @@
 
 @{
     ViewBag.Title = "Index";
-
-
 }
-<style>
+<style type="text/css">
+    td.nut a {
+        clear: both;
+        background-color: blue;
+        color: white;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+        td.nut a:hover {
+            background-color: green;
+            color: pink;
+        }
+
     td {
         padding: 10px 20px 10px 10px;
     }
@@ -14,7 +31,15 @@
         td.td-center {
             text-align: center;
         }
+
+    .anhsp {
+        height: 100px;
+        width: auto;
+    }
 </style>
+<br />
+<br />
+<br />
 <h2 align="center">Giỏ hàng</h2>
 <br />
 @if (Model.Count > 0)
@@ -39,12 +64,12 @@
                 <tr>
                     <td>@item.SP.MaSP</td>
                     <td>@item.SP.TenSP</td>
-                    <td>@item.SP.Anh</td>
+                    <td><img class="anhsp" src="~/wwwroot/@item.SP.Anh" /></td>
                     <td class="td-center">@item.SP.GiaBan</td>
-                    <td class="td-center"><input value="@item.GH.Soluong" type="number" /></td>
+                    <td class="td-center"><input value="@item.GH.Soluong" style="height:24px;width:50px" type="number" min="1" /></td>
                     <td class="td-center">@(Convert.ToDecimal(item.SP.GiaBan)* item.GH.Soluong)</td>
 
-                    <td class="td-center"><a href="#">Xóa</a><br /><a href="#">Tìm sản phẩm tương tự</a></td>
+                    <td class="td-center"><a href="@Url.Action("Delete", "GioHang", new {MaKhach=item.GH.MaKH, MaHang=item.SP.MaSP})">Xóa</a><br /><a href="#">Tìm sản phẩm tương tự</a></td>
                 </tr>
             </tbody>
         }
@@ -53,16 +78,20 @@
     <br />
     <table style="float:right">
         <tr>
-            <td><button>Tiếp tục mua hàng</button></td>
-            <td><button>Cập nhật</button></td>
-            <td><button>Xóa hết</button></td>
-            <td><button>Thanh toán</button></td>
+            <td class="nut"><a href="@Url.Action("Index", "DSSANPHAM")">Mua hàng tiếp</a></td>
+            <td class="nut"><a href="@Url.Action("DeleteAll", "GioHang", new {MaKhach=ViewBag.MaKH})">Xóa hết</a></td>
+            <td class="nut"><a href="@Url.Action("Dathang", "GioHang", new {lists=ViewData["ListGiohang"]})">Đặt hàng</a></td>
         </tr>
     </table>
 }
 else
 {
-    <span>Chưa có sản phẩm nào trong giỏ hàng</span>
+    <p style="text-align:center;background-color:aqua">
+        <img src="https://cdn.pixabay.com/photo/2014/04/03/10/00/shopping-cart-309592_1280.png" style="height:100px;width:auto" /><br />
+        <span>Chưa có sản phẩm nào trong giỏ hàng</span>
+        <br />
+        <a href="@Url.Action("Index", "DSSANPHAM")">Mua hàng</a>
+    </p>
 }
 <br />
 

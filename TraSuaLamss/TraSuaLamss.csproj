@@ -331,6 +331,7 @@
     <Content Include="Views\DSSANPHAM\Index.cshtml" />
     <Content Include="Views\DSSANPHAM\Tra.cshtml" />
     <Content Include="Views\DSSANPHAM\TraSua.cshtml" />
+    <Content Include="Views\GioHang\Dathang.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
