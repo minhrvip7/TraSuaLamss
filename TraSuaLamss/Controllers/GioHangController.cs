@@ -27,7 +27,7 @@ namespace TraSuaLamss.Controllers
             return View(list);
         }
         public ActionResult Dathang(List<XemGioHang> lists)
-        {
+        { 
             return View();
         }
 

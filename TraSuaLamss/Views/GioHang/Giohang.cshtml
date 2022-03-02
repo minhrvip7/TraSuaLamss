@@ -7,7 +7,7 @@
 <style type="text/css">
     td.nut a {
         clear: both;
-        background-color: blue;
+        background-color: red;
         color: white;
         width: 120px;
         height: 40px;
@@ -40,59 +40,62 @@
 <br />
 <br />
 <br />
-<h2 align="center">Giỏ hàng</h2>
+<h3 align="center">Giỏ hàng</h3>
 <br />
-@if (Model.Count > 0)
-{
-    <div style="float:right">Số lượng sản phẩm trong giỏ hàng: @Model.Count</div>
-    <br />
-    <table align="center">
-        <thead>
-            <tr>
-                <td>Mã sản phẩm</td>
-                <td>Sản phẩm</td>
-                <td></td>
-                <td class="td-center">Đơn giá</td>
-                <td class="td-center">Số lượng</td>
-                <td class="td-center">Thành tiền</td>
-                <td class="td-center">Thao tác</td>
-            </tr>
-        </thead>
-        @foreach (var item in Model)
-        {
-            <tbody>
-                <tr>
-                    <td>@item.SP.MaSP</td>
-                    <td>@item.SP.TenSP</td>
-                    <td><img class="anhsp" src="~/wwwroot/@item.SP.Anh" /></td>
-                    <td class="td-center">@item.SP.GiaBan</td>
-                    <td class="td-center"><input value="@item.GH.Soluong" style="height:24px;width:50px" type="number" min="1" /></td>
-                    <td class="td-center">@(Convert.ToDecimal(item.SP.GiaBan)* item.GH.Soluong)</td>
-
-                    <td class="td-center"><a href="@Url.Action("Delete", "GioHang", new {MaKhach=item.GH.MaKH, MaHang=item.SP.MaSP})">Xóa</a><br /><a href="#">Tìm sản phẩm tương tự</a></td>
-                </tr>
-            </tbody>
-        }
-
-    </table>
-    <br />
-    <table style="float:right">
-        <tr>
-            <td class="nut"><a href="@Url.Action("Index", "DSSANPHAM")">Mua hàng tiếp</a></td>
-            <td class="nut"><a href="@Url.Action("DeleteAll", "GioHang", new {MaKhach=ViewBag.MaKH})">Xóa hết</a></td>
-            <td class="nut"><a href="@Url.Action("Dathang", "GioHang", new {lists=ViewData["ListGiohang"]})">Đặt hàng</a></td>
-        </tr>
-    </table>
-}
-else
-{
-    <p style="text-align:center;background-color:aqua">
-        <img src="https://cdn.pixabay.com/photo/2014/04/03/10/00/shopping-cart-309592_1280.png" style="height:100px;width:auto" /><br />
-        <span>Chưa có sản phẩm nào trong giỏ hàng</span>
+<body style="background-color: #e8e8e8 ">
+    @if (Model.Count > 0)
+    {
+        <div style="float:right; color:red; padding-right:50px">Số lượng sản phẩm trong giỏ hàng: @Model.Count</div>
         <br />
-        <a href="@Url.Action("Index", "DSSANPHAM")">Mua hàng</a>
-    </p>
-}
-<br />
+        <table align="center">
+            <thead>
+                <tr>
+                    <td>Mã sản phẩm</td>
+                    <td>Sản phẩm</td>
+                    <td></td>
+                    <td class="td-center">Đơn giá</td>
+                    <td class="td-center">Số lượng</td>
+                    <td class="td-center">Thành tiền</td>
+                    <td class="td-center">Thao tác</td>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>@item.SP.MaSP</td>
+                        <td>@item.SP.TenSP</td>
+                        <td><img class="anhsp" src="~/wwwroot/@item.SP.Anh" /></td>
+                        <td class="td-center">@item.SP.GiaBan</td>
+                        <td class="td-center"><input value="@item.GH.Soluong" style="height:24px;width:50px" type="number" min="1" id="sl" /></td>
+                        <td class="td-center">@(Convert.ToDecimal(item.SP.GiaBan)* item.GH.Soluong)</td>
+
+                        <td class="td-center"><a href="@Url.Action("Delete", "GioHang", new {MaKhach=item.GH.MaKH, MaHang=item.SP.MaSP})">Xóa</a><br /><a href="#">Tìm sản phẩm tương tự</a></td>
+                    </tr>
+                </tbody>
+            }
+
+        </table>
+        <br />
+        <table style="float:right">
+            <tr>
+                <td class="nut"><a href="@Url.Action("Index", "DSSANPHAM")">Mua hàng tiếp</a></td>
+                <td class="nut"><a href="@Url.Action("DeleteAll", "GioHang", new {MaKhach=ViewBag.MaKH})">Xóa hết</a></td>
+                <td class="nut"><a href="@Url.Action("Dathang", "GioHang", new {lists=ViewData["ListGiohang"]})">Đặt hàng</a></td>
+            </tr>
+        </table>
+    }
+    else
+    {
+        <br />
+        <p style="text-align:center">
+            <img src="https://cdn.pixabay.com/photo/2014/04/03/10/00/shopping-cart-309592_1280.png" style="height:100px;width:auto" /><br /><br />
+            <span>Chưa có sản phẩm nào trong giỏ hàng</span>
+            <br />
+            <a href="@Url.Action("Index", "DSSANPHAM")">Mua hàng</a>
+        </p>
+    }
+    <br />
+</body>
 
 

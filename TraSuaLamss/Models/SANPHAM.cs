@@ -15,7 +15,7 @@ namespace TraSuaLamss.Models
 
         public SanPham()
         {
-            CHITIETDONHANGs = new HashSet<CHITIETDONHANG>();
+            CHITIETDONHANGs = new HashSet<ChiTietDonHang>();
             GIOHANGs = new HashSet<GioHang>();
         }
 
@@ -48,7 +48,7 @@ namespace TraSuaLamss.Models
         public string MaLoai { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
+        public virtual ICollection<ChiTietDonHang> CHITIETDONHANGs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHang> GIOHANGs { get; set; }

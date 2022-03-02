@@ -42,10 +42,11 @@
             <p style="clear: left; font-size: 18px">Mô tả : <span style="">@Model.MoTa</span></p>
             <p style="font-size:18px">
                 <span>số lượng :</span>
-                <input style="height:24px;width:50px" type="number" min="1" value="1" id="txtSoLuong"  />
+                <input type="number" style="height:24px;width:50px" min="1" value="1" id="txtSoLuong" />
             </p>
+            
             <div id="datmua">
-                <a href="@Url.Action("Add","GioHang",new { MaKhach="KH001",MaHang=Model.MaSP,soluong=Convert.ToInt32(Request.Form["txtSoLuong"]) })">ĐẶT MUA</a>
+                <a href="@Url.Action("Add","GioHang",new { MaKhach="KH001",MaHang=Model.MaSP, soluong=1})">ĐẶT MUA</a>
             </div>
         </td>
     </tr>

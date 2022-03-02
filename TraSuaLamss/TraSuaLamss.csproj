@@ -133,7 +133,7 @@
     <Compile Include="App_Start\BundleConfig2.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Controllers\CHITIETDONHANGsController.cs" />
+    <Compile Include="Controllers\ChiTietDonHangController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\DSSANPHAMController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
@@ -149,7 +149,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CHITIETDONHANG.cs" />
+    <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\KhachHang.cs" />
@@ -319,11 +319,11 @@
     <Content Include="Views\DonHang\Details.cshtml" />
     <Content Include="Views\DonHang\Edit.cshtml" />
     <Content Include="Views\DonHang\Index.cshtml" />
-    <Content Include="Views\CHITIETDONHANGs\Create.cshtml" />
-    <Content Include="Views\CHITIETDONHANGs\Delete.cshtml" />
-    <Content Include="Views\CHITIETDONHANGs\Details.cshtml" />
-    <Content Include="Views\CHITIETDONHANGs\Edit.cshtml" />
-    <Content Include="Views\CHITIETDONHANGs\Index.cshtml" />
+    <Content Include="Views\ChiTietDonHang\Create.cshtml" />
+    <Content Include="Views\ChiTietDonHang\Delete.cshtml" />
+    <Content Include="Views\ChiTietDonHang\Details.cshtml" />
+    <Content Include="Views\ChiTietDonHang\Edit.cshtml" />
+    <Content Include="Views\ChiTietDonHang\Index.cshtml" />
     <Content Include="Views\GioHang\Giohang.cshtml" />
     <Content Include="Views\DSSANPHAM\CaPhe.cshtml" />
     <Content Include="Views\DSSANPHAM\Details.cshtml" />

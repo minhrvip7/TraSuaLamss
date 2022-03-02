@@ -12,7 +12,7 @@ namespace TraSuaLamss.Models
         {
         }
 
-        public virtual DbSet<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
+        public virtual DbSet<ChiTietDonHang> ChiTietDonHang { get; set; }
         public virtual DbSet<DonHang> DonHang { get; set; }
         public virtual DbSet<GioHang> GioHang { get; set; }
         public virtual DbSet<KhachHang> KhachHang { get; set; }
@@ -26,19 +26,19 @@ namespace TraSuaLamss.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CHITIETDONHANG>()
+            modelBuilder.Entity<ChiTietDonHang>()
                 .Property(e => e.MaKH)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<CHITIETDONHANG>()
+            modelBuilder.Entity<ChiTietDonHang>()
                 .Property(e => e.MaHD)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<CHITIETDONHANG>()
+            modelBuilder.Entity<ChiTietDonHang>()
                 .Property(e => e.MaSP)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<CHITIETDONHANG>()
+            modelBuilder.Entity<ChiTietDonHang>()
                 .Property(e => e.DonGia)
                 .HasPrecision(18, 0);
 
