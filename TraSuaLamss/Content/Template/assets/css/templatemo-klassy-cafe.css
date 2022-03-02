@@ -1,41 +1,7 @@
-/*
-/*
 
-TemplateMo 558 Klassy Cafe
-
-https://templatemo.com/tm-558-klassy-cafe
-
-*/
-
-/* ---------------------------------------------
-Table of contents
-------------------------------------------------
-01. font & reset css
-02. reset
-03. global styles
-04. header
-05. banner
-06. features
-07. testimonials
-08. contact
-09. footer
-10. preloader
-11. search
-12. portfolio
-
---------------------------------------------- */
-/* 
----------------------------------------------
-font & reset css
---------------------------------------------- 
-*/
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 @import url("https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900");
-/* 
----------------------------------------------
-reset
---------------------------------------------- 
-*/
+
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, div
 pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q,
 s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
@@ -110,11 +76,7 @@ p {
     color: #2a2a2a;
 }
 
-/* 
----------------------------------------------
-global styles
---------------------------------------------- 
-*/
+
 html,
 body {
     background: #fff;
@@ -148,61 +110,6 @@ body {
     .mobile-bottom-fix-big {
         margin-bottom: 60px;
     }
-}
-
-.main-white-button a {
-    font-size: 13px;
-    color: #fb5849;
-    background-color: #fff;
-    padding: 12px 25px;
-    display: inline-block;
-    border-radius: 3px;
-    font-weight: 600;
-    transition: all .3s;
-}
-
-    .main-white-button a:hover {
-        opacity: 0.9;
-    }
-
-.main-text-button a {
-    font-size: 13px;
-    color: #fff;
-    font-weight: 600;
-    transition: all .3s;
-}
-
-    .main-text-button a:hover {
-        opacity: 0.9;
-    }
-
-.section-heading h6 {
-    position: relative;
-    font-size: 15px;
-    color: #fb5849;
-    font-weight: 500;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    padding-left: 40px;
-}
-
-    .section-heading h6:before {
-        width: 30px;
-        height: 1px;
-        content: '';
-        position: absolute;
-        left: 0;
-        top: 8px;
-        background-color: #fb5849;
-    }
-
-.section-heading h2 {
-    line-height: 40px;
-    margin-top: 20px;
-    margin-bottom: 25px;
-    font-size: 30px;
-    font-weight: 900;
-    color: #2a2a2a;
 }
 
 
@@ -253,6 +160,7 @@ header
         width: 100%;
         position: relative;
         display: flex;
+        margin-left:50px;
     }
 
 
@@ -299,12 +207,12 @@ header
 }
 
 .header-area .dndx {
-    font-size: 12px;
-    margin-left: 1000px;
+    font-size: 13px;
+    margin-left: 900px;
 }
 
     .header-area.dndx a {
-        font-size: 12px;
+        font-size: 13px;
         color: black;
         text-decoration: none;
         -webkit-transition: all 0.3s ease 0s;
@@ -585,6 +493,7 @@ header
 
 .header-area.header-sticky {
     min-height: 120px;
+    width:auto;
 }
 
 .header-area .nav {
@@ -634,7 +543,7 @@ header
         }
 
         .header-area .logo {
-            margin-left: 30px;
+            
         }
 
         .header-area .menu-trigger {
@@ -831,75 +740,6 @@ banner
     padding: 0;
 }
 
-/* ==== Slider Style === */
-.Modern-Slider .item .img-fill {
-    height: 100%;
-    max-height: 700px;
-    background: #000;
-}
-
-.Modern-Slider .item .info > div {
-    display: inline-block !important;
-    vertical-align: middle;
-}
-
-.Modern-Slider .NextArrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-25px);
-    right: 30px;
-    width: 50px;
-    height: 50px;
-    background-color: #fb5849;
-    border: 0 none;
-    line-height: 44px;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 36px;
-    font-family: 'FontAwesome';
-    color: #FFF;
-    z-index: 5;
-    outline: none;
-    opacity: 0.3;
-    transition: all .3s;
-}
-
-    .Modern-Slider .NextArrow:hover {
-        opacity: 1;
-    }
-
-    .Modern-Slider .NextArrow:before {
-        content: '\f105';
-    }
-
-.Modern-Slider .PrevArrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-25px);
-    left: 30px;
-    width: 50px;
-    height: 50px;
-    background-color: #fb5849;
-    border: 0 none;
-    line-height: 44px;
-    border-radius: 50%;
-    text-align: center;
-    font-size: 36px;
-    font-family: 'FontAwesome';
-    color: #FFF;
-    z-index: 5;
-    outline: none;
-    opacity: 0.3;
-    transition: all .3s;
-}
-
-    .Modern-Slider .PrevArrow:hover {
-        opacity: 1;
-    }
-
-    .Modern-Slider .PrevArrow:before {
-        content: '\f104';
-    }
 
 ul.slick-dots {
     display: none !important;
@@ -1007,9 +847,11 @@ footer
 */
 
 footer {
-    margin-top: 600px;
+    margin-top: 200px;
     padding: 50px 0px;
     background-color: #f2e1c5;
+    position:relative;
+    clear:both;
 }
 
     footer .left-text-content p {
@@ -1096,36 +938,7 @@ responsive
             letter-spacing: 0px;
         }
 
-    #top .left-content {
-        text-align: center;
-        padding: 25% 0px;
-    }
 
-    #about .right-content {
-        margin-left: 0px;
-        margin-top: 30px;
-    }
-
-    #chefs .chef-item {
-        margin-bottom: 30px;
-    }
-
-    #reservation .phone {
-        margin-bottom: 60px;
-    }
-
-    #contact {
-        margin-left: 0px;
-        margin-top: 30px;
-    }
-
-    #offers .tabs-content .left-list {
-        margin-right: 0px;
-    }
-
-    #offers .tabs-content .right-list {
-        margin-left: 0px;
-    }
 
     footer .right-text-content {
         text-align: center;
@@ -1142,54 +955,6 @@ responsive
 
 
 
-#preloader {
-    overflow: hidden;
-    background-color: #fb5849;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    position: fixed;
-    z-index: 99999;
-    color: #fff;
-}
-
-    #preloader .jumper {
-        left: 0;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        display: block;
-        position: absolute;
-        margin: auto;
-        width: 50px;
-        height: 50px;
-    }
-
-        #preloader .jumper > div {
-            background-color: #fff;
-            width: 10px;
-            height: 10px;
-            border-radius: 100%;
-            -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
-            position: absolute;
-            opacity: 0;
-            width: 50px;
-            height: 50px;
-            -webkit-animation: jumper 1s 0s linear infinite;
-            animation: jumper 1s 0s linear infinite;
-        }
-
-            #preloader .jumper > div:nth-child(2) {
-                -webkit-animation-delay: 0.33333s;
-                animation-delay: 0.33333s;
-            }
-
-            #preloader .jumper > div:nth-child(3) {
-                -webkit-animation-delay: 0.66666s;
-                animation-delay: 0.66666s;
-            }
 
 @-webkit-keyframes jumper {
     0% {

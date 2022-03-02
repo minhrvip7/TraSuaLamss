@@ -10,112 +10,107 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class DONHANGsController : Controller
+    public class LienHeController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: DONHANGs
+        // GET: LIENHEs
         public ActionResult Index()
         {
-            var dONHANGs = db.DONHANGs.Include(d => d.KHACHHANG);
-            return View(dONHANGs.ToList());
+            return View(db.LIENHEs.ToList());
         }
 
-        // GET: DONHANGs/Details/5
+        // GET: LIENHEs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
-            if (dONHANG == null)
+            LIENHE lIENHE = db.LIENHEs.Find(id);
+            if (lIENHE == null)
             {
                 return HttpNotFound();
             }
-            return View(dONHANG);
+            return View(lIENHE);
         }
 
-        // GET: DONHANGs/Create
+        // GET: LIENHEs/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
             return View();
         }
 
-        // POST: DONHANGs/Create
+        // POST: LIENHEs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DONHANG dONHANG)
+        public ActionResult Create([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LIENHE lIENHE)
         {
             if (ModelState.IsValid)
             {
-                db.DONHANGs.Add(dONHANG);
+                db.LIENHEs.Add(lIENHE);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
-            return View(dONHANG);
+            return View(lIENHE);
         }
 
-        // GET: DONHANGs/Edit/5
+        // GET: LIENHEs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
-            if (dONHANG == null)
+            LIENHE lIENHE = db.LIENHEs.Find(id);
+            if (lIENHE == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
-            return View(dONHANG);
+            return View(lIENHE);
         }
 
-        // POST: DONHANGs/Edit/5
+        // POST: LIENHEs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DONHANG dONHANG)
+        public ActionResult Edit([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LIENHE lIENHE)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dONHANG).State = EntityState.Modified;
+                db.Entry(lIENHE).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
-            return View(dONHANG);
+            return View(lIENHE);
         }
 
-        // GET: DONHANGs/Delete/5
+        // GET: LIENHEs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
-            if (dONHANG == null)
+            LIENHE lIENHE = db.LIENHEs.Find(id);
+            if (lIENHE == null)
             {
                 return HttpNotFound();
             }
-            return View(dONHANG);
+            return View(lIENHE);
         }
 
-        // POST: DONHANGs/Delete/5
+        // POST: LIENHEs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            DONHANG dONHANG = db.DONHANGs.Find(id);
-            db.DONHANGs.Remove(dONHANG);
+            LIENHE lIENHE = db.LIENHEs.Find(id);
+            db.LIENHEs.Remove(lIENHE);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

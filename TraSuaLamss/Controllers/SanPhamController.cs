@@ -10,116 +10,118 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class GIOHANGsController : Controller
+    public class SanPhamController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: GIOHANGs
+        // GET: SANPHAMs
         public ActionResult Index()
         {
-            var gIOHANGs = db.GIOHANGs.Include(g => g.KHACHHANG).Include(g => g.SANPHAM);
-            return View(gIOHANGs.ToList());
+            
+                var sANPHAMs = db.SANPHAMs.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI);
+                return View(sANPHAMs.ToList());
+
         }
 
-        // GET: GIOHANGs/Details/5
+        // GET: SANPHAMs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
-            if (gIOHANG == null)
+            SANPHAM sANPHAM = db.SANPHAMs.Find(id);
+            if (sANPHAM == null)
             {
                 return HttpNotFound();
             }
-            return View(gIOHANG);
+            return View(sANPHAM);
         }
 
-        // GET: GIOHANGs/Create
+        // GET: SANPHAMs/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL");
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai");
             return View();
         }
 
-        // POST: GIOHANGs/Create
+        // POST: SANPHAMs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaKH,MaSP,Soluong")] GIOHANG gIOHANG)
+        public ActionResult Create([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SANPHAM sANPHAM)
         {
             if (ModelState.IsValid)
             {
-                db.GIOHANGs.Add(gIOHANG);
+                db.SANPHAMs.Add(sANPHAM);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
-            return View(gIOHANG);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            return View(sANPHAM);
         }
 
-        // GET: GIOHANGs/Edit/5
+        // GET: SANPHAMs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
-            if (gIOHANG == null)
+            SANPHAM sANPHAM = db.SANPHAMs.Find(id);
+            if (sANPHAM == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
-            return View(gIOHANG);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            return View(sANPHAM);
         }
 
-        // POST: GIOHANGs/Edit/5
+        // POST: SANPHAMs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaKH,MaSP,Soluong")] GIOHANG gIOHANG)
+        public ActionResult Edit([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SANPHAM sANPHAM)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(gIOHANG).State = EntityState.Modified;
+                db.Entry(sANPHAM).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
-            return View(gIOHANG);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            return View(sANPHAM);
         }
 
-        // GET: GIOHANGs/Delete/5
+        // GET: SANPHAMs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
-            if (gIOHANG == null)
+            SANPHAM sANPHAM = db.SANPHAMs.Find(id);
+            if (sANPHAM == null)
             {
                 return HttpNotFound();
             }
-            return View(gIOHANG);
+            return View(sANPHAM);
         }
 
-        // POST: GIOHANGs/Delete/5
+        // POST: SANPHAMs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
-            db.GIOHANGs.Remove(gIOHANG);
+            SANPHAM sANPHAM = db.SANPHAMs.Find(id);
+            db.SANPHAMs.Remove(sANPHAM);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
