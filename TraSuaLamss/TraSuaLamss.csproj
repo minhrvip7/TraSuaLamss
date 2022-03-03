@@ -329,6 +329,7 @@
     <Content Include="Views\ChiTietDonHang\Index.cshtml" />
     <Content Include="Views\Home\View.cshtml" />
     <Content Include="Views\GioiThieu\Index.cshtml" />
+    <Content Include="Views\Home\DangNhap.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
