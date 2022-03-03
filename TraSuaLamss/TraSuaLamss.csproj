@@ -149,6 +149,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CHITIETDONHANG.cs" />
+    <Compile Include="Models\DangNhapModel.cs" />
     <Compile Include="Models\DONHANG.cs" />
     <Compile Include="Models\GIOHANG.cs" />
     <Compile Include="Models\KHACHHANG.cs" />
