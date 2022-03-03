@@ -7,7 +7,6 @@ namespace TraSuaLamss.Models
     using System.Data.Entity.Spatial;
 
     [Table("SANPHAM")]
-    [Serializable]
     public partial class SanPham
     {
         

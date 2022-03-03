@@ -6,9 +6,9 @@ using System.Web;
 namespace TraSuaLamss.Models
 {
     [Serializable]
-    public class XemGioHang
+    public class PhieuDatHang
     {
-        public GioHang GH { get; set; }
         public SanPham SP { get; set; }
+        public ChiTietDonHang CTDH { get; set; }
     }
 }

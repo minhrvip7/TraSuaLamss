@@ -155,6 +155,7 @@
     <Compile Include="Models\NHACUNGCAP.cs" />
     <Compile Include="Models\NHANVIEN.cs" />
     <Compile Include="Models\PHANLOAI.cs" />
+    <Compile Include="Models\PhieuDatHang.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\TAIKHOAN.cs" />
     <Compile Include="Models\TraSuaContext.cs" />
