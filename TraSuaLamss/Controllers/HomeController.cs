@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
     public class HomeController : Controller
     {
+        TraSuaContext db=new TraSuaContext();
         public ActionResult Index()
         {
             return View();
