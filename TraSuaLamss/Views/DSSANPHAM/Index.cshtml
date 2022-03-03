@@ -2,16 +2,14 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "TAT CA SAN PHAM";
     Layout = null;
 
 }
-
 <style type="text/css">
     #products {
         width: 1280px;
     }
-
     #product {
         width: 222px;
         height: 320px;
@@ -23,9 +21,10 @@
         background-color: #fff;
         border: 1px solid #999;
     }
+
     #danhmuc {
         border: 1px solid #999;
-        height:280px;
+        height: 280px;
     }
 
     .tim {
@@ -33,6 +32,7 @@
         width: 175px;
         padding-left: 5px
     }
+
     .timgia {
         height: 30px;
         width: 100px;
@@ -94,7 +94,7 @@
                         }
                     </div>
                 </div>
-                
+
             </td>
             <td width="1024px">
                 <p style="font-size:22px;padding-left:5px;">@ViewBag.Loai</p>
@@ -102,9 +102,11 @@
                     @foreach (var sp in Model)
                     {
                         <div id="product">
-                            <a href="@Url.Action("Details","DSSANPHAM",new { id=sp.MaSP })">
-                                <img src="~/@sp.Anh" width="215" height="280" />
+                            <a style="text-decoration: none;font-size:16px" href="@Url.Action("Details","DSSANPHAM",new { id=sp.MaSP, loai = sp.MaLoai })">
+                                <p style="color:red;position:absolute;">@sp.GiaBan đ</p>
+                                <img src="~/wwwroot/Images/h0.png" width="215" height="280" />
                                 <p style="font-size:16px"><span>@sp.TenSP</span></p>
+
                             </a>
                         </div>
                     }
@@ -115,9 +117,7 @@
                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.currentFilter, currentFilter1 = ViewBag.currentFilter1, currentFilter2 = ViewBag.currentFilter2 }))
             </td>
         </tr>
-
     </table>
-
 </div>
 
 @if (ViewBag.Error != null)
