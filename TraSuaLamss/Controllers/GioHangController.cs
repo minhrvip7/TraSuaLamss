@@ -10,107 +10,116 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class PHANLOAIsController : Controller
+    public class GioHangController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: PHANLOAIs
+        // GET: GIOHANGs
         public ActionResult Index()
         {
-            return View(db.PHANLOAIs.ToList());
+            var gIOHANGs = db.GIOHANGs.Include(g => g.KHACHHANG).Include(g => g.SANPHAM);
+            return View(gIOHANGs.ToList());
         }
 
-        // GET: PHANLOAIs/Details/5
+        // GET: GIOHANGs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            if (pHANLOAI == null)
+            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
+            if (gIOHANG == null)
             {
                 return HttpNotFound();
             }
-            return View(pHANLOAI);
+            return View(gIOHANG);
         }
 
-        // GET: PHANLOAIs/Create
+        // GET: GIOHANGs/Create
         public ActionResult Create()
         {
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
             return View();
         }
 
-        // POST: PHANLOAIs/Create
+        // POST: GIOHANGs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaLoai,TenLoai")] PHANLOAI pHANLOAI)
+        public ActionResult Create([Bind(Include = "MaKH,MaSP,Soluong")] GIOHANG gIOHANG)
         {
             if (ModelState.IsValid)
             {
-                db.PHANLOAIs.Add(pHANLOAI);
+                db.GIOHANGs.Add(gIOHANG);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(pHANLOAI);
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
+            return View(gIOHANG);
         }
 
-        // GET: PHANLOAIs/Edit/5
+        // GET: GIOHANGs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            if (pHANLOAI == null)
+            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
+            if (gIOHANG == null)
             {
                 return HttpNotFound();
             }
-            return View(pHANLOAI);
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
+            return View(gIOHANG);
         }
 
-        // POST: PHANLOAIs/Edit/5
+        // POST: GIOHANGs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaLoai,TenLoai")] PHANLOAI pHANLOAI)
+        public ActionResult Edit([Bind(Include = "MaKH,MaSP,Soluong")] GIOHANG gIOHANG)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pHANLOAI).State = EntityState.Modified;
+                db.Entry(gIOHANG).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(pHANLOAI);
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
+            return View(gIOHANG);
         }
 
-        // GET: PHANLOAIs/Delete/5
+        // GET: GIOHANGs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            if (pHANLOAI == null)
+            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
+            if (gIOHANG == null)
             {
                 return HttpNotFound();
             }
-            return View(pHANLOAI);
+            return View(gIOHANG);
         }
 
-        // POST: PHANLOAIs/Delete/5
+        // POST: GIOHANGs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            db.PHANLOAIs.Remove(pHANLOAI);
+            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
+            db.GIOHANGs.Remove(gIOHANG);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

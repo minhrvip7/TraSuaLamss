@@ -10,112 +10,116 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class NHANVIENsController : Controller
+    public class ChiTietDonHangController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: NHANVIENs
+        // GET: CHITIETDONHANGs
         public ActionResult Index()
         {
-            var nHANVIENs = db.NHANVIENs.Include(n => n.TAIKHOAN);
-            return View(nHANVIENs.ToList());
+            var cHITIETDONHANGs = db.CHITIETDONHANGs.Include(c => c.KHACHHANG).Include(c => c.SANPHAM);
+            return View(cHITIETDONHANGs.ToList());
         }
 
-        // GET: NHANVIENs/Details/5
+        // GET: CHITIETDONHANGs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
-            if (nHANVIEN == null)
+            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
             }
-            return View(nHANVIEN);
+            return View(cHITIETDONHANG);
         }
 
-        // GET: NHANVIENs/Create
+        // GET: CHITIETDONHANGs/Create
         public ActionResult Create()
         {
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password");
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
             return View();
         }
 
-        // POST: NHANVIENs/Create
+        // POST: CHITIETDONHANGs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaNV,TenNV,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai,STK,Luong")] NHANVIEN nHANVIEN)
+        public ActionResult Create([Bind(Include = "MaHD,MaKH,MaSP,SoLuong,DonGia")] CHITIETDONHANG cHITIETDONHANG)
         {
             if (ModelState.IsValid)
             {
-                db.NHANVIENs.Add(nHANVIEN);
+                db.CHITIETDONHANGs.Add(cHITIETDONHANG);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", nHANVIEN.Username);
-            return View(nHANVIEN);
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            return View(cHITIETDONHANG);
         }
 
-        // GET: NHANVIENs/Edit/5
+        // GET: CHITIETDONHANGs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
-            if (nHANVIEN == null)
+            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", nHANVIEN.Username);
-            return View(nHANVIEN);
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            return View(cHITIETDONHANG);
         }
 
-        // POST: NHANVIENs/Edit/5
+        // POST: CHITIETDONHANGs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaNV,TenNV,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai,STK,Luong")] NHANVIEN nHANVIEN)
+        public ActionResult Edit([Bind(Include = "MaHD,MaKH,MaSP,SoLuong,DonGia")] CHITIETDONHANG cHITIETDONHANG)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(nHANVIEN).State = EntityState.Modified;
+                db.Entry(cHITIETDONHANG).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", nHANVIEN.Username);
-            return View(nHANVIEN);
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            return View(cHITIETDONHANG);
         }
 
-        // GET: NHANVIENs/Delete/5
+        // GET: CHITIETDONHANGs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
-            if (nHANVIEN == null)
+            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
             }
-            return View(nHANVIEN);
+            return View(cHITIETDONHANG);
         }
 
-        // POST: NHANVIENs/Delete/5
+        // POST: CHITIETDONHANGs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
-            db.NHANVIENs.Remove(nHANVIEN);
+            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            db.CHITIETDONHANGs.Remove(cHITIETDONHANG);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

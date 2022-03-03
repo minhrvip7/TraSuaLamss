@@ -10,112 +10,107 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class NGUYENLIEUxController : Controller
+    public class PhanLoaiController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: NGUYENLIEUx
+        // GET: PHANLOAIs
         public ActionResult Index()
         {
-            var nGUYENLIEUx = db.NGUYENLIEUx.Include(n => n.NHACUNGCAP);
-            return View(nGUYENLIEUx.ToList());
+            return View(db.PHANLOAIs.ToList());
         }
 
-        // GET: NGUYENLIEUx/Details/5
+        // GET: PHANLOAIs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
-            if (nGUYENLIEU == null)
+            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
+            if (pHANLOAI == null)
             {
                 return HttpNotFound();
             }
-            return View(nGUYENLIEU);
+            return View(pHANLOAI);
         }
 
-        // GET: NGUYENLIEUx/Create
+        // GET: PHANLOAIs/Create
         public ActionResult Create()
         {
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC");
             return View();
         }
 
-        // POST: NGUYENLIEUx/Create
+        // POST: PHANLOAIs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaNL,TenNL,MaNCC")] NGUYENLIEU nGUYENLIEU)
+        public ActionResult Create([Bind(Include = "MaLoai,TenLoai")] PHANLOAI pHANLOAI)
         {
             if (ModelState.IsValid)
             {
-                db.NGUYENLIEUx.Add(nGUYENLIEU);
+                db.PHANLOAIs.Add(pHANLOAI);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
-            return View(nGUYENLIEU);
+            return View(pHANLOAI);
         }
 
-        // GET: NGUYENLIEUx/Edit/5
+        // GET: PHANLOAIs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
-            if (nGUYENLIEU == null)
+            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
+            if (pHANLOAI == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
-            return View(nGUYENLIEU);
+            return View(pHANLOAI);
         }
 
-        // POST: NGUYENLIEUx/Edit/5
+        // POST: PHANLOAIs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaNL,TenNL,MaNCC")] NGUYENLIEU nGUYENLIEU)
+        public ActionResult Edit([Bind(Include = "MaLoai,TenLoai")] PHANLOAI pHANLOAI)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(nGUYENLIEU).State = EntityState.Modified;
+                db.Entry(pHANLOAI).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
-            return View(nGUYENLIEU);
+            return View(pHANLOAI);
         }
 
-        // GET: NGUYENLIEUx/Delete/5
+        // GET: PHANLOAIs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
-            if (nGUYENLIEU == null)
+            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
+            if (pHANLOAI == null)
             {
                 return HttpNotFound();
             }
-            return View(nGUYENLIEU);
+            return View(pHANLOAI);
         }
 
-        // POST: NGUYENLIEUx/Delete/5
+        // POST: PHANLOAIs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
-            db.NGUYENLIEUx.Remove(nGUYENLIEU);
+            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
+            db.PHANLOAIs.Remove(pHANLOAI);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

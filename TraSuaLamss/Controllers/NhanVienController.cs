@@ -10,112 +10,112 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class DONHANGsController : Controller
+    public class NhanVienController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: DONHANGs
+        // GET: NHANVIENs
         public ActionResult Index()
         {
-            var dONHANGs = db.DONHANGs.Include(d => d.KHACHHANG);
-            return View(dONHANGs.ToList());
+            var nHANVIENs = db.NHANVIENs.Include(n => n.TAIKHOAN);
+            return View(nHANVIENs.ToList());
         }
 
-        // GET: DONHANGs/Details/5
+        // GET: NHANVIENs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
-            if (dONHANG == null)
+            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
+            if (nHANVIEN == null)
             {
                 return HttpNotFound();
             }
-            return View(dONHANG);
+            return View(nHANVIEN);
         }
 
-        // GET: DONHANGs/Create
+        // GET: NHANVIENs/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
+            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password");
             return View();
         }
 
-        // POST: DONHANGs/Create
+        // POST: NHANVIENs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DONHANG dONHANG)
+        public ActionResult Create([Bind(Include = "MaNV,TenNV,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai,STK,Luong")] NHANVIEN nHANVIEN)
         {
             if (ModelState.IsValid)
             {
-                db.DONHANGs.Add(dONHANG);
+                db.NHANVIENs.Add(nHANVIEN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
-            return View(dONHANG);
+            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", nHANVIEN.Username);
+            return View(nHANVIEN);
         }
 
-        // GET: DONHANGs/Edit/5
+        // GET: NHANVIENs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
-            if (dONHANG == null)
+            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
+            if (nHANVIEN == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
-            return View(dONHANG);
+            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", nHANVIEN.Username);
+            return View(nHANVIEN);
         }
 
-        // POST: DONHANGs/Edit/5
+        // POST: NHANVIENs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DONHANG dONHANG)
+        public ActionResult Edit([Bind(Include = "MaNV,TenNV,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai,STK,Luong")] NHANVIEN nHANVIEN)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(dONHANG).State = EntityState.Modified;
+                db.Entry(nHANVIEN).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
-            return View(dONHANG);
+            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", nHANVIEN.Username);
+            return View(nHANVIEN);
         }
 
-        // GET: DONHANGs/Delete/5
+        // GET: NHANVIENs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
-            if (dONHANG == null)
+            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
+            if (nHANVIEN == null)
             {
                 return HttpNotFound();
             }
-            return View(dONHANG);
+            return View(nHANVIEN);
         }
 
-        // POST: DONHANGs/Delete/5
+        // POST: NHANVIENs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            DONHANG dONHANG = db.DONHANGs.Find(id);
-            db.DONHANGs.Remove(dONHANG);
+            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
+            db.NHANVIENs.Remove(nHANVIEN);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

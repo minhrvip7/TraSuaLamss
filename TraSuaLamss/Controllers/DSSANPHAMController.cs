@@ -8,7 +8,7 @@ using PagedList;
 
 namespace TraSuaLamss.Controllers
 {
-    public class DSSANPHAMController : Controller
+    public class DSSanPhamController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
         private List<SANPHAM> LaySanPham()
