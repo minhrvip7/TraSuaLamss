@@ -22,6 +22,7 @@ namespace TraSuaLamss.Controllers
             return View();
         }
 
+
         public ActionResult DangNhap(DangNhapModel model)
         {
             if (ModelState.IsValid)
