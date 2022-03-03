@@ -5,24 +5,29 @@
 }
 
 <style type="text/css">
-    #datmua a {
-       
-        background-color: red;
-        color: white;
-        width: 150px;
-        height: 40px;
-        line-height: 40px;
-        display: block;
+    
+    #datmua{
+        width: 640px;
+        height: 50px;
         float: left;
-        padding-left: 10px;
-        text-align: center;
-        padding-top: 10px;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 14px;
+    }
+    #datmua #btn{
+        height:50px;
+        line-height:50px;
+        width:160px;
+        text-align:center;
+        background-color:orangered;
+        
     }
 
-        #datmua a:hover {
+        #datmua #btn a {
+            color:white;
+            text-decoration: none;
+            float: left;
+            width:160px;
+        }
+
+        #datmua #btn a:hover {
             background-color: gray;
             color: red;
         }
@@ -31,59 +36,83 @@
         height: 320px;
         float: left;
         display: block;
-        padding: 5px;
-        margin-left:20px;
+        margin:5px 0 5px 25px;
         text-align: left;
         background-color: #fff;
         border: 1px solid #999;
+        position:relative;
+    }
+    #absolute {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        color: red;
+        font-size: 24px;
+        font-family: Arial;
     }
 </style>
-
-<table border="0" style="width:1280px">
-    <tr>
-        <td style="width:50%">
-            <img style="float:right;padding-right:20px" src="~/@ViewBag.Anh" width="300" height="350" />
-        </td>
-        <td style="width:50%" valign="top">
-            <p style="font-weight:bold;color:black;font-size:36px;line-height:50px">@ViewBag.TenSP</p>
-            <p style="font-size:24px"><span style="color:red">@ViewBag.GiaBan đ</span></p>
-            <p style="font-size: 18px">Phân loại : <span style="">@ViewBag.TenLoai</span></p>
-            <p style="font-size: 18px">Nguyên liệu : <span style="">@ViewBag.TenNL</span></p>
-            <hr style="width:50%;float:left;" />
-            <p style="clear: left; font-size: 18px">Mô tả : <span style="">@ViewBag.MoTa</span></p>
-            <p style="font-size:18px">
-                <span>số lượng :</span>
-                <input style="height:24px;width:50px" type="number" min="1" value="1" id="txtSoLuong" />
-            </p>
-
-            <div id="datmua">
-                <p>
-                    <a href="@Url.Action("ThemGioHang","GioHang",new { id = @ViewBag.MaSP })">THÊM GIỎ HÀNG</a>
-                    <a style="margin-left:30px" href="@Url.Action("DatMua","GioHang",new { id = @ViewBag.MaSP })">ĐẶT MUA</a>
-                </p>
-                
-            </div>
-        </td>
-    </tr>
-    <tr>
-        <td colspan="2">
-            <p style="font-size:24px;margin-left:20px;margin-top:20px">Các sản phẩm @ViewBag.TenLoai khác</p>
-            <div>
-                @foreach (var sp in Model)
-                {
-                    <div id="product">
-                        <a style="text-decoration: none;font-size:16px" href="@Url.Action("Details","DSSANPHAM",new { id=sp.MaSP, loai = sp.MaLoai })">
-                            <p style="color:red;position:absolute;">@sp.GiaBan đ</p>
-                            <img src="~/wwwroot/Images/h0.png" width="215" height="280" />
-                            <p style="font-size:16px"><span>@sp.TenSP</span></p>
-
-                        </a>
+<div style="width: 100%; height: 100%;; background-color: #FFF8DC">
+    <div style="width: 1280px; margin: 0 auto;">
+        <table border="0">
+            <tr>
+                <td style="width:50%;height:420px" valign="bottom">
+                    <img style="float:right;padding-right:20px" src="~/@ViewBag.Anh" width="350" height="400" />
+                </td>
+                <td style="width:50%" valign="top">
+                    <div style="height:370px">
+                        <h1 style="font-weight:bold;padding-top:20px">@ViewBag.TenSP</h1>
+                        <hr style="margin-right:30px" />
+                        <p style="font-size:24px">
+                            @{
+                                long tien = long.Parse(ViewBag.GiaBan);
+                                string gia = String.Format("{0:0,0} đ", tien);
+                            }
+                            Giá bán : <span style="color:red">@gia</span>
+                        </p>
+                        <p style="font-size:24px">Phân loại : @ViewBag.TenLoai</p>
+                        <p style="font-size:24px">Nguyên liệu : @ViewBag.TenNL</p>
+                        <p style="font-size:24px">Mô tả : @ViewBag.MoTa</p>
+                        <p style="font-size:24px">
+                            Số lượng :
+                            <input style="height:24px;width:50px;font-size:24px" type="number" min="1" value="1" id="txtSoLuong" />
+                        </p>
                     </div>
-                }
-            </div>
-        </td>
-    </tr>
-</table>
+                    <div id="datmua">
+                        <div id="btn" style="float:left">
+                            <a href="@Url.Action("ThemGioHang","GioHang",new { id = @ViewBag.MaSP  })">THÊM GIỎ HÀNG</a>
+                        </div>
+                        <div id="btn" style="float:left;margin-left:30px">
+                            <a href="@Url.Action("DatMua","GioHang",new { id = @ViewBag.MaSP })">ĐẶT MUA</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="width:1280px">
+                    <p style="font-size:24px;margin-left:20px;margin-top:30px">Các sản phẩm liên quan khác</p>
+                    <div>
+                        @foreach (var sp in Model)
+                        {
+                            <div id="product">
+                                <div id="absolute">
+                                    @{
+                                        long tien1 = long.Parse(sp.GiaBan);
+                                        string gia1 = String.Format("{0:0,0} đ", tien1);
+                                    }
+                                    @gia1
+                                </div>
+                                <a style="text-decoration: none;font-size:16px" href="@Url.Action("Details","DSSANPHAM",new { id=sp.MaSP, loai = sp.MaLoai })">
+                                    <img src="~/wwwroot/Images/h0.png" width="222" height="280" />
+                                    <p style="font-size:16px;padding-left:5px;"><span>@sp.TenSP</span></p>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
 <br />
 
 
