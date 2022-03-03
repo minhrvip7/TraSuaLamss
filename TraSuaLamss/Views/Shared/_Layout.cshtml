@@ -13,14 +13,7 @@
     @Styles.Render("~/Content/Template/asssets/css")
     @Scripts.Render("~/bundels/modernizr")
 
-    <!--
 
-    TemplateMo 558 Klassy Cafe
-
-    https://templatemo.com/tm-558-klassy-cafe
-
-    -->
-    <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="~/Content/Template/assets/css/bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" href="~/Content/Template/assets/css/font-awesome.css">
@@ -48,15 +41,15 @@
     <header class="header-area header-sticky">
         <div class="container">
             <a href="/Home/Index" class="logo">
-                <img src="~/Content/Template/assets/images/loading.gif" style="margin:20px 10px 20px -50px">
+                <img src="~/Content/Template/assets/images/LOGO.png" style="margin:20px 10px -20px -50px;width: 80px; height:80px">
             </a>
             <div class="row">
 
                 <div class="search form-inline">
                     <form name="frmSearch" id="frmSearch" action="/SANPHAMs/Search" method="post" style="margin-left:50px;margin-top:-50px">
                         <input type="text" name="searchkey" placeholder="Nhap tu khoa" class="form-control" style="width:800px" />
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                        <div class="form-inline dndx" style="margin-top:-15px">
+                        <button type="submit" class="searchButton" ><i class="fa fa-search"></i></button>
+                        <div class="form-inline dndx" style="margin-top:-20px">
                             @{
                                 string imageurl = "";
                                 if (Session["TAIKHOAN"] != null)
@@ -149,7 +142,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="logo">
-                        <a href="index.html"><img src="~/Content/Template/assets/images/loading.gif" alt=""></a><br />
+                        <a href="index.html"><img src="~/Content/Template/assets/images/LOGO.png" style="width: 80px; height: 80px" alt=""></a><br />
                         <p>©Rikkei copyright </p>
                     </div>
                 </div>
