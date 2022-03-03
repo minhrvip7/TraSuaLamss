@@ -146,10 +146,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CHITIETDONHANG.cs" />
+    <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\ChiTietSanPham.cs" />
-    <Compile Include="Models\DONHANG.cs" />
-    <Compile Include="Models\GIOHANG.cs" />
+    <Compile Include="Models\DonHang.cs" />
+    <Compile Include="Models\Giohang.cs" />
     <Compile Include="Models\KHACHHANG.cs" />
     <Compile Include="Models\LIENHE.cs" />
     <Compile Include="Models\NGUYENLIEU.cs" />
@@ -244,11 +244,6 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
-    <Content Include="Scripts\jquery-3.4.1.js" />
-    <Content Include="Scripts\jquery-3.4.1.min.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.js" />
-    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />

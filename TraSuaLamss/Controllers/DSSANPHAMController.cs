@@ -81,7 +81,7 @@ namespace TraSuaLamss.Controllers
 
         public ActionResult Details(string id, string loai)
         {
-            var tra = from tr in db.SANPHAMs
+            var tra = from tr in db.SanPham
                       join l in db.PHANLOAIs on tr.MaLoai equals l.MaLoai
                       join nl in db.NGUYENLIEUx on tr.MaNL equals nl.MaNL
                       where tr.MaSP == id
@@ -137,7 +137,7 @@ namespace TraSuaLamss.Controllers
             ViewBag.GiaBan = giaban;
             ViewBag.MoTa = mota;
             ViewBag.Anh = anh;
-            var danhsach = from ds in db.SANPHAMs
+            var danhsach = from ds in db.SanPham
                            where ds.MaSP !=id && ds.MaLoai ==loai
                            select ds;
             return View(danhsach.ToList());
