@@ -12,198 +12,198 @@ namespace TraSuaLamss.Models
         {
         }
 
-        public virtual DbSet<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
-        public virtual DbSet<DONHANG> DONHANGs { get; set; }
-        public virtual DbSet<GIOHANG> GIOHANGs { get; set; }
-        public virtual DbSet<KHACHHANG> KHACHHANGs { get; set; }
-        public virtual DbSet<LIENHE> LIENHEs { get; set; }
-        public virtual DbSet<NGUYENLIEU> NGUYENLIEUx { get; set; }
-        public virtual DbSet<NHACUNGCAP> NHACUNGCAPs { get; set; }
-        public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
-        public virtual DbSet<PHANLOAI> PHANLOAIs { get; set; }
-        public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
-        public virtual DbSet<TAIKHOAN> TAIKHOANs { get; set; }
+        public virtual DbSet<ChiTietDonHang> CHITIETDONHANGs { get; set; }
+        public virtual DbSet<DonHang> DONHANGs { get; set; }
+        public virtual DbSet<GioHang> GIOHANGs { get; set; }
+        public virtual DbSet<KhachHang> KHACHHANGs { get; set; }
+        public virtual DbSet<LienHe> LIENHEs { get; set; }
+        public virtual DbSet<NguyenLieu> NGUYENLIEUx { get; set; }
+        public virtual DbSet<NhaCungCap> NHACUNGCAPs { get; set; }
+        public virtual DbSet<NhanVien> NHANVIENs { get; set; }
+        public virtual DbSet<PhanLoai> PHANLOAIs { get; set; }
+        public virtual DbSet<SanPham> SANPHAMs { get; set; }
+        public virtual DbSet<TaiKhoan> TAIKHOANs { get; set; }
         public object NHANVIEN { get; internal set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CHITIETDONHANG>()
+            modelBuilder.Entity<ChiTietDonHang>()
                 .Property(e => e.MaKH)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<CHITIETDONHANG>()
+            modelBuilder.Entity<ChiTietDonHang>()
                 .Property(e => e.MaHD)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<CHITIETDONHANG>()
+            modelBuilder.Entity<ChiTietDonHang>()
                 .Property(e => e.MaSP)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<CHITIETDONHANG>()
+            modelBuilder.Entity<ChiTietDonHang>()
                 .Property(e => e.DonGia)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<DONHANG>()
+            modelBuilder.Entity<DonHang>()
                 .Property(e => e.MaDH)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<DONHANG>()
+            modelBuilder.Entity<DonHang>()
                 .Property(e => e.ThanhTien)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<DONHANG>()
+            modelBuilder.Entity<DonHang>()
                 .Property(e => e.PhuongThucThanhToan)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<DONHANG>()
+            modelBuilder.Entity<DonHang>()
                 .Property(e => e.ThanhToan)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<DONHANG>()
+            modelBuilder.Entity<DonHang>()
                 .Property(e => e.DiaChiGiaoHang)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<DONHANG>()
+            modelBuilder.Entity<DonHang>()
                 .Property(e => e.TinhTrangGiaoHang)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<DONHANG>()
+            modelBuilder.Entity<DonHang>()
                 .Property(e => e.MaKH)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<GIOHANG>()
+            modelBuilder.Entity<GioHang>()
                 .Property(e => e.MaKH)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<GIOHANG>()
+            modelBuilder.Entity<GioHang>()
                 .Property(e => e.MaSP)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<KHACHHANG>()
+            modelBuilder.Entity<KhachHang>()
                 .Property(e => e.MaKH)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<KHACHHANG>()
+            modelBuilder.Entity<KhachHang>()
                 .Property(e => e.Username)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<KHACHHANG>()
+            modelBuilder.Entity<KhachHang>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<KHACHHANG>()
+            modelBuilder.Entity<KhachHang>()
                 .Property(e => e.DienThoai)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<KHACHHANG>()
+            modelBuilder.Entity<KhachHang>()
                 .HasMany(e => e.CHITIETDONHANGs)
                 .WithRequired(e => e.KHACHHANG)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<KHACHHANG>()
+            modelBuilder.Entity<KhachHang>()
                 .HasMany(e => e.DONHANGs)
                 .WithRequired(e => e.KHACHHANG)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<KHACHHANG>()
+            modelBuilder.Entity<KhachHang>()
                 .HasMany(e => e.GIOHANGs)
                 .WithRequired(e => e.KHACHHANG)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<LIENHE>()
+            modelBuilder.Entity<LienHe>()
                 .Property(e => e.MaLH)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LIENHE>()
+            modelBuilder.Entity<LienHe>()
                 .Property(e => e.SDT)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NGUYENLIEU>()
+            modelBuilder.Entity<NguyenLieu>()
                 .Property(e => e.MaNL)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NGUYENLIEU>()
+            modelBuilder.Entity<NguyenLieu>()
                 .Property(e => e.MaNCC)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NGUYENLIEU>()
+            modelBuilder.Entity<NguyenLieu>()
                 .HasMany(e => e.SANPHAMs)
                 .WithRequired(e => e.NGUYENLIEU)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<NHACUNGCAP>()
+            modelBuilder.Entity<NhaCungCap>()
                 .Property(e => e.MaNCC)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NHACUNGCAP>()
+            modelBuilder.Entity<NhaCungCap>()
                 .Property(e => e.SDT)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NHACUNGCAP>()
+            modelBuilder.Entity<NhaCungCap>()
                 .HasMany(e => e.NGUYENLIEUx)
                 .WithRequired(e => e.NHACUNGCAP)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<NHANVIEN>()
+            modelBuilder.Entity<NhanVien>()
                 .Property(e => e.MaNV)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NHANVIEN>()
+            modelBuilder.Entity<NhanVien>()
                 .Property(e => e.Username)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NHANVIEN>()
+            modelBuilder.Entity<NhanVien>()
                 .Property(e => e.Email)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NHANVIEN>()
+            modelBuilder.Entity<NhanVien>()
                 .Property(e => e.STK)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<NHANVIEN>()
+            modelBuilder.Entity<NhanVien>()
                 .Property(e => e.Luong)
                 .HasPrecision(18, 0);
 
-            modelBuilder.Entity<PHANLOAI>()
+            modelBuilder.Entity<PhanLoai>()
                 .Property(e => e.MaLoai)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<PHANLOAI>()
+            modelBuilder.Entity<PhanLoai>()
                 .HasMany(e => e.SANPHAMs)
                 .WithRequired(e => e.PHANLOAI)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<SANPHAM>()
+            modelBuilder.Entity<SanPham>()
                 .Property(e => e.MaSP)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SANPHAM>()
+            modelBuilder.Entity<SanPham>()
                 .Property(e => e.MaNL)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SANPHAM>()
+            modelBuilder.Entity<SanPham>()
                 .Property(e => e.MaLoai)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SANPHAM>()
+            modelBuilder.Entity<SanPham>()
                 .HasMany(e => e.GIOHANGs)
                 .WithRequired(e => e.SANPHAM)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<TAIKHOAN>()
+            modelBuilder.Entity<TaiKhoan>()
                 .Property(e => e.Username)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<TAIKHOAN>()
+            modelBuilder.Entity<TaiKhoan>()
                 .Property(e => e.Password)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<TAIKHOAN>()
+            modelBuilder.Entity<TaiKhoan>()
                 .HasMany(e => e.KHACHHANGs)
                 .WithRequired(e => e.TAIKHOAN)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<TAIKHOAN>()
+            modelBuilder.Entity<TaiKhoan>()
                 .HasMany(e => e.NHANVIENs)
                 .WithRequired(e => e.TAIKHOAN)
                 .WillCascadeOnDelete(false);

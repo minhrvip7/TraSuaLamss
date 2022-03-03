@@ -7,7 +7,7 @@ namespace TraSuaLamss.Models
     using System.Data.Entity.Spatial;
 
     [Table("LIENHE")]
-    public partial class LIENHE
+    public partial class LienHe
     {
         [Key]
         [StringLength(5)]

@@ -10,107 +10,116 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class PHANLOAIsController : Controller
+    public class ChiTietDonHangController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: PHANLOAIs
+        // GET: CHITIETDONHANGs
         public ActionResult Index()
         {
-            return View(db.PHANLOAIs.ToList());
+            var cHITIETDONHANGs = db.CHITIETDONHANGs.Include(c => c.KHACHHANG).Include(c => c.SANPHAM);
+            return View(cHITIETDONHANGs.ToList());
         }
 
-        // GET: PHANLOAIs/Details/5
+        // GET: CHITIETDONHANGs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            if (pHANLOAI == null)
+            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
             }
-            return View(pHANLOAI);
+            return View(cHITIETDONHANG);
         }
 
-        // GET: PHANLOAIs/Create
+        // GET: CHITIETDONHANGs/Create
         public ActionResult Create()
         {
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
             return View();
         }
 
-        // POST: PHANLOAIs/Create
+        // POST: CHITIETDONHANGs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaLoai,TenLoai")] PHANLOAI pHANLOAI)
+        public ActionResult Create([Bind(Include = "MaHD,MaKH,MaSP,SoLuong,DonGia")] ChiTietDonHang cHITIETDONHANG)
         {
             if (ModelState.IsValid)
             {
-                db.PHANLOAIs.Add(pHANLOAI);
+                db.CHITIETDONHANGs.Add(cHITIETDONHANG);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(pHANLOAI);
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            return View(cHITIETDONHANG);
         }
 
-        // GET: PHANLOAIs/Edit/5
+        // GET: CHITIETDONHANGs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            if (pHANLOAI == null)
+            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
             }
-            return View(pHANLOAI);
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            return View(cHITIETDONHANG);
         }
 
-        // POST: PHANLOAIs/Edit/5
+        // POST: CHITIETDONHANGs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaLoai,TenLoai")] PHANLOAI pHANLOAI)
+        public ActionResult Edit([Bind(Include = "MaHD,MaKH,MaSP,SoLuong,DonGia")] ChiTietDonHang cHITIETDONHANG)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pHANLOAI).State = EntityState.Modified;
+                db.Entry(cHITIETDONHANG).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(pHANLOAI);
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            return View(cHITIETDONHANG);
         }
 
-        // GET: PHANLOAIs/Delete/5
+        // GET: CHITIETDONHANGs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            if (pHANLOAI == null)
+            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
             }
-            return View(pHANLOAI);
+            return View(cHITIETDONHANG);
         }
 
-        // POST: PHANLOAIs/Delete/5
+        // POST: CHITIETDONHANGs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            db.PHANLOAIs.Remove(pHANLOAI);
+            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            db.CHITIETDONHANGs.Remove(cHITIETDONHANG);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -10,112 +10,116 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class NGUYENLIEUxController : Controller
+    public class SanPhamController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: NGUYENLIEUx
+        // GET: SANPHAMs
         public ActionResult Index()
         {
-            var nGUYENLIEUx = db.NGUYENLIEUx.Include(n => n.NHACUNGCAP);
-            return View(nGUYENLIEUx.ToList());
+            var sANPHAMs = db.SANPHAMs.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI);
+            return View(sANPHAMs.ToList());
         }
 
-        // GET: NGUYENLIEUx/Details/5
+        // GET: SANPHAMs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
-            if (nGUYENLIEU == null)
+            SanPham sANPHAM = db.SANPHAMs.Find(id);
+            if (sANPHAM == null)
             {
                 return HttpNotFound();
             }
-            return View(nGUYENLIEU);
+            return View(sANPHAM);
         }
 
-        // GET: NGUYENLIEUx/Create
+        // GET: SANPHAMs/Create
         public ActionResult Create()
         {
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC");
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL");
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai");
             return View();
         }
 
-        // POST: NGUYENLIEUx/Create
+        // POST: SANPHAMs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaNL,TenNL,MaNCC")] NGUYENLIEU nGUYENLIEU)
+        public ActionResult Create([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sANPHAM)
         {
             if (ModelState.IsValid)
             {
-                db.NGUYENLIEUx.Add(nGUYENLIEU);
+                db.SANPHAMs.Add(sANPHAM);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
-            return View(nGUYENLIEU);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            return View(sANPHAM);
         }
 
-        // GET: NGUYENLIEUx/Edit/5
+        // GET: SANPHAMs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
-            if (nGUYENLIEU == null)
+            SanPham sANPHAM = db.SANPHAMs.Find(id);
+            if (sANPHAM == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
-            return View(nGUYENLIEU);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            return View(sANPHAM);
         }
 
-        // POST: NGUYENLIEUx/Edit/5
+        // POST: SANPHAMs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaNL,TenNL,MaNCC")] NGUYENLIEU nGUYENLIEU)
+        public ActionResult Edit([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sANPHAM)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(nGUYENLIEU).State = EntityState.Modified;
+                db.Entry(sANPHAM).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
-            return View(nGUYENLIEU);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            return View(sANPHAM);
         }
 
-        // GET: NGUYENLIEUx/Delete/5
+        // GET: SANPHAMs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
-            if (nGUYENLIEU == null)
+            SanPham sANPHAM = db.SANPHAMs.Find(id);
+            if (sANPHAM == null)
             {
                 return HttpNotFound();
             }
-            return View(nGUYENLIEU);
+            return View(sANPHAM);
         }
 
-        // POST: NGUYENLIEUx/Delete/5
+        // POST: SANPHAMs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
-            db.NGUYENLIEUx.Remove(nGUYENLIEU);
+            SanPham sANPHAM = db.SANPHAMs.Find(id);
+            db.SANPHAMs.Remove(sANPHAM);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

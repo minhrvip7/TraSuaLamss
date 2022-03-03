@@ -32,7 +32,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
+            DonHang dONHANG = db.DONHANGs.Find(id);
             if (dONHANG == null)
             {
                 return HttpNotFound();

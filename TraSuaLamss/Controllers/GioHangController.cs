@@ -10,33 +10,33 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class CHITIETDONHANGsController : Controller
+    public class GioHangController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: CHITIETDONHANGs
+        // GET: GIOHANGs
         public ActionResult Index()
         {
-            var cHITIETDONHANGs = db.CHITIETDONHANGs.Include(c => c.KHACHHANG).Include(c => c.SANPHAM);
-            return View(cHITIETDONHANGs.ToList());
+            var gIOHANGs = db.GIOHANGs.Include(g => g.KHACHHANG).Include(g => g.SANPHAM);
+            return View(gIOHANGs.ToList());
         }
 
-        // GET: CHITIETDONHANGs/Details/5
+        // GET: GIOHANGs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
-            if (cHITIETDONHANG == null)
+            GioHang gIOHANG = db.GIOHANGs.Find(id);
+            if (gIOHANG == null)
             {
                 return HttpNotFound();
             }
-            return View(cHITIETDONHANG);
+            return View(gIOHANG);
         }
 
-        // GET: CHITIETDONHANGs/Create
+        // GET: GIOHANGs/Create
         public ActionResult Create()
         {
             ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
@@ -44,82 +44,82 @@ namespace TraSuaLamss.Controllers
             return View();
         }
 
-        // POST: CHITIETDONHANGs/Create
+        // POST: GIOHANGs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaHD,MaKH,MaSP,SoLuong,DonGia")] CHITIETDONHANG cHITIETDONHANG)
+        public ActionResult Create([Bind(Include = "MaKH,MaSP,Soluong")] GioHang gIOHANG)
         {
             if (ModelState.IsValid)
             {
-                db.CHITIETDONHANGs.Add(cHITIETDONHANG);
+                db.GIOHANGs.Add(gIOHANG);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
-            return View(cHITIETDONHANG);
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
+            return View(gIOHANG);
         }
 
-        // GET: CHITIETDONHANGs/Edit/5
+        // GET: GIOHANGs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
-            if (cHITIETDONHANG == null)
+            GioHang gIOHANG = db.GIOHANGs.Find(id);
+            if (gIOHANG == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
-            return View(cHITIETDONHANG);
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
+            return View(gIOHANG);
         }
 
-        // POST: CHITIETDONHANGs/Edit/5
+        // POST: GIOHANGs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaHD,MaKH,MaSP,SoLuong,DonGia")] CHITIETDONHANG cHITIETDONHANG)
+        public ActionResult Edit([Bind(Include = "MaKH,MaSP,Soluong")] GioHang gIOHANG)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cHITIETDONHANG).State = EntityState.Modified;
+                db.Entry(gIOHANG).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
-            return View(cHITIETDONHANG);
+            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
+            return View(gIOHANG);
         }
 
-        // GET: CHITIETDONHANGs/Delete/5
+        // GET: GIOHANGs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
-            if (cHITIETDONHANG == null)
+            GioHang gIOHANG = db.GIOHANGs.Find(id);
+            if (gIOHANG == null)
             {
                 return HttpNotFound();
             }
-            return View(cHITIETDONHANG);
+            return View(gIOHANG);
         }
 
-        // POST: CHITIETDONHANGs/Delete/5
+        // POST: GIOHANGs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
-            db.CHITIETDONHANGs.Remove(cHITIETDONHANG);
+            GioHang gIOHANG = db.GIOHANGs.Find(id);
+            db.GIOHANGs.Remove(gIOHANG);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

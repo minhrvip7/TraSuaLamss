@@ -10,107 +10,112 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class LIENHEsController : Controller
+    public class NguyenLieuController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: LIENHEs
+        // GET: NGUYENLIEUx
         public ActionResult Index()
         {
-            return View(db.LIENHEs.ToList());
+            var nGUYENLIEUx = db.NGUYENLIEUx.Include(n => n.NHACUNGCAP);
+            return View(nGUYENLIEUx.ToList());
         }
 
-        // GET: LIENHEs/Details/5
+        // GET: NGUYENLIEUx/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LIENHE lIENHE = db.LIENHEs.Find(id);
-            if (lIENHE == null)
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
             }
-            return View(lIENHE);
+            return View(nGUYENLIEU);
         }
 
-        // GET: LIENHEs/Create
+        // GET: NGUYENLIEUx/Create
         public ActionResult Create()
         {
+            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC");
             return View();
         }
 
-        // POST: LIENHEs/Create
+        // POST: NGUYENLIEUx/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LIENHE lIENHE)
+        public ActionResult Create([Bind(Include = "MaNL,TenNL,MaNCC")] NguyenLieu nGUYENLIEU)
         {
             if (ModelState.IsValid)
             {
-                db.LIENHEs.Add(lIENHE);
+                db.NGUYENLIEUx.Add(nGUYENLIEU);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(lIENHE);
+            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            return View(nGUYENLIEU);
         }
 
-        // GET: LIENHEs/Edit/5
+        // GET: NGUYENLIEUx/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LIENHE lIENHE = db.LIENHEs.Find(id);
-            if (lIENHE == null)
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
             }
-            return View(lIENHE);
+            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            return View(nGUYENLIEU);
         }
 
-        // POST: LIENHEs/Edit/5
+        // POST: NGUYENLIEUx/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LIENHE lIENHE)
+        public ActionResult Edit([Bind(Include = "MaNL,TenNL,MaNCC")] NguyenLieu nGUYENLIEU)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(lIENHE).State = EntityState.Modified;
+                db.Entry(nGUYENLIEU).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(lIENHE);
+            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            return View(nGUYENLIEU);
         }
 
-        // GET: LIENHEs/Delete/5
+        // GET: NGUYENLIEUx/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LIENHE lIENHE = db.LIENHEs.Find(id);
-            if (lIENHE == null)
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
             }
-            return View(lIENHE);
+            return View(nGUYENLIEU);
         }
 
-        // POST: LIENHEs/Delete/5
+        // POST: NGUYENLIEUx/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            LIENHE lIENHE = db.LIENHEs.Find(id);
-            db.LIENHEs.Remove(lIENHE);
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            db.NGUYENLIEUx.Remove(nGUYENLIEU);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
