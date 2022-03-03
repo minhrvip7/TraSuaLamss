@@ -153,6 +153,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\CHITIETDONHANG.cs" />
+    <Compile Include="Models\ChiTietSanPham.cs" />
     <Compile Include="Models\DONHANG.cs" />
     <Compile Include="Models\GIOHANG.cs" />
     <Compile Include="Models\KHACHHANG.cs" />
@@ -179,6 +180,8 @@
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="wwwroot\Images\h0.png" />
+    <Content Include="wwwroot\Images\h4_whisky.jpg" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
