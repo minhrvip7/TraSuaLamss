@@ -20,11 +20,26 @@ namespace TraSuaLamss.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult DangNhap(DangNhapModel model)
         {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
+            if (ModelState.IsValid)
+            {
+                var username = model.Username;
+                var password = model.Password;
+                TAIKHOAN tk = db.TAIKHOANs.SingleOrDefault(n => n.Username == username && n.Password == password);
+                if (tk != null)
+                {
+                    ViewBag.Success = "Chúc mừng đăng nhập thành công!";
+                    Session["TAIKHOAN"] = tk;
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không tồn tại!");
+                }
+                return View(model);
+            }
+            return View(model);
         }
     }
 }
