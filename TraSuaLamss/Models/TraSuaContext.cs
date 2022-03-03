@@ -22,7 +22,7 @@ namespace TraSuaLamss.Models
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<PHANLOAI> PHANLOAIs { get; set; }
         public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
-        public virtual DbSet<TAIKHOAN> TAIKHOANs { get; set; }
+        public virtual DbSet<TAIKHOAN> TAIKHOAN { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
