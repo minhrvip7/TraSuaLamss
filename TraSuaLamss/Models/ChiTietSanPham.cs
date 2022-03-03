@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+//class chứa thông tin chi tiết sản phẩm
+
 namespace TraSuaLamss.Models
 {
     public class ChiTietSanPham
