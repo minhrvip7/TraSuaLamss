@@ -1,11 +1,14 @@
 ﻿@model IEnumerable<TraSuaLamss.Models.SANPHAM> 
 @{
     ViewBag.Title = "Details";
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <style type="text/css">
-    
+    * {
+        margin: 0px;
+        padding: 0px;
+    }
     #datmua{
         width: 640px;
         height: 50px;
@@ -50,29 +53,33 @@
         font-size: 24px;
         font-family: Arial;
     }
+    #infor{
+        font-size:24px;
+        padding:10px 0 10px 0;
+    }
 </style>
-<div style="width: 100%; height: 100%;; background-color: #FFF8DC">
-    <div style="width: 1280px; margin: 0 auto;">
+<div style="width: 100%">
+    <div style="width: 1280px; margin: 0 auto;padding-top:150px">
         <table border="0">
             <tr>
                 <td style="width:50%;height:420px" valign="bottom">
                     <img style="float:right;padding-right:20px" src="~/@ViewBag.Anh" width="350" height="400" />
                 </td>
-                <td style="width:50%" valign="top">
+                <td style="width:50%;padding-left:30px" valign="top">
                     <div style="height:370px">
                         <h1 style="font-weight:bold;padding-top:20px">@ViewBag.TenSP</h1>
                         <hr style="margin-right:30px" />
-                        <p style="font-size:24px">
+                        <p id="infor">
                             @{
                                 long tien = long.Parse(ViewBag.GiaBan);
                                 string gia = String.Format("{0:0,0} đ", tien);
                             }
                             Giá bán : <span style="color:red">@gia</span>
                         </p>
-                        <p style="font-size:24px">Phân loại : @ViewBag.TenLoai</p>
-                        <p style="font-size:24px">Nguyên liệu : @ViewBag.TenNL</p>
-                        <p style="font-size:24px">Mô tả : @ViewBag.MoTa</p>
-                        <p style="font-size:24px">
+                        <p id="infor">Phân loại : @ViewBag.TenLoai</p>
+                        <p id="infor">Nguyên liệu : @ViewBag.TenNL</p>
+                        <p id="infor">Mô tả : @ViewBag.MoTa</p>
+                        <p id="infor">
                             Số lượng :
                             <input style="height:24px;width:50px;font-size:24px" type="number" min="1" value="1" id="txtSoLuong" />
                         </p>
@@ -89,7 +96,7 @@
             </tr>
             <tr>
                 <td colspan="2" style="width:1280px">
-                    <p style="font-size:24px;margin-left:20px;margin-top:30px">Các sản phẩm liên quan khác</p>
+                    <p style="font-size:24px;padding:40px 0 20px 25px">Các sản phẩm liên quan khác</p>
                     <div>
                         @foreach (var sp in Model)
                         {
@@ -102,7 +109,7 @@
                                     @gia1
                                 </div>
                                 <a style="text-decoration: none;font-size:16px" href="@Url.Action("Details","DSSANPHAM",new { id=sp.MaSP, loai = sp.MaLoai })">
-                                    <img src="~/wwwroot/Images/h0.png" width="222" height="280" />
+                                    <img src="~/wwwroot/Images/h0.png" width="220" height="280" />
                                     <p style="font-size:16px;padding-left:5px;"><span>@sp.TenSP</span></p>
                                 </a>
                             </div>
