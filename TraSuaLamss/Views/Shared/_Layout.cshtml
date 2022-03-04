@@ -13,14 +13,7 @@
     @Styles.Render("~/Content/Template/asssets/css")
     @Scripts.Render("~/bundels/modernizr")
 
-    <!--
 
-    TemplateMo 558 Klassy Cafe
-
-    https://templatemo.com/tm-558-klassy-cafe
-
-    -->
-    <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="~/Content/Template/assets/css/bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" href="~/Content/Template/assets/css/font-awesome.css">
@@ -35,48 +28,38 @@
 
 <body>
 
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-    <!-- ***** Preloader End ***** -->
-    <!-- ***** Header Area Start ***** -->
+
+
     <header class="header-area header-sticky">
         <div class="container">
             <a href="/Home/Index" class="logo">
-                <img src="~/Content/Template/assets/images/loading.gif" style="margin:20px 10px 20px -50px">
+                <img src="~/Content/Template/assets/images/LOGO.png" style="margin:20px 10px -20px -50px;width: 80px; height:80px">
             </a>
             <div class="row">
 
                 <div class="search form-inline">
                     <form name="frmSearch" id="frmSearch" action="/SANPHAMs/Search" method="post" style="margin-left:50px;margin-top:-50px">
                         <input type="text" name="searchkey" placeholder="Nhap tu khoa" class="form-control" style="width:800px" />
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                        <div class="form-inline dndx" style="margin-top:-15px">
+                        <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
+                        <div class="form-inline dndx" style="margin-top:-20px">
                             @{
                                 string imageurl = "";
                                 if (Session["TAIKHOAN"] != null)
                                 {
-                                    <a href="#"><img src="@Url.Content(imageurl)" /></a><span>/</span><a href="#">Đăng xuất</a>
+                                    <a href="/TAIKHOANs/Index"><img src="@Url.Content(imageurl)" /></a><span>/</span><a href="@Url.Action("Logout","Home")">Đăng xuất</a>
                                 }
                                 else
                                 {
-                                    <a href="#">Đăng nhập</a><span>/</span><a href="#">Đăng ký</a>
+                                    <a href="/Home/DangNhap">Đăng nhập</a><span>/</span><a href="/Home/DangKy">Đăng ký</a>
                                 }
 
                             }
                         </div>
                     </form>
-                    
+
                 </div>
                 <div class="col-9">
                     <nav class="main-nav">
-
-                        <!-- ***** Menu Start ***** -->
                         <ul class="nav" style="margin-top:-5px">
                             <li><a href="/Home/Index">TRANG CHỦ</a></li>
                             <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
@@ -107,23 +90,15 @@
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
-                        <!-- ***** Menu End ***** -->
+
                     </nav>
                 </div>
             </div>
         </div>
     </header>
-    <!-- ***** Header Area End ***** -->
+
     <br /><br /><br /><br /><br /><br />
-    @RenderBody()
-
-
-
-
-
-
-
-    <!-- ***** Footer Start ***** -->
+    <section>@RenderBody()</section>
     <footer>
         <div class="container">
             <div class="row">
@@ -149,7 +124,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="logo">
-                        <a href="index.html"><img src="~/Content/Template/assets/images/loading.gif" alt=""></a><br />
+                        <a href="index.html"><img src="~/Content/Template/assets/images/LOGO.png" style="width: 80px; height: 80px" alt=""></a><br />
                         <p>©Rikkei copyright </p>
                     </div>
                 </div>
