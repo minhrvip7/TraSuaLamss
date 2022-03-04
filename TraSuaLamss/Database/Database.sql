@@ -15,6 +15,9 @@ GO
 USE DBQuanLy
 GO
 
+SET DATEFORMAT dmy;  
+GO  
+
 CREATE TABLE TAIKHOAN
 (
 	Username VARCHAR(30) PRIMARY KEY NOT NULL,
@@ -308,21 +311,23 @@ GO
 --DONHANG
 --SELECT * FROM DONHANG
 INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
-('DH001',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '1/1/2022', '2/1/2022', 'KH001', N'Giao nhanh')
+('DH001',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '1/2/2022', '2/1/2022', 'KH001', N'Giao nhanh'),
+('DH002',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '3/4/2022', '2/1/2022', 'KH002', N'Giao nhanh'),
+('DH003',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '5/6/2022', '2/1/2022', 'KH003', N'Khách hàng không nhận'),
+('DH004',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '7/8/2022', '2/1/2022', 'KH004', N'Trả hàng'),
+('DH005',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '9/10/2022', '2/1/2022', 'KH005', N'Giao thành công'),
+('DH006',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '11/2/2022', '2/1/2022', 'KH005', N'Giao thành công'),
+('DH007',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '12/2/2022', '2/1/2022', 'KH005', N'Giao thành công'),
+('DH008',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '13/3/2022', '2/1/2022', 'KH005', N'Giao thành công'),
+('DH009',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '14/4/2022', '2/1/2022', 'KH005', N'Giao thành công'),
+('DH010',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '15/5/2022', '2/1/2022', 'KH005', N'Giao thành công'),
+('DH011',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '16/6/2022', '2/1/2022', 'KH005', N'Giao thành công'),
+('DH012',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '17/7/2022', '2/1/2022', 'KH005', N'Giao thành công'),
+('DH013',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '18/8/2022', '2/1/2022', 'KH005', N'Giao thành công'),
+('DH014',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '19/9/2022', '2/1/2022', 'KH005', N'Giao thành công'),
+('DH015',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '20/10/2022', '2/1/2022', 'KH005', N'Giao thành công'),
+('DH016',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '21/12/2022', '2/1/2022', 'KH005', N'Giao thành công')
 GO
-INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
-('DH002',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '1/1/2022', '2/1/2022', 'KH002', N'Giao nhanh')
-GO
-INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
-('DH003',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '1/1/2022', '2/1/2022', 'KH003', N'Khách hàng không nhận')
-GO
-INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
-('DH004',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '1/1/2022', '2/1/2022', 'KH004', N'Trả hàng')
-GO
-INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
-('',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '1/1/2022', '2/1/2022', 'KH005', N'Giao thành công')
-GO
-
 
 
 
@@ -356,3 +361,11 @@ GO
 INSERT INTO NHANVIEN(MaNV,TenNV, GioiTinh, NgaySinh, Username, Email, DiaChi, DienThoai, STK, Luong) VALUES ('NV005',N'Đỗ', N'Nam','1/1/2020','nv5' ,'do@gmail.com', N'Hà Nội', 0123, '123', 500000)
 GO
 
+
+
+SELECT 
+    (MONTH(NgayDat)) AS Thang, COUNT(*) AS SoLuongDonHang, SUM(ThanhTien) AS TongTien
+FROM
+    DONHANG
+GROUP BY (MONTH(NgayDat))
+ORDER BY Thang ASC

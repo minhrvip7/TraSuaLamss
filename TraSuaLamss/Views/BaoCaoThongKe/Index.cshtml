@@ -1,0 +1,35 @@
+﻿@model List<TraSuaLamss.Models.BaoCaoThang>
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<table class="table">
+    <tr>
+        <th>
+            Thang
+        </th>
+        <th>
+            So luong don hang
+        </th>
+        <th>
+            Tong tien
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Thang)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.SoLuongDonHang)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TongTien)
+    </td>
+</tr>
+    }
+
+</table>

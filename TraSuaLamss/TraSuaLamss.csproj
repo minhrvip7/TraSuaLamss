@@ -137,6 +137,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaoCaoThongKeController.cs" />
     <Compile Include="Controllers\ChiTietDonHangController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
@@ -153,6 +154,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BaoCaoThang.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Models\GioHang.cs" />
@@ -349,6 +351,7 @@
     <Content Include="Views\ChiTietDonHang\Index.cshtml" />
     <Content Include="Views\LichSuGiaoDich\Details.cshtml" />
     <Content Include="Views\LichSuGiaoDich\Index.cshtml" />
+    <Content Include="Views\BaoCaoThongKe\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
