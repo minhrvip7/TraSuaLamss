@@ -28,16 +28,8 @@
 
 <body>
 
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-    <!-- ***** Preloader End ***** -->
-    <!-- ***** Header Area Start ***** -->
+
+
     <header class="header-area header-sticky">
         <div class="container">
             <a href="/Home/Index" class="logo">
@@ -54,11 +46,11 @@
                                 string imageurl = "";
                                 if (Session["TAIKHOAN"] != null)
                                 {
-                                    <a href="#"><img src="@Url.Content(imageurl)" /></a><span>/</span><a href="#">Đăng xuất</a>
+                                    <a href="/TAIKHOANs/Index"><img src="@Url.Content(imageurl)" /></a><span>/</span><a href="@Url.Action("Logout","Home")">Đăng xuất</a>
                                 }
                                 else
                                 {
-                                    <a href="#">Đăng nhập</a><span>/</span><a href="#">Đăng ký</a>
+                                    <a href="/Home/DangNhap">Đăng nhập</a><span>/</span><a href="/Home/DangKy">Đăng ký</a>
                                 }
 
                             }
@@ -68,8 +60,6 @@
                 </div>
                 <div class="col-9">
                     <nav class="main-nav">
-
-                        <!-- ***** Menu Start ***** -->
                         <ul class="nav" style="margin-top:-5px">
                             <li><a href="/Home/Index">TRANG CHỦ</a></li>
                             <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
@@ -100,23 +90,15 @@
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
-                        <!-- ***** Menu End ***** -->
+
                     </nav>
                 </div>
             </div>
         </div>
     </header>
-    <!-- ***** Header Area End ***** -->
+
     <br /><br /><br /><br /><br /><br />
-    @RenderBody()
-
-
-
-
-
-
-
-    <!-- ***** Footer Start ***** -->
+                                  <section>@RenderBody()</section>
     <footer>
         <div class="container">
             <div class="row">

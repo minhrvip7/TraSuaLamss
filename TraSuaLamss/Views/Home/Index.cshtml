@@ -1,8 +1,36 @@
-﻿@{
+﻿@model IEnumerable<TraSuaLamss.Models.SANPHAM>
+@{
     ViewBag.Title = "Home Page";
 }
-<br /><br /><br /><br /><br />
+<br />
+<br />
+<br />
+<br />
+<br />
 
 <p align="center">
     <img src="~/Content/Template/assets/images/Menulamss.png" alt="" style="width: 800px; height: 800px" />
 </p>
+<table>
+    <tr>
+        <td>
+            <a href="@Url.Action("Details","DSSANPHAM",new { id=1 })">
+                <img src="~/Content/Template/assets/images/Menulamss.png" width="215" height="280" />
+                <p style="font-size:16px"><span>Traf sua</span></p>
+            </a>
+        </td>
+        <td>
+            <a href="@Url.Action("Details","DSSANPHAM",new { id=1 })">
+                <img src="~/Content/Template/assets/images/Menulamss.png" width="215" height="280" />
+                <p style="font-size:16px"><span>Traf sua</span></p>
+            </a>
+        </td>
+        <td>
+            <a href="@Url.Action("Details","DSSANPHAM",new { id=1 })">
+                <img src="~/Content/Template/assets/images/Menulamss.png" width="215" height="280" />
+                <p style="font-size:16px"><span>Traf sua</span></p>
+            </a>
+        </td>
+    </tr>
+</table>
+<p align="center"><a href="/GioiThieu/Index"><input type="button" value="Xem them" /></a></p>
