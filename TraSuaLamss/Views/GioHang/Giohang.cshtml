@@ -19,7 +19,7 @@
     }
 
         td.nut a:hover {
-            background-color: green;
+            background-color: gray;
             color: pink;
         }
 
@@ -35,16 +35,19 @@
         height: 100px;
         width: auto;
     }
+    body {
+        padding-top: 180px;
+    }
+    .cap {
+        font-family: Optima;
+    }
 </style>
-<br />
-<br />
-<br />
-<h3 align="center">Giỏ hàng</h3>
-<br />
 <body style="background-color: #e8e8e8 ">
+    <h3 class="cap" align="center">Giỏ hàng</h3>
+    <br />
     @if (Model.Count > 0)
     {
-        <div style="float:right; color:red; padding-right:50px">Số lượng sản phẩm trong giỏ hàng: @Model.Count</div>
+        <div style="float:right; color:red; padding-right:80px">Số lượng sản phẩm trong giỏ hàng: @Model.Count</div>
         <br />
         <table align="center">
             <thead>

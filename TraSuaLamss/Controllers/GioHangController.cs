@@ -70,13 +70,14 @@ namespace TraSuaLamss.Controllers
             ViewBag.DiaChi = (from e in db.KhachHang
                              where e.MaKH == KHID
                              select e.DiaChi).FirstOrDefault();
+            ViewBag.NgayDat = DateTime.Today.ToString("dd/MM/yyyy");
             return View(lischitiet);
         }
 
         public ActionResult Add(string MaKhach, string MaHang, int soluong)
         {
             GioHang gioHang = (from e in db.GioHang
-                               where (e.MaKH == MaKhach && e.MaSP == MaHang)
+                               where e.MaKH == MaKhach && e.MaSP == MaHang
                                select e).FirstOrDefault();
             if (gioHang == null)
             {
