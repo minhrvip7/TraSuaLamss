@@ -10,107 +10,107 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class LIENHEsController : Controller
+    public class TaiKhoanController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: LIENHEs
+        // GET: TAIKHOANs
         public ActionResult Index()
         {
-            return View(db.LIENHEs.ToList());
+            return View(db.TAIKHOANs.ToList());
         }
 
-        // GET: LIENHEs/Details/5
+        // GET: TAIKHOANs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LIENHE lIENHE = db.LIENHEs.Find(id);
-            if (lIENHE == null)
+            TAIKHOAN tAIKHOAN = db.TAIKHOANs.Find(id);
+            if (tAIKHOAN == null)
             {
                 return HttpNotFound();
             }
-            return View(lIENHE);
+            return View(tAIKHOAN);
         }
 
-        // GET: LIENHEs/Create
+        // GET: TAIKHOANs/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: LIENHEs/Create
+        // POST: TAIKHOANs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LIENHE lIENHE)
+        public ActionResult Create([Bind(Include = "Username,Password,HoTen,PhanQuyen")] TAIKHOAN tAIKHOAN)
         {
             if (ModelState.IsValid)
             {
-                db.LIENHEs.Add(lIENHE);
+                db.TAIKHOANs.Add(tAIKHOAN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(lIENHE);
+            return View(tAIKHOAN);
         }
 
-        // GET: LIENHEs/Edit/5
+        // GET: TAIKHOANs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LIENHE lIENHE = db.LIENHEs.Find(id);
-            if (lIENHE == null)
+            TAIKHOAN tAIKHOAN = db.TAIKHOANs.Find(id);
+            if (tAIKHOAN == null)
             {
                 return HttpNotFound();
             }
-            return View(lIENHE);
+            return View(tAIKHOAN);
         }
 
-        // POST: LIENHEs/Edit/5
+        // POST: TAIKHOANs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LIENHE lIENHE)
+        public ActionResult Edit([Bind(Include = "Username,Password,HoTen,PhanQuyen")] TAIKHOAN tAIKHOAN)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(lIENHE).State = EntityState.Modified;
+                db.Entry(tAIKHOAN).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(lIENHE);
+            return View(tAIKHOAN);
         }
 
-        // GET: LIENHEs/Delete/5
+        // GET: TAIKHOANs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LIENHE lIENHE = db.LIENHEs.Find(id);
-            if (lIENHE == null)
+            TAIKHOAN tAIKHOAN = db.TAIKHOANs.Find(id);
+            if (tAIKHOAN == null)
             {
                 return HttpNotFound();
             }
-            return View(lIENHE);
+            return View(tAIKHOAN);
         }
 
-        // POST: LIENHEs/Delete/5
+        // POST: TAIKHOANs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            LIENHE lIENHE = db.LIENHEs.Find(id);
-            db.LIENHEs.Remove(lIENHE);
+            TAIKHOAN tAIKHOAN = db.TAIKHOANs.Find(id);
+            db.TAIKHOANs.Remove(tAIKHOAN);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

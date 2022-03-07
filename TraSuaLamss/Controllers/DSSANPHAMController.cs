@@ -8,20 +8,12 @@ using PagedList;
 
 namespace TraSuaLamss.Controllers
 {
-    public class DSSANPHAMController : Controller
+    public class DSSanPhamController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
         private List<SanPham> LaySanPham()
         {
             return db.SanPham.OrderByDescending(s => s.TenSP).ToList();
-        }
-        private bool isNumber(string a)
-        {
-            if (!string.IsNullOrEmpty(a))
-            {
-                return true;
-            }
-            return false;
         }
         // GET: DSSANPHAM
         public ActionResult Index(int? page, string Name, string first, string end, string currentFilter, string currentFilter1, string currentFilter2)
@@ -58,16 +50,25 @@ namespace TraSuaLamss.Controllers
             int pageNumber = (page ?? 1);
             ViewBag.Loai = "TẤT CẢ SẢN PHẨM";
 
-            if (!String.IsNullOrEmpty(Name))
-            {
-                sanpham = sanpham.Where(p => p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
-                return View(sanpham.ToPagedList(pageNumber, pagesize));
-            }
             try
             {
-                if (isNumber(first) && isNumber(end))
+                if (!String.IsNullOrEmpty(Name) && String.IsNullOrEmpty(first) && String.IsNullOrEmpty(end))
+                {
+                    sanpham = sanpham.Where(p => p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
+                    return View(sanpham.ToPagedList(pageNumber, pagesize));
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && String.IsNullOrEmpty(Name))
                 {
                     sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end)).ToList();
+                    return View(sanpham.ToPagedList(pageNumber, pagesize));
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
+                {
+                    ViewBag.Error = "Giá không hợp lệ";
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
+                {
+                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
             }
@@ -76,9 +77,9 @@ namespace TraSuaLamss.Controllers
                 ViewBag.Error = "Giá không hợp lệ";
 
             }
+
             return View(sanpham.ToPagedList(pageNumber, pagesize));
         }
-
         public ActionResult Details(string id, string loai)
         {
 
@@ -181,17 +182,26 @@ namespace TraSuaLamss.Controllers
             int pagesize = 8;
             int pageNumber = (page ?? 1);
             ViewBag.Loai = "TRÀ SỮA";
-            if (!String.IsNullOrEmpty(Name))
-            {
-
-                sanpham = sanpham.Where(p => p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
-                return View(sanpham.ToPagedList(pageNumber, pagesize));
-            }
+            
             try
             {
-                if (isNumber(first) && isNumber(end))
+                if (!String.IsNullOrEmpty(Name) && String.IsNullOrEmpty(first) && String.IsNullOrEmpty(end))
+                {
+                    sanpham = sanpham.Where(p => p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
+                    return View(sanpham.ToPagedList(pageNumber, pagesize));
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && String.IsNullOrEmpty(Name))
                 {
                     sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end)).ToList();
+                    return View(sanpham.ToPagedList(pageNumber, pagesize));
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
+                {
+                    ViewBag.Error = "Giá không hợp lệ";
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
+                {
+                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
             }
@@ -238,17 +248,26 @@ namespace TraSuaLamss.Controllers
             int pagesize = 8;
             int pageNumber = (page ?? 1);
             ViewBag.Loai = "TRÀ";
-            if (!String.IsNullOrEmpty(Name))
-            {
-
-                sanpham = sanpham.Where(p => p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
-                return View(sanpham.ToPagedList(pageNumber, pagesize));
-            }
+            
             try
             {
-                if (isNumber(first) && isNumber(end))
+                if (!String.IsNullOrEmpty(Name) && String.IsNullOrEmpty(first) && String.IsNullOrEmpty(end))
+                {
+                    sanpham = sanpham.Where(p => p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
+                    return View(sanpham.ToPagedList(pageNumber, pagesize));
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && String.IsNullOrEmpty(Name))
                 {
                     sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end)).ToList();
+                    return View(sanpham.ToPagedList(pageNumber, pagesize));
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
+                {
+                    ViewBag.Error = "Giá không hợp lệ";
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
+                {
+                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
             }
@@ -295,17 +314,26 @@ namespace TraSuaLamss.Controllers
             int pagesize = 8;
             int pageNumber = (page ?? 1);
             ViewBag.Loai = "CÀ PHÊ";
-            if (!String.IsNullOrEmpty(Name))
-            {
-
-                sanpham = sanpham.Where(p => p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
-                return View(sanpham.ToPagedList(pageNumber, pagesize));
-            }
+            
             try
             {
-                if (isNumber(first) && isNumber(end))
+                if (!String.IsNullOrEmpty(Name) && String.IsNullOrEmpty(first) && String.IsNullOrEmpty(end))
+                {
+                    sanpham = sanpham.Where(p => p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
+                    return View(sanpham.ToPagedList(pageNumber, pagesize));
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && String.IsNullOrEmpty(Name))
                 {
                     sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end)).ToList();
+                    return View(sanpham.ToPagedList(pageNumber, pagesize));
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
+                {
+                    ViewBag.Error = "Giá không hợp lệ";
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
+                {
+                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
             }
@@ -352,16 +380,26 @@ namespace TraSuaLamss.Controllers
             int pagesize = 8;
             int pageNumber = (page ?? 1);
             ViewBag.Loai = "ĐỒ ĂN VẶT";
-            if (!String.IsNullOrEmpty(Name))
-            {
-                sanpham = sanpham.Where(p => p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
-                return View(sanpham.ToPagedList(pageNumber, pagesize));
-            }
+            
             try
             {
-                if (isNumber(first) && isNumber(end))
+                if (!String.IsNullOrEmpty(Name) && String.IsNullOrEmpty(first) && String.IsNullOrEmpty(end))
+                {
+                    sanpham = sanpham.Where(p => p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
+                    return View(sanpham.ToPagedList(pageNumber, pagesize));
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && String.IsNullOrEmpty(Name))
                 {
                     sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end)).ToList();
+                    return View(sanpham.ToPagedList(pageNumber, pagesize));
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
+                {
+                    ViewBag.Error = "Giá không hợp lệ";
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
+                {
+                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
             }
