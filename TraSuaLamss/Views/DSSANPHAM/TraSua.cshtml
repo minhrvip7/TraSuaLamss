@@ -2,7 +2,7 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Tra";
+    ViewBag.Title = "Tra sua";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
@@ -20,7 +20,7 @@
 
     #product {
         width: 222px;
-        height: 320px;
+        height: 330px;
         float: left;
         display: block;
         margin: 0 0 30px 25px;
@@ -72,7 +72,6 @@
 
     #page {
         margin-left: 25px;
-        display: block;
     }
 </style>
 <div>
@@ -124,7 +123,7 @@
                                     </div>
                                     <a style="text-decoration: none;font-size:16px" href="@Url.Action("Details","DSSANPHAM",new { id=sp.MaSP, loai = sp.MaLoai })">
 
-                                        <img src="~/wwwroot/Images/h4_whisky.jpg" width="220" height="280" />
+                                        <img src="~/wwwroot/Images/@sp.Anh" width="220" height="280" />
                                         <p style="font-size:16px;padding-left:5px;"><span>@sp.TenSP</span></p>
                                     </a>
                                 </div>
