@@ -16,5 +16,6 @@ namespace TraSuaLamss.Models
         public string Anh { get; set; }
         public string TenLoai { get; set; }
         public string TenNL { get; set; }
+        public string MaLoai { get; set; }
     }
 }
