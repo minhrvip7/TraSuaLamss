@@ -94,52 +94,22 @@ namespace TraSuaLamss.Controllers
                           MoTa = tr.MoTa,
                           TenLoai = l.TenLoai,
                           TenNL = nl.TenNL,
-                          GiaBan = tr.GiaBan
+                          GiaBan = tr.GiaBan,
+                          MaLoai = l.MaLoai
                       };
-            string masp = "";
-            string tensp = "";
-            string anh = "";
-            string mota = "";
-            string tenloai = "";
-            string tennl = "";
-            string giaban = "";
             foreach (var item in tra)
             {
-                masp = item.MaSP;
+                ViewBag.MaSP = item.MaSP;
+                ViewBag.TenSP = item.TenSP;
+                ViewBag.Anh = item.Anh;
+                ViewBag.MoTa = item.MoTa;
+                ViewBag.TenLoai = item.TenLoai;
+                ViewBag.TenNl = item.TenNL;
+                ViewBag.GiaBan = item.GiaBan;
             }
-            foreach (var item in tra)
-            {
-                tensp = item.TenSP;
-            }
-            foreach (var item in tra)
-            {
-                anh = item.Anh;
-            }
-            foreach (var item in tra)
-            {
-                mota = item.MoTa;
-            }
-            foreach (var item in tra)
-            {
-                tenloai = item.TenLoai;
-            }
-            foreach (var item in tra)
-            {
-                tennl = item.TenNL;
-            }
-            foreach (var item in tra)
-            {
-                giaban = item.GiaBan;
-            }
-            ViewBag.MaSP = masp;
-            ViewBag.TenSP = tensp;
-            ViewBag.TenLoai = tenloai;
-            ViewBag.TenNl = tennl;
-            ViewBag.GiaBan = giaban;
-            ViewBag.MoTa = mota;
-            ViewBag.Anh = anh;
             var danhsach = from ds in db.SANPHAMs
-                           where ds.MaSP !=id && ds.MaLoai ==loai
+                           join l in db.PHANLOAIs on ds.MaLoai equals l.MaLoai
+                           where ds.MaSP != id && l.MaLoai == loai
                            select ds;
             return View(danhsach.ToList());
         }
