@@ -56,6 +56,6 @@ namespace TraSuaLamss.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHang> GIOHANGs { get; set; }
 
-        public virtual TAIKHOAN TAIKHOAN { get; set; }
+        public virtual TaiKhoan TAIKHOAN { get; set; }
     }
 }

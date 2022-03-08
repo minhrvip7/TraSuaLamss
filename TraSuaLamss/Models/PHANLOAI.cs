@@ -7,10 +7,10 @@ namespace TraSuaLamss.Models
     using System.Data.Entity.Spatial;
 
     [Table("PHANLOAI")]
-    public partial class PHANLOAI
+    public partial class PhanLoai
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public PHANLOAI()
+        public PhanLoai()
         {
             SANPHAMs = new HashSet<SanPham>();
         }

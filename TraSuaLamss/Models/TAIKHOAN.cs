@@ -7,13 +7,13 @@ namespace TraSuaLamss.Models
     using System.Data.Entity.Spatial;
 
     [Table("TAIKHOAN")]
-    public partial class TAIKHOAN
+    public partial class TaiKhoan
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public TAIKHOAN()
+        public TaiKhoan()
         {
             KHACHHANGs = new HashSet<KhachHang>();
-            NHANVIENs = new HashSet<NHANVIEN>();
+            NHANVIENs = new HashSet<NhanVien>();
         }
 
         [Key]
@@ -36,6 +36,6 @@ namespace TraSuaLamss.Models
         public virtual ICollection<KhachHang> KHACHHANGs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NHANVIEN> NHANVIENs { get; set; }
+        public virtual ICollection<NhanVien> NHANVIENs { get; set; }
     }
 }
