@@ -44,7 +44,7 @@
                         <div class="form-inline dndx" style="margin-top:-20px">
                             @{
                                 string imageurl = "";
-                                if (Session["TAIKHOAN"] != null)
+                                if (Session["PhanQuyen"] != null)
                                 {
                                     <a href="/TAIKHOANs/Index"><img src="@Url.Content(imageurl)" /></a><span>/</span><a href="@Url.Action("Logout","Home")">Đăng xuất</a>
                                 }
@@ -75,12 +75,21 @@
                             <li><a href="/LIENHEs/Index">LIÊN HỆ</a></li>
                             @{
 
-                                if (Session["TAIKHOAN"] != null)
+                                if (Session["PhanQuyen"].ToString() == "Admin")
+                                {
+                                    <li><a href="/TAIKHOANs/Index">QUẢN LÝ TÀI KHOẢN</a></li>
+                                    <li><a href="/SanPham/Index">QUẢN LÝ SẢN PHẨM</a></li>
+                                }
+                                if (Session["PhanQuyen"].ToString() == "Khách hàng")
                                 {
                                     <li><a href="/TAIKHOANs/Index">TÀI KHOẢN</a></li>
                                     <li><a href="/GIOHANGs/Giohang">GIỎ HÀNG</a></li>
                                 }
-                                else
+                                if (Session["PhanQuyen"].ToString() == "Nhân viên")
+                                {
+                                    <li><a href="/SanPham/Index">QUẢN LÝ SẢN PHẨM</a></li>
+                                }
+                                if (Session["PhanQuyen"].ToString() == null)
                                 {
                                     <li><a href="/Home/DangNhap">TÀI KHOẢN</a></li>
                                     <li><a href="/Home/DangNhap">GIỎ HÀNG</a></li>
