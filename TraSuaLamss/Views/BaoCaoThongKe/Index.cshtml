@@ -7,14 +7,15 @@
 <table class="table">
     <tr>
         <th>
-            Thang
+            Tháng
         </th>
         <th>
-            So luong don hang
+            Số lượng đơn
         </th>
         <th>
-            Tong tien
+            Doanh thu
         </th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model)
@@ -29,7 +30,11 @@
     <td>
         @Html.DisplayFor(modelItem => item.TongTien)
     </td>
+    <td>
+        @Html.ActionLink("Chi tiết", "Details", new { month = item.Thang })
+    </td>
 </tr>
     }
 
 </table>
+<p></p>

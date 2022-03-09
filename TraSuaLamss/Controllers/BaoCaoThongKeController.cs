@@ -36,5 +36,14 @@ namespace TraSuaLamss.Content
                            }).ToList();
             return View(Donhang);
         }
+
+        public ActionResult Details(int month)
+        {
+            var Donhang = (from DONHANG in db.DONHANGs
+                           where
+                             (int)DONHANG.NgayDat.Month == month
+                           select DONHANG).ToList();
+            return View(Donhang);
+        }
     }
 }

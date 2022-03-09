@@ -27,7 +27,7 @@
         {
             <div style="margin-top:-50px; margin-bottom:60px">
                 <p style="padding-left:800px">
-                    Tìm nhân viên:@Html.TextBox("searchstr")
+                    Tìm nhân viên:      @Html.TextBox("searchstr")
                     <input type="submit" value="Tìm kiếm" />
                 </p>
             </div>
@@ -113,8 +113,8 @@
     <br />
     <br />
     <centrer>
-        <div style="text-align:center">Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber) / @Model.PageCount</div>
-        <div class="center2" style="text-align:center"><strong>@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))</strong> </div>
+        @*<div style="text-align:center">Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber) / @Model.PageCount</div>*@
+        <div class="center2" style="text-align:center"><strong>Trang @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))</strong> </div>
     </centrer>
 
     <br />

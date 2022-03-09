@@ -19,13 +19,6 @@ namespace TraSuaLamss.Controllers
             return View(giaoDich.ToList());
         }
 
-        public ActionResult LichSuGiaoDich()
-        {
-            //var kHACHHANGs = db.KHACHHANGs.Include(k => k.TAIKHOAN);
-            var giaoDich = (from s in db.DONHANGs where s.MaKH == "KH001" select s);
-            return View(giaoDich.ToList());
-        }
-
         public ActionResult Details(string id)
         {
             if (id == null)

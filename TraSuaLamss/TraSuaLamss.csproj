@@ -352,6 +352,7 @@
     <Content Include="Views\LichSuGiaoDich\Details.cshtml" />
     <Content Include="Views\LichSuGiaoDich\Index.cshtml" />
     <Content Include="Views\BaoCaoThongKe\Index.cshtml" />
+    <Content Include="Views\BaoCaoThongKe\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
