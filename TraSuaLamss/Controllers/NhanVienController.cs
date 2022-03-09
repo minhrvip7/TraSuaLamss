@@ -7,110 +7,128 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TraSuaLamss.Models;
+using PagedList;
+using System.Data.OleDb;
+using System.Data.Entity.Validation;
 
 namespace TraSuaLamss.Controllers
 {
-    public class PHANLOAIsController : Controller
+    public class NhanVienController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: PHANLOAIs
-        public ActionResult Index()
+        // GET: NHANVIENs
+        public ActionResult Index(string searchStr, int? page)
         {
-            return View(db.PHANLOAIs.ToList());
+            var nHANVIENs = db.NHANVIENs.Include(n => n.TAIKHOAN);
+            //Tìm kiếm
+            if (!String.IsNullOrEmpty(searchStr))
+            {
+                nHANVIENs = nHANVIENs.Where(e => e.TenNV.Contains(searchStr));
+            }
+            //Sắp xếp trước khi phân trang
+            nHANVIENs = nHANVIENs.OrderBy(e => e.MaNV);
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+
+            return View(nHANVIENs.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: PHANLOAIs/Details/5
+        // GET: NHANVIENs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            if (pHANLOAI == null)
+            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
+            if (nHANVIEN == null)
             {
                 return HttpNotFound();
             }
-            return View(pHANLOAI);
+            return View(nHANVIEN);
         }
 
-        // GET: PHANLOAIs/Create
+        // GET: NHANVIENs/Create
         public ActionResult Create()
         {
+            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password");
             return View();
         }
 
-        // POST: PHANLOAIs/Create
+        // POST: NHANVIENs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaLoai,TenLoai")] PHANLOAI pHANLOAI)
+        public ActionResult Create([Bind(Include = "MaNV,TenNV,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai,STK,Luong")] NhanVien nHANVIEN)
         {
             if (ModelState.IsValid)
             {
-                db.PHANLOAIs.Add(pHANLOAI);
+                db.NHANVIENs.Add(nHANVIEN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(pHANLOAI);
+            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", nHANVIEN.Username);
+            return View(nHANVIEN);
         }
 
-        // GET: PHANLOAIs/Edit/5
+        // GET: NHANVIENs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            if (pHANLOAI == null)
+            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
+            if (nHANVIEN == null)
             {
                 return HttpNotFound();
             }
-            return View(pHANLOAI);
+            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", nHANVIEN.Username);
+            return View(nHANVIEN);
         }
 
-        // POST: PHANLOAIs/Edit/5
+        // POST: NHANVIENs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaLoai,TenLoai")] PHANLOAI pHANLOAI)
+        public ActionResult Edit([Bind(Include = "MaNV,TenNV,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai,STK,Luong")] NhanVien nHANVIEN)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pHANLOAI).State = EntityState.Modified;
+                db.Entry(nHANVIEN).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(pHANLOAI);
+            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", nHANVIEN.Username);
+            return View(nHANVIEN);
         }
 
-        // GET: PHANLOAIs/Delete/5
+        // GET: NHANVIENs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            if (pHANLOAI == null)
+            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
+            if (nHANVIEN == null)
             {
                 return HttpNotFound();
             }
-            return View(pHANLOAI);
+            return View(nHANVIEN);
         }
 
-        // POST: PHANLOAIs/Delete/5
+        // POST: NHANVIENs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            db.PHANLOAIs.Remove(pHANLOAI);
+            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
+            db.NHANVIENs.Remove(nHANVIEN);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TraSuaLamss.Models.DONHANG>
+﻿@model IEnumerable<TraSuaLamss.Models.DonHang>
 
 @{
     ViewBag.Title = "LichSuGiaoDich";
@@ -12,69 +12,57 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ThanhTien)
+            Mã
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PhuongThucThanhToan)
+            Thành tiền
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ThanhToan)
+            Tình trạng thanh toán
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DiaChiGiaoHang)
+            Địa chỉ
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TinhTrangGiaoHang)
+            Ngày đặt
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NgayDat)
+            Tình trạng giao hàng
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NgayGiao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaKH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GhiChu)
+            Ghi chú
         </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.ThanhTien)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhuongThucThanhToan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ThanhToan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiaChiGiaoHang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayDat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayGiao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.MaKH)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GhiChu)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.MaDH })
-            </td>
-        </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.MaDH)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ThanhTien)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ThanhToan)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.DiaChiGiaoHang)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.NgayDat)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GhiChu)
+    </td>
+    <td>
+        @Html.ActionLink("Chi tiết", "Details", new { id = item.MaDH })
+    </td>
+</tr>
     }
 
 </table>

@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<TraSuaLamss.Models.NHANVIEN>
+﻿@model PagedList.IPagedList<TraSuaLamss.Models.NhanVien>
 @using PagedList.Mvc;
 
 @{
@@ -27,7 +27,7 @@
         {
             <div style="margin-top:-50px; margin-bottom:60px">
                 <p style="padding-left:800px">
-                    Tìm nhân viên:@Html.TextBox("searchstr")
+                    Tìm nhân viên:      @Html.TextBox("searchstr")
                     <input type="submit" value="Tìm kiếm" />
                 </p>
             </div>
@@ -37,43 +37,33 @@
         <tr>
             <th>
                 Mã
-                @*@Html.DisplayNameFor(model => model.MaNV)*@
             </th>
             <th>
                 Họ và Tên
-                @*@Html.DisplayNameFor(model => model.TenNV)*@
             </th>
             <th>
                 Tài khoản
-                @*@Html.DisplayNameFor(model => model.Username)*@
             </th>
             <th>
                 Giới tính
-                @*@Html.DisplayNameFor(model => model.GioiTinh)*@
             </th>
             <th>
                 Ngày sinh
-                @*@Html.DisplayNameFor(model => model.NgaySinh)*@
             </th>
             <th>
                 Email
-                @*@Html.DisplayNameFor(model => model.Email)*@
             </th>
             <th>
                 Địa chỉ
-                @*@Html.DisplayNameFor(model => model.DiaChi)*@
             </th>
             <th>
                 Số điện thoại
-                @*@Html.DisplayNameFor(model => model.DienThoai)*@
             </th>
             <th>
-                STK
-                @*@Html.DisplayNameFor(model => model.STK)*@
+                Số tài khoản
             </th>
             <th>
                 Tiền lương
-                @*@Html.DisplayNameFor(model => model.Luong)*@
             </th>
             <th></th>
         </tr>
@@ -123,8 +113,8 @@
     <br />
     <br />
     <centrer>
-        <div style="text-align:center">Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber) / @Model.PageCount</div>
-        <div class="center2" style="text-align:center"><strong>@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))</strong> </div>
+        @*<div style="text-align:center">Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber) / @Model.PageCount</div>*@
+        <div class="center2" style="text-align:center"><strong>Trang @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))</strong> </div>
     </centrer>
 
     <br />

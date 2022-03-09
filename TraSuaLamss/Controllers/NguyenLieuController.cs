@@ -10,116 +10,112 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class CHITIETDONHANGsController : Controller
+    public class NguyenLieuController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: CHITIETDONHANGs
+        // GET: NGUYENLIEUx
         public ActionResult Index()
         {
-            var cHITIETDONHANGs = db.CHITIETDONHANGs.Include(c => c.KHACHHANG).Include(c => c.SANPHAM);
-            return View(cHITIETDONHANGs.ToList());
+            var nGUYENLIEUx = db.NGUYENLIEUx.Include(n => n.NHACUNGCAP);
+            return View(nGUYENLIEUx.ToList());
         }
 
-        // GET: CHITIETDONHANGs/Details/5
+        // GET: NGUYENLIEUx/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
-            if (cHITIETDONHANG == null)
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
             }
-            return View(cHITIETDONHANG);
+            return View(nGUYENLIEU);
         }
 
-        // GET: CHITIETDONHANGs/Create
+        // GET: NGUYENLIEUx/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
+            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC");
             return View();
         }
 
-        // POST: CHITIETDONHANGs/Create
+        // POST: NGUYENLIEUx/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaHD,MaKH,MaSP,SoLuong,DonGia")] CHITIETDONHANG cHITIETDONHANG)
+        public ActionResult Create([Bind(Include = "MaNL,TenNL,MaNCC")] NguyenLieu nGUYENLIEU)
         {
             if (ModelState.IsValid)
             {
-                db.CHITIETDONHANGs.Add(cHITIETDONHANG);
+                db.NGUYENLIEUx.Add(nGUYENLIEU);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
-            return View(cHITIETDONHANG);
+            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            return View(nGUYENLIEU);
         }
 
-        // GET: CHITIETDONHANGs/Edit/5
+        // GET: NGUYENLIEUx/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
-            if (cHITIETDONHANG == null)
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
-            return View(cHITIETDONHANG);
+            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            return View(nGUYENLIEU);
         }
 
-        // POST: CHITIETDONHANGs/Edit/5
+        // POST: NGUYENLIEUx/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaHD,MaKH,MaSP,SoLuong,DonGia")] CHITIETDONHANG cHITIETDONHANG)
+        public ActionResult Edit([Bind(Include = "MaNL,TenNL,MaNCC")] NguyenLieu nGUYENLIEU)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cHITIETDONHANG).State = EntityState.Modified;
+                db.Entry(nGUYENLIEU).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
-            return View(cHITIETDONHANG);
+            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            return View(nGUYENLIEU);
         }
 
-        // GET: CHITIETDONHANGs/Delete/5
+        // GET: NGUYENLIEUx/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
-            if (cHITIETDONHANG == null)
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
             }
-            return View(cHITIETDONHANG);
+            return View(nGUYENLIEU);
         }
 
-        // POST: CHITIETDONHANGs/Delete/5
+        // POST: NGUYENLIEUx/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
-            db.CHITIETDONHANGs.Remove(cHITIETDONHANG);
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            db.NGUYENLIEUx.Remove(nGUYENLIEU);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

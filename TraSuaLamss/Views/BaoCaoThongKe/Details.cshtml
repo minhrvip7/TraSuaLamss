@@ -1,13 +1,17 @@
-﻿@model TraSuaLamss.Models.DonHang
+﻿@model IEnumerable<TraSuaLamss.Models.DonHang>
+
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>LichSuGiaoDich</h2>
+<h2>Details</h2>
 
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.KHACHHANG.TenKH)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.ThanhTien)
         </th>
@@ -30,46 +34,50 @@
             @Html.DisplayNameFor(model => model.NgayGiao)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.MaKH)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.GhiChu)
         </th>
         <th></th>
     </tr>
 
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
-                @Html.DisplayFor(model => model.ThanhTien)
+                @Html.DisplayFor(modelItem => item.KHACHHANG.TenKH)
             </td>
             <td>
-                @Html.DisplayFor(model => model.PhuongThucThanhToan)
+                @Html.DisplayFor(modelItem => item.ThanhTien)
             </td>
             <td>
-                @Html.DisplayFor(model => model.ThanhToan)
+                @Html.DisplayFor(modelItem => item.PhuongThucThanhToan)
             </td>
             <td>
-                @Html.DisplayFor(model => model.DiaChiGiaoHang)
+                @Html.DisplayFor(modelItem => item.ThanhToan)
             </td>
             <td>
-                @Html.DisplayFor(model => model.TinhTrangGiaoHang)
+                @Html.DisplayFor(modelItem => item.DiaChiGiaoHang)
             </td>
             <td>
-                @Html.DisplayFor(model => model.NgayDat)
+                @Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)
             </td>
             <td>
-                @Html.DisplayFor(model => model.NgayGiao)
+                @Html.DisplayFor(modelItem => item.NgayDat)
             </td>
             <td>
-                @Html.DisplayFor(model => model.MaKH)
+                @Html.DisplayFor(modelItem => item.NgayGiao)
             </td>
             <td>
-                @Html.DisplayFor(model => model.GhiChu)
+                @Html.DisplayFor(modelItem => item.GhiChu)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.MaDH }) |
+                @Html.ActionLink("Details", "Details", new { id = item.MaDH }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.MaDH })
             </td>
         </tr>
+    }
 
 </table>
-
 <p>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Quay lại", "Index")
 </p>

@@ -10,7 +10,7 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class GIOHANGsController : Controller
+    public class GioHangController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
         // GET: GIOHANGs
@@ -38,7 +38,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
+            GioHang gIOHANG = db.GIOHANGs.Find(id);
             if (gIOHANG == null)
             {
                 return HttpNotFound();
@@ -59,7 +59,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaKH,MaSP,Soluong")] GIOHANG gIOHANG)
+        public ActionResult Create([Bind(Include = "MaKH,MaSP,Soluong")] GioHang gIOHANG)
         {
             if (ModelState.IsValid)
             {
@@ -80,7 +80,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
+            GioHang gIOHANG = db.GIOHANGs.Find(id);
             if (gIOHANG == null)
             {
                 return HttpNotFound();
@@ -95,7 +95,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaKH,MaSP,Soluong")] GIOHANG gIOHANG)
+        public ActionResult Edit([Bind(Include = "MaKH,MaSP,Soluong")] GioHang gIOHANG)
         {
             if (ModelState.IsValid)
             {
@@ -115,7 +115,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
+            GioHang gIOHANG = db.GIOHANGs.Find(id);
             if (gIOHANG == null)
             {
                 return HttpNotFound();
@@ -128,7 +128,7 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
+            GioHang gIOHANG = db.GIOHANGs.Find(id);
             db.GIOHANGs.Remove(gIOHANG);
             db.SaveChanges();
             return RedirectToAction("Index");

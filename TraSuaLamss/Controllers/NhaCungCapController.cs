@@ -10,107 +10,107 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class TAIKHOANsController : Controller
+    public class NhaCungCapController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: TAIKHOANs
+        // GET: NHACUNGCAPs
         public ActionResult Index()
         {
-            return View(db.TAIKHOANs.ToList());
+            return View(db.NHACUNGCAPs.ToList());
         }
 
-        // GET: TAIKHOANs/Details/5
+        // GET: NHACUNGCAPs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TAIKHOAN tAIKHOAN = db.TAIKHOANs.Find(id);
-            if (tAIKHOAN == null)
+            NhaCungCap nHACUNGCAP = db.NHACUNGCAPs.Find(id);
+            if (nHACUNGCAP == null)
             {
                 return HttpNotFound();
             }
-            return View(tAIKHOAN);
+            return View(nHACUNGCAP);
         }
 
-        // GET: TAIKHOANs/Create
+        // GET: NHACUNGCAPs/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: TAIKHOANs/Create
+        // POST: NHACUNGCAPs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Username,Password,HoTen,PhanQuyen")] TAIKHOAN tAIKHOAN)
+        public ActionResult Create([Bind(Include = "MaNCC,TenNCC,DiaChi,SDT")] NhaCungCap nHACUNGCAP)
         {
             if (ModelState.IsValid)
             {
-                db.TAIKHOANs.Add(tAIKHOAN);
+                db.NHACUNGCAPs.Add(nHACUNGCAP);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(tAIKHOAN);
+            return View(nHACUNGCAP);
         }
 
-        // GET: TAIKHOANs/Edit/5
+        // GET: NHACUNGCAPs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TAIKHOAN tAIKHOAN = db.TAIKHOANs.Find(id);
-            if (tAIKHOAN == null)
+            NhaCungCap nHACUNGCAP = db.NHACUNGCAPs.Find(id);
+            if (nHACUNGCAP == null)
             {
                 return HttpNotFound();
             }
-            return View(tAIKHOAN);
+            return View(nHACUNGCAP);
         }
 
-        // POST: TAIKHOANs/Edit/5
+        // POST: NHACUNGCAPs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Username,Password,HoTen,PhanQuyen")] TAIKHOAN tAIKHOAN)
+        public ActionResult Edit([Bind(Include = "MaNCC,TenNCC,DiaChi,SDT")] NhaCungCap nHACUNGCAP)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(tAIKHOAN).State = EntityState.Modified;
+                db.Entry(nHACUNGCAP).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(tAIKHOAN);
+            return View(nHACUNGCAP);
         }
 
-        // GET: TAIKHOANs/Delete/5
+        // GET: NHACUNGCAPs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TAIKHOAN tAIKHOAN = db.TAIKHOANs.Find(id);
-            if (tAIKHOAN == null)
+            NhaCungCap nHACUNGCAP = db.NHACUNGCAPs.Find(id);
+            if (nHACUNGCAP == null)
             {
                 return HttpNotFound();
             }
-            return View(tAIKHOAN);
+            return View(nHACUNGCAP);
         }
 
-        // POST: TAIKHOANs/Delete/5
+        // POST: NHACUNGCAPs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            TAIKHOAN tAIKHOAN = db.TAIKHOANs.Find(id);
-            db.TAIKHOANs.Remove(tAIKHOAN);
+            NhaCungCap nHACUNGCAP = db.NHACUNGCAPs.Find(id);
+            db.NHACUNGCAPs.Remove(nHACUNGCAP);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

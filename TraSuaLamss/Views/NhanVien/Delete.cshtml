@@ -1,15 +1,15 @@
-﻿@model TraSuaLamss.Models.NHANVIEN
+﻿@model TraSuaLamss.Models.NhanVien
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Delete";
 }
 
-<h2 style="padding-left:2%">Thông tin chi tiết</h2>
+<h2 style="padding-left:2%">Xóa</h2>
 
+<h3 style="padding-left:2%">Chi tiết thông tin về nhân viên </h3>
 <div>
-    <h4 style="padding-left:2%">Nhân viên</h4>
     <hr />
-    <dl class="dl-horizontal"   style="padding-left:10%">
+    <dl class="dl-horizontal" style="padding-left:10%">
         <dt>
             Mã nhân viên:
             @*@Html.DisplayNameFor(model => model.MaNV)*@
@@ -101,8 +101,13 @@
         </dd>
         <br />
     </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color" style="padding-left:5%">
+            <input style="color:red" type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở lại danh sách", "Index")
+        </div>
+    }
 </div>
-<p   style="padding-left:5%">
-    @Html.ActionLink("Sửa", "Edit", new { id = Model.MaNV }) |
-    @Html.ActionLink("Trở lại danh sách", "Index")
-</p>
