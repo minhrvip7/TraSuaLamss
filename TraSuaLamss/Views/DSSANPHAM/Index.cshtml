@@ -32,7 +32,7 @@
 
     #absolute {
         position: absolute;
-        left: 10px;
+        left: 15px;
         top: 10px;
         color: red;
         font-size: 24px;
@@ -79,8 +79,8 @@
         <table>
             <tr>
                 <td width="280px" valign="top">
-                    <div style="background-color: #FAFAD2; height: 865px;padding-top:150px">
-                        <div style="margin-top:45px;padding:10px 0 0 10px">
+                    <div style="background-color: #FAFAD2; height: 885px;padding-top:150px">
+                        <div style="margin-top:10px;padding:0 0 0 10px">
 
                             <p style="font-size:22px;font-weight:bold">DANH MỤC SẢN PHẨM</p>
                             <p id="Danhmuc"><a href="/DSSANPHAM/Index">tất cả sản phẩm</a></p>
@@ -100,7 +100,7 @@
                                     <span>Khoảng giá</span><br />
                                     <span style=" padding-left: 5px">@Html.TextBox("first", ViewBag.currentFilter1 as string, new { @class = "timgia" })</span>&nbsp;&nbsp;-&nbsp;
                                     <span>@Html.TextBox("end", ViewBag.currentFilter2 as string, new { @class = "timgia" })</span>
-                                    <span style="color:red;font-size:12px">@ViewBag.Error</span><br />
+                                    <span style="padding-left: 5px;color: red; font-size: 12px">@ViewBag.Error</span><br />
                                     <span><input type="submit" value="Tìm kiếm" style="height:30px;margin:10px 0 0 70px" /></span>
                                 </p>
                             }
@@ -110,7 +110,7 @@
                 <td width="1000px">
                     <div style="padding-top:150px">
                         <p style="font-size: 22px; margin-left: 25px; padding-top: 10px;">@ViewBag.Loai</p>
-                        <div style=" height: 675px; padding-top:10px">
+                        <div style=" height: 700px; padding-top:10px">
                             @foreach (var sp in Model)
                             {
                                 <div id="product">
@@ -130,11 +130,9 @@
                             }
                             <div style="clear:left"></div>
                         </div>
-                        <br />
                         <div id="page">
                             @if (Model.PageCount > 1)
                             {
-                                <p >Trang @(Model.PageCount<Model.PageNumber?0 : Model.PageNumber)/@Model.PageCount</p>
                                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.currentFilter, currentFilter1 = ViewBag.currentFilter1, currentFilter2 = ViewBag.currentFilter2 }))
                             }
                         </div>

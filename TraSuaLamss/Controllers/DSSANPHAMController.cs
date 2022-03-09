@@ -64,7 +64,7 @@ namespace TraSuaLamss.Controllers
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
                 {
-                    ViewBag.Error = "Giá không hợp lệ";
+                    ViewBag.Error = "Giá nhập không hợp lệ";
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
                 {
@@ -74,7 +74,7 @@ namespace TraSuaLamss.Controllers
             }
             catch (Exception)
             {
-                ViewBag.Error = "Giá không hợp lệ";
+                ViewBag.Error = "Giá nhập không hợp lệ";
 
             }
 
@@ -164,7 +164,7 @@ namespace TraSuaLamss.Controllers
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
                 {
-                    ViewBag.Error = "Giá không hợp lệ";
+                    ViewBag.Error = "Giá nhập không hợp lệ";
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
                 {
@@ -174,7 +174,7 @@ namespace TraSuaLamss.Controllers
             }
             catch (Exception)
             {
-                ViewBag.Error = "Không hợp lệ";
+                ViewBag.Error = "Giá nhập không hợp lệ";
 
             }
             return View(sanpham.ToPagedList(pageNumber, pagesize));
@@ -230,7 +230,7 @@ namespace TraSuaLamss.Controllers
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
                 {
-                    ViewBag.Error = "Giá không hợp lệ";
+                    ViewBag.Error = "Giá nhập không hợp lệ";
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
                 {
@@ -240,7 +240,7 @@ namespace TraSuaLamss.Controllers
             }
             catch (Exception)
             {
-                ViewBag.Error = "Không hợp lệ";
+                ViewBag.Error = "Giá nhập không hợp lệ";
 
             }
             return View(sanpham.ToPagedList(pageNumber, pagesize));
@@ -296,7 +296,7 @@ namespace TraSuaLamss.Controllers
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
                 {
-                    ViewBag.Error = "Giá không hợp lệ";
+                    ViewBag.Error = "Giá nhập không hợp lệ";
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
                 {
@@ -306,7 +306,7 @@ namespace TraSuaLamss.Controllers
             }
             catch (Exception)
             {
-                ViewBag.Error = "Không hợp lệ";
+                ViewBag.Error = "Giá nhập không hợp lệ";
 
             }
             return View(sanpham.ToPagedList(pageNumber, pagesize));
@@ -362,7 +362,7 @@ namespace TraSuaLamss.Controllers
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
                 {
-                    ViewBag.Error = "Giá không hợp lệ";
+                    ViewBag.Error = "Giá nhập không hợp lệ";
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
                 {
@@ -372,7 +372,7 @@ namespace TraSuaLamss.Controllers
             }
             catch (Exception)
             {
-                ViewBag.Error = "Không hợp lệ";
+                ViewBag.Error = "Giá nhập không hợp lệ";
 
             }
             return View(sanpham.ToPagedList(pageNumber, pagesize));

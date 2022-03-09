@@ -7,10 +7,10 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "SanPham", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>SANPHAM</h4>
         <hr />
@@ -50,8 +50,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Anh, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Anh, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Anh, "", new { @class = "text-danger" })
+                <img id="output" class="img-rounded" alt="Ảnh" width="180" height="200" src="@Url.Content("~/wwwroot/Images/h0.png")" />
+                <p><label for="ufile" style="cursor:pointer">Chọn ảnh</label></p>
+                <input name="ImageFile" id="ufile" type="file" style="display:none" onchange="loadFile(event)" />
+                @*@Html.EditorFor(model => model.Anh, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Anh, "", new { @class = "text-danger" })*@
             </div>
         </div>
 
@@ -83,6 +86,18 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
+
+@if (ViewBag.Error != null)
+{
+    <br />
+    <div class="alert alert-danger" role="alert">@ViewBag.Error</div>
+}
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+</script>

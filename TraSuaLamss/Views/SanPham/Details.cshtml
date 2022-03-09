@@ -51,13 +51,23 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Anh)
+            @{
+                string ImagePath = "~/wwwroot/Images/" + Model.Anh;
+            }
+            <img src="@Url.Content(ImagePath)" width="300" class="img-thumbnail" />
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Anh)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.MaSP)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaSP)
+        </dd>
     </dl>
 </div>
 <p>

@@ -51,16 +51,32 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SANPHAM sANPHAM)
         {
-            if (ModelState.IsValid)
-            {
-                db.SANPHAMs.Add(sANPHAM);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
             ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
             ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
-            return View(sANPHAM);
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    sANPHAM.Anh = "";
+                    var f = Request.Files["ImageFile"];
+                    if (f != null && f.ContentLength > 0)
+                    {
+                        string FileName = System.IO.Path.GetFileName(f.FileName);
+                        string UploadPath = Server.MapPath("~/wwwroot/Images/" + FileName);
+                        f.SaveAs(UploadPath);
+                        sANPHAM.Anh = FileName;
+                    }
+                    db.SANPHAMs.Add(sANPHAM);
+                    db.SaveChanges();
+                    
+                }return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = "Lỗi nhập dữ liệu";
+                return View(sANPHAM);
+            }
+            
         }
 
         // GET: SANPHAMs/Edit/5
@@ -87,15 +103,33 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SANPHAM sANPHAM)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(sANPHAM).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
             ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
             ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
-            return View(sANPHAM);
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    //sANPHAM.Anh = "";
+                    //var f = Request.Files["ImageFile"];
+                    //if (f != null && f.ContentLength > 0)
+                    //{
+                    //    string FileName = System.IO.Path.GetFileName(f.FileName);
+                    //    string UploadPath = Server.MapPath("~/wwwroot/Images/" + FileName);
+                    //    f.SaveAs(UploadPath);
+                    //    sANPHAM.Anh = FileName;
+                    //}
+                    db.Entry(sANPHAM).State = EntityState.Modified;
+                    db.SaveChanges();
+                    
+                }
+                return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = "Lỗi nhập dữ liệu";
+                return View(sANPHAM);
+            }
+            
         }
 
         // GET: SANPHAMs/Delete/5
