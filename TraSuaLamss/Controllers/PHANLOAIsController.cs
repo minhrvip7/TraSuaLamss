@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: PHANLOAIs
         public ActionResult Index()
         {
-            return View(db.PHANLOAIs.ToList());
+            return View(db.PHANLOAI.ToList());
         }
 
         // GET: PHANLOAIs/Details/5
@@ -27,7 +27,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
+            PhanLoai pHANLOAI = db.PHANLOAI.Find(id);
             if (pHANLOAI == null)
             {
                 return HttpNotFound();
@@ -46,11 +46,11 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaLoai,TenLoai")] PHANLOAI pHANLOAI)
+        public ActionResult Create([Bind(Include = "MaLoai,TenLoai")] PhanLoai pHANLOAI)
         {
             if (ModelState.IsValid)
             {
-                db.PHANLOAIs.Add(pHANLOAI);
+                db.PHANLOAI.Add(pHANLOAI);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
+            PhanLoai pHANLOAI = db.PHANLOAI.Find(id);
             if (pHANLOAI == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaLoai,TenLoai")] PHANLOAI pHANLOAI)
+        public ActionResult Edit([Bind(Include = "MaLoai,TenLoai")] PhanLoai pHANLOAI)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
+            PhanLoai pHANLOAI = db.PHANLOAI.Find(id);
             if (pHANLOAI == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            db.PHANLOAIs.Remove(pHANLOAI);
+            PhanLoai pHANLOAI = db.PHANLOAI.Find(id);
+            db.PHANLOAI.Remove(pHANLOAI);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

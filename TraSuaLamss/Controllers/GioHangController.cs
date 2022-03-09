@@ -17,8 +17,8 @@ namespace TraSuaLamss.Controllers
         public ActionResult Giohang()
         {
             string KHID = "KH001";
-            IList<XemGioHang> list = (from e in db.GioHang
-                        join d in db.SanPham
+            IList<XemGioHang> list = (from e in db.GIOHANG
+                        join d in db.SANPHAM
                         on e.MaSP equals d.MaSP
                         where e.MaKH == KHID
                         select new XemGioHang { GH = e, SP = d }).ToList();
@@ -33,7 +33,7 @@ namespace TraSuaLamss.Controllers
 
         public ActionResult Add(string MaKhach, string MaHang, int soluong)
         {
-            GioHang gioHang = (from e in db.GioHang
+            GioHang gioHang = (from e in db.GIOHANG
                                where (e.MaKH == MaKhach && e.MaSP == MaHang)
                                select e).FirstOrDefault();
             if (gioHang == null)
@@ -42,7 +42,7 @@ namespace TraSuaLamss.Controllers
                 gioHang.MaKH = MaKhach;
                 gioHang.MaSP = MaHang;
                 gioHang.Soluong = soluong;
-                db.GioHang.Add(gioHang);
+                db.GIOHANG.Add(gioHang);
             }
             else
             {
@@ -53,23 +53,23 @@ namespace TraSuaLamss.Controllers
         }
         public ActionResult Delete(string MaKhach, string MaHang)
         {
-            GioHang gioHang = (from e in db.GioHang
+            GioHang gioHang = (from e in db.GIOHANG
                                where (e.MaKH == MaKhach && e.MaSP == MaHang)
                                select e).FirstOrDefault();
             if (gioHang != null)
             {
-                db.GioHang.Remove(gioHang);
+                db.GIOHANG.Remove(gioHang);
             }
             db.SaveChanges();
             return RedirectToAction("Giohang");
         }
         public ActionResult DeleteAll(string MaKhach)
         {
-            foreach(var item in db.GioHang)
+            foreach(var item in db.GIOHANG)
             {
                 if (item.MaKH == MaKhach)
                 {
-                    db.GioHang.Remove(item);
+                    db.GIOHANG.Remove(item);
                 }
             }
             db.SaveChanges();

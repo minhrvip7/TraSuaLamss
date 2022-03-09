@@ -147,16 +147,19 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDonHang.cs" />
+    <Compile Include="Models\DangKyModel.cs" />
+    <Compile Include="Models\DangNhapModel.cs" />
+    <Compile Include="Models\DoiMatKhauModel.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\KhachHang.cs" />
-    <Compile Include="Models\LIENHE.cs" />
-    <Compile Include="Models\NGUYENLIEU.cs" />
-    <Compile Include="Models\NHACUNGCAP.cs" />
-    <Compile Include="Models\NHANVIEN.cs" />
-    <Compile Include="Models\PHANLOAI.cs" />
+    <Compile Include="Models\LienHe.cs" />
+    <Compile Include="Models\NguyenLieu.cs" />
+    <Compile Include="Models\NhaCungCap.cs" />
+    <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\PhanLoai.cs" />
     <Compile Include="Models\SanPham.cs" />
-    <Compile Include="Models\TAIKHOAN.cs" />
+    <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Models\TraSuaContext.cs" />
     <Compile Include="Models\XemGioHang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -178,6 +181,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\css\styles.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Template\assets\css\bootstrap.min.css" />
     <Content Include="Content\Template\assets\css\flex-slider.css" />
@@ -361,12 +365,12 @@
     <Content Include="Views\ChiTietDonHang\Edit.cshtml" />
     <Content Include="Views\ChiTietDonHang\Index.cshtml" />
     <Content Include="Views\GioHang\Giohang.cshtml" />
-    <Content Include="Views\DSSANPHAM\CaPhe.cshtml" />
-    <Content Include="Views\DSSANPHAM\Details.cshtml" />
-    <Content Include="Views\DSSANPHAM\DoAnVat.cshtml" />
-    <Content Include="Views\DSSANPHAM\Index.cshtml" />
-    <Content Include="Views\DSSANPHAM\Tra.cshtml" />
-    <Content Include="Views\DSSANPHAM\TraSua.cshtml" />
+    <Content Include="Views\DSSanPham\CaPhe.cshtml" />
+    <Content Include="Views\DSSanPham\Details.cshtml" />
+    <Content Include="Views\DSSanPham\DoAnVat.cshtml" />
+    <Content Include="Views\DSSanPham\Index.cshtml" />
+    <Content Include="Views\DSSanPham\Tra.cshtml" />
+    <Content Include="Views\DSSanPham\TraSua.cshtml" />
     <Content Include="Views\GioHang\Dathang.cshtml" />
   </ItemGroup>
   <ItemGroup>

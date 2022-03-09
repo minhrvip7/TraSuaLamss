@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: SANPHAMs
         public ActionResult Index()
         {
-            var sANPHAMs = db.SanPham.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI);
+            var sANPHAMs = db.SANPHAM.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI);
             return View(sANPHAMs.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SanPham.Find(id);
+            SanPham sANPHAM = db.SANPHAM.Find(id);
             if (sANPHAM == null)
             {
                 return HttpNotFound();
@@ -39,8 +39,8 @@ namespace TraSuaLamss.Controllers
         // GET: SANPHAMs/Create
         public ActionResult Create()
         {
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL");
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai");
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEU, "MaNL", "TenNL");
+            ViewBag.MaLoai = new SelectList(db.PHANLOAI, "MaLoai", "TenLoai");
             return View();
         }
 
@@ -53,13 +53,13 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.SanPham.Add(sANPHAM);
+                db.SANPHAM.Add(sANPHAM);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEU, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAI, "MaLoai", "TenLoai", sANPHAM.MaLoai);
             return View(sANPHAM);
         }
 
@@ -70,13 +70,13 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SanPham.Find(id);
+            SanPham sANPHAM = db.SANPHAM.Find(id);
             if (sANPHAM == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEU, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAI, "MaLoai", "TenLoai", sANPHAM.MaLoai);
             return View(sANPHAM);
         }
 
@@ -93,8 +93,8 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEU, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAI, "MaLoai", "TenLoai", sANPHAM.MaLoai);
             return View(sANPHAM);
         }
 
@@ -105,7 +105,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SanPham.Find(id);
+            SanPham sANPHAM = db.SANPHAM.Find(id);
             if (sANPHAM == null)
             {
                 return HttpNotFound();
@@ -118,8 +118,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            SanPham sANPHAM = db.SanPham.Find(id);
-            db.SanPham.Remove(sANPHAM);
+            SanPham sANPHAM = db.SANPHAM.Find(id);
+            db.SANPHAM.Remove(sANPHAM);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

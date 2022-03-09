@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: LIENHEs
         public ActionResult Index()
         {
-            return View(db.LIENHEs.ToList());
+            return View(db.LIENHE.ToList());
         }
 
         // GET: LIENHEs/Details/5
@@ -27,7 +27,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LIENHE lIENHE = db.LIENHEs.Find(id);
+            LienHe lIENHE = db.LIENHE.Find(id);
             if (lIENHE == null)
             {
                 return HttpNotFound();
@@ -46,11 +46,11 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LIENHE lIENHE)
+        public ActionResult Create([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LienHe lIENHE)
         {
             if (ModelState.IsValid)
             {
-                db.LIENHEs.Add(lIENHE);
+                db.LIENHE.Add(lIENHE);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LIENHE lIENHE = db.LIENHEs.Find(id);
+            LienHe lIENHE = db.LIENHE.Find(id);
             if (lIENHE == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LIENHE lIENHE)
+        public ActionResult Edit([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LienHe lIENHE)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LIENHE lIENHE = db.LIENHEs.Find(id);
+            LienHe lIENHE = db.LIENHE.Find(id);
             if (lIENHE == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            LIENHE lIENHE = db.LIENHEs.Find(id);
-            db.LIENHEs.Remove(lIENHE);
+            LienHe lIENHE = db.LIENHE.Find(id);
+            db.LIENHE.Remove(lIENHE);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

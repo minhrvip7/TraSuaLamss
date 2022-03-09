@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: NGUYENLIEUx
         public ActionResult Index()
         {
-            var nGUYENLIEUx = db.NGUYENLIEUx.Include(n => n.NHACUNGCAP);
+            var nGUYENLIEUx = db.NGUYENLIEU.Include(n => n.NHACUNGCAP);
             return View(nGUYENLIEUx.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEU.Find(id);
             if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace TraSuaLamss.Controllers
         // GET: NGUYENLIEUx/Create
         public ActionResult Create()
         {
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC");
+            ViewBag.MaNCC = new SelectList(db.NHACUNGCAP, "MaNCC", "TenNCC");
             return View();
         }
 
@@ -48,16 +48,16 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaNL,TenNL,MaNCC")] NGUYENLIEU nGUYENLIEU)
+        public ActionResult Create([Bind(Include = "MaNL,TenNL,MaNCC")] NguyenLieu nGUYENLIEU)
         {
             if (ModelState.IsValid)
             {
-                db.NGUYENLIEUx.Add(nGUYENLIEU);
+                db.NGUYENLIEU.Add(nGUYENLIEU);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            ViewBag.MaNCC = new SelectList(db.NHACUNGCAP, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
             return View(nGUYENLIEU);
         }
 
@@ -68,12 +68,12 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEU.Find(id);
             if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            ViewBag.MaNCC = new SelectList(db.NHACUNGCAP, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
             return View(nGUYENLIEU);
         }
 
@@ -82,7 +82,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaNL,TenNL,MaNCC")] NGUYENLIEU nGUYENLIEU)
+        public ActionResult Edit([Bind(Include = "MaNL,TenNL,MaNCC")] NguyenLieu nGUYENLIEU)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            ViewBag.MaNCC = new SelectList(db.NHACUNGCAP, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
             return View(nGUYENLIEU);
         }
 
@@ -101,7 +101,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEU.Find(id);
             if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
-            db.NGUYENLIEUx.Remove(nGUYENLIEU);
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEU.Find(id);
+            db.NGUYENLIEU.Remove(nGUYENLIEU);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
