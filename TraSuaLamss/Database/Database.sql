@@ -82,7 +82,7 @@ GO
 
 CREATE TABLE KHACHHANG
 (
-	MaKH VARCHAR(5) PRIMARY KEY,
+	MaKH INT PRIMARY KEY IDENTITY(1,1),
 	TenKH NVARCHAR(30) NOT NULL,
 	GioiTinh NVARCHAR(10) NOT NULL,
 	NgaySinh DATETIME NOT NULL,
@@ -106,7 +106,7 @@ CREATE TABLE DONHANG
 	TinhTrangGiaoHang VARCHAR(50) NOT NULL,
 	NgayDat datetime NOT NULL,
 	NgayGiao datetime NOT NULL,
-	MaKH VARCHAR(5) NOT NULL,
+	MaKH int NOT NULL,
 	GhiChu NVARCHAR(100) NOT NULL,
 	FOREIGN KEY (MaKH) REFERENCES KHACHHANG (MaKH),
 )
@@ -116,7 +116,7 @@ GO
 
 CREATE TABLE GIOHANG
 (
-	MaKH VARCHAR(5) NOT NULL,
+	MaKH int NOT NULL,
 	MaSP VARCHAR(5) NOT NULL,
 	Soluong int NOT NULL,
 	PRIMARY KEY (MaKH, MaSP),
@@ -130,7 +130,7 @@ GO
 CREATE TABLE CHITIETDONHANG
 (
 	MaHD VARCHAR(5) PRIMARY KEY,
-	MaKH VARCHAR(5) NOT NULL,
+	MaKH int NOT NULL,
 	MaSP VARCHAR(5),
 	SoLuong INT NOT NULL,
 	DonGia MONEY NOT NULL,
@@ -293,34 +293,34 @@ GO
 --KHACHHANG
 --SELECT * FROM KHACHHANG
 --SELECT * FROM TAIKHOAN WHERE PhanQuyen = N'Khách hàng'
-INSERT INTO KHACHHANG(MaKH,TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES ('KH001',N'Long', N'Nam', '1/1/2022', 'kh1', 'long@gmail.com', N'Hà Nội', 0971)
+INSERT INTO KHACHHANG(TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES (N'Long', N'Nam', '1/1/2022', 'kh1', 'long@gmail.com', N'Hà Nội', 0971)
 GO
-INSERT INTO KHACHHANG(MaKH,TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES ('KH002',N'Minh', N'Nam', '1/1/2022', 'kh2', 'minh@gmail.com', N'Hải Dương', 0971)
+INSERT INTO KHACHHANG(TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES (N'Minh', N'Nam', '1/1/2022', 'kh2', 'minh@gmail.com', N'Hải Dương', 0971)
 GO
-INSERT INTO KHACHHANG(MaKH,TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES ('KH003',N'Anh', N'Nam','1/1/2022', 'kh3', 'anh@gmail.com', N'Hà Nam', 0971)
+INSERT INTO KHACHHANG(TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES (N'Anh', N'Nam','1/1/2022', 'kh3', 'anh@gmail.com', N'Hà Nam', 0971)
 GO
-INSERT INTO KHACHHANG(MaKH,TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES ('KH004',N'Sang', N'Nam', '1/1/2022', 'kh4', 'sang@gmail.com', N'Hải Phòng', 0971)
+INSERT INTO KHACHHANG(TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES (N'Sang', N'Nam', '1/1/2022', 'kh4', 'sang@gmail.com', N'Hải Phòng', 0971)
 GO
-INSERT INTO KHACHHANG(MaKH,TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES ('KH005',N'Sơn', N'Nam', '1/1/2022', 'kh5', 'son@gmail.com', N'Quảng Ninh', 0971)
+INSERT INTO KHACHHANG(TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES (N'Sơn', N'Nam', '1/1/2022', 'kh5', 'son@gmail.com', N'Quảng Ninh', 0971)
 GO
 
 
 --DONHANG
 --SELECT * FROM DONHANG
 INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
-('DH001',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '1/1/2022', '2/1/2022', 'KH001', N'Giao nhanh')
+('DH001',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '1/1/2022', '2/1/2022', 1, N'Giao nhanh')
 GO
 INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
-('DH002',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '1/1/2022', '2/1/2022', 'KH002', N'Giao nhanh')
+('DH002',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '1/1/2022', '2/1/2022', 2, N'Giao nhanh')
 GO
 INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
-('DH003',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '1/1/2022', '2/1/2022', 'KH003', N'Khách hàng không nhận')
+('DH003',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '1/1/2022', '2/1/2022', 3, N'Khách hàng không nhận')
 GO
 INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
-('DH004',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '1/1/2022', '2/1/2022', 'KH004', N'Trả hàng')
+('DH004',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '1/1/2022', '2/1/2022', 4, N'Trả hàng')
 GO
 INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
-('',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '1/1/2022', '2/1/2022', 'KH005', N'Giao thành công')
+('',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '1/1/2022', '2/1/2022', 5, N'Giao thành công')
 GO
 
 
@@ -331,15 +331,15 @@ GO
 --SELECT * FROM DONHANG
 --SELECT * FROM SANPHAM
 
-INSERT INTO CHITIETDONHANG (MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD001', 'KH001','SP001',4 , 40000)
+INSERT INTO CHITIETDONHANG (MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD001', 1,'SP001',4 , 40000)
 GO
-INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD002', 'KH002','SP002',4 , 50000)
+INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD002', 2,'SP002',4 , 50000)
 GO
-INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD003', 'KH003','SP003',4 , 60000)
+INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD003', 3,'SP003',4 , 60000)
 GO
-INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD004', 'KH005','SP001',4 , 40000)
+INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD004', 5,'SP001',4 , 40000)
 GO
-INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD005', 'KH004','SP001',4 , 40000)
+INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD005', 4,'SP001',4 , 40000)
 GO
 
 --NHACNVIEN
