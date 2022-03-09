@@ -74,15 +74,15 @@
                             <li><a href="/LIENHEs/Index">LIÊN HỆ</a></li>
                             @if (Session["PhanQuyen"] == null)
                             {
-                                <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
-                                <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
+                                <li><a href="/Home/DangNhap">TÀI KHOẢN</a></li>
+                                <li><a href="/Home/DangNhap">GIỎ HÀNG</a></li>
                             }
                             else
                             {
                                 if (Session["PhanQuyen"].ToString() == "Admin")
                                 {
-                                    <li><a href="/GioiThieu/Index">QUẢN LÝ TÀI KHOẢN</a></li>
-                                    <li><a href="/GioiThieu/Index">QUẢN LÝ SẢN PHẨM</a></li>
+                                    <li><a href="/TaiKhoan/Index">QUẢN LÝ TÀI KHOẢN</a></li>
+                                    <li><a href="/SanPham/Index">QUẢN LÝ SẢN PHẨM</a></li>
                                 }
                                 if (Session["PhanQuyen"].ToString() == "Khách hàng")
                                 {
@@ -91,7 +91,7 @@
                                 }
                                 if (Session["PhanQuyen"].ToString() == "Nhân viên")
                                 {
-                                    <li><a href="/GioiThieu/Index">QUẢN LÝ SẢN PHẨM</a></li>
+                                    <li><a href="/SanPham/Index">QUẢN LÝ SẢN PHẨM</a></li>
 
                                 }
                             }
