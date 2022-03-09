@@ -22,6 +22,11 @@ namespace TraSuaLamss.Controllers
                 return View(sANPHAMs.ToList());
 
         }
+        public ActionResult Search(string searchkey)
+        {
+            var lstResult = db.SANPHAMs.SqlQuery("Select * from SANPHAM where TenSP like '%" + searchkey + "%'").ToList();
+            return View(lstResult);
+        }
 
         // GET: SANPHAMs/Details/5
         public ActionResult Details(string id)
