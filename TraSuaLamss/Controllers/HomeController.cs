@@ -87,7 +87,6 @@ namespace TraSuaLamss.Controllers
                     kh.DienThoai = model.DienThoai;
                     db.KHACHHANG.Add(kh);
                     db.SaveChanges();
-                    ViewBag.Success = "Đăng ký thành công!";
                     return RedirectToAction("DangNhap", "Home");
                 }
                 return View(model);
@@ -109,7 +108,6 @@ namespace TraSuaLamss.Controllers
                 TaiKhoan tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == username && n.Password == password);
                 if (tk != null)
                 {
-                    ViewBag.Success = "Chúc mừng đăng nhập thành công!";
                     Session["TAIKHOAN"] = tk;
                     Session["Username"] = username;
                     Session["Password"] = password;
