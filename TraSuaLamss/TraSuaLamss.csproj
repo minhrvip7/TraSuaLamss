@@ -197,21 +197,26 @@
     <Content Include="Content\Template\assets\fonts\flexslider-icon.svg" />
     <Content Include="Content\Template\assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Template\assets\fonts\slick.svg" />
+    <Content Include="Content\Template\assets\images\940ad819128485.5631bccc96fb5.jpg" />
     <Content Include="Content\Template\assets\images\about-thumb-01.jpg" />
     <Content Include="Content\Template\assets\images\about-thumb-02.jpg" />
     <Content Include="Content\Template\assets\images\about-thumb-03.jpg" />
     <Content Include="Content\Template\assets\images\about-video-bg.jpg" />
+    <Content Include="Content\Template\assets\images\Bubble-Tea-Affogato-5-960x540-768x432.jpg" />
+    <Content Include="Content\Template\assets\images\Bubble-Tea-Is-Actually-Pretty-Bad-For-You—Here’s-Why_102149926_stockcreations-1024x683-768x512.jpg" />
     <Content Include="Content\Template\assets\images\chefs-01.jpg" />
     <Content Include="Content\Template\assets\images\chefs-02.jpg" />
     <Content Include="Content\Template\assets\images\chefs-03.jpg" />
     <Content Include="Content\Template\assets\images\close.png" />
     <Content Include="Content\Template\assets\images\klassy-logo.png" />
     <Content Include="Content\Template\assets\images\loading.gif" />
+    <Content Include="Content\Template\assets\images\LOGO.png" />
     <Content Include="Content\Template\assets\images\menu-item-01.jpg" />
     <Content Include="Content\Template\assets\images\menu-item-02.jpg" />
     <Content Include="Content\Template\assets\images\menu-item-03.jpg" />
     <Content Include="Content\Template\assets\images\menu-item-04.jpg" />
     <Content Include="Content\Template\assets\images\menu-item-05.jpg" />
+    <Content Include="Content\Template\assets\images\Menulamss.png" />
     <Content Include="Content\Template\assets\images\Menuorder.png" />
     <Content Include="Content\Template\assets\images\next.png" />
     <Content Include="Content\Template\assets\images\prev.png" />
@@ -229,6 +234,8 @@
     <Content Include="Content\Template\assets\images\tab-item-05.png" />
     <Content Include="Content\Template\assets\images\tab-item-06.png" />
     <Content Include="Content\Template\assets\images\top-left-bg.jpg" />
+    <Content Include="Content\Template\assets\images\tra sua dai loan2.jpg" />
+    <Content Include="Content\Template\assets\images\tra-sua-dai-loan-1.jpg" />
     <Content Include="Content\Template\assets\images\white-logo.png" />
     <Content Include="Content\Template\assets\js\accordions.js" />
     <Content Include="Content\Template\assets\js\bootstrap.min.js" />
@@ -269,7 +276,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-	<Content Include="wwwroot\Images\h0.png" />
+    <Content Include="wwwroot\Images\h0.png" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -365,8 +372,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\TimKiem\" />
     <Folder Include="Data\" />
+    <Folder Include="Views\TimKiem\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />

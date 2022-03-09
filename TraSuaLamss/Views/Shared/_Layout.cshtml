@@ -13,14 +13,7 @@
     @Styles.Render("~/Content/Template/asssets/css")
     @Scripts.Render("~/bundels/modernizr")
 
-    <!--
 
-    TemplateMo 558 Klassy Cafe
-
-    https://templatemo.com/tm-558-klassy-cafe
-
-    -->
-    <!-- Additional CSS Files -->
     <link rel="stylesheet" type="text/css" href="~/Content/Template/assets/css/bootstrap.min.css">
 
     <link rel="stylesheet" type="text/css" href="~/Content/Template/assets/css/font-awesome.css">
@@ -31,52 +24,58 @@
 
     <link rel="stylesheet" href="~/Content/Template/assets/css/lightbox.css">
 
-    <link rel="stylesheet" href="~/Content/Template/assets/css/Style.css">
-
 </head>
 
 <body>
 
-    <!-- ***** Preloader Start ***** -->
-    <div id="preloader">
-        <div class="jumper">
-            <div></div>
-            <div></div>
-            <div></div>
-        </div>
-    </div>
-    <!-- ***** Preloader End ***** -->
-    <!-- ***** Header Area Start ***** -->
+
+
     <header class="header-area header-sticky">
         <div class="container">
+            <a href="/Home/Index" class="logo">
+                <img src="~/Content/Template/assets/images/LOGO.png" style="margin:20px 10px -20px -50px;width: 80px; height:80px">
+            </a>
             <div class="row">
-                <div class="col-12">
-                    <nav class="main-nav">
 
                         <!-- ***** Menu Start ***** -->
                         <ul class="nav">
                             <li class="scroll-to-section"><a href="" class="active">Home</a></li>
                             <li class="scroll-to-section"><a href="#about">About</a></li>
 
+                            }
+                        </div>
+                    </form>
 
                             <li class="scroll-to-section"><a href="#menu">Menu</a></li>
                             <li class="scroll-to-section"><a href="LichSuGiaoDich/Index">Giao dịch</a></li>
                             <li class="submenu">
-                                <a href="javascript:;">Features</a>
+                                <a href="/DSSANPHAM/Index">SẢN PHẨM</a>
                                 <ul>
-                                    <li><a href="#">Features Page 1</a></li>
-                                    <li><a href="#">Features Page 2</a></li>
-                                    <li><a href="#">Features Page 3</a></li>
-                                    <li><a href="#">Features Page 4</a></li>
+                                    <li><a href="/DSSANPHAM/CaPhe">Cà phê</a></li>
+                                    <li><a href="/DSSANPHAM/DoAnVat">Đồ ăn vặt</a></li>
+                                    <li><a href="/DSSANPHAM/Tra">Trà</a></li>
+                                    <li><a href="/DSSANPHAM/TraSua">Trà sữa</a></li>
                                 </ul>
                             </li>
-                            <!-- <li class=""><a rel="sponsored" href="https://templatemo.com" target="_blank">External URL</a></li> -->
-                            <li class="scroll-to-section"><a href="#reservation">Contact Us</a></li>
+                            <li><a href="/LIENHEs/Index">LIÊN HỆ</a></li>
+                            @{
+
+                                if (Session["TAIKHOAN"] != null)
+                                {
+                                    <li><a href="/TAIKHOANs/Index">TÀI KHOẢN</a></li>
+                                    <li><a href="/GIOHANGs/Giohang">GIỎ HÀNG</a></li>
+                                }
+                                else
+                                {
+                                    <li><a href="/Home/DangNhap">TÀI KHOẢN</a></li>
+                                    <li><a href="/Home/DangNhap">GIỎ HÀNG</a></li>
+                                }
+                            }
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
                         </a>
-                        <!-- ***** Menu End ***** -->
+
                     </nav>
                 </div>
             </div>
@@ -101,38 +100,35 @@
     @RenderBody()
 
 
-    <!-- ***** Phone ring Area Start ***** -->
-    <div class="hotline-phone-ring-wrap">
-        <div class="hotline-phone-ring">
-            <div class="hotline-phone-ring-circle"></div>
-            <div class="hotline-phone-ring-circle-fill"></div>
-            <div class="hotline-phone-ring-img-circle">
-                <a href="tel:0971303965" class="pps-btn-img">
-                    <img src="~/Content/Img/icon-call.png" alt="Gọi điện thoại" width="50">
-                </a>
-            </div>
-        </div>
-        <div class="hotline-bar">
-            <a href="tel:0971303965">
-                <span class="text-hotline">0971.303.965</span>
-            </a>
-        </div>
-    </div>
-    <!-- ***** Phone ring Area End ***** -->
-    <!-- ***** Footer Start ***** -->
+    <br /><br /><br /><br /><br /><br />
+                                  <section>@RenderBody()</section>
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-xs-12">
                     <div class="right-text-content">
                         VỀ CHÚNG TÔI<br />
-                        <a href="#">LIÊN HỆ</a>
+                        <a href="/LIENHEs/Index">LIÊN HỆ</a><br />
+                        <a href="/GioiThieu/Index">GIỚI THIỆU</a>
+
+                    </div>
+                </div>
+                <div class="col-lg-4 col-xs-12">
+                    <div class="right-text-content">
+                        TRÀ SỮA LAMSS<br />
+                        <ul class="social-icons">
+                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+                        </ul>
 
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="logo">
-                        <a href="index.html"><img src="~/Content/Template/assets/images/white-logo.png" alt=""></a>
+                        <a href="index.html"><img src="~/Content/Template/assets/images/LOGO.png" style="width: 80px; height: 80px" alt=""></a><br />
+                        <p>©Rikkei copyright </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xs-12">
