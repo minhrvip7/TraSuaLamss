@@ -43,8 +43,9 @@
                         <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
                         <div class="form-inline dndx" style="margin-top:-20px">
                             @if (Session["TAIKHOAN"] != null)
-                                {
-                                    <a href="/TAIKHOANs/Index">Son</a><span>/</span><a href="@Url.Action("Logout","Home")">Đăng xuất</a>
+                            {
+                                
+                                    <a href="/TAIKHOANs/Index">@Session["HoTen"]</a><span>/</span><a href="@Url.Action("Logout","Home")">Đăng xuất</a>
                                 }
                              @if(Session["TAIKHOAN"] == null)
                                 {
@@ -71,7 +72,30 @@
                                 </ul>
                             </li>
                             <li><a href="/LIENHEs/Index">LIÊN HỆ</a></li>
-                                                  
+                            @if (Session["PhanQuyen"] == null)
+                            {
+                                <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
+                                <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
+                            }
+                            else
+                            {
+                                if (Session["PhanQuyen"].ToString() == "Admin")
+                                {
+                                    <li><a href="/GioiThieu/Index">QUẢN LÝ TÀI KHOẢN</a></li>
+                                    <li><a href="/GioiThieu/Index">QUẢN LÝ SẢN PHẨM</a></li>
+                                }
+                                if (Session["PhanQuyen"].ToString() == "Khách hàng")
+                                {
+                                    <li><a href="/GioiThieu/Index">TÀI KHOẢN</a></li>
+                                    <li><a href="/GioiThieu/Index">GIỎ HÀNG</a></li>
+                                }
+                                if (Session["PhanQuyen"].ToString() == "Nhân viên")
+                                {
+                                    <li><a href="/GioiThieu/Index">QUẢN LÝ SẢN PHẨM</a></li>
+
+                                }
+                            }
+
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>

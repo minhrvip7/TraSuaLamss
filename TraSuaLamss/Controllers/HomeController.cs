@@ -68,11 +68,14 @@ namespace TraSuaLamss.Controllers
             {
                 var username = model.Username;
                 var password = model.Password;
+                
                 TAIKHOAN tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == username && n.Password == password);
                 if (tk != null)
                 {
                     ViewBag.Success = "Chúc mừng đăng nhập thành công!";
                     Session["TAIKHOAN"] = tk;
+                    Session["Hoten"] = tk.HoTen;
+                    Session["PhanQuyen"] = tk.PhanQuyen;
                     return RedirectToAction("Index");
                 }
                 else
@@ -82,6 +85,11 @@ namespace TraSuaLamss.Controllers
                 return View(model);
             }
             return View(model);
+        }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index");
         }
     }
 }
