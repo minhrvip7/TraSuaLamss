@@ -116,7 +116,7 @@
                                 <div id="product">
                                     <div id="absolute">
                                         @{
-                                            long tien = long.Parse(sp.GiaBan);
+                                            decimal tien = sp.GiaBan;
                                             string gia = String.Format("{0:0,0} đ", tien);
                                         }
                                         @gia

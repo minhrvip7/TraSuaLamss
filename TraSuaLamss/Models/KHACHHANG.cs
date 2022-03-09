@@ -18,8 +18,7 @@ namespace TraSuaLamss.Models
         }
 
         [Key]
-        [StringLength(5)]
-        public string MaKH { get; set; }
+        public int MaKH { get; set; }
 
         [Required]
         [StringLength(30)]

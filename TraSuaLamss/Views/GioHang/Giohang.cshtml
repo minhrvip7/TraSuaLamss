@@ -77,7 +77,7 @@
                         <td><img class="anhsp" src="~/wwwroot/@item.SP.Anh" /></td>
                         <td class="td-center">@item.SP.GiaBan</td>
                         <td class="td-center"><input value="@item.GH.Soluong" style="height:24px;width:50px" type="number" min="1" id="sl" /></td>
-                        <td class="td-center">@(Convert.ToDecimal(item.SP.GiaBan)* item.GH.Soluong)</td>
+                        <td class="td-center">@(item.SP.GiaBan* item.GH.Soluong)</td>
                         <td class="td-center"><a href="@Url.Action("Delete", "GioHang", new {MaKhach=item.GH.MaKH, MaHang=item.SP.MaSP})"><img class="image-nut" src="~/wwwroot/Images/Xoa.png" /></a> | <a href="#"><img class="image-nut" src="~/wwwroot/Images/Timkiem.png" /></a></td>
                     </tr>
                     <tr><td></td></tr>

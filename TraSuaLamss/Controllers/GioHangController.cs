@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         private const string ListHangSession = "ListHangSession";
         public ActionResult Giohang()
         {
-            string KHID = "KH001";
+            int KHID = 1;
             List<XemGioHang> list = (from e in db.GioHang
                                       join d in db.SanPham
                                       on e.MaSP equals d.MaSP
@@ -30,7 +30,7 @@ namespace TraSuaLamss.Controllers
         public ActionResult Dathang()
         {
             var list = Session[ListHangSession] as List<XemGioHang>;
-            string KHID = "KH001";
+            int KHID = 1;
             string MaDH = "DH";
             int SLDH = db.DonHang.Count() + 1;
             if (SLDH < 1000 && SLDH > 99)
@@ -74,7 +74,7 @@ namespace TraSuaLamss.Controllers
             return View(lischitiet);
         }
 
-        public ActionResult Add(string MaKhach, string MaHang, int soluong)
+        public ActionResult Add(int MaKhach, string MaHang, int soluong)
         {
             GioHang gioHang = (from e in db.GioHang
                                where e.MaKH == MaKhach && e.MaSP == MaHang
@@ -94,7 +94,7 @@ namespace TraSuaLamss.Controllers
             db.SaveChanges();
             return RedirectToAction("Giohang");
         }
-        public ActionResult Delete(string MaKhach, string MaHang)
+        public ActionResult Delete(int MaKhach, string MaHang)
         {
             GioHang gioHang = (from e in db.GioHang
                                where (e.MaKH == MaKhach && e.MaSP == MaHang)
@@ -106,7 +106,7 @@ namespace TraSuaLamss.Controllers
             db.SaveChanges();
             return RedirectToAction("Giohang");
         }
-        public ActionResult DeleteAll(string MaKhach)
+        public ActionResult DeleteAll(int MaKhach)
         {
             foreach (var item in db.GioHang)
             {
