@@ -24,5 +24,9 @@ namespace TraSuaLamss.Controllers
         {
             return View();
         }
+        public ActionResult CreateDonHangLe(string MaSP, string MaDH, string maKH, decimal tongtien)
+        {
+            return View();
+        }
     }
 }
