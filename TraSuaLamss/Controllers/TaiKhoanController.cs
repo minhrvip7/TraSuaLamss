@@ -10,7 +10,7 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class TaiKhoanController : Controller
+    public class TAIKHOANsController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 

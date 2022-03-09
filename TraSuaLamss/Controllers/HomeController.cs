@@ -30,7 +30,7 @@ namespace TraSuaLamss.Controllers
         }
         public bool CheckUsername(string username)
         {
-            if (db.TAIKHOANs.Count(x => x.Username == username) > 0)
+            if (db.TAIKHOAN.Count(x => x.Username == username) > 0)
             {
                 return true;
             }
@@ -55,42 +55,7 @@ namespace TraSuaLamss.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult DangKy(DangKyModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                if (CheckUsername(model.Username))
-                {
-                    ModelState.AddModelError("", "Tên đăng nhập đã tồn tại!");
-                }
-                else if (CheckEmail(model.Email))
-                {
-                    ModelState.AddModelError("", "Email đã tồn tại!");
-                }
-                else
-                {
-                    var tk = new TAIKHOAN();
-                    var kh = new KHACHHANG();
-                    tk.Username = model.Username;
-                    tk.Password = model.Password;
-                    tk.HoTen = model.TenKH;
-                    tk.PhanQuyen = "Khách hàng";
-                    db.TAIKHOANs.Add(tk);
-                    db.SaveChanges();
-                    kh.TenKH = model.TenKH;
-                    kh.Username = model.Username;
-                    kh.NgaySinh = model.NgaySinh;
-                    kh.Email = model.Email;
-                    kh.DiaChi = model.DiaChi;
-                    kh.DienThoai = model.DienThoai;
-                    db.KHACHHANGs.Add(kh);
-                    db.SaveChanges();
-                    ViewBag.Success = "Đăng ký thành công!";
-                }
-            }
-            return View(model);
-        }
+
         [HttpGet]
         public ActionResult DangNhap()
         {
@@ -103,7 +68,7 @@ namespace TraSuaLamss.Controllers
             {
                 var username = model.Username;
                 var password = model.Password;
-                TAIKHOAN tk = db.TAIKHOANs.SingleOrDefault(n => n.Username == username && n.Password == password);
+                TAIKHOAN tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == username && n.Password == password);
                 if (tk != null)
                 {
                     ViewBag.Success = "Chúc mừng đăng nhập thành công!";
