@@ -372,6 +372,10 @@
     <Content Include="Views\DSSanPham\Tra.cshtml" />
     <Content Include="Views\DSSanPham\TraSua.cshtml" />
     <Content Include="Views\GioHang\Dathang.cshtml" />
+    <Content Include="Views\Home\DangKy.cshtml" />
+    <Content Include="Views\Home\DangNhap.cshtml" />
+    <Content Include="Views\Home\DoiMatKhau.cshtml" />
+    <Content Include="Views\Home\DoiThongTin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
