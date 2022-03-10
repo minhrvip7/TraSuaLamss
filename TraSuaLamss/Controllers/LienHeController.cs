@@ -14,20 +14,20 @@ namespace TraSuaLamss.Controllers
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: LIENHEs
+        // GET: LienHe
         public ActionResult Index()
         {
-            return View(db.LIENHEs.ToList());
+            return View(db.LienHe.ToList());
         }
 
-        // GET: LIENHEs/Details/5
+        // GET: LienHe/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LIENHE lIENHE = db.LIENHEs.Find(id);
+            LienHe lIENHE = db.LienHe.Find(id);
             if (lIENHE == null)
             {
                 return HttpNotFound();
@@ -35,22 +35,22 @@ namespace TraSuaLamss.Controllers
             return View(lIENHE);
         }
 
-        // GET: LIENHEs/Create
+        // GET: LienHe/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: LIENHEs/Create
+        // POST: LienHe/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LIENHE lIENHE)
+        public ActionResult Create([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LienHe lIENHE)
         {
             if (ModelState.IsValid)
             {
-                db.LIENHEs.Add(lIENHE);
+                db.LienHe.Add(lIENHE);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -58,14 +58,14 @@ namespace TraSuaLamss.Controllers
             return View(lIENHE);
         }
 
-        // GET: LIENHEs/Edit/5
+        // GET: LienHe/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LIENHE lIENHE = db.LIENHEs.Find(id);
+            LienHe lIENHE = db.LienHe.Find(id);
             if (lIENHE == null)
             {
                 return HttpNotFound();
@@ -73,12 +73,12 @@ namespace TraSuaLamss.Controllers
             return View(lIENHE);
         }
 
-        // POST: LIENHEs/Edit/5
+        // POST: LienHe/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LIENHE lIENHE)
+        public ActionResult Edit([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LienHe lIENHE)
         {
             if (ModelState.IsValid)
             {
@@ -89,14 +89,14 @@ namespace TraSuaLamss.Controllers
             return View(lIENHE);
         }
 
-        // GET: LIENHEs/Delete/5
+        // GET: LienHe/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            LIENHE lIENHE = db.LIENHEs.Find(id);
+            LienHe lIENHE = db.LienHe.Find(id);
             if (lIENHE == null)
             {
                 return HttpNotFound();
@@ -104,13 +104,13 @@ namespace TraSuaLamss.Controllers
             return View(lIENHE);
         }
 
-        // POST: LIENHEs/Delete/5
+        // POST: LienHe/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            LIENHE lIENHE = db.LIENHEs.Find(id);
-            db.LIENHEs.Remove(lIENHE);
+            LienHe lIENHE = db.LienHe.Find(id);
+            db.LienHe.Remove(lIENHE);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

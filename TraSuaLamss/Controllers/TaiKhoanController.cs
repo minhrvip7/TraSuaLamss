@@ -14,20 +14,20 @@ namespace TraSuaLamss.Controllers
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: TAIKHOANs
+        // GET: TaiKhoan
         public ActionResult Index()
         {
-            return View(db.TAIKHOANs.ToList());
+            return View(db.TaiKhoan.ToList());
         }
 
-        // GET: TAIKHOANs/Details/5
+        // GET: TaiKhoan/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TaiKhoan tAIKHOAN = db.TAIKHOANs.Find(id);
+            TaiKhoan tAIKHOAN = db.TaiKhoan.Find(id);
             if (tAIKHOAN == null)
             {
                 return HttpNotFound();
@@ -35,13 +35,13 @@ namespace TraSuaLamss.Controllers
             return View(tAIKHOAN);
         }
 
-        // GET: TAIKHOANs/Create
+        // GET: TaiKhoan/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: TAIKHOANs/Create
+        // POST: TaiKhoan/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -50,7 +50,7 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.TAIKHOANs.Add(tAIKHOAN);
+                db.TaiKhoan.Add(tAIKHOAN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -58,14 +58,14 @@ namespace TraSuaLamss.Controllers
             return View(tAIKHOAN);
         }
 
-        // GET: TAIKHOANs/Edit/5
+        // GET: TaiKhoan/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TaiKhoan tAIKHOAN = db.TAIKHOANs.Find(id);
+            TaiKhoan tAIKHOAN = db.TaiKhoan.Find(id);
             if (tAIKHOAN == null)
             {
                 return HttpNotFound();
@@ -73,7 +73,7 @@ namespace TraSuaLamss.Controllers
             return View(tAIKHOAN);
         }
 
-        // POST: TAIKHOANs/Edit/5
+        // POST: TaiKhoan/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -89,14 +89,14 @@ namespace TraSuaLamss.Controllers
             return View(tAIKHOAN);
         }
 
-        // GET: TAIKHOANs/Delete/5
+        // GET: TaiKhoan/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TaiKhoan tAIKHOAN = db.TAIKHOANs.Find(id);
+            TaiKhoan tAIKHOAN = db.TaiKhoan.Find(id);
             if (tAIKHOAN == null)
             {
                 return HttpNotFound();
@@ -104,13 +104,13 @@ namespace TraSuaLamss.Controllers
             return View(tAIKHOAN);
         }
 
-        // POST: TAIKHOANs/Delete/5
+        // POST: TaiKhoan/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            TaiKhoan tAIKHOAN = db.TAIKHOANs.Find(id);
-            db.TAIKHOANs.Remove(tAIKHOAN);
+            TaiKhoan tAIKHOAN = db.TaiKhoan.Find(id);
+            db.TaiKhoan.Remove(tAIKHOAN);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
