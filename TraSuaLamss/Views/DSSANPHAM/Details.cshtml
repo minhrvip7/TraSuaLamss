@@ -3,7 +3,6 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
 <style type="text/css">
     * {
         margin: 0px;
@@ -121,17 +120,6 @@
     </div>
 </div>
 <br />
-<script type="text/javascript">
-    var txtSoLuong = $("#txtSoLuong");
-    //change this selector to grab your ActionLink's ID
-    var anchorInfo = $("a");
 
-    fullName.on("keyup", function () {
-        var value = $(this).val();
-        anchorInfo.attr("info", value);
-        //logging the keystrokes getting to the Info attribute
-        console.log(anchorInfo.attr("info"));
-    });
-</script>
 
 

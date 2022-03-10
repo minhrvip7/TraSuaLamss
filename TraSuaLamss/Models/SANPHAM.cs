@@ -27,8 +27,7 @@ namespace TraSuaLamss.Models
         public string TenSP { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string GiaBan { get; set; }
+        public decimal GiaBan { get; set; }
 
         [Required]
         [StringLength(100)]
@@ -52,8 +51,8 @@ namespace TraSuaLamss.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHang> GIOHANGs { get; set; }
 
-        public virtual NGUYENLIEU NGUYENLIEU { get; set; }
+        public virtual NguyenLieu NGUYENLIEU { get; set; }
 
-        public virtual PHANLOAI PHANLOAI { get; set; }
+        public virtual PhanLoai PHANLOAI { get; set; }
     }
 }

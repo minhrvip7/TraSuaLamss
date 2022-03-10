@@ -36,8 +36,7 @@ namespace TraSuaLamss.Models
         public DateTime NgayGiao { get; set; }
 
         [Required]
-        [StringLength(5)]
-        public string MaKH { get; set; }
+        public int MaKH { get; set; }
 
         [Required]
         [StringLength(100)]

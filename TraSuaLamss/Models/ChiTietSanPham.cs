@@ -10,7 +10,7 @@ namespace TraSuaLamss.Models
     public class ChiTietSanPham
     {
         public string MaSP { get; set; }
-        public string GiaBan { get; set; }
+        public decimal GiaBan { get; set; }
         public string TenSP { get; set; }
         public string MoTa { get; set; }
         public string Anh { get; set; }

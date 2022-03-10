@@ -18,8 +18,7 @@ namespace TraSuaLamss.Models
         }
 
         [Key]
-        [StringLength(5)]
-        public string MaKH { get; set; }
+        public int MaKH { get; set; }
 
         [Required]
         [StringLength(30)]
@@ -56,6 +55,6 @@ namespace TraSuaLamss.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<GioHang> GIOHANGs { get; set; }
 
-        public virtual TAIKHOAN TAIKHOAN { get; set; }
+        public virtual TaiKhoan TAIKHOAN { get; set; }
     }
 }

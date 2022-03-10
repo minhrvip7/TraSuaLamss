@@ -20,113 +20,13 @@ namespace TraSuaLamss.Controllers
             var dONHANGs = db.DonHang.Include(d => d.KHACHHANG);
             return View(dONHANGs.ToList());
         }
-
-        // GET: DONHANGs/Details/5
-        public ActionResult Details(string id)
+        public ActionResult CreateDonHang(List<PhieuDatHang> list,string MaDH,string maKH,decimal tongtien)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DonHang dONHANG = db.DonHang.Find(id);
-            if (dONHANG == null)
-            {
-                return HttpNotFound();
-            }
-            return View(dONHANG);
-        }
-
-        // GET: DONHANGs/Create
-        public ActionResult Create()
-        {
-            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH");
             return View();
         }
-
-        // POST: DONHANGs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DonHang dONHANG)
+        public ActionResult CreateDonHangLe(string MaSP, string MaDH, string maKH, decimal tongtien)
         {
-            if (ModelState.IsValid)
-            {
-                db.DonHang.Add(dONHANG);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", dONHANG.MaKH);
-            return View(dONHANG);
-        }
-
-        // GET: DONHANGs/Edit/5
-        public ActionResult Edit(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DonHang dONHANG = db.DonHang.Find(id);
-            if (dONHANG == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", dONHANG.MaKH);
-            return View(dONHANG);
-        }
-
-        // POST: DONHANGs/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DonHang dONHANG)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(dONHANG).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", dONHANG.MaKH);
-            return View(dONHANG);
-        }
-
-        // GET: DONHANGs/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            DonHang dONHANG = db.DonHang.Find(id);
-            if (dONHANG == null)
-            {
-                return HttpNotFound();
-            }
-            return View(dONHANG);
-        }
-
-        // POST: DONHANGs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            DonHang dONHANG = db.DonHang.Find(id);
-            db.DonHang.Remove(dONHANG);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            return View();
         }
     }
 }
