@@ -30,10 +30,10 @@
             width:160px;
         }
 
-        #datmua #btn a:hover {
-            background-color: gray;
-            color: red;
-        }
+            #datmua #btn a:hover {
+                background-color: #FF7F50;
+                color: red;
+            }
     #product {
         width: 222px;
         height: 330px;
@@ -85,8 +85,8 @@
                         </p>
                     </div>
                     <div id="datmua">
-                        <div id="btn" style="float:left">
-                            <a href="@Url.Action("ThemGioHang","GioHang",new { id = @ViewBag.MaSP  })">THÊM GIỎ HÀNG</a>
+                        <div id="btn" style="float: left; background-color: #FFEFD5; border: 1px solid orangered">
+                            <a style="color: orangered" href="@Url.Action("ThemGioHang","GioHang",new { id = @ViewBag.MaSP  })">THÊM GIỎ HÀNG</a>
                         </div>
                         <div id="btn" style="float:left;margin-left:30px">
                             <a href="@Url.Action("DatMua","GioHang",new { id = @ViewBag.MaSP })">ĐẶT MUA</a>

@@ -69,7 +69,12 @@
     #Danhmuc {
         padding: 10px 0 10px 0;
     }
-
+    #button {
+        margin: 10px 0 0 55px;
+        height: 40px;
+        width: 140px;
+        border-radius: 4px;
+    }
     #page {
         margin-left: 25px;
     }
@@ -85,7 +90,7 @@
                             <p style="font-size:22px;font-weight:bold">DANH MỤC SẢN PHẨM</p>
                             <p id="Danhmuc"><a href="/DSSANPHAM/Index">tất cả sản phẩm</a></p>
                             <p id="Danhmuc"><a href="/DSSANPHAM/TraSua">Trà sữa</a></p>
-                            <p id="Danhmuc"><a href="/DSSANPHAM/Tra">Trà</a></p>
+                            <p id="Danhmuc"><a style="color:red" href="/DSSANPHAM/Tra">Trà</a></p>
                             <p id="Danhmuc"><a href="/DSSANPHAM/CaPhe">Cà phê</a></p>
                             <p id="Danhmuc"><a href="/DSSANPHAM/DoAnVat">Đồ ăn vặt</a></p>
 
@@ -101,7 +106,7 @@
                                     <span style=" padding-left: 5px">@Html.TextBox("first", ViewBag.currentFilter1 as string, new { @class = "timgia" })</span>&nbsp;&nbsp;-&nbsp;
                                     <span>@Html.TextBox("end", ViewBag.currentFilter2 as string, new { @class = "timgia" })</span>
                                     <span style="padding-left: 5px; color: red; font-size: 12px">@ViewBag.Error</span><br />
-                                    <span><input type="submit" value="Tìm kiếm" style="height:30px;margin:10px 0 0 70px" /></span>
+                                    <span><input id="button" type="submit" value="Tìm kiếm" /></span>
                                 </p>
                             }
                         </div>
