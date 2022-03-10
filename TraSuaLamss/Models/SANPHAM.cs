@@ -7,13 +7,15 @@ namespace TraSuaLamss.Models
     using System.Data.Entity.Spatial;
 
     [Table("SANPHAM")]
-    public partial class SANPHAM
+    public partial class SanPham
     {
+        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public SANPHAM()
+
+        public SanPham()
         {
-            CHITIETDONHANGs = new HashSet<CHITIETDONHANG>();
-            GIOHANGs = new HashSet<GIOHANG>();
+            CHITIETDONHANGs = new HashSet<ChiTietDonHang>();
+            GIOHANGs = new HashSet<GioHang>();
         }
 
         [Key]
@@ -45,10 +47,10 @@ namespace TraSuaLamss.Models
         public string MaLoai { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
+        public virtual ICollection<ChiTietDonHang> CHITIETDONHANGs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GIOHANG> GIOHANGs { get; set; }
+        public virtual ICollection<GioHang> GIOHANGs { get; set; }
 
         public virtual NGUYENLIEU NGUYENLIEU { get; set; }
 

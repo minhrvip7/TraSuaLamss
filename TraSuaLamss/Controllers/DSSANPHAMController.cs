@@ -11,9 +11,9 @@ namespace TraSuaLamss.Controllers
     public class DSSanPhamController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
-        private List<SANPHAM> LaySanPham()
+        private List<SanPham> LaySanPham()
         {
-            return db.SANPHAMs.OrderByDescending(s => s.TenSP).ToList();
+            return db.SanPham.OrderByDescending(s => s.TenSP).ToList();
         }
         // GET: DSSANPHAM
         public ActionResult Index(int? page, string Name, string first, string end,string currentFilter, string currentFilter1, string currentFilter2)
@@ -142,7 +142,7 @@ namespace TraSuaLamss.Controllers
             ViewBag.currentFilter1 = first;
             ViewBag.currentFilter2 = end;
             ViewBag.currentFilter = Name;
-            var sanpham = (from sp in db.SANPHAMs
+            var sanpham = (from sp in db.SanPham
                            join l in db.PHANLOAIs on sp.MaLoai equals l.MaLoai
                            where l.TenLoai == "Trà sữa"
                            select sp).ToList();
@@ -208,7 +208,7 @@ namespace TraSuaLamss.Controllers
             ViewBag.currentFilter1 = first;
             ViewBag.currentFilter2 = end;
             ViewBag.currentFilter = Name;
-            var sanpham = (from sp in db.SANPHAMs
+            var sanpham = (from sp in db.SanPham
                            join l in db.PHANLOAIs on sp.MaLoai equals l.MaLoai
                            where l.TenLoai == "Trà"
                            select sp).ToList();
@@ -274,7 +274,7 @@ namespace TraSuaLamss.Controllers
             ViewBag.currentFilter1 = first;
             ViewBag.currentFilter2 = end;
             ViewBag.currentFilter = Name;
-            var sanpham = (from sp in db.SANPHAMs
+            var sanpham = (from sp in db.SanPham
                            join l in db.PHANLOAIs on sp.MaLoai equals l.MaLoai
                            where l.TenLoai == "Cà phê"
                            select sp).ToList();
@@ -340,7 +340,7 @@ namespace TraSuaLamss.Controllers
             ViewBag.currentFilter1 = first;
             ViewBag.currentFilter2 = end;
             ViewBag.currentFilter = Name;
-            var sanpham = (from sp in db.SANPHAMs
+            var sanpham = (from sp in db.SanPham
                            join l in db.PHANLOAIs on sp.MaLoai equals l.MaLoai
                            where l.TenLoai == "Đồ ăn vặt"
                            select sp).ToList();

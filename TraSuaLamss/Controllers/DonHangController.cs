@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: DONHANGs
         public ActionResult Index()
         {
-            var dONHANGs = db.DONHANGs.Include(d => d.KHACHHANG);
+            var dONHANGs = db.DonHang.Include(d => d.KHACHHANG);
             return View(dONHANGs.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
+            DonHang dONHANG = db.DonHang.Find(id);
             if (dONHANG == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace TraSuaLamss.Controllers
         // GET: DONHANGs/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH");
             return View();
         }
 
@@ -48,16 +48,16 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DONHANG dONHANG)
+        public ActionResult Create([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DonHang dONHANG)
         {
             if (ModelState.IsValid)
             {
-                db.DONHANGs.Add(dONHANG);
+                db.DonHang.Add(dONHANG);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", dONHANG.MaKH);
             return View(dONHANG);
         }
 
@@ -68,12 +68,12 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
+            DonHang dONHANG = db.DonHang.Find(id);
             if (dONHANG == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", dONHANG.MaKH);
             return View(dONHANG);
         }
 
@@ -82,7 +82,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DONHANG dONHANG)
+        public ActionResult Edit([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DonHang dONHANG)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", dONHANG.MaKH);
             return View(dONHANG);
         }
 
@@ -101,7 +101,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
+            DonHang dONHANG = db.DonHang.Find(id);
             if (dONHANG == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            DONHANG dONHANG = db.DONHANGs.Find(id);
-            db.DONHANGs.Remove(dONHANG);
+            DonHang dONHANG = db.DonHang.Find(id);
+            db.DonHang.Remove(dONHANG);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
