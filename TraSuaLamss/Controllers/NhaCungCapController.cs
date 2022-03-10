@@ -10,7 +10,7 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class NHACUNGCAPsController : Controller
+    public class NhaCungCapController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
@@ -27,7 +27,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NHACUNGCAP nHACUNGCAP = db.NHACUNGCAPs.Find(id);
+            NhaCungCap nHACUNGCAP = db.NHACUNGCAPs.Find(id);
             if (nHACUNGCAP == null)
             {
                 return HttpNotFound();
@@ -46,7 +46,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaNCC,TenNCC,DiaChi,SDT")] NHACUNGCAP nHACUNGCAP)
+        public ActionResult Create([Bind(Include = "MaNCC,TenNCC,DiaChi,SDT")] NhaCungCap nHACUNGCAP)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NHACUNGCAP nHACUNGCAP = db.NHACUNGCAPs.Find(id);
+            NhaCungCap nHACUNGCAP = db.NHACUNGCAPs.Find(id);
             if (nHACUNGCAP == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaNCC,TenNCC,DiaChi,SDT")] NHACUNGCAP nHACUNGCAP)
+        public ActionResult Edit([Bind(Include = "MaNCC,TenNCC,DiaChi,SDT")] NhaCungCap nHACUNGCAP)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NHACUNGCAP nHACUNGCAP = db.NHACUNGCAPs.Find(id);
+            NhaCungCap nHACUNGCAP = db.NHACUNGCAPs.Find(id);
             if (nHACUNGCAP == null)
             {
                 return HttpNotFound();
@@ -109,7 +109,7 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            NHACUNGCAP nHACUNGCAP = db.NHACUNGCAPs.Find(id);
+            NhaCungCap nHACUNGCAP = db.NHACUNGCAPs.Find(id);
             db.NHACUNGCAPs.Remove(nHACUNGCAP);
             db.SaveChanges();
             return RedirectToAction("Index");

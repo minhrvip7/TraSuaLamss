@@ -10,107 +10,107 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class PHANLOAIsController : Controller
+    public class LienHeController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: PHANLOAIs
+        // GET: LIENHEs
         public ActionResult Index()
         {
-            return View(db.PHANLOAIs.ToList());
+            return View(db.LIENHEs.ToList());
         }
 
-        // GET: PHANLOAIs/Details/5
+        // GET: LIENHEs/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            if (pHANLOAI == null)
+            LIENHE lIENHE = db.LIENHEs.Find(id);
+            if (lIENHE == null)
             {
                 return HttpNotFound();
             }
-            return View(pHANLOAI);
+            return View(lIENHE);
         }
 
-        // GET: PHANLOAIs/Create
+        // GET: LIENHEs/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: PHANLOAIs/Create
+        // POST: LIENHEs/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaLoai,TenLoai")] PHANLOAI pHANLOAI)
+        public ActionResult Create([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LIENHE lIENHE)
         {
             if (ModelState.IsValid)
             {
-                db.PHANLOAIs.Add(pHANLOAI);
+                db.LIENHEs.Add(lIENHE);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(pHANLOAI);
+            return View(lIENHE);
         }
 
-        // GET: PHANLOAIs/Edit/5
+        // GET: LIENHEs/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            if (pHANLOAI == null)
+            LIENHE lIENHE = db.LIENHEs.Find(id);
+            if (lIENHE == null)
             {
                 return HttpNotFound();
             }
-            return View(pHANLOAI);
+            return View(lIENHE);
         }
 
-        // POST: PHANLOAIs/Edit/5
+        // POST: LIENHEs/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaLoai,TenLoai")] PHANLOAI pHANLOAI)
+        public ActionResult Edit([Bind(Include = "MaLH,TenLH,DiaChiLH,SDT")] LIENHE lIENHE)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(pHANLOAI).State = EntityState.Modified;
+                db.Entry(lIENHE).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(pHANLOAI);
+            return View(lIENHE);
         }
 
-        // GET: PHANLOAIs/Delete/5
+        // GET: LIENHEs/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            if (pHANLOAI == null)
+            LIENHE lIENHE = db.LIENHEs.Find(id);
+            if (lIENHE == null)
             {
                 return HttpNotFound();
             }
-            return View(pHANLOAI);
+            return View(lIENHE);
         }
 
-        // POST: PHANLOAIs/Delete/5
+        // POST: LIENHEs/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
-            db.PHANLOAIs.Remove(pHANLOAI);
+            LIENHE lIENHE = db.LIENHEs.Find(id);
+            db.LIENHEs.Remove(lIENHE);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -7,7 +7,7 @@ namespace TraSuaLamss.Models
     using System.Data.Entity.Spatial;
 
     [Table("DONHANG")]
-    public partial class DONHANG
+    public partial class DonHang
     {
         [Key]
         [StringLength(5)]
@@ -36,13 +36,12 @@ namespace TraSuaLamss.Models
         public DateTime NgayGiao { get; set; }
 
         [Required]
-        [StringLength(5)]
-        public string MaKH { get; set; }
+        public int MaKH { get; set; }
 
         [Required]
         [StringLength(100)]
         public string GhiChu { get; set; }
 
-        public virtual KHACHHANG KHACHHANG { get; set; }
+        public virtual KhachHang KHACHHANG { get; set; }
     }
 }
