@@ -146,12 +146,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CHITIETDONHANG.cs" />
+    <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\ChiTietSanPham.cs" />
-    <Compile Include="Models\DONHANG.cs" />
-    <Compile Include="Models\GIOHANG.cs" />
-    <Compile Include="Models\KHACHHANG.cs" />
-    <Compile Include="Models\LIENHE.cs" />
+    <Compile Include="Models\DonHang.cs" />
+    <Compile Include="Models\GioHang.cs" />
+    <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\LienHe.cs" />
     <Compile Include="Models\NguyenLieu.cs" />
     <Compile Include="Models\NhaCungCap.cs" />
     <Compile Include="Models\NhanVien.cs" />
@@ -325,11 +325,6 @@
     <Content Include="Views\KhachHang\Details.cshtml" />
     <Content Include="Views\KhachHang\Edit.cshtml" />
     <Content Include="Views\KhachHang\Index.cshtml" />
-    <Content Include="Views\GioHang\Create.cshtml" />
-    <Content Include="Views\GioHang\Delete.cshtml" />
-    <Content Include="Views\GioHang\Details.cshtml" />
-    <Content Include="Views\GioHang\Edit.cshtml" />
-    <Content Include="Views\GioHang\Index.cshtml" />
     <Content Include="Views\DonHang\Create.cshtml" />
     <Content Include="Views\DonHang\Delete.cshtml" />
     <Content Include="Views\DonHang\Details.cshtml" />
