@@ -28,7 +28,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
+            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
             if (nHANVIEN == null)
             {
                 return HttpNotFound();
@@ -48,7 +48,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaNV,TenNV,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai,STK,Luong")] NHANVIEN nHANVIEN)
+        public ActionResult Create([Bind(Include = "MaNV,TenNV,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai,STK,Luong")] NhanVien nHANVIEN)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
+            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
             if (nHANVIEN == null)
             {
                 return HttpNotFound();
@@ -82,7 +82,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaNV,TenNV,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai,STK,Luong")] NHANVIEN nHANVIEN)
+        public ActionResult Edit([Bind(Include = "MaNV,TenNV,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai,STK,Luong")] NhanVien nHANVIEN)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
+            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
             if (nHANVIEN == null)
             {
                 return HttpNotFound();
@@ -114,7 +114,7 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            NHANVIEN nHANVIEN = db.NHANVIENs.Find(id);
+            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
             db.NHANVIENs.Remove(nHANVIEN);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -7,7 +7,7 @@ namespace TraSuaLamss.Models
     using System.Data.Entity.Spatial;
 
     [Table("NHANVIEN")]
-    public partial class NHANVIEN
+    public partial class NhanVien
     {
         [Key]
         [StringLength(5)]
@@ -45,6 +45,6 @@ namespace TraSuaLamss.Models
 
         public decimal Luong { get; set; }
 
-        public virtual TAIKHOAN TAIKHOAN { get; set; }
+        public virtual TaiKhoan TAIKHOAN { get; set; }
     }
 }

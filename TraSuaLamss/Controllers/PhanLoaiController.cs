@@ -27,7 +27,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
+            PhanLoai pHANLOAI = db.PHANLOAIs.Find(id);
             if (pHANLOAI == null)
             {
                 return HttpNotFound();
@@ -46,7 +46,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaLoai,TenLoai")] PHANLOAI pHANLOAI)
+        public ActionResult Create([Bind(Include = "MaLoai,TenLoai")] PhanLoai pHANLOAI)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
+            PhanLoai pHANLOAI = db.PHANLOAIs.Find(id);
             if (pHANLOAI == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaLoai,TenLoai")] PHANLOAI pHANLOAI)
+        public ActionResult Edit([Bind(Include = "MaLoai,TenLoai")] PhanLoai pHANLOAI)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
+            PhanLoai pHANLOAI = db.PHANLOAIs.Find(id);
             if (pHANLOAI == null)
             {
                 return HttpNotFound();
@@ -109,7 +109,7 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            PHANLOAI pHANLOAI = db.PHANLOAIs.Find(id);
+            PhanLoai pHANLOAI = db.PHANLOAIs.Find(id);
             db.PHANLOAIs.Remove(pHANLOAI);
             db.SaveChanges();
             return RedirectToAction("Index");

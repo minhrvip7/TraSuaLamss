@@ -4,43 +4,73 @@
 }
 <style>
     td {
-        padding: 10px 20px 10px 20px;
+        padding: 10px 20px 10px 10px;
     }
-
-    form {
-        text-align: center;
-    }
-
-        form.dathang {
-            width: 80%;
+        td.nut a {
+            clear: both;
+            background-color: red;
+            color: white;
+            width: 120px;
+            height: 40px;
+            line-height: 40px;
             display: block;
-            padding-bottom: 500px;
+            text-align: center;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
         }
-</style>
-<form class="dathang">
-    <h2 align="center">Xác nhận đặt hàng</h2>
-    <table>
-        <tr>
-            <td>Mã đơn hàng</td>
-            <td>@ViewBag.MaDH</td>
-        </tr>
-        <tr>
-            <td>Khách hàng</td>
-            <td>@ViewBag.TenKH</td>
-        </tr>
-        <tr>
-            <td>Địa chỉ</td>
-            <td>@ViewBag.DiaChi</td>
-        </tr>
-    </table>
 
-    <table>
+            td.nut a:hover {
+                background-color: gray;
+                color: pink;
+            }
+
+        td.td-center {
+            text-align: center;
+        }
+
+    table.dathang {
+        border: 1px solid black;
+    }
+
+    body {
+        padding-top: 180px;
+    }
+
+    .cap {
+        font-family: Optima;
+    }
+</style>
+<body style="background-color: #e8e8e8 ">
+
+    <h3 class="cap" align="center">Xác nhận đặt hàng</h3>
+    <br />
+    <table class="dathang" align="center">
+
         <thead>
             <tr>
+                <td>Mã đơn hàng: </td>
+                <td colspan="3">@ViewBag.MaDH</td>
+            </tr>
+            <tr>
+                <td>Khách hàng: </td>
+                <td colspan="3">@ViewBag.TenKH</td>
+            </tr>
+            <tr>
+                <td>Địa chỉ: </td>
+                <td>@ViewBag.DiaChi</td>
+            </tr>
+            <tr>
+                <td>Ngày đặt: </td>
+                <td>
+                    @ViewBag.NgayDat
+                </td>
+            </tr>
+            <tr>
                 <td>Sản phẩm</td>
-                <td>Đơn giá</td>
-                <td>Số lượng</td>
-                <td>Thành tiền</td>
+                <td class="td-center">Đơn giá</td>
+                <td class="td-center">Số lượng</td>
+                <td class="td-center">Thành tiền</td>
             </tr>
         </thead>
         <tbody>
@@ -49,25 +79,23 @@
 
                 <tr>
                     <td>@item.SP.TenSP</td>
-                    <td>@item.CTDH.DonGia</td>
-                    <td>@item.CTDH.SoLuong</td>
-                    <td>@(item.CTDH.DonGia * item.CTDH.SoLuong)</td>
+                    <td class="td-center">@item.CTDH.DonGia</td>
+                    <td class="td-center">@item.CTDH.SoLuong</td>
+                    <td class="td-center">@(item.CTDH.DonGia * item.CTDH.SoLuong)</td>
                 </tr>
             }
             <tr>
-                <td></td>
-                <td></td>
-                <td>Tổng tiền: </td>
-                <td>@ViewBag.TongTien</td>
+                <td colspan="3" style="text-align:right;">Tổng tiền: </td>
+                <td class="td-center">@ViewBag.TongTien</td>
+            </tr>
+            <tr>
+                <td colspan="3"></td>
+                <td class="nut"><a href="@Url.Action("CreateDonHang", "DonHang")">Đặt hàng</a></td>
             </tr>
         </tbody>
-
     </table>
 
-    <div align="center"><button>xác nhận</button></div>
-</form>
-<br />
-
+</body>
 
 
 
