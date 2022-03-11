@@ -112,6 +112,8 @@ namespace TraSuaLamss.Controllers
                 {
                     ViewBag.Success = "Chúc mừng đăng nhập thành công!";
                     Session["TAIKHOAN"] = tk;
+                    Session["PhanQuyen"] = tk.PhanQuyen;
+                    Session["Hoten"] = tk.HoTen;
                     return RedirectToAction("Index");
                 }
                 else
