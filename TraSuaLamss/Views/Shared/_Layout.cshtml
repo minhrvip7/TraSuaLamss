@@ -38,22 +38,21 @@
             <div class="row">
 
                 <div class="search form-inline">
-                    <form name="frmSearch" id="frmSearch" action="/SANPHAMs/Search" method="post" style="margin-left:50px;margin-top:-50px">
+                    <form name="frmSearch" id="frmSearch" action="/SANPHAM/Search" method="post" style="margin-left:50px;margin-top:-50px">
                         <input type="text" name="searchkey" placeholder="Nhap tu khoa" class="form-control" style="width:800px" />
-                        <button type="submit" class="searchButton" ><i class="fa fa-search"></i></button>
+                        <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
                         <div class="form-inline dndx" style="margin-top:-20px">
-                            @{
-                                string imageurl = "";
-                                if (Session["TAIKHOAN"] != null)
-                                {
-                                    <a href="/TAIKHOANs/Index"><img src="@Url.Content(imageurl)" /></a><span>/</span><a href="@Url.Action("Logout","Home")">Đăng xuất</a>
-                                }
-                                else
-                                {
-                                    <a href="/Home/DangNhap">Đăng nhập</a><span>/</span><a href="/Home/DangKy">Đăng ký</a>
-                                }
+                            @if (Session["TAIKHOAN"] != null)
+                            {
 
+                                <a href="/TAIKHOANs/Index">@Session["HoTen"]</a><span>/</span><a href="@Url.Action("Logout","Home")">Đăng xuất</a>
                             }
+                            @if (Session["TAIKHOAN"] == null)
+                            {
+                                <a href="/Home/DangNhap">Đăng nhập</a><span>/</span><a href="/Home/DangKy">Đăng ký</a>
+                            }
+
+
                         </div>
                     </form>
 
@@ -73,19 +72,30 @@
                                 </ul>
                             </li>
                             <li><a href="/LIENHEs/Index">LIÊN HỆ</a></li>
-                            @{
-
-                                if (Session["TAIKHOAN"] != null)
+                            @if (Session["PhanQuyen"] == null)
+                            {
+                                <li><a href="/Home/DangNhap">TÀI KHOẢN</a></li>
+                                <li><a href="/Home/DangNhap">GIỎ HÀNG</a></li>
+                            }
+                            else
+                            {
+                                if (Session["PhanQuyen"].ToString() == "Admin")
                                 {
-                                    <li><a href="/TAIKHOANs/Index">TÀI KHOẢN</a></li>
-                                    <li><a href="/GIOHANGs/Giohang">GIỎ HÀNG</a></li>
+                                    <li><a href="/TaiKhoan/Index">QUẢN LÝ TÀI KHOẢN</a></li>
+                                    <li><a href="/SanPham/Index">QUẢN LÝ SẢN PHẨM</a></li>
                                 }
-                                else
+                                if (Session["PhanQuyen"].ToString() == "Khách hàng")
                                 {
-                                    <li><a href="/Home/DangNhap">TÀI KHOẢN</a></li>
-                                    <li><a href="/Home/DangNhap">GIỎ HÀNG</a></li>
+                                    <li><a href="/GioiThieu/Index">TÀI KHOẢN</a></li>
+                                    <li><a href="/GioiThieu/Index">GIỎ HÀNG</a></li>
+                                }
+                                if (Session["PhanQuyen"].ToString() == "Nhân viên")
+                                {
+                                    <li><a href="/SanPham/Index">QUẢN LÝ SẢN PHẨM</a></li>
+
                                 }
                             }
+
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -98,7 +108,7 @@
     </header>
 
     <br /><br /><br /><br /><br /><br />
-                                  <section>@RenderBody()</section>
+    <section>@RenderBody()</section>
     <footer>
         <div class="container">
             <div class="row">
