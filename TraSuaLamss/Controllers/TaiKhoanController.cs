@@ -10,116 +10,107 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class CHITIETDONHANGsController : Controller
+    public class TaiKhoanController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: CHITIETDONHANGs
+        // GET: TaiKhoan
         public ActionResult Index()
         {
-            var cHITIETDONHANGs = db.CHITIETDONHANGs.Include(c => c.KHACHHANG).Include(c => c.SANPHAM);
-            return View(cHITIETDONHANGs.ToList());
+            return View(db.TaiKhoan.ToList());
         }
 
-        // GET: CHITIETDONHANGs/Details/5
+        // GET: TaiKhoan/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
-            if (cHITIETDONHANG == null)
+            TaiKhoan tAIKHOAN = db.TaiKhoan.Find(id);
+            if (tAIKHOAN == null)
             {
                 return HttpNotFound();
             }
-            return View(cHITIETDONHANG);
+            return View(tAIKHOAN);
         }
 
-        // GET: CHITIETDONHANGs/Create
+        // GET: TaiKhoan/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
             return View();
         }
 
-        // POST: CHITIETDONHANGs/Create
+        // POST: TaiKhoan/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaHD,MaKH,MaSP,SoLuong,DonGia")] CHITIETDONHANG cHITIETDONHANG)
+        public ActionResult Create([Bind(Include = "Username,Password,HoTen,PhanQuyen")] TaiKhoan tAIKHOAN)
         {
             if (ModelState.IsValid)
             {
-                db.CHITIETDONHANGs.Add(cHITIETDONHANG);
+                db.TaiKhoan.Add(tAIKHOAN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
-            return View(cHITIETDONHANG);
+            return View(tAIKHOAN);
         }
 
-        // GET: CHITIETDONHANGs/Edit/5
+        // GET: TaiKhoan/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
-            if (cHITIETDONHANG == null)
+            TaiKhoan tAIKHOAN = db.TaiKhoan.Find(id);
+            if (tAIKHOAN == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
-            return View(cHITIETDONHANG);
+            return View(tAIKHOAN);
         }
 
-        // POST: CHITIETDONHANGs/Edit/5
+        // POST: TaiKhoan/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaHD,MaKH,MaSP,SoLuong,DonGia")] CHITIETDONHANG cHITIETDONHANG)
+        public ActionResult Edit([Bind(Include = "Username,Password,HoTen,PhanQuyen")] TaiKhoan tAIKHOAN)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(cHITIETDONHANG).State = EntityState.Modified;
+                db.Entry(tAIKHOAN).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
-            return View(cHITIETDONHANG);
+            return View(tAIKHOAN);
         }
 
-        // GET: CHITIETDONHANGs/Delete/5
+        // GET: TaiKhoan/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
-            if (cHITIETDONHANG == null)
+            TaiKhoan tAIKHOAN = db.TaiKhoan.Find(id);
+            if (tAIKHOAN == null)
             {
                 return HttpNotFound();
             }
-            return View(cHITIETDONHANG);
+            return View(tAIKHOAN);
         }
 
-        // POST: CHITIETDONHANGs/Delete/5
+        // POST: TaiKhoan/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
-            db.CHITIETDONHANGs.Remove(cHITIETDONHANG);
+            TaiKhoan tAIKHOAN = db.TaiKhoan.Find(id);
+            db.TaiKhoan.Remove(tAIKHOAN);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -10,107 +10,112 @@ using TraSuaLamss.Models;
 
 namespace TraSuaLamss.Controllers
 {
-    public class NHACUNGCAPsController : Controller
+    public class NguyenLieuController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: NHACUNGCAPs
+        // GET: NguyenLieu
         public ActionResult Index()
         {
-            return View(db.NHACUNGCAPs.ToList());
+            var NguyenLieu = db.NguyenLieu.Include(n => n.NHACUNGCAP);
+            return View(NguyenLieu.ToList());
         }
 
-        // GET: NHACUNGCAPs/Details/5
+        // GET: NguyenLieu/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NHACUNGCAP nHACUNGCAP = db.NHACUNGCAPs.Find(id);
-            if (nHACUNGCAP == null)
+            NguyenLieu nGUYENLIEU = db.NguyenLieu.Find(id);
+            if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
             }
-            return View(nHACUNGCAP);
+            return View(nGUYENLIEU);
         }
 
-        // GET: NHACUNGCAPs/Create
+        // GET: NguyenLieu/Create
         public ActionResult Create()
         {
+            ViewBag.MaNCC = new SelectList(db.NhaCungCap, "MaNCC", "TenNCC");
             return View();
         }
 
-        // POST: NHACUNGCAPs/Create
+        // POST: NguyenLieu/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaNCC,TenNCC,DiaChi,SDT")] NHACUNGCAP nHACUNGCAP)
+        public ActionResult Create([Bind(Include = "MaNL,TenNL,MaNCC")] NguyenLieu nGUYENLIEU)
         {
             if (ModelState.IsValid)
             {
-                db.NHACUNGCAPs.Add(nHACUNGCAP);
+                db.NguyenLieu.Add(nGUYENLIEU);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(nHACUNGCAP);
+            ViewBag.MaNCC = new SelectList(db.NhaCungCap, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            return View(nGUYENLIEU);
         }
 
-        // GET: NHACUNGCAPs/Edit/5
+        // GET: NguyenLieu/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NHACUNGCAP nHACUNGCAP = db.NHACUNGCAPs.Find(id);
-            if (nHACUNGCAP == null)
+            NguyenLieu nGUYENLIEU = db.NguyenLieu.Find(id);
+            if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
             }
-            return View(nHACUNGCAP);
+            ViewBag.MaNCC = new SelectList(db.NhaCungCap, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            return View(nGUYENLIEU);
         }
 
-        // POST: NHACUNGCAPs/Edit/5
+        // POST: NguyenLieu/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaNCC,TenNCC,DiaChi,SDT")] NHACUNGCAP nHACUNGCAP)
+        public ActionResult Edit([Bind(Include = "MaNL,TenNL,MaNCC")] NguyenLieu nGUYENLIEU)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(nHACUNGCAP).State = EntityState.Modified;
+                db.Entry(nGUYENLIEU).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(nHACUNGCAP);
+            ViewBag.MaNCC = new SelectList(db.NhaCungCap, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            return View(nGUYENLIEU);
         }
 
-        // GET: NHACUNGCAPs/Delete/5
+        // GET: NguyenLieu/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NHACUNGCAP nHACUNGCAP = db.NHACUNGCAPs.Find(id);
-            if (nHACUNGCAP == null)
+            NguyenLieu nGUYENLIEU = db.NguyenLieu.Find(id);
+            if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
             }
-            return View(nHACUNGCAP);
+            return View(nGUYENLIEU);
         }
 
-        // POST: NHACUNGCAPs/Delete/5
+        // POST: NguyenLieu/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            NHACUNGCAP nHACUNGCAP = db.NHACUNGCAPs.Find(id);
-            db.NHACUNGCAPs.Remove(nHACUNGCAP);
+            NguyenLieu nGUYENLIEU = db.NguyenLieu.Find(id);
+            db.NguyenLieu.Remove(nGUYENLIEU);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -7,12 +7,12 @@ namespace TraSuaLamss.Models
     using System.Data.Entity.Spatial;
 
     [Table("NGUYENLIEU")]
-    public partial class NGUYENLIEU
+    public partial class NguyenLieu
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public NGUYENLIEU()
+        public NguyenLieu()
         {
-            SANPHAMs = new HashSet<SANPHAM>();
+            SANPHAMs = new HashSet<SanPham>();
         }
 
         [Key]
@@ -27,9 +27,9 @@ namespace TraSuaLamss.Models
         [StringLength(5)]
         public string MaNCC { get; set; }
 
-        public virtual NHACUNGCAP NHACUNGCAP { get; set; }
+        public virtual NhaCungCap NHACUNGCAP { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SANPHAM> SANPHAMs { get; set; }
+        public virtual ICollection<SanPham> SANPHAMs { get; set; }
     }
 }

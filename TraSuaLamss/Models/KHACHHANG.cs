@@ -7,19 +7,18 @@ namespace TraSuaLamss.Models
     using System.Data.Entity.Spatial;
 
     [Table("KHACHHANG")]
-    public partial class KHACHHANG
+    public partial class KhachHang
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public KHACHHANG()
+        public KhachHang()
         {
-            CHITIETDONHANGs = new HashSet<CHITIETDONHANG>();
-            DONHANGs = new HashSet<DONHANG>();
-            GIOHANGs = new HashSet<GIOHANG>();
+            CHITIETDONHANGs = new HashSet<ChiTietDonHang>();
+            DONHANGs = new HashSet<DonHang>();
+            GIOHANGs = new HashSet<GioHang>();
         }
 
         [Key]
-        [StringLength(5)]
-        public string MaKH { get; set; }
+        public int MaKH { get; set; }
 
         [Required]
         [StringLength(30)]
@@ -48,14 +47,14 @@ namespace TraSuaLamss.Models
         public string DienThoai { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
+        public virtual ICollection<ChiTietDonHang> CHITIETDONHANGs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<DONHANG> DONHANGs { get; set; }
+        public virtual ICollection<DonHang> DONHANGs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GIOHANG> GIOHANGs { get; set; }
+        public virtual ICollection<GioHang> GIOHANGs { get; set; }
 
-        public virtual TAIKHOAN TAIKHOAN { get; set; }
+        public virtual TaiKhoan TAIKHOAN { get; set; }
     }
 }

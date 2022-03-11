@@ -7,12 +7,11 @@ namespace TraSuaLamss.Models
     using System.Data.Entity.Spatial;
 
     [Table("GIOHANG")]
-    public partial class GIOHANG
+    public partial class GioHang
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(5)]
-        public string MaKH { get; set; }
+        public int MaKH { get; set; }
 
         [Key]
         [Column(Order = 1)]
@@ -21,8 +20,8 @@ namespace TraSuaLamss.Models
 
         public int Soluong { get; set; }
 
-        public virtual KHACHHANG KHACHHANG { get; set; }
+        public virtual KhachHang KHACHHANG { get; set; }
 
-        public virtual SANPHAM SANPHAM { get; set; }
+        public virtual SanPham SANPHAM { get; set; }
     }
 }
