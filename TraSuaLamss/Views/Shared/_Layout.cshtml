@@ -44,12 +44,11 @@
                         <div class="form-inline dndx" style="margin-top:-20px">
                             @if (Session["TAIKHOAN"] != null)
                             {
-
+                                
                                 <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="margin-top:-10px"><img class="img-responsive rounded-circle" height="30" src="~/Content/Template/assets/images/computer-icons-user-profile-google-account-photos-icon-account.jpg" /><span class="name_user">@Session["Hoten"]</span></a>
                                 <div class="dropdown-menu">
                                     <ul>
-                                        <li><a class="dropdown-item" href="@Url.Action("Logout","Home")"><span>Đăng xuất</span> <i class="fa fa-sign-out"></i></a></li>
-                                        <li><a class="dropdown-item" href="@Url.Action("Logout","Home")"><span>Đăng xuất</span> <i class="fa fa-sign-out"></i></a></li>
+                                        <li><a class="dropdown-item" href="/TAIKHOANs/Index"><span>Thông tin tài khoản</span></a></li>
                                         <li><a class="dropdown-item" href="@Url.Action("Logout","Home")"><span>Đăng xuất</span> <i class="fa fa-sign-out"></i></a></li>
                                     </ul>
                                     
@@ -116,12 +115,12 @@
     </header>
 
     <br /><br /><br /><br /><br /><br />
-        @RenderBody()
+
     
     
 
+     <section> @RenderBody()</section>
 
-    @RenderBody()
 
 
     <!-- ***** Phone ring Area Start ***** -->
