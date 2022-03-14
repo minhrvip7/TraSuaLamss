@@ -19,13 +19,16 @@
         .valid {
             padding-left: 13px;
         }
-        .password{
+
+        .password {
             margin-top: 100px;
             margin-bottom: auto;
         }
+
         .sao {
             color: red;
         }
+
         .abc {
             text-align: center;
         }
@@ -48,7 +51,7 @@
                                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                                             @if (ViewBag.Success != null)
                                             {
-                                            <div class="alert alert-success abc">@ViewBag.Success</div>
+                                                <div class="alert alert-success abc">@ViewBag.Success</div>
                                             }
                                         </div>
                                         <div class="form-floating mb-3">
@@ -85,3 +88,6 @@
     <script src="js/scripts.js"></script>
 </body>
 </html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
