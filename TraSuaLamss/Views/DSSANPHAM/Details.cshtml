@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TraSuaLamss.Models.SANPHAM> 
+﻿@model IEnumerable<TraSuaLamss.Models.SanPham> 
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -70,7 +70,7 @@
                         <hr style="margin-right:30px" />
                         <p id="infor">
                             @{
-                                long tien = long.Parse(ViewBag.GiaBan);
+                                decimal tien = ViewBag.GiaBan;
                                 string gia = String.Format("{0:0,0} đ", tien);
                             }
                             Giá bán : <span style="color:red">@gia</span>
@@ -102,7 +102,7 @@
                             <div id="product">
                                 <div id="absolute">
                                     @{
-                                        long tien1 = long.Parse(sp.GiaBan);
+                                        decimal tien1 = sp.GiaBan;
                                         string gia1 = String.Format("{0:0,0} đ", tien1);
                                     }
                                     @gia1

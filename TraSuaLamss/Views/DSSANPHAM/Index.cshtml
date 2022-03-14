@@ -103,8 +103,8 @@
                                     <span style="font-size:24px">Tên sản phẩm </span>
                                     <span>@Html.TextBox("Name", ViewBag.currentFilter as string, new { @class = "tim" })</span>
                                     <span>Khoảng giá</span><br />
-                                    @{ 
-                                        long tien = 0;
+                                    @{ //fomat tiền cho textbox chưa hoàn thiện
+                                        decimal tien = 0;
                                         var format = String.Format("{0:0.00}",tien);
                                     }
                                     <span style=" padding-left: 5px">@Html.TextBox("first", ViewBag.currentFilter1 as string, new { @class = "timgia" })</span>&nbsp;&nbsp;-&nbsp;
@@ -125,7 +125,7 @@
                                 <div id="product">
                                     <div id="absolute">
                                         @{
-                                            long tien = long.Parse(sp.GiaBan);
+                                            decimal tien = sp.GiaBan;
                                             string gia = String.Format("{0:0,0} đ", tien);
                                         }
                                         @gia
