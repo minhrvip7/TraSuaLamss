@@ -64,42 +64,66 @@
                     </form>
 
                 </div>
-                <div class="col-11">
+                <div class="col-9">
                     <nav class="main-nav">
                         <ul class="nav" style="margin-top:-5px">
-                            <li><a href="/Home/Index">TRANG CHỦ</a></li>
-                            <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
-                            <li class="submenu">
-                                <a href="/DSSANPHAM/Index">SẢN PHẨM</a>
-                                <ul>
-                                    <li><a href="/DSSANPHAM/CaPhe">Cà phê</a></li>
-                                    <li><a href="/DSSANPHAM/DoAnVat">Đồ ăn vặt</a></li>
-                                    <li><a href="/DSSANPHAM/Tra">Trà</a></li>
-                                    <li><a href="/DSSANPHAM/TraSua">Trà sữa</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="/LIENHEs/Index">LIÊN HỆ</a></li>
                             @if (Session["PhanQuyen"] == null)
                             {
-                                <li><a href="/Home/DangNhap">TÀI KHOẢN</a></li>
+                                <li><a href="/Home/Index">TRANG CHỦ</a></li>
+                                <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
+                                <li class="submenu">
+                                    <a href="/DSSANPHAM/Index">SẢN PHẨM</a>
+                                    <ul>
+                                        <li><a href="/DSSANPHAM/CaPhe">Cà phê</a></li>
+                                        <li><a href="/DSSANPHAM/DoAnVat">Đồ ăn vặt</a></li>
+                                        <li><a href="/DSSANPHAM/Tra">Trà</a></li>
+                                        <li><a href="/DSSANPHAM/TraSua">Trà sữa</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/LIENHEs/Index">LIÊN HỆ</a></li>
                                 <li><a href="/Home/DangNhap">GIỎ HÀNG</a></li>
                             }
                             else
                             {
                                 if (Session["PhanQuyen"].ToString() == "Admin")
                                 {
+                                    <li><a href="/Home/Index">TRANG CHỦ</a></li>
+                                    <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
                                     <li><a href="/TaiKhoan/Index">QUẢN LÝ TÀI KHOẢN</a></li>
                                     <li><a href="/SanPham/Index">QUẢN LÝ SẢN PHẨM</a></li>
                                 }
                                 if (Session["PhanQuyen"].ToString() == "Khách hàng")
                                 {
+                                    <li><a href="/Home/Index">TRANG CHỦ</a></li>
+                                    <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
+                                    <li class="submenu">
+                                        <a href="/DSSANPHAM/Index">SẢN PHẨM</a>
+                                        <ul>
+                                            <li><a href="/DSSANPHAM/CaPhe">Cà phê</a></li>
+                                            <li><a href="/DSSANPHAM/DoAnVat">Đồ ăn vặt</a></li>
+                                            <li><a href="/DSSANPHAM/Tra">Trà</a></li>
+                                            <li><a href="/DSSANPHAM/TraSua">Trà sữa</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/LIENHEs/Index">LIÊN HỆ</a></li>
                                     <li><a href="/GioiThieu/Index">TÀI KHOẢN</a></li>
                                     <li><a href="/GioiThieu/Index">GIỎ HÀNG</a></li>
                                 }
                                 if (Session["PhanQuyen"].ToString() == "Nhân viên")
                                 {
+                                    <li><a href="/Home/Index">TRANG CHỦ</a></li>
+                                    <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
+                                    <li class="submenu">
+                                        <a href="/DSSANPHAM/Index">SẢN PHẨM</a>
+                                        <ul>
+                                            <li><a href="/DSSANPHAM/CaPhe">Cà phê</a></li>
+                                            <li><a href="/DSSANPHAM/DoAnVat">Đồ ăn vặt</a></li>
+                                            <li><a href="/DSSANPHAM/Tra">Trà</a></li>
+                                            <li><a href="/DSSANPHAM/TraSua">Trà sữa</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/LIENHEs/Index">LIÊN HỆ</a></li>
                                     <li><a href="/SanPham/Index">QUẢN LÝ SẢN PHẨM</a></li>
-
                                 }
                             }
 
@@ -123,26 +147,8 @@
 
 
 
-    <!-- ***** Phone ring Area Start ***** -->
-    <div class="hotline-phone-ring-wrap">
-        <div class="hotline-phone-ring">
-            <div class="hotline-phone-ring-circle"></div>
-            <div class="hotline-phone-ring-circle-fill"></div>
-            <div class="hotline-phone-ring-img-circle">
-                <a href="tel:0971303965" class="pps-btn-img">
-                    <img src="~/Content/Img/icon-call.png" alt="Gọi điện thoại" width="50">
-                </a>
-            </div>
-        </div>
-        <div class="hotline-bar">
-            <a href="tel:0971303965">
-                <span class="text-hotline">0971.303.965</span>
-            </a>
-        </div>
-    </div>
-    <!-- ***** Phone ring Area End ***** -->
 
-    <!-- ***** Footer Start ***** -->
+
     <footer>
         <div class="container">
             <div class="row">
