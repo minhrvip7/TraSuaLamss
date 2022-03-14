@@ -59,16 +59,16 @@ namespace TraSuaLamss.Controllers
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && String.IsNullOrEmpty(Name))
                 {
-                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end)).ToList();
+                    sanpham = sanpham.Where(p => p.GiaBan >= decimal.Parse(first) && p.GiaBan <= decimal.Parse(end)).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
-                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && decimal.Parse(end) < decimal.Parse(first))
                 {
                     ViewBag.Error = "Giá nhập không hợp lệ";
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
                 {
-                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
+                    sanpham = sanpham.Where(p => p.GiaBan >= decimal.Parse(first) && p.GiaBan <= decimal.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
             }
@@ -82,7 +82,7 @@ namespace TraSuaLamss.Controllers
         }
         public ActionResult Details(string id, string loai)
         {
-            var tra = from tr in db.SANPHAMs
+            var tra = from tr in db.SanPham
                       join l in db.PHANLOAIs on tr.MaLoai equals l.MaLoai
                       join nl in db.NGUYENLIEUx on tr.MaNL equals nl.MaNL
                       where tr.MaSP == id
@@ -107,7 +107,7 @@ namespace TraSuaLamss.Controllers
                 ViewBag.TenNl = item.TenNL;
                 ViewBag.GiaBan = item.GiaBan;
             }
-            var danhsach = from ds in db.SANPHAMs
+            var danhsach = from ds in db.SanPham
                            join l in db.PHANLOAIs on ds.MaLoai equals l.MaLoai
                            where ds.MaSP != id && l.MaLoai == loai
                            select ds;
@@ -159,16 +159,16 @@ namespace TraSuaLamss.Controllers
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && String.IsNullOrEmpty(Name))
                 {
-                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end)).ToList();
+                    sanpham = sanpham.Where(p => p.GiaBan >= decimal.Parse(first) && p.GiaBan <= decimal.Parse(end)).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
-                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && decimal.Parse(end) < decimal.Parse(first))
                 {
                     ViewBag.Error = "Giá nhập không hợp lệ";
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
                 {
-                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
+                    sanpham = sanpham.Where(p => p.GiaBan >= decimal.Parse(first) && p.GiaBan <= decimal.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
             }
@@ -225,16 +225,16 @@ namespace TraSuaLamss.Controllers
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && String.IsNullOrEmpty(Name))
                 {
-                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end)).ToList();
+                    sanpham = sanpham.Where(p => p.GiaBan >= decimal.Parse(first) && p.GiaBan <= decimal.Parse(end)).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
-                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && decimal.Parse(end) < decimal.Parse(first))
                 {
                     ViewBag.Error = "Giá nhập không hợp lệ";
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
                 {
-                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
+                    sanpham = sanpham.Where(p => p.GiaBan >= decimal.Parse(first) && p.GiaBan <= decimal.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
             }
@@ -291,16 +291,16 @@ namespace TraSuaLamss.Controllers
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && String.IsNullOrEmpty(Name))
                 {
-                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end)).ToList();
+                    sanpham = sanpham.Where(p => p.GiaBan >= decimal.Parse(first) && p.GiaBan <= decimal.Parse(end)).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
-                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && decimal.Parse(end) < decimal.Parse(first))
                 {
                     ViewBag.Error = "Giá nhập không hợp lệ";
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
                 {
-                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
+                    sanpham = sanpham.Where(p => p.GiaBan >= decimal.Parse(first) && p.GiaBan <= decimal.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
             }
@@ -357,16 +357,16 @@ namespace TraSuaLamss.Controllers
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && String.IsNullOrEmpty(Name))
                 {
-                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end)).ToList();
+                    sanpham = sanpham.Where(p => p.GiaBan >= decimal.Parse(first) && p.GiaBan <= decimal.Parse(end)).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
-                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && long.Parse(end) < long.Parse(first))
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && decimal.Parse(end) < decimal.Parse(first))
                 {
                     ViewBag.Error = "Giá nhập không hợp lệ";
                 }
                 else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
                 {
-                    sanpham = sanpham.Where(p => long.Parse(p.GiaBan) >= long.Parse(first) && long.Parse(p.GiaBan) <= long.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
+                    sanpham = sanpham.Where(p => p.GiaBan >= decimal.Parse(first) && p.GiaBan <= decimal.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
                     return View(sanpham.ToPagedList(pageNumber, pagesize));
                 }
             }

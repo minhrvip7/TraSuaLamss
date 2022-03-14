@@ -13,23 +13,21 @@ namespace TraSuaLamss.Controllers
     public class GioHangController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
-
-        // GET: GIOHANGs
-        public ActionResult Index()
+        private const string MaKHSession = "MaKHSession";
+        private const string ListHangSession = "ListHangSession";
+        public ActionResult Giohang()
         {
             int KHID = 1;
             List<XemGioHang> list = (from e in db.GioHang
-                                      join d in db.SanPham
-                                      on e.MaSP equals d.MaSP
-                                      where e.MaKH == KHID
-                                      select new XemGioHang { GH = e, SP = d }).ToList();
+                                     join d in db.SanPham
+                                     on e.MaSP equals d.MaSP
+                                     where e.MaKH == KHID
+                                     select new XemGioHang { GH = e, SP = d }).ToList();
             ViewBag.MaKH = KHID;
             Session[ListHangSession] = list;
             return View(list);
         }
-
-        // GET: GIOHANGs/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Dathang()
         {
             var list = Session[ListHangSession] as List<XemGioHang>;
             int KHID = 1;
@@ -37,45 +35,41 @@ namespace TraSuaLamss.Controllers
             int SLDH = db.DonHang.Count() + 1;
             if (SLDH < 1000 && SLDH > 99)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                MaDH = MaDH + SLDH.ToString();
             }
-            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
-            if (gIOHANG == null)
+            else if (SLDH < 100 && SLDH > 9)
             {
-                return HttpNotFound();
+                MaDH = MaDH + "0" + SLDH.ToString();
             }
-            return View(gIOHANG);
-        }
-
-        // GET: GIOHANGs/Create
-        public ActionResult Create()
-        {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
-            return View();
-        }
-
-        // POST: GIOHANGs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaKH,MaSP,Soluong")] GIOHANG gIOHANG)
-        {
-            if (ModelState.IsValid)
+            else
             {
-                db.GIOHANGs.Add(gIOHANG);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                MaDH = MaDH + "00" + SLDH.ToString();
+            }
+            var lischitiet = new List<PhieuDatHang>();
+            foreach (var item in list)
+            {
+                ChiTietDonHang ChitietDH = new ChiTietDonHang
+                {
+                    MaKH = KHID,
+                    MaHD = MaDH,
+                    MaSP = item.SP.MaSP,
+                    SoLuong = item.GH.Soluong,
+                    DonGia = Convert.ToInt32(item.SP.GiaBan)
+                };
+                SanPham sanPham = (from e in db.SanPham
+                                   where e.MaSP == item.SP.MaSP
+                                   select e).FirstOrDefault();
+                var Phieu = new PhieuDatHang { CTDH = ChitietDH, SP = sanPham };
+                lischitiet.Add(Phieu);
             }
             ViewBag.TongTien = lischitiet.Sum(x => x.CTDH.SoLuong * x.CTDH.DonGia);
             ViewBag.MaDH = MaDH;
             ViewBag.TenKH = (from e in db.KhachHang
-                                where e.MaKH == KHID
-                                select e.TenKH).FirstOrDefault();
-            ViewBag.DiaChi = (from e in db.KhachHang
                              where e.MaKH == KHID
-                             select e.DiaChi).FirstOrDefault();
+                             select e.TenKH).FirstOrDefault();
+            ViewBag.DiaChi = (from e in db.KhachHang
+                              where e.MaKH == KHID
+                              select e.DiaChi).FirstOrDefault();
             ViewBag.NgayDat = DateTime.Today.ToString("dd/MM/yyyy");
             return View(lischitiet);
         }
@@ -87,61 +81,42 @@ namespace TraSuaLamss.Controllers
                                select e).FirstOrDefault();
             if (gioHang == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                gioHang = new GioHang();
+                gioHang.MaKH = MaKhach;
+                gioHang.MaSP = MaHang;
+                gioHang.Soluong = soluong;
+                db.GioHang.Add(gioHang);
             }
-            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
-            if (gIOHANG == null)
+            else
             {
-                return HttpNotFound();
+                gioHang.Soluong += soluong;
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
-            return View(gIOHANG);
+            db.SaveChanges();
+            return RedirectToAction("Giohang");
         }
         public ActionResult Delete(int MaKhach, string MaHang)
         {
-            if (ModelState.IsValid)
+            GioHang gioHang = (from e in db.GioHang
+                               where (e.MaKH == MaKhach && e.MaSP == MaHang)
+                               select e).FirstOrDefault();
+            if (gioHang != null)
             {
-                db.Entry(gIOHANG).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                db.GioHang.Remove(gioHang);
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
-            return View(gIOHANG);
+            db.SaveChanges();
+            return RedirectToAction("Giohang");
         }
         public ActionResult DeleteAll(int MaKhach)
         {
-            if (id == null)
+            foreach (var item in db.GioHang)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                if (item.MaKH == MaKhach)
+                {
+                    db.GioHang.Remove(item);
+                }
             }
-            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
-            if (gIOHANG == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gIOHANG);
-        }
-
-        // POST: GIOHANGs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            GIOHANG gIOHANG = db.GIOHANGs.Find(id);
-            db.GIOHANGs.Remove(gIOHANG);
             db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            return RedirectToAction("Giohang");
         }
     }
 }

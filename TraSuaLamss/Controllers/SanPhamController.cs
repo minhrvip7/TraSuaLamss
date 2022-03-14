@@ -66,7 +66,7 @@ namespace TraSuaLamss.Controllers
                         f.SaveAs(UploadPath);
                         sANPHAM.Anh = FileName;
                     }
-                    db.SANPHAMs.Add(sANPHAM);
+                    db.SanPham.Add(sANPHAM);
                     db.SaveChanges();
                     
                 }return RedirectToAction("Index");
