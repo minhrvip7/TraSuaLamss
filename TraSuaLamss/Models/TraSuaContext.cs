@@ -16,7 +16,7 @@ namespace TraSuaLamss.Models
         public virtual DbSet<DonHang> DonHang { get; set; }
         public virtual DbSet<GioHang> GioHang { get; set; }
         public virtual DbSet<KhachHang> KhachHang { get; set; }
-        public virtual DbSet<LIENHE> LIENHEs { get; set; }
+        public virtual DbSet<LienHe> LIENHEs { get; set; }
         public virtual DbSet<NguyenLieu> NGUYENLIEUx { get; set; }
         public virtual DbSet<NhaCungCap> NHACUNGCAPs { get; set; }
         public virtual DbSet<NhanVien> NHANVIENs { get; set; }
@@ -105,11 +105,11 @@ namespace TraSuaLamss.Models
                 .WithRequired(e => e.KHACHHANG)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<LIENHE>()
+            modelBuilder.Entity<LienHe>()
                 .Property(e => e.MaLH)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<LIENHE>()
+            modelBuilder.Entity<LienHe>()
                 .Property(e => e.SDT)
                 .IsUnicode(false);
 

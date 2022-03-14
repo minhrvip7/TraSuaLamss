@@ -58,7 +58,7 @@
                 <a href="@Url.Action("TangSL", "DSSANPHAM", new {id=ViewBag.MaSP,loai=ViewBag.MaLoai,SLtam=ViewBag.SL})"><input class="plus is-form" type="button" value="+"></a>
             </p>
             <div id="datmua">
-                <a href="@Url.Action("DatHangLe","GioHang",new { MaKhach=1, MaHang=ViewBag.MaSP,soluong=ViewBag.SL })">Mua hàng</a>
+                <a href="@Url.Action("DatHangLe","GioHang",new { MaKH=1, MaHang=ViewBag.MaSP,soluong=ViewBag.SL })">Đặt hàng</a>
             </div>
             <div id="datmua">
                 <a href="@Url.Action("Add","GioHang",new { MaKhach=1, MaHang=ViewBag.MaSP,soluong=ViewBag.SL })">Thêm vào giỏ hàng</a>

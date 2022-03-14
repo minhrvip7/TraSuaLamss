@@ -12,11 +12,6 @@ namespace TraSuaLamss
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            routes.MapRoute(
-                name: "Giohang",
-                url: "giohang.html",
-                defaults: new { controller = "GIOHANG", action = "Index", id = UrlParameter.Optional });
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

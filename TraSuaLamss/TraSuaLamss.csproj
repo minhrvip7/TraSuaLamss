@@ -151,7 +151,7 @@
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Models\Giohang.cs" />
     <Compile Include="Models\KhachHang.cs" />
-    <Compile Include="Models\LIENHE.cs" />
+    <Compile Include="Models\LienHe.cs" />
     <Compile Include="Models\NguyenLieu.cs" />
     <Compile Include="Models\NhaCungCap.cs" />
     <Compile Include="Models\NhanVien.cs" />
@@ -326,7 +326,6 @@
     <Content Include="Views\ChiTietDonHang\Edit.cshtml" />
     <Content Include="Views\ChiTietDonHang\Index.cshtml" />
     <Content Include="Views\GioHang\Giohang.cshtml" />
-    <Content Include="Views\GioHang\Dathang.cshtml" />
     <Content Include="Views\DSSanPham\CaPhe.cshtml" />
     <Content Include="Views\DSSanPham\Details.cshtml" />
     <Content Include="Views\DSSanPham\DoAnVat.cshtml" />
@@ -338,6 +337,8 @@
     <Content Include="Views\LienHe\Details.cshtml" />
     <Content Include="Views\LienHe\Edit.cshtml" />
     <Content Include="Views\LienHe\Index.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\GioHang\DatHangLe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
