@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -133,17 +134,24 @@ namespace TraSuaLamss.Controllers
         [HttpPost]
         public ActionResult DoiMatKhau(DoiMatKhauModel model)
         {
-            string username = Session["Username"].ToString();
-            string password = Session["Password"].ToString();
-            var tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == username);
-            if (model.Password == password)
-            {
-                tk.Password = model.NewPassword;
-                db.SaveChanges();
-            }
-            else
-            {
-                ViewBag.Error = "Mật khẩu hiện tại không đúng!";
+            if (ModelState.IsValid)
+            { 
+                string username = Session["Username"].ToString();
+                string password = Session["Password"].ToString();
+                var tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == username);
+                if (model.Password == password)
+                {
+                    var pw = model.NewPassword;
+                    tk.Password = model.NewPassword;
+                    db.SaveChanges();
+                    Session["Password"]=pw;
+                    ViewBag.Success="Mật khẩu đã được đổi thành công!";
+                    return View(model);
+                }
+                else
+                {
+                    ViewBag.Error = "Mật khẩu hiện tại không đúng!";
+                }
             }
             return View(model);
         }
@@ -152,20 +160,17 @@ namespace TraSuaLamss.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult DoiThongTin(DangKyModel model)
+        public ActionResult DoiThongTin(string username, DoiThongTinModel model)
         {
-            string username = Session["Username"].ToString();
+            username = Session["Username"].ToString();
             var kh = db.KHACHHANG.SingleOrDefault(n => n.Username == username);
-
             if (ModelState.IsValid)
             {
                 var tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == username);
                 tk.HoTen = model.TenKH;
                 db.SaveChanges();
                 kh.TenKH = model.TenKH;
-                kh.Username = model.Username;
                 kh.NgaySinh = model.NgaySinh;
-                kh.Email = model.Email;
                 kh.DiaChi = model.DiaChi;
                 kh.DienThoai = model.DienThoai;
                 db.SaveChanges();
@@ -178,6 +183,5 @@ namespace TraSuaLamss.Controllers
             }
             return View(model);
         }
-
     }
 }
