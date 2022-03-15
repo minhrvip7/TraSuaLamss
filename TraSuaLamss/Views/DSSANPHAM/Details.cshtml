@@ -4,15 +4,17 @@
     Layout = null;
 }
 <style type="text/css">
-    input.updown{
-        width:26px;
-        height:26px;
-        text-align:center;
+    input.updown {
+        width: 24px;
+        height: 24px;
+        text-align: center;
     }
-    input.inputsl{
-        width:36px;
-        text-align:center;
+
+    input.inputsl {
+        width: 36px;
+        text-align: center;
     }
+
     #datmua a {
         background-color: red;
         color: white;
@@ -63,7 +65,7 @@
             <p>
                 Số lượng:
                 <input class="updown" type="button" value="-" onclick="Down()">
-                <input id="soluong" class="inputsl" min="1" type="number" value="@ViewBag.SL" >
+                <input id="soluong" class="inputsl" min="1" type="text" value="@ViewBag.SL">
                 <input class="updown" type="button" value="+" onclick="Up()">
                 <script>
                     function Up() {
@@ -72,10 +74,11 @@
                     }
                     function Down() {
                         result = document.getElementById('soluong');
-                        result = document.getElementById(val);
                         if (result.value > 1)
+                        {
                             result.value = result.value ? parseInt(result.value) - 1 : 1;
-                        else result.value = 1;
+                        }
+                        else result.value = "1";
                     }
                 </script>
             </p>
