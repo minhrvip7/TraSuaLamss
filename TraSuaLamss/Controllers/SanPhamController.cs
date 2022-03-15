@@ -39,8 +39,8 @@ namespace TraSuaLamss.Controllers
         // GET: SanPhams/Create
         public ActionResult Create()
         {
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL");
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai");
+            ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL");
+            ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai");
             return View();
         }
 
@@ -58,8 +58,8 @@ namespace TraSuaLamss.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sanPham.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sanPham.MaLoai);
+            ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL", sanPham.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai", sanPham.MaLoai);
             return View(sanPham);
         }
 
@@ -75,8 +75,8 @@ namespace TraSuaLamss.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sanPham.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sanPham.MaLoai);
+            ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL", sanPham.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai", sanPham.MaLoai);
             return View(sanPham);
         }
 
@@ -103,8 +103,8 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sanPham.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sanPham.MaLoai);
+            ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL", sanPham.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai", sanPham.MaLoai);
             return View(sanPham);
         }
 
