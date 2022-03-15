@@ -108,7 +108,7 @@ namespace TraSuaLamss.Controllers
                 ViewBag.GiaBan = item.GiaBan;
             }
             var danhsach = from ds in db.SanPham
-                           join l in db.PHANLOAIs on ds.MaLoai equals l.MaLoai
+                           join l in db.PhanLoai on ds.MaLoai equals l.MaLoai
                            where ds.MaSP != id && l.MaLoai == loai
                            select ds;
             return View(danhsach.ToList());
