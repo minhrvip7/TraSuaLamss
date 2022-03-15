@@ -1,7 +1,7 @@
 ﻿@model TraSuaLamss.Models.DangNhapModel
 
 @{
-    ViewBag.Title = "DangNhap";
+    ViewBag.Title = "Đăng nhập";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <!DOCTYPE html>
@@ -19,11 +19,13 @@
         .abc {
             text-align: center;
         }
-        .valid{
-            padding-left:13px;
+
+        .valid {
+            padding-left: 13px;
         }
-        .login{
-            margin-top:100px;
+
+        .login {
+            margin-top: 100px;
         }
     </style>
 </head>
@@ -35,28 +37,25 @@
                     <div class="row justify-content-center">
                         <div class="col-lg-5">
                             <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                <div class="card-header"  style="background-color: #f4cccc "><h3 class="text-center font-weight-light my-4">Đăng nhập</h3></div>
+                                <div class="card-header" style="background-color: #f4cccc "><h3 class="text-center font-weight-light my-4">Đăng nhập</h3></div>
                                 <div class="card-body" style="background-color: #f7e3e3 ">
                                     @using (Html.BeginForm("DangNhap", "Home", FormMethod.Post))
                                     {
                                         @Html.AntiForgeryToken()
                                         if (!ViewData.ModelState.IsValid)
                                         {
-                                            @Html.ValidationSummary(true, "", new {@class="text-danger abc"})
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger abc" })
                                         }
                                         else
                                         {
                                             <br />
                                         }
                                         <div class="form-floating mb-3">
-                                            @*@Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "form-control" })*@
-
                                             @Html.TextBoxFor(model => model.Username, htmlAttributes: new { @class = "form-control" })
                                             <label>Tên đăng nhập</label>
                                             @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger valid" })
                                         </div>
                                         <div class="form-floating mb-3">
-                                            @*@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "form-control" })*@
                                             @Html.PasswordFor(model => model.Password, htmlAttributes: new { @class = "form-control" })
                                             <label>Mật khẩu</label>
                                             @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger valid" })
@@ -81,3 +80,6 @@
     <script src="js/scripts.js"></script>
 </body>
 </html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

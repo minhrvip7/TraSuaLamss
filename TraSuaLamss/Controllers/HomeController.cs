@@ -160,26 +160,27 @@ namespace TraSuaLamss.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult DoiThongTin(string username, DoiThongTinModel model)
+        [ValidateAntiForgeryToken]
+        public ActionResult DoiThongTin([Bind(Include = "TenKH,GioiTinh,DienThoai,DiaChi,NgaySinh")] DoiThongTinModel model)
         {
-            username = Session["Username"].ToString();
-            var kh = db.KHACHHANG.SingleOrDefault(n => n.Username == username);
+            model.Username = Session["Username"].ToString();
+            /*var kh = db.KHACHHANG.SingleOrDefault(n => n.Username == username);*/
+
+            TaiKhoan tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == model.Username);
+            KhachHang kh = tk.KHACHHANGs.SingleOrDefault();
+            Console.WriteLine("ậkhdkhajkwdhk");
+            /*Console.WriteLine(kh);*/
             if (ModelState.IsValid)
             {
-                var tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == username);
                 tk.HoTen = model.TenKH;
                 db.SaveChanges();
                 kh.TenKH = model.TenKH;
+                kh.GioiTinh = model.GioiTinh;
                 kh.NgaySinh = model.NgaySinh;
                 kh.DiaChi = model.DiaChi;
                 kh.DienThoai = model.DienThoai;
                 db.SaveChanges();
                 ViewBag.Success = "Cập nhật thành công!";
-            }
-            else
-            {
-                ModelState.AddModelError("", "Cập nhật không thành công!");
-                return View(model);
             }
             return View(model);
         }

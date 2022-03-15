@@ -16,19 +16,25 @@
     <link href="~/Content/css/styles.css" rel="stylesheet" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
     <style>
-        .valid{
-            padding-left:13px;
+        .valid {
+            padding-left: 13px;
         }
+
         .register {
-            margin-top:100px;
-            margin-bottom:auto;
+            margin-top: 100px;
+            margin-bottom: auto;
         }
-        .abc{
-            text-align:center;
+
+        .sao {
+            color: red;
+        }
+
+        .abc {
+            text-align: center;
         }
     </style>
 </head>
-<body >
+<body>
     <div id="layoutAuthentication" class="register">
         <div id="layoutAuthentication_content">
             <main>
@@ -43,28 +49,24 @@
                                         @Html.AntiForgeryToken()
                                         <div class="form-group abc">
                                             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                            @if (ViewBag.Success != null)
-                                            {
-                                                <div class="alert alert-success">@ViewBag.Success</div>
-                                            }
                                         </div>
                                         <div class="form-floating mb-3">
                                             @Html.TextBoxFor(model => model.Username, htmlAttributes: new { @class = "form-control" })
-                                            <label>Tên đăng nhập</label>
+                                            <label>Tên đăng nhập<label class="sao">*</label></label>
                                             @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger valid" })
                                         </div>
                                         <div class="row mb-3">
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
                                                     @Html.PasswordFor(model => model.Password, htmlAttributes: new { @class = "form-control" })
-                                                    <label>Mật khẩu</label>
+                                                    <label>Mật khẩu<label class="sao">*</label></label>
                                                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger valid" })
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
                                                     @Html.PasswordFor(model => model.ConfirmPassword, htmlAttributes: new { @class = "form-control" })
-                                                    <label>Xác nhận mật khẩu</label>
+                                                    <label>Xác nhận mật khẩu<label class="sao">*</label></label>
                                                     @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger valid" })
                                                 </div>
                                             </div>
@@ -73,35 +75,35 @@
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
                                                     @Html.TextBoxFor(model => model.TenKH, htmlAttributes: new { @class = "form-control" })
-                                                    <label>Họ tên</label>
+                                                    <label>Họ tên<label class="sao">*</label></label>
                                                     @Html.ValidationMessageFor(model => model.TenKH, "", new { @class = "text-danger valid" })
                                                 </div>
                                             </div><div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
                                                     @Html.TextBoxFor(model => model.GioiTinh, htmlAttributes: new { @class = "form-control" })
-                                                    <label>Giới tính</label>
+                                                    <label>Giới tính<label class="sao">*</label></label>
                                                     @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger valid" })
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-floating mb-3">
                                             @Html.TextBoxFor(model => model.Email, htmlAttributes: new { @class = "form-control" })
-                                            <label>Email</label>
+                                            <label>Email<label class="sao">*</label></label>
                                             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger valid" })
                                         </div>
                                         <div class="form-floating mb-3">
                                             @Html.TextBoxFor(model => model.DienThoai, htmlAttributes: new { @class = "form-control" })
-                                            <label>Điện thoại</label>
+                                            <label>Điện thoại<label class="sao">*</label></label>
                                             @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger valid" })
                                         </div>
                                         <div class="form-floating mb-3">
                                             @Html.TextBoxFor(model => model.DiaChi, htmlAttributes: new { @class = "form-control" })
-                                            <label>Địa chỉ</label>
+                                            <label>Địa chỉ<label class="sao">*</label></label>
                                             @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger valid" })
                                         </div>
                                         <div class="form-floating mb-3">
                                             @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control" } })
-                                            <label>Ngày sinh</label>
+                                            <label>Ngày sinh<label class="sao">*</label></label>
                                             @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger valid" })
                                         </div>
                                         <div class="mt-4 mb-0">
@@ -125,3 +127,6 @@
     <script src="js/scripts.js"></script>
 </body>
 </html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

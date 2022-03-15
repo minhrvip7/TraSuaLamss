@@ -13,14 +13,13 @@ namespace TraSuaLamss.Models
         public string TenKH { get; set; }
 
         [Display(Name = "Giới tính")]
-        [StringLength(4, MinimumLength =3, ErrorMessage = "Độ dài mật khẩu ít nhất 6 ký tự.")]
+        [StringLength(3, MinimumLength =2, ErrorMessage = "Độ dài ít nhất 2 ký tự.")]
         [Required(ErrorMessage = "Yêu cầu nhập giới tính")]
         public string GioiTinh { set; get; }
 
         [Key]
         [Display(Name = "Tên đăng nhập")]
-        [StringLength(20, ErrorMessage = "Độ dài tên đăng nhập không quá 20 ký tự.")]
-
+        [StringLength(20,MinimumLength = 6, ErrorMessage = "Độ dài tên đăng nhập ít nhất 6 ký tự và không quá 20 ký tự.")]
         [Required(ErrorMessage = "Yêu cầu nhập tên đăng nhập")]
         public string Username { set; get; }
 

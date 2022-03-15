@@ -1,79 +1,104 @@
-﻿@model TraSuaLamss.Models.DangKyModel
+﻿@model TraSuaLamss.Models.DoiThongTinModel
 
 @{
-    ViewBag.Title = "Cập nhật thông tin";
+    ViewBag.Title = "Đổi thông tin";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Cập nhật thông tin</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.Username)
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10" style=" margin-top:6px">
-            @Session["Username"]
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TenKH, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.TenKH,new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.TenKH, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.DienThoai, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.DienThoai, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.TextBoxFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.NgaySinh, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @if (ViewBag.Success != null)
-        {
-            <div class="alert alert-success">@ViewBag.Success</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Cập nhật thông tin</title>
+    <link href="~/Content/css/styles.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <style>
+        .valid {
+            padding-left: 13px;
         }
-    </div>
-    <br />
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Cập nhật" class="btn btn-default" />
+
+        .information {
+            margin-top: 100px;
+            margin-bottom: auto;
+        }
+
+        .abc {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="layoutAuthentication" class="information">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-7">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                <div class="card-header" style="background-color: #f4cccc "><h3 class="text-center font-weight-light my-4">Thông tin cá nhân</h3></div>
+                                <div class="card-body" style="background-color: #f7e3e3 ">
+                                    @using (Html.BeginForm("DoiThongTin", "Home", FormMethod.Post))
+                                    {
+                                        @Html.HiddenFor(model => model.Username)
+                                        @Html.AntiForgeryToken()
+                                        <div class="form-group abc">
+                                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            @if (ViewBag.Success != null)
+                                            {
+                                                <div class="alert alert-success">@ViewBag.Success</div>
+                                            }
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    @Html.TextBoxFor(model => model.TenKH, htmlAttributes: new { @class = "form-control" })
+                                                    <label>Họ tên</label>
+                                                    @Html.ValidationMessageFor(model => model.TenKH, "", new { @class = "text-danger valid" })
+                                                </div>
+                                            </div><div class="col-md-6">
+                                                <div class="form-floating mb-3 mb-md-0">
+                                                    @Html.TextBoxFor(model => model.GioiTinh, htmlAttributes: new { @class = "form-control" })
+                                                    <label>Giới tính</label>
+                                                    @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger valid" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            @Html.TextBoxFor(model => model.DienThoai, htmlAttributes: new { @class = "form-control" })
+                                            <label>Điện thoại</label>
+                                            @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger valid" })
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            @Html.TextBoxFor(model => model.DiaChi, htmlAttributes: new { @class = "form-control" })
+                                            <label>Địa chỉ</label>
+                                            @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger valid" })
+                                        </div>
+                                        <div class="form-floating mb-3">
+                                            @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control" } })
+                                            <label>Ngày sinh</label>
+                                            @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger valid" })
+                                        </div>
+                                        <div class="mt-4 mb-0">
+                                            <div class="d-grid">
+                                                <input type="submit" value="Cập nhật" class="btn btn-primary btn-block" />
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
         </div>
     </div>
-</div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
 }
