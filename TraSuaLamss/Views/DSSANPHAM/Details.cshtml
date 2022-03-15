@@ -1,4 +1,4 @@
-﻿@model TraSuaLamss.Models.SANPHAM
+﻿@model TraSuaLamss.Models.SanPham
 @{
     ViewBag.Title = "Details";
     Layout = null;
@@ -40,12 +40,28 @@
             <p style="font-size: 18px">Nguyên liệu : <span style="">@Model.NGUYENLIEU.TenNL</span></p>
             <hr style="width:50%;float:left;" />
             <p style="clear: left; font-size: 18px">Mô tả : <span style="">@Model.MoTa</span></p>
+            <p style="font-size:18px">
+                <span>số lượng :</span>
+                <input type="number" style="height:24px;width:50px" min="1" value="1" id="txtSoLuong" />
+            </p>
             <div id="datmua">
-                <a href="@Url.Action("ThemGioHang","GioHang",new { id = Model.MaSP })">ĐẶT MUA</a>
+                <a href="@Html.ActionLink("Add","GioHang",new { MaKhach="KH001",MaHang=Model.MaSP, soluong=Convert.ToInt32("#txtSoLuong") })">ĐẶT MUA</a>
             </div>
         </td>
     </tr>
 </table>
 <br />
+<script type="text/javascript">
+    var txtSoLuong = $("#txtSoLuong");
+    //change this selector to grab your ActionLink's ID
+    var anchorInfo = $("a");
+
+    fullName.on("keyup", function () {
+        var value = $(this).val();
+        anchorInfo.attr("info", value);
+        //logging the keystrokes getting to the Info attribute
+        console.log(anchorInfo.attr("info"));
+    });
+</script>
 
 

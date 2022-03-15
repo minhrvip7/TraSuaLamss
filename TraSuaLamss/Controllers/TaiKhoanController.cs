@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: TAIKHOANs
         public ActionResult Index()
         {
-            return View(db.TAIKHOANs.ToList());
+            return View(db.TAIKHOAN.ToList());
         }
 
         // GET: TAIKHOANs/Details/5
@@ -50,7 +50,7 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.TAIKHOANs.Add(tAIKHOAN);
+                db.TAIKHOAN.Add(tAIKHOAN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: LIENHEs
         public ActionResult Index()
         {
-            return View(db.LIENHEs.ToList());
+            return View(db.LIENHE.ToList());
         }
 
         // GET: LIENHEs/Details/5
@@ -50,7 +50,7 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.LIENHEs.Add(lIENHE);
+                db.LIENHE.Add(lIENHE);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

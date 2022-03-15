@@ -9,6 +9,7 @@ namespace TraSuaLamss.Models
     [Table("SANPHAM")]
     public partial class SanPham
     {
+        
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SanPham()
         {

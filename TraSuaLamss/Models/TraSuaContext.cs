@@ -41,7 +41,7 @@ namespace TraSuaLamss.Models
 
             modelBuilder.Entity<ChiTietDonHang>()
                 .Property(e => e.DonGia)
-                .HasPrecision(18, 0);
+                .HasPrecision(19, 4);
 
             modelBuilder.Entity<DonHang>()
                 .Property(e => e.MaDH)
@@ -49,7 +49,7 @@ namespace TraSuaLamss.Models
 
             modelBuilder.Entity<DonHang>()
                 .Property(e => e.ThanhTien)
-                .HasPrecision(18, 0);
+                .HasPrecision(19, 4);
 
             modelBuilder.Entity<DonHang>()
                 .Property(e => e.PhuongThucThanhToan)
@@ -162,7 +162,7 @@ namespace TraSuaLamss.Models
 
             modelBuilder.Entity<NhanVien>()
                 .Property(e => e.Luong)
-                .HasPrecision(18, 0);
+                .HasPrecision(19, 4);
 
             modelBuilder.Entity<PhanLoai>()
                 .Property(e => e.MaLoai)

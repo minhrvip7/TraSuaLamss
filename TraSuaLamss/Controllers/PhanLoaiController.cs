@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: PHANLOAIs
         public ActionResult Index()
         {
-            return View(db.PHANLOAIs.ToList());
+            return View(db.PHANLOAI.ToList());
         }
 
         // GET: PHANLOAIs/Details/5
@@ -50,7 +50,7 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.PHANLOAIs.Add(pHANLOAI);
+                db.PHANLOAI.Add(pHANLOAI);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

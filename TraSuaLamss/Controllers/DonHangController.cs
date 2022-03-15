@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: DONHANGs
         public ActionResult Index()
         {
-            var dONHANGs = db.DONHANGs.Include(d => d.KHACHHANG);
+            var dONHANGs = db.DONHANG.Include(d => d.KHACHHANG);
             return View(dONHANGs.ToList());
         }
 
@@ -40,7 +40,7 @@ namespace TraSuaLamss.Controllers
         // GET: DONHANGs/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
+            ViewBag.MaKH = new SelectList(db.KHACHHANG, "MaKH", "TenKH");
             return View();
         }
 
@@ -53,12 +53,12 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.DONHANGs.Add(dONHANG);
+                db.DONHANG.Add(dONHANG);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
+            ViewBag.MaKH = new SelectList(db.KHACHHANG, "MaKH", "TenKH", dONHANG.MaKH);
             return View(dONHANG);
         }
 
@@ -74,7 +74,7 @@ namespace TraSuaLamss.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
+            ViewBag.MaKH = new SelectList(db.KHACHHANG, "MaKH", "TenKH", dONHANG.MaKH);
             return View(dONHANG);
         }
 
@@ -91,7 +91,7 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
+            ViewBag.MaKH = new SelectList(db.KHACHHANG, "MaKH", "TenKH", dONHANG.MaKH);
             return View(dONHANG);
         }
 

@@ -52,7 +52,7 @@ namespace TraSuaLamss.Controllers
         // GET: NHANVIENs/Create
         public ActionResult Create()
         {
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password");
+            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password");
             return View();
         }
 
@@ -65,12 +65,12 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.NHANVIENs.Add(nHANVIEN);
+                db.NHANVIEN.Add(nHANVIEN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", nHANVIEN.Username);
+            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password", nHANVIEN.Username);
             return View(nHANVIEN);
         }
 
@@ -86,7 +86,7 @@ namespace TraSuaLamss.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", nHANVIEN.Username);
+            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password", nHANVIEN.Username);
             return View(nHANVIEN);
         }
 
@@ -103,7 +103,7 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", nHANVIEN.Username);
+            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password", nHANVIEN.Username);
             return View(nHANVIEN);
         }
 

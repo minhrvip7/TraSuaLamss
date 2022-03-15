@@ -52,8 +52,8 @@ namespace TraSuaLamss.Controllers
         // GET: SANPHAMs/Create
         public ActionResult Create()
         {
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL");
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai");
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEU, "MaNL", "TenNL");
+            ViewBag.MaLoai = new SelectList(db.PHANLOAI, "MaLoai", "TenLoai");
             return View();
         }
 
@@ -66,13 +66,13 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.SANPHAMs.Add(sANPHAM);
+                db.SANPHAM.Add(sANPHAM);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEU, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAI, "MaLoai", "TenLoai", sANPHAM.MaLoai);
             return View(sANPHAM);
         }
 
@@ -88,8 +88,8 @@ namespace TraSuaLamss.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEU, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAI, "MaLoai", "TenLoai", sANPHAM.MaLoai);
             return View(sANPHAM);
         }
 
@@ -106,8 +106,8 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEU, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAI, "MaLoai", "TenLoai", sANPHAM.MaLoai);
             return View(sANPHAM);
         }
 

@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: KHACHHANGs
         public ActionResult Index()
         {
-            var kHACHHANGs = db.KHACHHANGs.Include(k => k.TAIKHOAN);
+            var kHACHHANGs = db.KHACHHANG.Include(k => k.TAIKHOAN);
             return View(kHACHHANGs.ToList());
         }
 
@@ -39,7 +39,7 @@ namespace TraSuaLamss.Controllers
         // GET: KHACHHANGs/Create
         public ActionResult Create()
         {
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password");
+            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password");
             return View();
         }
 
@@ -52,12 +52,12 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.KHACHHANGs.Add(kHACHHANG);
+                db.KHACHHANG.Add(kHACHHANG);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", kHACHHANG.Username);
+            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password", kHACHHANG.Username);
             return View(kHACHHANG);
         }
 
@@ -73,7 +73,7 @@ namespace TraSuaLamss.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", kHACHHANG.Username);
+            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password", kHACHHANG.Username);
             return View(kHACHHANG);
         }
 
@@ -90,7 +90,7 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", kHACHHANG.Username);
+            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password", kHACHHANG.Username);
             return View(kHACHHANG);
         }
 

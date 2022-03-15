@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: CHITIETDONHANGs
         public ActionResult Index()
         {
-            var cHITIETDONHANGs = db.CHITIETDONHANGs.Include(c => c.KHACHHANG).Include(c => c.SANPHAM);
+            var cHITIETDONHANGs = db.CHITIETDONHANG.Include(c => c.KHACHHANG).Include(c => c.SANPHAM);
             return View(cHITIETDONHANGs.ToList());
         }
 
@@ -39,8 +39,8 @@ namespace TraSuaLamss.Controllers
         // GET: CHITIETDONHANGs/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
+            ViewBag.MaKH = new SelectList(db.KHACHHANG, "MaKH", "TenKH");
+            ViewBag.MaSP = new SelectList(db.SANPHAM, "MaSP", "TenSP");
             return View();
         }
 
@@ -53,13 +53,13 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CHITIETDONHANGs.Add(cHITIETDONHANG);
+                db.CHITIETDONHANG.Add(cHITIETDONHANG);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KHACHHANG, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAM, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
             return View(cHITIETDONHANG);
         }
 
@@ -75,8 +75,8 @@ namespace TraSuaLamss.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KHACHHANG, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAM, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
             return View(cHITIETDONHANG);
         }
 
@@ -93,8 +93,8 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KHACHHANG, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SANPHAM, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
             return View(cHITIETDONHANG);
         }
 

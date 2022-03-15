@@ -8,17 +8,23 @@ namespace TraSuaLamss.Models
 {
     public class DangKyModel
     {
-        [Display(Name ="Họ tên")]
-        [Required(ErrorMessage ="Yêu cầu nhập họ tên")]
-        public string TenKH { get; set; } 
+        [Display(Name = "Họ tên")]
+        [Required(ErrorMessage = "Yêu cầu nhập họ tên")]
+        public string TenKH { get; set; }
+
+        [Display(Name = "Giới tính")]
+        [StringLength(3, MinimumLength =2, ErrorMessage = "Độ dài ít nhất 2 ký tự.")]
+        [Required(ErrorMessage = "Yêu cầu nhập giới tính")]
+        public string GioiTinh { set; get; }
 
         [Key]
         [Display(Name = "Tên đăng nhập")]
+        [StringLength(20,MinimumLength = 6, ErrorMessage = "Độ dài tên đăng nhập ít nhất 6 ký tự và không quá 20 ký tự.")]
         [Required(ErrorMessage = "Yêu cầu nhập tên đăng nhập")]
         public string Username { set; get; }
 
         [Display(Name = "Mật khẩu")]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "Độ dài mật khẩu ít nhất 6 ký tự.")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "Độ dài mật khẩu ít nhất 6 ký tự và không quá 20 ký tự.")]
         [Required(ErrorMessage = "Yêu cầu nhập mật khẩu")]
         public string Password { set; get; }
 
@@ -27,10 +33,13 @@ namespace TraSuaLamss.Models
         public string ConfirmPassword { set; get; }
 
         [Required(ErrorMessage = "Yêu cầu nhập email")]
+        [EmailAddress(ErrorMessage = "Email sai định dạng")]
         [Display(Name = "Email")]
         public string Email { set; get; }
 
+        [Phone(ErrorMessage = "{0} sai định dạng")]
         [Required(ErrorMessage = "Yêu cầu nhập điện thoại")]
+        [StringLength(10, MinimumLength=10 , ErrorMessage = "Sai định dạng")]
         [Display(Name = "Điện thoại")]
         public string DienThoai { set; get; }
 

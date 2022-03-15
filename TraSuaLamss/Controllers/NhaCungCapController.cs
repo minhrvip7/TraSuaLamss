@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: NHACUNGCAPs
         public ActionResult Index()
         {
-            return View(db.NHACUNGCAPs.ToList());
+            return View(db.NHACUNGCAP.ToList());
         }
 
         // GET: NHACUNGCAPs/Details/5
@@ -50,7 +50,7 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.NHACUNGCAPs.Add(nHACUNGCAP);
+                db.NHACUNGCAP.Add(nHACUNGCAP);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
