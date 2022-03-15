@@ -1,6 +1,6 @@
-﻿@model IList<TraSuaLamss.Models.PhieuDatHang>
+﻿@model TraSuaLamss.Models.PhieuDatHang
 @{
-    ViewBag.Title = "DatHang";
+    ViewBag.Title = "DatHangLe";
 }
 <style type="text/css">
     tbody.bangsp tr td {
@@ -99,25 +99,23 @@
                 <td class="td-center">Số lượng</td>
                 <td class="td-center">Thành tiền</td>
             </tr>
-            @foreach (var item in Model)
-            {
 
-                <tr>
-                    <td>@item.SP.TenSP</td>
-                    <td class="td-center">
-                        @{
-                            var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
-                            string dongia = String.Format(format, "{0:c0}", item.CTDH.DonGia);
-                            string thanhtien = String.Format(format, "{0:c0}", item.CTDH.DonGia * item.CTDH.SoLuong);
-                        }
-                        @dongia
-                    </td>
-                    <td class="td-center">@item.CTDH.SoLuong</td>
-                    <td class="td-center">
-                        @thanhtien
-                    </td>
-                </tr>
-            }
+            <tr>
+                <td>@Model.SP.TenSP</td>
+                <td class="td-center">
+                    @{
+                        var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                        string dongia = String.Format(format, "{0:c0}", Model.CTDH.DonGia);
+                        string thanhtien = String.Format(format, "{0:c0}", Model.CTDH.DonGia * Model.CTDH.SoLuong);
+                    }
+                    @dongia
+                </td>
+                <td class="td-center">@Model.CTDH.SoLuong</td>
+                <td class="td-center">
+                    @thanhtien
+                </td>
+            </tr>
+
             <tr>
                 <td colspan="3" style="text-align:right;">Tổng tiền: </td>
                 <td class="td-center">
@@ -133,7 +131,7 @@
             <tr>
                 <td class="nut"><button class="back" type="button" onclick="Huy()"><b>Hủy</b></button></td>
                 <td colspan="2"></td>
-                <td class="nut"><a href="@Url.Action("CreateDonHang", "DonHang", new {list=ViewBag.List,DH=ViewBag.DonHang} )">Đặt hàng</a></td>
+                <td class="nut"><a href="@Url.Action("CreateDonHangLe", "DonHang", new {Phieu=ViewBag.Phieu,DH=ViewBag.DonHang} )">Đặt hàng</a></td>
             </tr>
         </tfoot>
     </table>
