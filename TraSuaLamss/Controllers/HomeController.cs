@@ -165,7 +165,6 @@ namespace TraSuaLamss.Controllers
         {
             model.Username = Session["Username"].ToString();
             /*var kh = db.KHACHHANG.SingleOrDefault(n => n.Username == username);*/
-
             TaiKhoan tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == model.Username);
             KhachHang kh = tk.KHACHHANGs.SingleOrDefault();
             if (ModelState.IsValid)
