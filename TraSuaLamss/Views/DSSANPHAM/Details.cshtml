@@ -53,9 +53,19 @@
             <p style="clear: left; font-size: 18px">Mô tả : <span style="">@ViewBag.MoTa</span></p>
             <p>
                 Số lượng:
-                <a href="@Url.Action("GiamSL", "DSSANPHAM", new {id=ViewBag.MaSP,loai=ViewBag.MaLoai,SLtam=ViewBag.SL})"><input class="minus is-form" type="button" value="-"></a>
-                <input aria-label="quantity" class="input-qty" min="1" type="text" value="@ViewBag.SL" style="height:24px;width:50px;text-align:center">
-                <a href="@Url.Action("TangSL", "DSSANPHAM", new {id=ViewBag.MaSP,loai=ViewBag.MaLoai,SLtam=ViewBag.SL})"><input class="plus is-form" type="button" value="+"></a>
+                <input class="minus is-form" type="button" value="-" onclick="Down()">
+                <input id="soluong" aria-label="quantity" class="input-qty" min="1" type="number" value="@ViewBag.SL" style="height:24px;width:50px;text-align:center">
+                <input class="plus is-form" type="button" value="+" onclick="Up()">
+                <script>
+                    function Up() {
+                        result = document.getElementById('soluong');
+                        result.value = result.value ? parseInt(result.value) + 1 : 1;
+                    }
+                    function Down() {
+                        result = document.getElementById('soluong');
+                        result.value = result.value ? parseInt(result.value) - 1 : 1;
+                    }
+                </script>
             </p>
             <div id="datmua">
                 <a href="@Url.Action("DatHangLe","GioHang",new { MaKH=1, MaHang=ViewBag.MaSP,soluong=ViewBag.SL })">Đặt hàng</a>

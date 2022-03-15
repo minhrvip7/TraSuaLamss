@@ -78,7 +78,7 @@ namespace TraSuaLamss.Controllers
             ViewBag.TenKH = (from e in db.KhachHang
                              where e.MaKH == KHID
                              select e.TenKH).FirstOrDefault();
-            ViewBag.List = lischitiet as IList<PhieuDatHang>;
+            ViewBag.List = lischitiet as List<PhieuDatHang>;
             return View(lischitiet);
         }
 
