@@ -19,10 +19,10 @@ namespace TraSuaLamss.Controllers
         {
             int KHID = 1;
             List<XemGioHang> list = (from e in db.GioHang
-                                      join d in db.SanPham
-                                      on e.MaSP equals d.MaSP
-                                      where e.MaKH == KHID
-                                      select new XemGioHang { GH = e, SP = d }).ToList();
+                                     join d in db.SanPham
+                                     on e.MaSP equals d.MaSP
+                                     where e.MaKH == KHID
+                                     select new XemGioHang { GH = e, SP = d }).ToList();
             ViewBag.MaKH = KHID;
             Session[ListHangSession] = list;
             return View(list);
@@ -56,20 +56,20 @@ namespace TraSuaLamss.Controllers
                     SoLuong = item.GH.Soluong,
                     DonGia = Convert.ToInt32(item.SP.GiaBan)
                 };
-                SanPham sanPham=(from e in db.SanPham
-                                 where e.MaSP==item.SP.MaSP
-                                 select e).FirstOrDefault();
+                SanPham sanPham = (from e in db.SanPham
+                                   where e.MaSP == item.SP.MaSP
+                                   select e).FirstOrDefault();
                 var Phieu = new PhieuDatHang { CTDH = ChitietDH, SP = sanPham };
                 lischitiet.Add(Phieu);
             }
             ViewBag.TongTien = lischitiet.Sum(x => x.CTDH.SoLuong * x.CTDH.DonGia);
             ViewBag.MaDH = MaDH;
             ViewBag.TenKH = (from e in db.KhachHang
-                                where e.MaKH == KHID
-                                select e.TenKH).FirstOrDefault();
-            ViewBag.DiaChi = (from e in db.KhachHang
                              where e.MaKH == KHID
-                             select e.DiaChi).FirstOrDefault();
+                             select e.TenKH).FirstOrDefault();
+            ViewBag.DiaChi = (from e in db.KhachHang
+                              where e.MaKH == KHID
+                              select e.DiaChi).FirstOrDefault();
             ViewBag.NgayDat = DateTime.Today.ToString("dd/MM/yyyy");
             return View(lischitiet);
         }
