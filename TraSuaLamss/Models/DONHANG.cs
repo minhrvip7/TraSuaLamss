@@ -5,8 +5,9 @@ namespace TraSuaLamss.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
-
+    
     [Table("DONHANG")]
+    [Serializable]
     public partial class DonHang
     {
         [Key]

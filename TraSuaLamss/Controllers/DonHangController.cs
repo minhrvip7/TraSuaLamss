@@ -13,20 +13,29 @@ namespace TraSuaLamss.Controllers
     public class DonHangController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
-
+        private const string MaKHSession = "MaKH";
         // GET: DONHANGs
         public ActionResult Index()
         {
-            var dONHANGs = db.DonHang.Include(d => d.KHACHHANG);
-            return View(dONHANGs.ToList());
-        }
-        public ActionResult CreateDonHang(List<PhieuDatHang> list,string MaDH,string maKH,decimal tongtien)
-        {
+            ViewBag.Message = "Đã khởi tạo đơn hàng thành công";
             return View();
         }
-        public ActionResult CreateDonHangLe(string MaSP, string MaDH, string maKH, decimal tongtien)
+        public ActionResult CreateDonHang(List<PhieuDatHang> list, DonHang DH)
         {
-            return View();
+            foreach (var item in list)
+            {
+                db.ChiTietDonHang.Add(item.CTDH);
+            }
+            db.DonHang.Add(DH);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult CreateDonHangLe(PhieuDatHang Phieu, DonHang DH)
+        {
+            db.ChiTietDonHang.Add(Phieu.CTDH);
+            db.DonHang.Add(DH);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }

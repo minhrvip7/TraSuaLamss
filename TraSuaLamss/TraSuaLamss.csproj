@@ -372,6 +372,13 @@
     <Content Include="Views\DSSanPham\Index.cshtml" />
     <Content Include="Views\DSSanPham\Tra.cshtml" />
     <Content Include="Views\DSSanPham\TraSua.cshtml" />
+    <Content Include="Views\LienHe\Create.cshtml" />
+    <Content Include="Views\LienHe\Delete.cshtml" />
+    <Content Include="Views\LienHe\Details.cshtml" />
+    <Content Include="Views\LienHe\Edit.cshtml" />
+    <Content Include="Views\LienHe\Index.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\GioHang\DatHangLe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
