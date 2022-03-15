@@ -113,12 +113,13 @@
             }
             <tfoot>
                 <tr>
-                    <td colspan="7">
-                        <table style="float:right">
+                    <td colspan="4"></td>
+                    <td colspan="3">
+                        <table>
                             <tr>
                                 <td class="nut"><a style="background-color:aqua" href="@Url.Action("Index", "DSSANPHAM")">Mua hàng tiếp</a></td>
                                 <td class="nut"><a style="background-color:red" href="@Url.Action("DeleteAll", "GioHang", new {MaKhach=ViewBag.MaKH})">Xóa hết</a></td>
-                                <td class="nut"><a style="background-color:lightgreen" href="@Url.Action("Dathang", "GioHang")">Đặt hàng</a></td>
+                                <td class="nut"><a style="background-color:lightgreen" href="@Url.Action("DatHang", "GioHang")">Đặt hàng</a></td>
                             </tr>
                         </table>
                     </td>
