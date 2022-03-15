@@ -1,0 +1,67 @@
+﻿@model TraSuaLamss.Models.SanPham
+@{
+    ViewBag.Title = "Details";
+    Layout = null;
+}
+
+<style type="text/css">
+    #datmua a {
+        clear: both;
+        background-color: red;
+        color: white;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        display: block;
+        float: left;
+        padding-left: 10px;
+        text-align: center;
+        padding-top: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+        #datmua a:hover {
+            background-color: gray;
+            color: red;
+        }
+</style>
+
+<table border="0" style="width:100%">
+    <tr>
+        <td style="width:40%">
+            <img style="float:right;padding-right:20px" src="~/@Model.Anh" width="300" />
+        </td>
+        <td style="width:60%" valign="top">
+            <p style="font-weight:bold;color:black;font-size:36px;line-height:50px">@Model.TenSP</p>
+            <p style="font-size:24px"><span style="color:red">@Model.GiaBan đ</span></p>
+            <p style="font-size: 18px">Phân loại : <span style="">@Model.PHANLOAI.TenLoai</span></p>
+            <p style="font-size: 18px">Nguyên liệu : <span style="">@Model.NGUYENLIEU.TenNL</span></p>
+            <hr style="width:50%;float:left;" />
+            <p style="clear: left; font-size: 18px">Mô tả : <span style="">@Model.MoTa</span></p>
+            <p style="font-size:18px">
+                <span>số lượng :</span>
+                <input type="number" style="height:24px;width:50px" min="1" value="1" id="txtSoLuong" />
+            </p>
+            <div id="datmua">
+                <a href="@Html.ActionLink("Add","GioHang",new { MaKhach="KH001",MaHang=Model.MaSP, soluong=Convert.ToInt32("#txtSoLuong") })">ĐẶT MUA</a>
+            </div>
+        </td>
+    </tr>
+</table>
+<br />
+<script type="text/javascript">
+    var txtSoLuong = $("#txtSoLuong");
+    //change this selector to grab your ActionLink's ID
+    var anchorInfo = $("a");
+
+    fullName.on("keyup", function () {
+        var value = $(this).val();
+        anchorInfo.attr("info", value);
+        //logging the keystrokes getting to the Info attribute
+        console.log(anchorInfo.attr("info"));
+    });
+</script>
+
+
