@@ -8,24 +8,35 @@
         float: right;
     }
 
-        td.nut a {
-            clear: both;
-            background-color: red;
-            color: white;
-            width: 120px;
-            height: 40px;
-            line-height: 40px;
-            display: block;
-            text-align: center;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-        }
+    input.updown {
+        width: 26px;
+        height: 26px;
+        text-align: center;
+    }
 
-            td.nut a:hover {
-                background-color: gray;
-                color: pink;
-            }
+    input.inputsl {
+        width: 36px;
+        text-align: center;
+    }
+
+    td.nut a {
+        clear: both;
+        background-color: red;
+        color: white;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+        td.nut a:hover {
+            background-color: gray;
+            color: pink;
+        }
 
     td {
         padding: 10px 20px 10px 10px;
@@ -73,9 +84,10 @@
                     <td></td>
                 </tr>
             </thead>
-            @foreach (var item in Model)
-            {
-                <tbody>
+            <tbody>
+                @foreach (var item in Model)
+                {
+
                     <tr>
                         <td>@item.SP.MaSP</td>
                         <td>@item.SP.TenSP</td>
@@ -89,17 +101,19 @@
                             @dongia
                         </td>
                         <td class="td-center">
-                            <input class="minus is-form" type="button" value="-" onclick="Down()" id="@item.GH.Soluong">
-                            <input value="@item.GH.Soluong" style="height:24px;width:50px" type="number" min="1" id="@item.GH.Soluong" />
-                            <input class="plus is-form" type="button" value="+" onclick="Up()" id="@item.GH.Soluong">
+                            <input class="updown" type="button" value="-" onclick="Down('@item.GH.MaSP')">
+                            <input class="inputsl" value="@item.GH.Soluong" type="number" min="1" id="@item.GH.MaSP" readonly />
+                            <input class="updown" type="button" value="+" onclick="Up('@item.GH.MaSP')">
                             <script>
-                                function Up() {
-                                    result = document.getElementById('sl');
+                                function Up(val) {
+                                    result = document.getElementById(val);
                                     result.value = result.value ? parseInt(result.value) + 1 : 1;
                                 }
-                                function Down() {
-                                    result = document.getElementById('sl');
-                                    result.value = result.value ? parseInt(result.value) - 1 : 1;
+                                function Down(val) {
+                                    result = document.getElementById(val);
+                                    if (result.value > 1)
+                                        result.value = result.value ? parseInt(result.value) - 1 : 1;
+                                    else result.value = 1;
                                 }
                             </script>
                         </td>
@@ -108,22 +122,16 @@
                         </td>
                         <td class="td-center"><a href="@Url.Action("Delete", "GioHang", new {MaKhach=item.GH.MaKH, MaHang=item.SP.MaSP})"><img class="image-nut" src="~/wwwroot/Images/Xoa.png" /></a> | <a href="#"><img class="image-nut" src="~/wwwroot/Images/Timkiem.png" /></a></td>
                     </tr>
-                    <tr><td></td></tr>
-                </tbody>
-            }
-            <tfoot>
+                    <tr><td colspan="7"></td></tr>
+
+                }
                 <tr>
-                    <td colspan="7">
-                        <table style="float:right">
-                            <tr>
-                                <td class="nut"><a style="background-color:aqua" href="@Url.Action("Index", "DSSANPHAM")">Mua hàng tiếp</a></td>
-                                <td class="nut"><a style="background-color:red" href="@Url.Action("DeleteAll", "GioHang", new {MaKhach=ViewBag.MaKH})">Xóa hết</a></td>
-                                <td class="nut"><a style="background-color:lightgreen" href="@Url.Action("Dathang", "GioHang")">Đặt hàng</a></td>
-                            </tr>
-                        </table>
-                    </td>
+                    <td colspan="4"></td>
+                    <td class="nut"><a style="background-color:yellow" href="@Url.Action("Index", "DSSANPHAM")">Mua hàng tiếp</a></td>
+                    <td class="nut"><a style="background-color:red" href="@Url.Action("DeleteAll", "GioHang", new {MaKhach=ViewBag.MaKH})">Xóa hết</a></td>
+                    <td class="nut"><a style="background-color:aqua" href="@Url.Action("Dathang", "GioHang")">Đặt hàng</a></td>
                 </tr>
-            </tfoot>
+            </tbody>
         </table>
     }
     else

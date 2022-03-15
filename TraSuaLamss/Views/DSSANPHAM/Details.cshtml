@@ -4,6 +4,15 @@
     Layout = null;
 }
 <style type="text/css">
+    input.updown{
+        width:26px;
+        height:26px;
+        text-align:center;
+    }
+    input.inputsl{
+        width:36px;
+        text-align:center;
+    }
     #datmua a {
         background-color: red;
         color: white;
@@ -53,9 +62,9 @@
             <p style="clear: left; font-size: 18px">Mô tả : <span style="">@ViewBag.MoTa</span></p>
             <p>
                 Số lượng:
-                <input class="minus is-form" type="button" value="-" onclick="Down()">
-                <input id="soluong" aria-label="quantity" class="input-qty" min="1" type="number" value="@ViewBag.SL" style="height:24px;width:50px;text-align:center">
-                <input class="plus is-form" type="button" value="+" onclick="Up()">
+                <input class="updown" type="button" value="-" onclick="Down()">
+                <input id="soluong" class="inputsl" min="1" type="number" value="@ViewBag.SL" >
+                <input class="updown" type="button" value="+" onclick="Up()">
                 <script>
                     function Up() {
                         result = document.getElementById('soluong');
@@ -63,7 +72,10 @@
                     }
                     function Down() {
                         result = document.getElementById('soluong');
-                        result.value = result.value ? parseInt(result.value) - 1 : 1;
+                        result = document.getElementById(val);
+                        if (result.value > 1)
+                            result.value = result.value ? parseInt(result.value) - 1 : 1;
+                        else result.value = 1;
                     }
                 </script>
             </p>

@@ -14,26 +14,25 @@ namespace TraSuaLamss.Controllers
     {
         private TraSuaContext db = new TraSuaContext();
         private const string MaKHSession = "MaKH";
-        // GET: DONHANGs
         public ActionResult Index()
         {
             ViewBag.Message = "Đã khởi tạo đơn hàng thành công";
             return View();
         }
-        public ActionResult CreateDonHang(List<PhieuDatHang> list, DonHang DH)
+        public ActionResult CreateDonHang(IList<PhieuDatHang> list, DonHang don)
         {
             foreach (var item in list)
             {
                 db.ChiTietDonHang.Add(item.CTDH);
             }
-            db.DonHang.Add(DH);
+            db.DonHang.Add(don);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        public ActionResult CreateDonHangLe(PhieuDatHang Phieu, DonHang DH)
+        public ActionResult CreateDonHangLe(PhieuDatHang phieu, DonHang don)
         {
-            db.ChiTietDonHang.Add(Phieu.CTDH);
-            db.DonHang.Add(DH);
+            db.ChiTietDonHang.Add(phieu.CTDH);
+            db.DonHang.Add(don);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
