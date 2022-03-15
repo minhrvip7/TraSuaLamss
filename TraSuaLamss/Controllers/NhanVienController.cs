@@ -21,8 +21,16 @@ namespace TraSuaLamss.Controllers
         public ActionResult Index(string searchStr, int? page)
         {
             var nHANVIENs = db.NHANVIENs.Include(n => n.TAIKHOAN);
-            //Tìm kiếm
-            if (!String.IsNullOrEmpty(searchStr))
+
+            if(searchStr == null)
+            {
+                nHANVIENs = nHANVIENs;
+            }
+            else if(searchStr.Any(char.IsDigit))
+            {
+                nHANVIENs = nHANVIENs.Where(e => e.MaNV.Contains(searchStr));
+            }
+            else if (!String.IsNullOrEmpty(searchStr))
             {
                 nHANVIENs = nHANVIENs.Where(e => e.TenNV.Contains(searchStr));
             }

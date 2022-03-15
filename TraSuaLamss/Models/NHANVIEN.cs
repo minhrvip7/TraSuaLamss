@@ -1,4 +1,4 @@
-namespace TraSuaLamss.Models
+﻿namespace TraSuaLamss.Models
 {
     using System;
     using System.Collections.Generic;
@@ -43,6 +43,8 @@ namespace TraSuaLamss.Models
         [StringLength(50)]
         public string STK { get; set; }
 
+        [Required]
+        [Display(Name = "Lương")]
         public decimal Luong { get; set; }
 
         public virtual TaiKhoan TAIKHOAN { get; set; }
