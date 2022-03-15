@@ -50,7 +50,7 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.LIENHEs.Add(lIENHE);
+                db.LienHe.Add(lIENHE);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

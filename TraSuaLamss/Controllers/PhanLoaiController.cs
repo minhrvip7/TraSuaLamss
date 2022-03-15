@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: PHANLOAIs
         public ActionResult Index()
         {
-            return View(db.PHANLOAIs.ToList());
+            return View(db.PhanLoai.ToList());
         }
 
         // GET: PHANLOAIs/Details/5
@@ -27,7 +27,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PhanLoai pHANLOAI = db.PHANLOAIs.Find(id);
+            PhanLoai pHANLOAI = db.PhanLoai.Find(id);
             if (pHANLOAI == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.PHANLOAIs.Add(pHANLOAI);
+                db.PhanLoai.Add(pHANLOAI);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PhanLoai pHANLOAI = db.PHANLOAIs.Find(id);
+            PhanLoai pHANLOAI = db.PhanLoai.Find(id);
             if (pHANLOAI == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PhanLoai pHANLOAI = db.PHANLOAIs.Find(id);
+            PhanLoai pHANLOAI = db.PhanLoai.Find(id);
             if (pHANLOAI == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            PhanLoai pHANLOAI = db.PHANLOAIs.Find(id);
-            db.PHANLOAIs.Remove(pHANLOAI);
+            PhanLoai pHANLOAI = db.PhanLoai.Find(id);
+            db.PhanLoai.Remove(pHANLOAI);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

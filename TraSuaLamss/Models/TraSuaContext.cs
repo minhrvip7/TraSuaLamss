@@ -16,13 +16,13 @@ namespace TraSuaLamss.Models
         public virtual DbSet<DonHang> DonHang { get; set; }
         public virtual DbSet<GioHang> GioHang { get; set; }
         public virtual DbSet<KhachHang> KhachHang { get; set; }
-        public virtual DbSet<LienHe> LIENHEs { get; set; }
-        public virtual DbSet<NguyenLieu> NGUYENLIEUx { get; set; }
-        public virtual DbSet<NhaCungCap> NHACUNGCAPs { get; set; }
-        public virtual DbSet<NhanVien> NHANVIENs { get; set; }
-        public virtual DbSet<PhanLoai> PHANLOAIs { get; set; }
+        public virtual DbSet<LIENHE> LienHe { get; set; }
+        public virtual DbSet<NguyenLieu> NguyenLieu { get; set; }
+        public virtual DbSet<NhaCungCap> NhaCungCap { get; set; }
+        public virtual DbSet<NhanVien> NhanVien { get; set; }
+        public virtual DbSet<PhanLoai> PhanLoai { get; set; }
         public virtual DbSet<SanPham> SanPham { get; set; }
-        public virtual DbSet<TaiKhoan> TAIKHOANs { get; set; }
+        public virtual DbSet<TaiKhoan> TaiKhoan { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

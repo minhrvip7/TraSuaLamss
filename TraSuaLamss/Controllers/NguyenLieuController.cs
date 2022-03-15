@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: NGUYENLIEUx
         public ActionResult Index()
         {
-            var nGUYENLIEUx = db.NGUYENLIEUx.Include(n => n.NHACUNGCAP);
+            var nGUYENLIEUx = db.NguyenLieu.Include(n => n.NHACUNGCAP);
             return View(nGUYENLIEUx.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            NguyenLieu nGUYENLIEU = db.NguyenLieu.Find(id);
             if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace TraSuaLamss.Controllers
         // GET: NGUYENLIEUx/Create
         public ActionResult Create()
         {
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC");
+            ViewBag.MaNCC = new SelectList(db.NhaCungCap, "MaNCC", "TenNCC");
             return View();
         }
 
@@ -52,12 +52,12 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.NGUYENLIEUx.Add(nGUYENLIEU);
+                db.NguyenLieu.Add(nGUYENLIEU);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            ViewBag.MaNCC = new SelectList(db.NhaCungCap, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
             return View(nGUYENLIEU);
         }
 
@@ -68,12 +68,12 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            NguyenLieu nGUYENLIEU = db.NguyenLieu.Find(id);
             if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            ViewBag.MaNCC = new SelectList(db.NhaCungCap, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
             return View(nGUYENLIEU);
         }
 
@@ -90,7 +90,7 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            ViewBag.MaNCC = new SelectList(db.NhaCungCap, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
             return View(nGUYENLIEU);
         }
 
@@ -101,7 +101,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            NguyenLieu nGUYENLIEU = db.NguyenLieu.Find(id);
             if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
-            db.NGUYENLIEUx.Remove(nGUYENLIEU);
+            NguyenLieu nGUYENLIEU = db.NguyenLieu.Find(id);
+            db.NguyenLieu.Remove(nGUYENLIEU);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

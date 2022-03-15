@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: TAIKHOANs
         public ActionResult Index()
         {
-            return View(db.TAIKHOANs.ToList());
+            return View(db.TaiKhoan.ToList());
         }
 
         // GET: TAIKHOANs/Details/5
@@ -27,7 +27,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TaiKhoan tAIKHOAN = db.TAIKHOANs.Find(id);
+            TaiKhoan tAIKHOAN = db.TaiKhoan.Find(id);
             if (tAIKHOAN == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.TAIKHOANs.Add(tAIKHOAN);
+                db.TaiKhoan.Add(tAIKHOAN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TaiKhoan tAIKHOAN = db.TAIKHOANs.Find(id);
+            TaiKhoan tAIKHOAN = db.TaiKhoan.Find(id);
             if (tAIKHOAN == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TaiKhoan tAIKHOAN = db.TAIKHOANs.Find(id);
+            TaiKhoan tAIKHOAN = db.TaiKhoan.Find(id);
             if (tAIKHOAN == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            TaiKhoan tAIKHOAN = db.TAIKHOANs.Find(id);
-            db.TAIKHOANs.Remove(tAIKHOAN);
+            TaiKhoan tAIKHOAN = db.TaiKhoan.Find(id);
+            db.TaiKhoan.Remove(tAIKHOAN);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
