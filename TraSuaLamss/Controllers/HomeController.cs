@@ -168,8 +168,6 @@ namespace TraSuaLamss.Controllers
 
             TaiKhoan tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == model.Username);
             KhachHang kh = tk.KHACHHANGs.SingleOrDefault();
-            Console.WriteLine("ậkhdkhajkwdhk");
-            /*Console.WriteLine(kh);*/
             if (ModelState.IsValid)
             {
                 tk.HoTen = model.TenKH;
