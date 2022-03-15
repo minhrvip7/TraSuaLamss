@@ -1,5 +1,6 @@
-﻿@model IEnumerable<TraSuaLamss.Models.SanPham>
-
+﻿@model PagedList.IPagedList<TraSuaLamss.Models.SanPham>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
 }
@@ -9,58 +10,69 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NGUYENLIEU.TenNL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PHANLOAI.TenLoai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TenSP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GiaBan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Anh)
-        </th>
-        <th></th>
-    </tr>
+<div style="width: 1280px; margin: 0 auto;padding-top:150px">
+    <table class="table" style="margin: 0 auto" height="800">
+        <tr>
+            <th>
+                <p>Nguyên liệu</p>
+            </th>
+            <th>
+                <p>Phân loại</p>
+            </th>
+            <th>
+                <p>Tên sản phẩm</p>
+            </th>
+            <th>
+                <p>Giá bán</p>
+            </th>
+            <th>
+                <p>Mô tả</p>
+            </th>
+            <th>
+                <p>Ảnh </p>
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NGUYENLIEU.TenNL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PHANLOAI.TenLoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenSP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GiaBan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MoTa)
-        </td>
-        <td>
-            @{ 
-                string ImagePath = "~/wwwroot/Images/" + item.Anh;
-            }
-            <img src="@Url.Content(ImagePath)" width="100" class="img-thumbnail" />
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaSP }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaSP }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaSP })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td height="150">
+                    @Html.DisplayFor(modelItem => item.NGUYENLIEU.TenNL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PHANLOAI.TenLoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSP)
+                </td>
+                <td>
+                    @{
+                        decimal tien = item.GiaBan;
+                        string gia = String.Format("{0:0,0}", tien);
+                    }
+                    <p>@gia</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MoTa)
+                </td>
+                <td>
+                    @{
+                        string ImagePath = "~/wwwroot/Images/" + item.Anh;
+                    }
+                    <img src="@Url.Content(ImagePath)" width="100" class="img-thumbnail" />
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaSP.Trim() }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.MaSP.Trim() }) |
+                    @Html.ActionLink("Xoá", "Delete", new { id = item.MaSP.Trim() })
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+    <div style="margin-left:5px">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </div>
+</div>
+
