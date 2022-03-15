@@ -17,31 +17,31 @@ namespace TraSuaLamss.Controllers
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: NHANVIENs
+        // GET: NhanVien
         public ActionResult Index(string searchStr, int? page)
         {
-            var nHANVIENs = db.NHANVIENs.Include(n => n.TAIKHOAN);
+            var NhanVien = db.NhanVien.Include(n => n.TAIKHOAN);
             //Tìm kiếm
             if (!String.IsNullOrEmpty(searchStr))
             {
-                nHANVIENs = nHANVIENs.Where(e => e.TenNV.Contains(searchStr));
+                NhanVien = NhanVien.Where(e => e.TenNV.Contains(searchStr));
             }
             //Sắp xếp trước khi phân trang
-            nHANVIENs = nHANVIENs.OrderBy(e => e.MaNV);
+            NhanVien = NhanVien.OrderBy(e => e.MaNV);
             int pageSize = 3;
             int pageNumber = (page ?? 1);
 
-            return View(nHANVIENs.ToPagedList(pageNumber, pageSize));
+            return View(NhanVien.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: NHANVIENs/Details/5
+        // GET: NhanVien/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
+            NhanVien nHANVIEN = db.NhanVien.Find(id);
             if (nHANVIEN == null)
             {
                 return HttpNotFound();
@@ -49,14 +49,14 @@ namespace TraSuaLamss.Controllers
             return View(nHANVIEN);
         }
 
-        // GET: NHANVIENs/Create
+        // GET: NhanVien/Create
         public ActionResult Create()
         {
-            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password");
+            ViewBag.Username = new SelectList(db.TaiKhoan, "Username", "Password");
             return View();
         }
 
-        // POST: NHANVIENs/Create
+        // POST: NhanVien/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -65,32 +65,32 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.NHANVIEN.Add(nHANVIEN);
+                db.NhanVien.Add(nHANVIEN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password", nHANVIEN.Username);
+            ViewBag.Username = new SelectList(db.TaiKhoan, "Username", "Password", nHANVIEN.Username);
             return View(nHANVIEN);
         }
 
-        // GET: NHANVIENs/Edit/5
+        // GET: NhanVien/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
+            NhanVien nHANVIEN = db.NhanVien.Find(id);
             if (nHANVIEN == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password", nHANVIEN.Username);
+            ViewBag.Username = new SelectList(db.TaiKhoan, "Username", "Password", nHANVIEN.Username);
             return View(nHANVIEN);
         }
 
-        // POST: NHANVIENs/Edit/5
+        // POST: NhanVien/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -103,18 +103,18 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password", nHANVIEN.Username);
+            ViewBag.Username = new SelectList(db.TaiKhoan, "Username", "Password", nHANVIEN.Username);
             return View(nHANVIEN);
         }
 
-        // GET: NHANVIENs/Delete/5
+        // GET: NhanVien/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
+            NhanVien nHANVIEN = db.NhanVien.Find(id);
             if (nHANVIEN == null)
             {
                 return HttpNotFound();
@@ -122,13 +122,13 @@ namespace TraSuaLamss.Controllers
             return View(nHANVIEN);
         }
 
-        // POST: NHANVIENs/Delete/5
+        // POST: NhanVien/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
-            db.NHANVIENs.Remove(nHANVIEN);
+            NhanVien nHANVIEN = db.NhanVien.Find(id);
+            db.NhanVien.Remove(nHANVIEN);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

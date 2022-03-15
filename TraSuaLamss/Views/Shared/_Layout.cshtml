@@ -37,40 +37,96 @@
             </a>
             <div class="row">
 
-                        <!-- ***** Menu Start ***** -->
-                        <ul class="nav">
-                            <li class="scroll-to-section"><a href="" class="active">Home</a></li>
-                            <li class="scroll-to-section"><a href="#about">About</a></li>
-
+                <div class="search form-inline">
+                    <form name="frmSearch" id="frmSearch" action="/SANPHAM/Search" method="post" style="margin-left:50px;margin-top:-50px">
+                        <input type="text" name="searchkey" placeholder="Nhap tu khoa" class="form-control" style="width:800px" />
+                        <button type="submit" class="searchButton"><i class="fa fa-search"></i></button>
+                        <div class="form-inline dndx" style="margin-top:-20px">
+                            @if (Session["TAIKHOAN"] != null)
+                            {
+                                
+                                <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" style="margin-top:-10px"><img class="img-responsive rounded-circle" height="30" src="~/Content/Template/assets/images/computer-icons-user-profile-google-account-photos-icon-account.jpg" /><span class="name_user">@Session["Hoten"]</span></a>
+                                <div class="dropdown-menu">
+                                    <ul>
+                                        <li><a class="dropdown-item" href="/TAIKHOANs/Index"><span>Thông tin tài khoản</span></a></li>
+                                        <li><a class="dropdown-item" href="@Url.Action("Logout","Home")"><span>Đăng xuất</span> <i class="fa fa-sign-out"></i></a></li>
+                                    </ul>
+                                    
+                                </div>
                             }
+                            @if (Session["TAIKHOAN"] == null)
+                            {
+                                <a href="/Home/DangNhap">Đăng nhập</a><span>/</span><a href="/Home/DangKy">Đăng ký</a>
+                            }
+
+
                         </div>
                     </form>
 
-                            <li class="scroll-to-section"><a href="#menu">Menu</a></li>
-                            <li class="scroll-to-section"><a href="LichSuGiaoDich/Index">Giao dịch</a></li>
-                            <li class="submenu">
-                                <a href="/DSSANPHAM/Index">SẢN PHẨM</a>
-                                <ul>
-                                    <li><a href="/DSSANPHAM/CaPhe">Cà phê</a></li>
-                                    <li><a href="/DSSANPHAM/DoAnVat">Đồ ăn vặt</a></li>
-                                    <li><a href="/DSSANPHAM/Tra">Trà</a></li>
-                                    <li><a href="/DSSANPHAM/TraSua">Trà sữa</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="/LIENHEs/Index">LIÊN HỆ</a></li>
-                            @{
-
-                                if (Session["TAIKHOAN"] != null)
+                </div>
+                <div class="col-9">
+                    <nav class="main-nav">
+                        <ul class="nav" style="margin-top:-5px">
+                            @if (Session["PhanQuyen"] == null)
+                            {
+                                <li><a href="/Home/Index">TRANG CHỦ</a></li>
+                                <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
+                                <li class="submenu">
+                                    <a href="/DSSANPHAM/Index">SẢN PHẨM</a>
+                                    <ul>
+                                        <li><a href="/DSSANPHAM/CaPhe">Cà phê</a></li>
+                                        <li><a href="/DSSANPHAM/DoAnVat">Đồ ăn vặt</a></li>
+                                        <li><a href="/DSSANPHAM/Tra">Trà</a></li>
+                                        <li><a href="/DSSANPHAM/TraSua">Trà sữa</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="/LIENHEs/Index">LIÊN HỆ</a></li>
+                                <li><a href="/Home/DangNhap">GIỎ HÀNG</a></li>
+                            }
+                            else
+                            {
+                                if (Session["PhanQuyen"].ToString() == "Admin")
                                 {
-                                    <li><a href="/TAIKHOANs/Index">TÀI KHOẢN</a></li>
-                                    <li><a href="/GIOHANGs/Giohang">GIỎ HÀNG</a></li>
+                                    <li><a href="/Home/Index">TRANG CHỦ</a></li>
+                                    <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
+                                    <li><a href="/TaiKhoan/Index">QUẢN LÝ TÀI KHOẢN</a></li>
+                                    <li><a href="/SanPham/Index">QUẢN LÝ SẢN PHẨM</a></li>
                                 }
-                                else
+                                if (Session["PhanQuyen"].ToString() == "Khách hàng")
                                 {
-                                    <li><a href="/Home/DangNhap">TÀI KHOẢN</a></li>
-                                    <li><a href="/Home/DangNhap">GIỎ HÀNG</a></li>
+                                    <li><a href="/Home/Index">TRANG CHỦ</a></li>
+                                    <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
+                                    <li class="submenu">
+                                        <a href="/DSSANPHAM/Index">SẢN PHẨM</a>
+                                        <ul>
+                                            <li><a href="/DSSANPHAM/CaPhe">Cà phê</a></li>
+                                            <li><a href="/DSSANPHAM/DoAnVat">Đồ ăn vặt</a></li>
+                                            <li><a href="/DSSANPHAM/Tra">Trà</a></li>
+                                            <li><a href="/DSSANPHAM/TraSua">Trà sữa</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/LIENHEs/Index">LIÊN HỆ</a></li>
+                                    <li><a href="/GioiThieu/Index">TÀI KHOẢN</a></li>
+                                    <li><a href="/GioiThieu/Index">GIỎ HÀNG</a></li>
+                                }
+                                if (Session["PhanQuyen"].ToString() == "Nhân viên")
+                                {
+                                    <li><a href="/Home/Index">TRANG CHỦ</a></li>
+                                    <li><a href="/GioiThieu/Index">GIỚI THIỆU</a></li>
+                                    <li class="submenu">
+                                        <a href="/DSSANPHAM/Index">SẢN PHẨM</a>
+                                        <ul>
+                                            <li><a href="/DSSANPHAM/CaPhe">Cà phê</a></li>
+                                            <li><a href="/DSSANPHAM/DoAnVat">Đồ ăn vặt</a></li>
+                                            <li><a href="/DSSANPHAM/Tra">Trà</a></li>
+                                            <li><a href="/DSSANPHAM/TraSua">Trà sữa</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="/LIENHEs/Index">LIÊN HỆ</a></li>
+                                    <li><a href="/SanPham/Index">QUẢN LÝ SẢN PHẨM</a></li>
                                 }
                             }
+
                         </ul>
                         <a class='menu-trigger'>
                             <span>Menu</span>
@@ -101,7 +157,16 @@
 
 
     <br /><br /><br /><br /><br /><br />
-                                  <section>@RenderBody()</section>
+
+    
+    
+
+     <section> @RenderBody()</section>
+
+
+
+
+
     <footer>
         <div class="container">
             <div class="row">

@@ -20,7 +20,9 @@ figure, header, nav, section, article, aside, footer, figcaption {
     line-height: 0;
     height: 0;
 }
-
+.dropdown-item {
+    font-size: 13px;
+}
 .clearfix {
     display: inline-block;
 }
@@ -59,7 +61,7 @@ html, body {
 
 a {
     text-decoration: none !important;
-    color:black;
+    color: black;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -187,7 +189,6 @@ header
     }
 
     .header-area .searchButton {
-
         width: 40px;
         height: 40px;
         border: 1px solid #00B4CC;
@@ -715,8 +716,8 @@ header
 
 
 
-section{
-    padding-bottom:150px;
+section {
+    padding-bottom: 250px;
 }
 
 /* 
@@ -787,84 +788,3 @@ footer {
                 color: #2a2a2a;
             }
 
-/* 
----------------------------------------------
-responsive
---------------------------------------------- 
-*/
-
-@media (max-width: 992px) {
-    #top {
-        padding-top: 100px;
-        height: auto;
-    }
-
-    .header-area .main-nav .nav li.submenu:after {
-        right: 3px;
-    }
-
-    .header-area .main-nav .nav li.submenu {
-        padding-right: 15px;
-    }
-
-    .header-area .main-nav .nav li {
-        padding-right: 5px;
-        padding-left: 5px;
-    }
-
-        .header-area .main-nav .nav li a {
-            font-size: 14px;
-            letter-spacing: 0px;
-        }
-
-
-
-    footer .right-text-content {
-        text-align: center;
-        margin-bottom: 30px;
-    }
-
-    footer .left-text-content p {
-        text-align: center;
-        margin-top: 30px;
-    }
-}
-
-
-
-
-
-
-@-webkit-keyframes jumper {
-    0% {
-        opacity: 0;
-        -webkit-transform: scale(0);
-        transform: scale(0);
-    }
-
-    5% {
-        opacity: 1;
-    }
-
-    100% {
-        -webkit-transform: scale(1);
-        transform: scale(1);
-        opacity: 0;
-    }
-}
-
-@keyframes jumper {
-    0% {
-        opacity: 0;
-        -webkit-transform: scale(0);
-        transform: scale(0);
-    }
-
-    5% {
-        opacity: 1;
-    }
-
-    100% {
-        opacity: 0;
-    }
-}

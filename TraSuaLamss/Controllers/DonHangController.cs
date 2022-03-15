@@ -20,10 +20,7 @@ namespace TraSuaLamss.Controllers
             var dONHANGs = db.DONHANG.Include(d => d.KHACHHANG);
             return View(dONHANGs.ToList());
         }
-
-
-        // GET: DONHANGs/Details/5
-        public ActionResult Details(string id)
+        public ActionResult CreateDonHang(List<PhieuDatHang> list,string MaDH,string maKH,decimal tongtien)
         {
             if (id == null)
             {
@@ -43,13 +40,7 @@ namespace TraSuaLamss.Controllers
             ViewBag.MaKH = new SelectList(db.KHACHHANG, "MaKH", "TenKH");
             return View();
         }
-
-        // POST: DONHANGs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DonHang dONHANG)
+        public ActionResult CreateDonHangLe(string MaSP, string MaDH, string maKH, decimal tongtien)
         {
             if (ModelState.IsValid)
             {

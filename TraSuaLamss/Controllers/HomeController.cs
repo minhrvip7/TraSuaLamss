@@ -35,7 +35,7 @@ namespace TraSuaLamss.Controllers
         }
         public bool CheckUsername(string username)
         {
-            if (db.TAIKHOAN.Count(x => x.Username == username) > 0)
+            if (db.TaiKhoan.Count(x => x.Username == username) > 0)
             {
                 return true;
             }
@@ -46,7 +46,7 @@ namespace TraSuaLamss.Controllers
         }
         public bool CheckEmail(string email)
         {
-            if (db.KHACHHANG.Count(x => x.Email == email) > 0)
+            if (db.KhachHang.Count(x => x.Email == email) > 0)
             {
                 return true;
             }
@@ -81,7 +81,7 @@ namespace TraSuaLamss.Controllers
                     tk.Password = model.Password;
                     tk.HoTen = model.TenKH;
                     tk.PhanQuyen = "Khách hàng";
-                    db.TAIKHOAN.Add(tk);
+                    db.TaiKhoan.Add(tk);
                     db.SaveChanges();
                     kh.TenKH = model.TenKH;
                     kh.Username = model.Username;
@@ -90,7 +90,7 @@ namespace TraSuaLamss.Controllers
                     kh.Email = model.Email;
                     kh.DiaChi = model.DiaChi;
                     kh.DienThoai = model.DienThoai;
-                    db.KHACHHANG.Add(kh);
+                    db.KhachHang.Add(kh);
                     db.SaveChanges();
                     return RedirectToAction("DangNhap", "Home");
                 }
@@ -110,10 +110,12 @@ namespace TraSuaLamss.Controllers
             {
                 var username = model.Username;
                 var password = model.Password;
-                TaiKhoan tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == username && n.Password == password);
+                TaiKhoan tk = db.TaiKhoan.SingleOrDefault(n => n.Username == username && n.Password == password);
                 if (tk != null)
                 {
                     Session["TAIKHOAN"] = tk;
+                    Session["PhanQuyen"] = tk.PhanQuyen;
+                    Session["Hoten"] = tk.HoTen;
                     Session["Username"] = username;
                     Session["Password"] = password;
                     return RedirectToAction("Index");

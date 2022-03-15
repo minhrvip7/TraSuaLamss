@@ -68,6 +68,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
@@ -82,6 +83,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -122,6 +124,7 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Xml.Linq" />
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -138,19 +141,20 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ChiTietDonHangController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
-    <Compile Include="Controllers\DSSANPHAMController.cs" />
+    <Compile Include="Controllers\DSSanPhamController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\BaoCaoThongKeController.cs" />
     <Compile Include="Controllers\ChiTietDonHangController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
-    <Compile Include="Controllers\LIENHEsController.cs" />
-    <Compile Include="Controllers\NGUYENLIEUxController.cs" />
-    <Compile Include="Controllers\NHACUNGCAPsController.cs" />
-    <Compile Include="Controllers\NHANVIENsController.cs" />
-    <Compile Include="Controllers\PHANLOAIsController.cs" />
+    <Compile Include="Controllers\LienHeController.cs" />
+    <Compile Include="Controllers\NguyenLieuController.cs" />
+    <Compile Include="Controllers\NhaCungCapController.cs" />
+    <Compile Include="Controllers\NhanVienController.cs" />
+    <Compile Include="Controllers\PhanLoaiController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\TAIKHOANsController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
@@ -167,6 +171,9 @@
     </Compile>
     <Compile Include="Models\BaoCaoThang.cs" />
     <Compile Include="Models\ChiTietDonHang.cs" />
+    <Compile Include="Models\ChiTietSanPham.cs" />
+    <Compile Include="Models\DangKyModel.cs" />
+    <Compile Include="Models\DangNhapModel.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\KhachHang.cs" />
@@ -239,6 +246,7 @@
     <Content Include="Content\Template\assets\images\chefs-02.jpg" />
     <Content Include="Content\Template\assets\images\chefs-03.jpg" />
     <Content Include="Content\Template\assets\images\close.png" />
+    <Content Include="Content\Template\assets\images\computer-icons-user-profile-google-account-photos-icon-account.jpg" />
     <Content Include="Content\Template\assets\images\klassy-logo.png" />
     <Content Include="Content\Template\assets\images\loading.gif" />
     <Content Include="Content\Template\assets\images\LOGO.png" />
@@ -287,20 +295,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Content\Template\assets\fonts\Flaticon.woff" />
-    <Content Include="Content\Template\assets\fonts\flexslider-icon.eot" />
-    <Content Include="Content\Template\assets\fonts\flexslider-icon.ttf" />
-    <Content Include="Content\Template\assets\fonts\flexslider-icon.woff" />
-    <Content Include="Content\Template\assets\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\Template\assets\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\Template\assets\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\Template\assets\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\Template\assets\fonts\FontAwesome.otf" />
-    <Content Include="Content\Template\assets\fonts\slick.eot" />
-    <Content Include="Content\Template\assets\fonts\slick.ttf" />
-    <Content Include="Content\Template\assets\fonts\slick.woff" />
-    <Content Include="Content\Template\prepros-6.config" />
-    <Content Include="Content\Template\prepros.config" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -334,6 +328,27 @@
     <Content Include="Scripts\jquery-3.6.0.min.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <Content Include="wwwroot\Images\CaPheCherry.jpg" />
+    <Content Include="wwwroot\Images\CaPheDen.jpg" />
+    <Content Include="wwwroot\Images\h0.png" />
+    <Content Include="wwwroot\Images\HuongDuong.jpg" />
+    <Content Include="wwwroot\Images\HuongDuongVoMan.jpg" />
+    <Content Include="wwwroot\Images\HuongDuongVoNgot.jpg" />
+    <Content Include="wwwroot\Images\KhoBo.jpg" />
+    <Content Include="wwwroot\Images\KhoGa.jpg" />
+    <Content Include="wwwroot\Images\KhoMuc.jpg" />
+    <Content Include="wwwroot\Images\TraChanh.jpg" />
+    <Content Include="wwwroot\Images\TraDao.jpg" />
+    <Content Include="wwwroot\Images\TraSua.jpg" />
+    <Content Include="wwwroot\Images\TraSuaChanChau.jpg" />
+    <Content Include="wwwroot\Images\TraSuaChanChauDuongDen.jpg" />
+    <Content Include="wwwroot\Images\TraTac.jpg" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <Content Include="Scripts\jquery-3.6.0.min.map" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -348,12 +363,12 @@
     <Content Include="Scripts\jquery-3.6.0.min.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="wwwroot\Images\h0.png" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -449,6 +464,7 @@
     <Content Include="Views\ChiTietDonHang\Details.cshtml" />
     <Content Include="Views\ChiTietDonHang\Edit.cshtml" />
     <Content Include="Views\ChiTietDonHang\Index.cshtml" />
+    <Content Include="Views\GioHang\Dathang.cshtml" />
     <Content Include="Views\GioHang\Giohang.cshtml" />
     <Content Include="Views\DSSanPham\CaPhe.cshtml" />
     <Content Include="Views\DSSanPham\Details.cshtml" />
@@ -496,26 +512,18 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Data\" />
     <Folder Include="Views\TimKiem\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />
+=========
+    <Content Include="Content\bootstrap.rtl.min.css.map" />
+    <Content Include="Content\bootstrap.rtl.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.rtl.css.map" />
-    <Content Include="Content\bootstrap-utilities.min.css.map" />
-    <Content Include="Content\bootstrap-utilities.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.rtl.css.map" />
-    <Content Include="Content\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\bootstrap-reboot.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.min.css.map" />
-    <Content Include="Content\bootstrap-grid.rtl.css.map" />
-    <Content Include="Content\bootstrap-grid.min.css.map" />
-    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />

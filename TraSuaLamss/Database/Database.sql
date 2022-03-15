@@ -71,7 +71,7 @@ CREATE TABLE SANPHAM
 (
 	MaSP VARCHAR(5) PRIMARY KEY,
 	TenSP NVARCHAR(30) NOT NULL,
-	GiaBan NVARCHAR(50) NOT NULL,
+	GiaBan MONEY NOT NULL,
 	MoTa NVARCHAR(100) NOT NULL,
 	Anh NVARCHAR(100) NOT NULL,
 	MaNL VARCHAR(5) NOT NULL,
@@ -85,7 +85,7 @@ GO
 
 CREATE TABLE KHACHHANG
 (
-	MaKH VARCHAR(5) PRIMARY KEY,
+	MaKH INT PRIMARY KEY IDENTITY(1,1),
 	TenKH NVARCHAR(30) NOT NULL,
 	GioiTinh NVARCHAR(10) NOT NULL,
 	NgaySinh DATETIME NOT NULL,
@@ -101,15 +101,15 @@ GO
 
 CREATE TABLE DONHANG
 (
-	MaDH VARCHAR(5) PRIMARY KEY,
-	ThanhTien money NOT NULL,
+	MaDH INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
+	ThanhTien MONEY NOT NULL,
 	PhuongThucThanhToan VARCHAR(50) nOT NULL,
 	ThanhToan VARCHAR(30) NOT NULL,
 	DiaChiGiaoHang VARCHAR(50) NOT NULL,
 	TinhTrangGiaoHang VARCHAR(50) NOT NULL,
 	NgayDat datetime NOT NULL,
 	NgayGiao datetime NOT NULL,
-	MaKH VARCHAR(5) NOT NULL,
+	MaKH int NOT NULL,
 	GhiChu NVARCHAR(100) NOT NULL,
 	FOREIGN KEY (MaKH) REFERENCES KHACHHANG (MaKH),
 )
@@ -119,7 +119,7 @@ GO
 
 CREATE TABLE GIOHANG
 (
-	MaKH VARCHAR(5) NOT NULL,
+	MaKH int NOT NULL,
 	MaSP VARCHAR(5) NOT NULL,
 	Soluong int NOT NULL,
 	PRIMARY KEY (MaKH, MaSP),
@@ -133,7 +133,7 @@ GO
 CREATE TABLE CHITIETDONHANG
 (
 	MaHD VARCHAR(5) PRIMARY KEY,
-	MaKH VARCHAR(5) NOT NULL,
+	MaKH int NOT NULL,
 	MaSP VARCHAR(5),
 	SoLuong INT NOT NULL,
 	DonGia money NOT NULL,
@@ -262,72 +262,70 @@ GO
 
 --SANPHAM
 --SELECT * FROM SANPHAM
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP001',N'Trà sữa','40000',N'Sản phẩm bán chạy', N'None', 'NL001','ML001')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP001',N'Trà sữa',40000,N'Sản phẩm bán chạy', N'TraSua.jpg', 'NL001','ML001')
 GO
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP002',N'Trà sữa chân châu','50000',N'Sản phẩm bán chạy', N'None', 'NL002','ML001')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP002',N'Trà sữa chân châu',50000,N'Sản phẩm bán chạy', N'TraSuaChanChau.jpg', 'NL002','ML001')
 GO
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP003',N'Trà sữa chân châu đường đen','60000',N'Sản phẩm bán chạy', N'None', 'NL003','ML001')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP003',N'Trà sữa chân châu đường đen',60000,N'Sản phẩm bán chạy', N'TraSuaChanChauDuongDen.jpg', 'NL003','ML001')
 GO
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP004',N'Trà đào','40000',N'Sản phẩm bán chạy', N'None', 'NL004','ML002')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP004',N'Trà đào',40000,N'Sản phẩm bán chạy', N'TraDao.jpg', 'NL004','ML002')
 GO
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP005',N'Trà chanh','50000',N'Sản phẩm bán chạy', N'None', 'NL005','ML002')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP005',N'Trà chanh',50000,N'Sản phẩm bán chạy', N'TraChanh.jpg', 'NL005','ML002')
 GO
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP006',N'Trà tắc','60000',N'Sản phẩm ăn chạy', N'None', 'NL006','ML002')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP006',N'Trà tắc',60000,N'Sản phẩm ăn chạy', N'TraTac.jpg', 'NL006','ML002')
 GO
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP007',N'Cà phê đen','40000',N'Sản phẩmbán chạy', N'None', 'NL007','ML003')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP007',N'Cà phê đen',40000,N'Sản phẩmbán chạy', N'CaPheDen.jpg', 'NL007','ML003')
 GO
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP008',N'Cà phê sữa','50000',N'Sản phẩm bán chạy', N'None', 'NL008','ML003')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP008',N'Cà phê sữa',50000,N'Sản phẩm bán chạy', N'CaPheSua.jpg', 'NL008','ML003')
 GO
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP009',N'Cà phê Chery','60000',N'Sản phẩm bán chạy', N'None', 'NL009','ML003')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP009',N'Cà phê Chery',60000,N'Sản phẩm bán chạy', N'CaPheCherry.jpg', 'NL009','ML003')
 GO
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP010',N'Khô gà','40000',N'Sản phẩm ăn kèm bán chạy', N'None', 'NL010','ML004')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP010',N'Khô gà',40000,N'Sản phẩm ăn kèm bán chạy', N'KhoGa.jpg', 'NL010','ML004')
 GO
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP011',N'Khô mực','50000',N'Sản phẩm ăn kèm bán chạy', N'None', 'NL011','ML004')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP011',N'Khô mực',50000,N'Sản phẩm ăn kèm bán chạy', N'KhoMuc.jpg', 'NL011','ML004')
 GO
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP012',N'Khô bò','60000',N'Sản phẩm ăn kèm bán chạy', N'None', 'NL012','ML004')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP012',N'Khô bò',60000,N'Sản phẩm ăn kèm bán chạy', N'KhoBo.jpg', 'NL012','ML004')
 GO
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP013',N'Hướng dương','40000',N'Sản phẩm ăn kèm bán chạy', N'None', 'NL013','ML004')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP013',N'Hướng dương',40000,N'Sản phẩm ăn kèm bán chạy', N'HuongDuong.jpg', 'NL013','ML004')
 GO
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP014',N'Hướng dương vỏ ngọt','50000',N'Sản phẩm ăn kèm bán chạy', N'None', 'NL014','ML004')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP014',N'Hướng dương vỏ ngọt',50000,N'Sản phẩm ăn kèm bán chạy', N'HuongDuongVoNgot.jpg', 'NL014','ML004')
 GO
-INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP015',N'Hướng dương vỏ mặn','60000',N'Sản phẩm ăn kèm bán chạy', N'None', 'NL015','ML004')
+INSERT INTO SANPHAM(MaSP,TenSP, GiaBan, MoTa, Anh, MaNL, MaLoai) VALUES ('SP015',N'Hướng dương vỏ mặn',60000,N'Sản phẩm ăn kèm bán chạy', N'HuongDuongVoMan.jpg', 'NL015','ML004')
 GO
 
 --KHACHHANG
 --SELECT * FROM KHACHHANG
 --SELECT * FROM TAIKHOAN WHERE PhanQuyen = N'Khách hàng'
-INSERT INTO KHACHHANG(MaKH,TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES ('KH001',N'Long', N'Nam', '1/1/2022', 'kh1', 'long@gmail.com', N'Hà Nội', 0971)
+INSERT INTO KHACHHANG(TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES (N'Long', N'Nam', '1/1/2022', 'kh1', 'long@gmail.com', N'Hà Nội', 0971)
 GO
-INSERT INTO KHACHHANG(MaKH,TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES ('KH002',N'Minh', N'Nam', '1/1/2022', 'kh2', 'minh@gmail.com', N'Hải Dương', 0971)
+INSERT INTO KHACHHANG(TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES (N'Minh', N'Nam', '1/1/2022', 'kh2', 'minh@gmail.com', N'Hải Dương', 0971)
 GO
-INSERT INTO KHACHHANG(MaKH,TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES ('KH003',N'Anh', N'Nam','1/1/2022', 'kh3', 'anh@gmail.com', N'Hà Nam', 0971)
+INSERT INTO KHACHHANG(TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES (N'Anh', N'Nam','1/1/2022', 'kh3', 'anh@gmail.com', N'Hà Nam', 0971)
 GO
-INSERT INTO KHACHHANG(MaKH,TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES ('KH004',N'Sang', N'Nam', '1/1/2022', 'kh4', 'sang@gmail.com', N'Hải Phòng', 0971)
+INSERT INTO KHACHHANG(TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES (N'Sang', N'Nam', '1/1/2022', 'kh4', 'sang@gmail.com', N'Hải Phòng', 0971)
 GO
-INSERT INTO KHACHHANG(MaKH,TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES ('KH005',N'Sơn', N'Nam', '1/1/2022', 'kh5', 'son@gmail.com', N'Quảng Ninh', 0971)
+INSERT INTO KHACHHANG(TenKH, GioiTinh, NgaySinh, USERNAME, Email, DiaChi, DienThoai) VALUES (N'Sơn', N'Nam', '1/1/2022', 'kh5', 'son@gmail.com', N'Quảng Ninh', 0971)
 GO
 
 
 --DONHANG
 --SELECT * FROM DONHANG
 INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
-('DH001',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '1/2/2022', '2/1/2022', 'KH001', N'Giao nhanh'),
-('DH002',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '3/4/2022', '2/1/2022', 'KH002', N'Giao nhanh'),
-('DH003',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '5/6/2022', '2/1/2022', 'KH003', N'Khách hàng không nhận'),
-('DH004',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '7/8/2022', '2/1/2022', 'KH004', N'Trả hàng'),
-('DH005',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '9/10/2022', '2/1/2022', 'KH005', N'Giao thành công'),
-('DH006',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '11/2/2022', '2/1/2022', 'KH005', N'Giao thành công'),
-('DH007',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '12/2/2022', '2/1/2022', 'KH005', N'Giao thành công'),
-('DH008',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '13/3/2022', '2/1/2022', 'KH005', N'Giao thành công'),
-('DH009',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '14/4/2022', '2/1/2022', 'KH005', N'Giao thành công'),
-('DH010',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '15/5/2022', '2/1/2022', 'KH005', N'Giao thành công'),
-('DH011',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '16/6/2022', '2/1/2022', 'KH005', N'Giao thành công'),
-('DH012',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '17/7/2022', '2/1/2022', 'KH005', N'Giao thành công'),
-('DH013',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '18/8/2022', '2/1/2022', 'KH005', N'Giao thành công'),
-('DH014',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '19/9/2022', '2/1/2022', 'KH005', N'Giao thành công'),
-('DH015',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '20/10/2022', '2/1/2022', 'KH005', N'Giao thành công'),
-('DH016',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '21/12/2022', '2/1/2022', 'KH005', N'Giao thành công')
+('DH001',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '1/1/2022', '2/1/2022', 1, N'Giao nhanh')
 GO
+INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
+('DH002',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '1/1/2022', '2/1/2022', 2, N'Giao nhanh')
+GO
+INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
+('DH003',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '1/1/2022', '2/1/2022', 3, N'Khách hàng không nhận')
+GO
+INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
+('DH004',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '1/1/2022', '2/1/2022', 4, N'Trả hàng')
+GO
+INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
+('DH005',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '1/1/2022', '2/1/2022', 5, N'Giao thành công')
+GO
+
 
 
 
@@ -336,15 +334,15 @@ GO
 --SELECT * FROM DONHANG
 --SELECT * FROM SANPHAM
 
-INSERT INTO CHITIETDONHANG (MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD001', 'KH001','SP001',4 , 40000)
+INSERT INTO CHITIETDONHANG (MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD001', 1,'SP001',4 , 40000)
 GO
-INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD002', 'KH002','SP002',4 , 50000)
+INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD002', 2,'SP002',4 , 50000)
 GO
-INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD003', 'KH003','SP003',4 , 60000)
+INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD003', 3,'SP003',4 , 60000)
 GO
-INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD004', 'KH005','SP001',4 , 40000)
+INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD004', 5,'SP001',4 , 40000)
 GO
-INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD005', 'KH004','SP001',4 , 40000)
+INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD005', 4,'SP001',4 , 40000)
 GO
 
 --NHACNVIEN

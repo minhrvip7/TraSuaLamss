@@ -3,46 +3,97 @@
     ViewBag.Title = "Giohang";
 }
 
-<style>
+        td.nut a:hover {
+            background-color: gray;
+            color: pink;
+        }
+
     td {
         padding: 10px 30px 10px 10px;
     }
-</style>
-<h2 align="center" style="font-family:'Times New Roman'">Giỏ hàng</h2>
-<table align="center">
-    <tr style="text-align:center">
-        <td colspan="2">Sản phẩm</td>
-        <td>Đơn giá</td>
-        <td>Số lượng</td>
-        <td>Số tiền</td>
-        <td colspan="2">Thao tác</td>
-    </tr>
-    @foreach (var item in Model)
-    {
-        <tr>
 
-            @using (Html.BeginForm())
-            {
-                @Html.AntiForgeryToken()
-                <td>@item.TenSP</td>
-                <td></td>
-                <td style="text-align:center">@item.GiaBan</td>
-                <td style="text-align:center"><button type="submit" value="Giam">-</button> @item.Soluong <button type="submit" value="Tang">+</button></td>
-                <td style="text-align:center">@item.ThanhTien</td>
+        td.td-center {
+            text-align: center;
+        }
 
-
-                <td style="text-align:center">
-                    <button type="submit" value="Delete">Xóa</button>
-                </td>
-                <td style="text-align:center">@Html.ActionLink("Mua tiếp", "Index")</td>
-
-            }
-
-        </tr>
+    .anhsp {
+        height: 100px;
+        width: auto;
     }
-</table>
-<br />
-<br />
-<p style="float:right"><button type="submit">Đặt hàng</button></p>
-<br />
-<br />
+
+    body {
+        padding-top: 180px;
+    }
+
+    .cap {
+        font-family: Optima;
+    }
+    img.image-nut{
+        width:18px;
+        height:18px;
+    }
+</style>
+<body style="background-color: #e8e8e8 ">
+    <h3 class="cap" align="center">Giỏ hàng</h3>
+    <br />
+    @if (Model.Count > 0)
+    {
+        <table align="center">
+            <thead>
+                <tr>
+                    <td colspan="7"><div style="float:right; color:red">Số lượng sản phẩm: @Model.Count</div></td>
+                </tr>
+                <tr>
+                    <td>Mã sản phẩm</td>
+                    <td>Sản phẩm</td>
+                    <td></td>
+                    <td class="td-center">Đơn giá</td>
+                    <td class="td-center">Số lượng</td>
+                    <td class="td-center">Thành tiền</td>
+                    <td></td>
+                </tr>
+            </thead>
+            @foreach (var item in Model)
+            {
+                <tbody>
+                    <tr>
+                        <td>@item.SP.MaSP</td>
+                        <td>@item.SP.TenSP</td>
+                        <td><img class="anhsp" src="~/wwwroot/@item.SP.Anh" /></td>
+                        <td class="td-center">@item.SP.GiaBan</td>
+                        <td class="td-center"><input value="@item.GH.Soluong" style="height:24px;width:50px" type="number" min="1" id="sl" /></td>
+                        <td class="td-center">@(item.SP.GiaBan* item.GH.Soluong)</td>
+                        <td class="td-center"><a href="@Url.Action("Delete", "GioHang", new {MaKhach=item.GH.MaKH, MaHang=item.SP.MaSP})"><img class="image-nut" src="~/wwwroot/Images/Xoa.png" /></a> | <a href="#"><img class="image-nut" src="~/wwwroot/Images/Timkiem.png" /></a></td>
+                    </tr>
+                    <tr><td></td></tr>
+                </tbody>
+            }
+            <tfoot>
+                <tr>
+                    <td colspan="7">
+                        <table style="float:right">
+                            <tr>
+                                <td class="nut"><a style="background-color:aqua" href="@Url.Action("Index", "DSSANPHAM")">Mua hàng tiếp</a></td>
+                                <td class="nut"><a style="background-color:red" href="@Url.Action("DeleteAll", "GioHang", new {MaKhach=ViewBag.MaKH})">Xóa hết</a></td>
+                                <td class="nut"><a style="background-color:lightgreen" href="@Url.Action("Dathang", "GioHang")">Đặt hàng</a></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    }
+    else
+    {
+        <br />
+        <p style="text-align:center">
+            <img src="https://cdn.pixabay.com/photo/2014/04/03/10/00/shopping-cart-309592_1280.png" style="height:100px;width:auto" /><br /><br />
+            <span>Chưa có sản phẩm nào trong giỏ hàng</span>
+            <br />
+            <a href="@Url.Action("Index", "DSSANPHAM")">Mua hàng</a>
+        </p>
+    }
+    <br />
+</body>
+
+
