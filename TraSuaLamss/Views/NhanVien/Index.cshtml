@@ -101,7 +101,9 @@
         <div class="center2" style="text-align:center">
             @if (Model.PageCount > 1)
             {
+            <strong>
                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </strong>
             }
         </div>
     </centrer>

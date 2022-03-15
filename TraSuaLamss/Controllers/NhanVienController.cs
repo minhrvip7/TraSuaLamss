@@ -71,6 +71,7 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaNV,TenNV,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai,STK,Luong")] NhanVien nHANVIEN)
         {
+            if(val)
             if (ModelState.IsValid)
             {
                 db.NHANVIENs.Add(nHANVIEN);
