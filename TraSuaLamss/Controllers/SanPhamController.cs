@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TraSuaLamss.Models;
+using System.IO;
+using PagedList;
 
 namespace TraSuaLamss.Controllers
 {
@@ -15,10 +17,13 @@ namespace TraSuaLamss.Controllers
         private TraSuaContext db = new TraSuaContext();
 
         // GET: SanPhams
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var sanPham = db.SanPham.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI);
-            return View(sanPham.ToList());
+
+            var sanPham = db.SanPham.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI).OrderByDescending(s => s.MaSP);
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(sanPham.ToPagedList(pageNumber,pageSize));
         }
 
         // GET: SanPhams/Details/5
@@ -93,7 +98,7 @@ namespace TraSuaLamss.Controllers
                 var f = Request.Files["ImageFile"];
                 if (f != null && f.ContentLength > 0)
                 {
-                    string FileName = System.IO.Path.GetFileName(f.FileName);
+                    string FileName = Path.GetFileName(f.FileName);
                     string UploadPath = Server.MapPath("~/wwwroot/Images/" + FileName);
                     f.SaveAs(UploadPath);
                     sanPham.Anh = FileName;
