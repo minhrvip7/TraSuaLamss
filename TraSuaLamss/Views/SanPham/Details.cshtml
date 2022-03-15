@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>SANPHAM</h4>
+    <h4>SanPham</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -51,23 +51,13 @@
         </dd>
 
         <dt>
-            @{
-                string ImagePath = "~/wwwroot/Images/" + Model.Anh;
-            }
-            <img src="@Url.Content(ImagePath)" width="300" class="img-thumbnail" />
+            @Html.DisplayNameFor(model => model.Anh)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Anh)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MaSP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MaSP)
-        </dd>
     </dl>
 </div>
 <p>

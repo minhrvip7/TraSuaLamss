@@ -14,29 +14,29 @@ namespace TraSuaLamss.Controllers
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: SANPHAMs
+        // GET: SanPhams
         public ActionResult Index()
         {
-            var sANPHAMs = db.SanPham.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI);
-            return View(sANPHAMs.ToList());
+            var sanPham = db.SanPham.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI);
+            return View(sanPham.ToList());
         }
 
-        // GET: SANPHAMs/Details/5
+        // GET: SanPhams/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SanPham.Find(id);
-            if (sANPHAM == null)
+            SanPham sanPham = db.SanPham.Find(id);
+            if (sanPham == null)
             {
                 return HttpNotFound();
             }
-            return View(sANPHAM);
+            return View(sanPham);
         }
 
-        // GET: SANPHAMs/Create
+        // GET: SanPhams/Create
         public ActionResult Create()
         {
             ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL");
@@ -44,116 +44,92 @@ namespace TraSuaLamss.Controllers
             return View();
         }
 
-        // POST: SANPHAMs/Create
+        // POST: SanPhams/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sANPHAM)
+        public ActionResult Create([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sanPham)
         {
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    sANPHAM.Anh = "";
-                    var f = Request.Files["ImageFile"];
-                    if (f != null && f.ContentLength > 0)
-                    {
-                        string FileName = System.IO.Path.GetFileName(f.FileName);
-                        string UploadPath = Server.MapPath("~/wwwroot/Images/" + FileName);
-                        f.SaveAs(UploadPath);
-                        sANPHAM.Anh = FileName;
-                    }
-                    db.SanPham.Add(sANPHAM);
-                    db.SaveChanges();
-                    
-                }return RedirectToAction("Index");
+                db.SanPham.Add(sanPham);
+                db.SaveChanges();
+                return RedirectToAction("Index");
             }
-            catch (Exception)
-            {
-                ViewBag.Error = "Lỗi nhập dữ liệu";
-                return View(sANPHAM);
-            }
-            
+
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sanPham.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sanPham.MaLoai);
+            return View(sanPham);
         }
 
-        // GET: SANPHAMs/Edit/5
+        // GET: SanPhams/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SanPham.Find(id);
-            if (sANPHAM == null)
+            SanPham sanPham = db.SanPham.Find(id);
+            if (sanPham == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
-            return View(sANPHAM);
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sanPham.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sanPham.MaLoai);
+            return View(sanPham);
         }
 
-        // POST: SANPHAMs/Edit/5
+        // POST: SanPhams/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sANPHAM)
+        public ActionResult Edit([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sanPham)
         {
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
+                sanPham.Anh = "";
+                var f = Request.Files["ImageFile"];
+                if (f != null && f.ContentLength > 0)
                 {
-                    //sANPHAM.Anh = "";
-                    //var f = Request.Files["ImageFile"];
-                    //if (f != null && f.ContentLength > 0)
-                    //{
-                    //    string FileName = System.IO.Path.GetFileName(f.FileName);
-                    //    string UploadPath = Server.MapPath("~/wwwroot/Images/" + FileName);
-                    //    f.SaveAs(UploadPath);
-                    //    sANPHAM.Anh = FileName;
-                    //}
-                    db.Entry(sANPHAM).State = EntityState.Modified;
-                    db.SaveChanges();
-                    
+                    string FileName = System.IO.Path.GetFileName(f.FileName);
+                    string UploadPath = Server.MapPath("~/wwwroot/Images/" + FileName);
+                    f.SaveAs(UploadPath);
+                    sanPham.Anh = FileName;
                 }
+
+                db.Entry(sanPham).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch (Exception)
-            {
-                ViewBag.Error = "Lỗi nhập dữ liệu";
-                return View(sANPHAM);
-            }
-            
+            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sanPham.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sanPham.MaLoai);
+            return View(sanPham);
         }
 
-        // GET: SANPHAMs/Delete/5
+        // GET: SanPhams/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SanPham.Find(id);
-            if (sANPHAM == null)
+            SanPham sanPham = db.SanPham.Find(id);
+            if (sanPham == null)
             {
                 return HttpNotFound();
             }
-            return View(sANPHAM);
+            return View(sanPham);
         }
 
-        // POST: SANPHAMs/Delete/5
+        // POST: SanPhams/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            SanPham sANPHAM = db.SanPham.Find(id);
-            db.SanPham.Remove(sANPHAM);
+            SanPham sanPham = db.SanPham.Find(id);
+            db.SanPham.Remove(sanPham);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
