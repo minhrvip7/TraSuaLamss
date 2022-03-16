@@ -28,8 +28,7 @@ namespace TraSuaLamss.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ChiTietDonHang>()
-                .Property(e => e.MaKH)
-                .IsUnicode(false);
+                .Property(e => e.MaKH);
 
             modelBuilder.Entity<ChiTietDonHang>()
                 .Property(e => e.MaHD)
@@ -68,8 +67,7 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<DonHang>()
-                .Property(e => e.MaKH)
-                .IsUnicode(false);
+                .Property(e => e.MaKH);
 
             modelBuilder.Entity<GioHang>()
                 .Property(e => e.MaKH)
@@ -80,8 +78,7 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<KhachHang>()
-                .Property(e => e.MaKH)
-                .IsUnicode(false);
+                .Property(e => e.MaKH);
 
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.Username)

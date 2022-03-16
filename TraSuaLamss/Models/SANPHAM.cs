@@ -25,8 +25,8 @@ namespace TraSuaLamss.Models
         public string TenSP { get; set; }
 
         [Required]
-        [StringLength(50)]
-        public string GiaBan { get; set; }
+        
+        public decimal GiaBan { get; set; }
 
         [Required]
         [StringLength(100)]

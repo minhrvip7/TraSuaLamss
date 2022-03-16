@@ -10,8 +10,7 @@ namespace TraSuaLamss.Models
     public partial class ChiTietDonHang
     {
         [Required]
-        [StringLength(5)]
-        public string MaKH { get; set; }
+        public int MaKH { get; set; }
 
         [Key]
         [StringLength(5)]

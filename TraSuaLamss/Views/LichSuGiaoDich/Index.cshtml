@@ -30,7 +30,8 @@
                 <td>@Html.DisplayFor(modelItem => item.NgayDat)</td>
                 <td>@Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)</td>
                 <td>@Html.DisplayFor(modelItem => item.GhiChu)</td>
-                <td>@Html.ActionLink("Chi tiết", "Details", new { id = item.MaDH }, new { @class = "btn btn-outline-info" })</td>
+                <td><a class = "btn btn-outline-info" href="@Url.Action("Details", "LichSuGiaoDich", new { id = item.MaDH })">Chi tiết</a>
+                        </td>
             </tr>
         }
     </tbody>
