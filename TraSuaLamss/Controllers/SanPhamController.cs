@@ -56,16 +56,32 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sanPham)
         {
-            if (ModelState.IsValid)
-            {
-                db.SanPham.Add(sanPham);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
             ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL", sanPham.MaNL);
             ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai", sanPham.MaLoai);
-            return View(sanPham);
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    sanPham.Anh = "";
+                    var f = Request.Files["ImageFile"];
+                    if (f != null && f.ContentLength > 0)
+                    {
+                        string FileName = Path.GetFileName(f.FileName);
+                        string UploadPath = Server.MapPath("~/wwwroot/Images/" + FileName);
+                        f.SaveAs(UploadPath);
+                        sanPham.Anh = FileName;
+                    }
+                    db.SanPham.Add(sanPham);
+                    db.SaveChanges();
+                    
+                }return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = "Lỗi nhập dữ liệu";
+                return View(sanPham);
+            }
+             
         }
 
         // GET: SanPhams/Edit/5
@@ -92,26 +108,33 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sanPham)
         {
-            if (ModelState.IsValid)
-            {
-                sanPham.Anh = "";
-                var f = Request.Files["ImageFile"];
-                if (f != null && f.ContentLength > 0)
-                {
-                    string FileName = Path.GetFileName(f.FileName);
-                    string UploadPath = Server.MapPath("~/wwwroot/Images/" + FileName);
-                    f.SaveAs(UploadPath);
-                    sanPham.Anh = FileName;
-                }
-
-                db.Entry(sanPham).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
             ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL", sanPham.MaNL);
             ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai", sanPham.MaLoai);
-            return View(sanPham);
-        }
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    sanPham.Anh = "";
+                    var f = Request.Files["ImageFile"];
+                    if (f != null && f.ContentLength > 0)
+                    {
+                        string FileName = Path.GetFileName(f.FileName);
+                        string UploadPath = Server.MapPath("~/wwwroot/Images/" + FileName);
+                        f.SaveAs(UploadPath);
+                        sanPham.Anh = FileName;
+                    }
+
+                    db.Entry(sanPham).State = EntityState.Modified;
+                    db.SaveChanges();
+                    
+                }return RedirectToAction("Index");
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = "Lỗi nhập dữ liệu";
+                return View(sanPham);
+            }
+                    }
 
         // GET: SanPhams/Delete/5
         public ActionResult Delete(string id)
