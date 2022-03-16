@@ -73,12 +73,14 @@ namespace TraSuaLamss.Controllers
             {
                 MaDH = MaDH,
                 ThanhTien = lischitiet.Sum(x => x.CTDH.SoLuong * x.CTDH.DonGia),
-                PhuongThucThanhToan = "",
-                DiaChiGiaoHang = "",
-                TinhTrangGiaoHang = "",
+                PhuongThucThanhToan = "Thanh toán khi nhận hàng",
+                ThanhToan="Chưa thanh toán",
+                DiaChiGiaoHang = "...",
+                TinhTrangGiaoHang = "Đang giao",
                 NgayDat = NgayDat,
+                NgayGiao=NgayDat,
                 MaKH = KHID,
-                GhiChu = ""
+                GhiChu = "Không có ghi chú",
             };
             ViewBag.DonHang = donhang;
             ViewBag.NgayDat = NgayDat.ToString("dd/MM/yyyy");
@@ -171,12 +173,14 @@ namespace TraSuaLamss.Controllers
             {
                 MaDH = MaDH,
                 ThanhTien = chitiet.SP.GiaBan * chitiet.CTDH.SoLuong,
-                PhuongThucThanhToan = "",
-                DiaChiGiaoHang = "",
-                TinhTrangGiaoHang = "",
+                PhuongThucThanhToan = "Thanh toán khi nhận hàng",
+                ThanhToan = "Chưa thanh toán",
+                DiaChiGiaoHang = "...",
+                TinhTrangGiaoHang = "Đang giao",
                 NgayDat = NgayDat,
+                NgayGiao = NgayDat,
                 MaKH = MaKH,
-                GhiChu = ""
+                GhiChu = "Không có ghi chú",
             };
             ViewBag.NgayDat = NgayDat.ToString("dd/MM/yyyy");
             ViewBag.TenKH = (from e in db.KhachHang

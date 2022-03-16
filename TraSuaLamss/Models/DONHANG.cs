@@ -14,6 +14,7 @@ namespace TraSuaLamss.Models
         [StringLength(5)]
         public string MaDH { get; set; }
 
+        [Column(TypeName = "money")]
         public decimal ThanhTien { get; set; }
 
         [Required]
@@ -36,7 +37,6 @@ namespace TraSuaLamss.Models
 
         public DateTime NgayGiao { get; set; }
 
-        [Required]
         public int MaKH { get; set; }
 
         [Required]
