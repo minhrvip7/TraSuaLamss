@@ -5,20 +5,20 @@
 }
 
 
-<body style="background-color: #e8e8e8 ">
+<body>
 
-    <h3 align="center">Đơn hàng: </h3><h2 align="center" style="color:red">#@ViewBag.donHang.MaDH</h2>
+    <p>
+        <h3 align="center">Đơn hàng: </h3><h2 align="center" style="color:red">#@ViewBag.donHang.MaDH</h2>
+    </p>
     <br />
 
     <table class="dathang" align="center">
         <thead>
             <tr>
-                <td>Mã đơn hàng: </td>
-                <td colspan="3">@ViewBag.donHang.MaDH</td>
             </tr>
             <tr>
                 <td>Khách hàng: </td>
-                <td colspan="3">@ViewBag.TenKH</td>
+                <td colspan="3">@ViewBag.Ten</td>
             </tr>
             <tr>
                 <td>Địa chỉ: </td>
@@ -32,9 +32,14 @@
                 <td>Thanh toán: </td>
                 <td colspan="3">@ViewBag.donHang.PhuongThucThanhToan</td>
             </tr>
+            <tr>
+                <td>Tình trạng giao hàng: </td>
+                <td colspan="3">@ViewBag.donHang.TinhTrangGiaoHang</td>
+            </tr>
         </thead>
-
-        <tbody class="">
+        <br />
+        <br />
+        <tbody  class="table table-striped">
             <tr>
                 <th>Sản phẩm</th>
                 <th class="td-center">Đơn giá</th>

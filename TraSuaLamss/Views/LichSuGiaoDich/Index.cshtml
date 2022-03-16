@@ -2,6 +2,7 @@
 
 @{
     ViewBag.Title = "LichSuGiaoDich";
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
 }
 
 <h2>Lịch sử giao dịch</h2>
@@ -24,14 +25,13 @@
         {
             <tr>
                 <td>@Html.DisplayFor(modelItem => item.MaDH)</td>
-                <td>@Html.DisplayFor(modelItem => item.ThanhTien)</td>
+                <td>@String.Format(format, "{0:c0}", @item.ThanhTien)</td>
                 <td>@Html.DisplayFor(modelItem => item.ThanhToan)</td>
                 <td>@Html.DisplayFor(modelItem => item.DiaChiGiaoHang)</td>
                 <td>@Html.DisplayFor(modelItem => item.NgayDat)</td>
                 <td>@Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)</td>
                 <td>@Html.DisplayFor(modelItem => item.GhiChu)</td>
-                <td><a class = "btn btn-outline-info" href="@Url.Action("Details", "LichSuGiaoDich", new { id = item.MaDH })">Chi tiết</a>
-                        </td>
+                <td>@Html.ActionLink("Chi tiết", "Details", new { id = item.MaDH }, new { @class = "btn btn-outline-info" })</td>
             </tr>
         }
     </tbody>
