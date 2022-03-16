@@ -8,9 +8,11 @@
         margin: 0px;
         padding: 0px;
     }
-    #datmua{
+    #datmua {
         width: 640px;
         height: 50px;
+        text-align: center;
+    }
     input.updown {
         width: 24px;
         height: 24px;
@@ -94,17 +96,32 @@
                         <p id="infor">Phân loại : @ViewBag.TenLoai</p>
                         <p id="infor">Nguyên liệu : @ViewBag.TenNL</p>
                         <p id="infor">Mô tả : @ViewBag.MoTa</p>
-                        <p id="infor">
-                            Số lượng :
-                            <input style="height:24px;width:50px;font-size:24px" type="number" min="1" value="1" id="txtSoLuong" />
+                        <p>
+                            Số lượng:
+                            <input class="updown" type="button" value="-" onclick="Down()">
+                            <input id="soluong" class="inputsl" min="1" type="text" value="@ViewBag.SL">
+                            <input class="updown" type="button" value="+" onclick="Up()">
+                            <script>
+                                function Up() {
+                                    result = document.getElementById('soluong');
+                                    result.value = result.value ? parseInt(result.value) + 1 : 1;
+                                }
+                                function Down() {
+                                    result = document.getElementById('soluong');
+                                    if (result.value > 1) {
+                                        result.value = result.value ? parseInt(result.value) - 1 : 1;
+                                    }
+                                    else result.value = "1";
+                                }
+                            </script>
                         </p>
                     </div>
                     <div id="datmua">
                         <div id="btn" style="float: left; background-color: #FFEFD5; border: 1px solid orangered">
-                            <a style="color: orangered" href="@Url.Action("ThemGioHang","GioHang",new { id = @ViewBag.MaSP  })">THÊM GIỎ HÀNG</a>
+                            <a style="color: orangered" href="@Url.Action("Add","GioHang",new { MaKhach=1, MaHang=ViewBag.MaSP, soluong=ViewBag.SL  })">THÊM GIỎ HÀNG</a>
                         </div>
                         <div id="btn" style="float:left;margin-left:30px">
-                            <a href="@Url.Action("DatMua","GioHang",new { id = @ViewBag.MaSP })">ĐẶT MUA</a>
+                            <a href="@Url.Action("Add","GioHang",new { MaKhach=1, MaHang=ViewBag.MaSP,soluong=ViewBag.SL })">ĐẶT MUA</a>
                         </div>
                     </div>
                 </td>
@@ -136,50 +153,7 @@
     </div>
 </div>
 
-<table border="0" style="width:1280px">
-    <tr>
-        <td style="width:50%">
-            <img style="float:right;padding-right:20px" src="~/@ViewBag.Anh" width="300" height="350" />
-        </td>
-        <td style="width:50%" valign="top">
-            <p style="font-weight:bold;color:black;font-size:36px;line-height:50px">@ViewBag.TenSP</p>
-            <hr style="width:50%;float:left;" />
-            <br />
-            <p style="font-size:24px"><span style="color:red">@ViewBag.GiaBan đ</span></p>
-            <p style="font-size: 18px">Phân loại : <span style="">@ViewBag.TenLoai</span></p>
-            <p style="font-size: 18px">Nguyên liệu : <span style="">@ViewBag.TenNL</span></p>
 
-            <p style="clear: left; font-size: 18px">Mô tả : <span style="">@ViewBag.MoTa</span></p>
-            <p>
-                Số lượng:
-                <input class="updown" type="button" value="-" onclick="Down()">
-                <input id="soluong" class="inputsl" min="1" type="text" value="@ViewBag.SL">
-                <input class="updown" type="button" value="+" onclick="Up()">
-                <script>
-                    function Up() {
-                        result = document.getElementById('soluong');
-                        result.value = result.value ? parseInt(result.value) + 1 : 1;
-                    }
-                    function Down() {
-                        result = document.getElementById('soluong');
-                        if (result.value > 1)
-                        {
-                            result.value = result.value ? parseInt(result.value) - 1 : 1;
-                        }
-                        else result.value = "1";
-                    }
-                </script>
-            </p>
-            <div id="datmua">
-                <a href="@Url.Action("DatHangLe","GioHang",new { MaKH=1, MaHang=ViewBag.MaSP,soluong=ViewBag.SL })">Đặt hàng</a>
-            </div>
-            <div id="datmua">
-                <a href="@Url.Action("Add","GioHang",new { MaKhach=1, MaHang=ViewBag.MaSP,soluong=ViewBag.SL })">Thêm vào giỏ hàng</a>
-            </div>
-        </td>
-    </tr>
-</table>
-<br />
 
 
 
