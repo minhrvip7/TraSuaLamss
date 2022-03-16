@@ -15,7 +15,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>TraSuaLamss</RootNamespace>
     <AssemblyName>TraSuaLamss</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -143,22 +143,9 @@
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\DSSanPhamController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
-    <Compile Include="Controllers\BaoCaoThongKeController.cs" />
-    <Compile Include="Controllers\ChiTietDonHangController.cs" />
-    <Compile Include="Controllers\DonHangController.cs" />
-    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
-    <Compile Include="Controllers\LienHeController.cs" />
-    <Compile Include="Controllers\NguyenLieuController.cs" />
-    <Compile Include="Controllers\NhaCungCapController.cs" />
-    <Compile Include="Controllers\NhanVienController.cs" />
-    <Compile Include="Controllers\PhanLoaiController.cs" />
-    <Compile Include="Controllers\SanPhamController.cs" />
-    <Compile Include="Controllers\TAIKHOANsController.cs" />
-    <Compile Include="Controllers\KhachHangController.cs" />
-    <Compile Include="Controllers\LichSuGiaoDichController.cs" />
     <Compile Include="Controllers\LienHeController.cs" />
     <Compile Include="Controllers\NguyenLieuController.cs" />
     <Compile Include="Controllers\NhaCungCapController.cs" />
@@ -384,36 +371,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\TAIKHOANs\Create.cshtml" />
-    <Content Include="Views\TAIKHOANs\Delete.cshtml" />
-    <Content Include="Views\TAIKHOANs\Details.cshtml" />
-    <Content Include="Views\TAIKHOANs\Edit.cshtml" />
-    <Content Include="Views\TAIKHOANs\Index.cshtml" />
-    <Content Include="Views\SanPham\Create.cshtml" />
-    <Content Include="Views\SanPham\Delete.cshtml" />
-    <Content Include="Views\SanPham\Details.cshtml" />
-    <Content Include="Views\SanPham\Edit.cshtml" />
-    <Content Include="Views\SanPham\Index.cshtml" />
-    <Content Include="Views\PHANLOAIs\Create.cshtml" />
-    <Content Include="Views\PHANLOAIs\Delete.cshtml" />
-    <Content Include="Views\PHANLOAIs\Details.cshtml" />
-    <Content Include="Views\PHANLOAIs\Edit.cshtml" />
-    <Content Include="Views\PHANLOAIs\Index.cshtml" />
-    <Content Include="Views\NHANVIENs\Create.cshtml" />
-    <Content Include="Views\NHANVIENs\Delete.cshtml" />
-    <Content Include="Views\NHANVIENs\Details.cshtml" />
-    <Content Include="Views\NHANVIENs\Edit.cshtml" />
-    <Content Include="Views\NHANVIENs\Index.cshtml" />
-    <Content Include="Views\NHACUNGCAPs\Create.cshtml" />
-    <Content Include="Views\NHACUNGCAPs\Delete.cshtml" />
-    <Content Include="Views\NHACUNGCAPs\Details.cshtml" />
-    <Content Include="Views\NHACUNGCAPs\Edit.cshtml" />
-    <Content Include="Views\NHACUNGCAPs\Index.cshtml" />
-    <Content Include="Views\NGUYENLIEUx\Create.cshtml" />
-    <Content Include="Views\NGUYENLIEUx\Delete.cshtml" />
-    <Content Include="Views\NGUYENLIEUx\Details.cshtml" />
-    <Content Include="Views\NGUYENLIEUx\Edit.cshtml" />
-    <Content Include="Views\NGUYENLIEUx\Index.cshtml" />
     <Content Include="Views\TaiKhoan\Create.cshtml" />
     <Content Include="Views\TaiKhoan\Delete.cshtml" />
     <Content Include="Views\TaiKhoan\Details.cshtml" />
@@ -444,11 +401,11 @@
     <Content Include="Views\NguyenLieu\Details.cshtml" />
     <Content Include="Views\NguyenLieu\Edit.cshtml" />
     <Content Include="Views\NguyenLieu\Index.cshtml" />
-    <Content Include="Views\LIENHEs\Create.cshtml" />
-    <Content Include="Views\LIENHEs\Delete.cshtml" />
-    <Content Include="Views\LIENHEs\Details.cshtml" />
-    <Content Include="Views\LIENHEs\Edit.cshtml" />
-    <Content Include="Views\LIENHEs\Index.cshtml" />
+    <Content Include="Views\LienHe\Create.cshtml" />
+    <Content Include="Views\LienHe\Delete.cshtml" />
+    <Content Include="Views\LienHe\Details.cshtml" />
+    <Content Include="Views\LienHe\Edit.cshtml" />
+    <Content Include="Views\LienHe\Index.cshtml" />
     <Content Include="Views\KhachHang\Create.cshtml" />
     <Content Include="Views\KhachHang\Delete.cshtml" />
     <Content Include="Views\KhachHang\Details.cshtml" />
@@ -472,43 +429,13 @@
     <Content Include="Views\DSSanPham\Index.cshtml" />
     <Content Include="Views\DSSanPham\Tra.cshtml" />
     <Content Include="Views\DSSanPham\TraSua.cshtml" />
-    <Content Include="Views\GioHang\Dathang.cshtml" />
-    <Content Include="Views\Home\DangKy.cshtml" />
-    <Content Include="Views\Home\DangNhap.cshtml" />
-    <Content Include="Views\Home\DoiMatKhau.cshtml" />
-    <Content Include="Views\Home\DoiThongTin.cshtml" />
-    <Content Include="Views\KhachHang\Create.cshtml" />
-    <Content Include="Views\KhachHang\Delete.cshtml" />
-    <Content Include="Views\KhachHang\Details.cshtml" />
-    <Content Include="Views\KhachHang\Edit.cshtml" />
-    <Content Include="Views\KhachHang\Index.cshtml" />
-    <Content Include="Views\GioHang\Create.cshtml" />
-    <Content Include="Views\GioHang\Delete.cshtml" />
-    <Content Include="Views\GioHang\Details.cshtml" />
-    <Content Include="Views\GioHang\Edit.cshtml" />
-    <Content Include="Views\GioHang\Index.cshtml" />
-    <Content Include="Views\DonHang\Create.cshtml" />
-    <Content Include="Views\DonHang\Delete.cshtml" />
-    <Content Include="Views\DonHang\Details.cshtml" />
-    <Content Include="Views\DonHang\Edit.cshtml" />
-    <Content Include="Views\DonHang\Index.cshtml" />
-    <Content Include="Views\ChiTietDonHang\Create.cshtml" />
-    <Content Include="Views\ChiTietDonHang\Delete.cshtml" />
-    <Content Include="Views\ChiTietDonHang\Details.cshtml" />
-    <Content Include="Views\ChiTietDonHang\Edit.cshtml" />
-    <Content Include="Views\ChiTietDonHang\Index.cshtml" />
-    <Content Include="Views\LichSuGiaoDich\Details.cshtml" />
-    <Content Include="Views\LichSuGiaoDich\Index.cshtml" />
-    <Content Include="Views\Home\DangKy.cshtml" />
-    <Content Include="Views\Home\DangNhap.cshtml" />
-    <Content Include="Views\DSSANPHAM\Index.cshtml" />
-    <Content Include="Views\DSSANPHAM\Details.cshtml" />
-    <Content Include="Views\DSSANPHAM\TraSua.cshtml" />
-    <Content Include="Views\DSSANPHAM\Tra.cshtml" />
-    <Content Include="Views\DSSANPHAM\CaPhe.cshtml" />
-    <Content Include="Views\DSSANPHAM\DoAnVat.cshtml" />
-    <Content Include="Views\SANPHAMs\Search.cshtml" />
-    <Content Include="Views\GIOHANGs\Giohang.cshtml" />
+    <Content Include="Views\LienHe\Create.cshtml" />
+    <Content Include="Views\LienHe\Delete.cshtml" />
+    <Content Include="Views\LienHe\Details.cshtml" />
+    <Content Include="Views\LienHe\Edit.cshtml" />
+    <Content Include="Views\LienHe\Index.cshtml" />
+    <Content Include="Views\GioHang\DatHang.cshtml" />
+    <Content Include="Views\GioHang\DatHangLe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -517,6 +444,7 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />
+=========
     <Content Include="Content\bootstrap.rtl.min.css.map" />
     <Content Include="Content\bootstrap.rtl.css.map" />
     <Content Include="Content\bootstrap.min.css.map" />
