@@ -60,9 +60,16 @@
                                                     <label>Họ tên<span class="sao">*</span></label>
                                                     @Html.ValidationMessageFor(model => model.TenKH, "", new { @class = "text-danger valid" })
                                                 </div>
-                                            </div><div class="col-md-6">
+                                            </div>
+                                            <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    @Html.TextBoxFor(model => model.GioiTinh, htmlAttributes: new { @class = "form-control" })
+                                                    @{
+                                                        List<SelectListItem> lst = new List<SelectListItem>();
+                                                        lst.Add(new SelectListItem { Text = "Nam", Value = "Nam" });
+                                                        lst.Add(new SelectListItem { Text = "Nữ", Value = "Nữ" });
+                                                        @*lst.Add(new SelectListItem { Text = "Không xác định", Value = "Không xác định" });*@
+                                                    }
+                                                    @Html.DropDownListFor(model => model.GioiTinh, lst, "--Chọn giới tính--", htmlAttributes: new { @class = "form-control dropdown" })
                                                     <label>Giới tính<span class="sao">*</span></label>
                                                     @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger valid" })
                                                 </div>
