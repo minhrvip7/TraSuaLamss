@@ -39,7 +39,7 @@ namespace TraSuaLamss.Controllers
         // GET: NhanVien/Create
         public ActionResult Create()
         {
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password");
+            ViewBag.Username = new SelectList(db.TaiKhoan, "Username", "Password");
             return View();
         }
 
