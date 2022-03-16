@@ -165,6 +165,7 @@
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\PhanLoai.cs" />
     <Compile Include="Models\SanPham.cs" />
+    <Compile Include="Models\SanPhamTrongDonHang.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Models\TraSuaContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,75 +1,89 @@
-﻿@model TraSuaLamss.Models.DonHang
+﻿@model IList<TraSuaLamss.Models.SanPhamTrongDonHang>
 
 @{
     ViewBag.Title = "Details";
 }
 
-<h2>LichSuGiaoDich</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ThanhTien)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PhuongThucThanhToan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ThanhToan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChiGiaoHang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TinhTrangGiaoHang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayDat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayGiao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MaKH)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GhiChu)
-        </th>
-        <th></th>
-    </tr>
+<body style="background-color: #e8e8e8 ">
 
-        <tr>
-            <td>
-                @Html.DisplayFor(model => model.ThanhTien)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.PhuongThucThanhToan)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.ThanhToan)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.DiaChiGiaoHang)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.TinhTrangGiaoHang)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.NgayDat)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.NgayGiao)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.MaKH)
-            </td>
-            <td>
-                @Html.DisplayFor(model => model.GhiChu)
-            </td>
-        </tr>
+    <h3 align="center">Đơn hàng: </h3><h2 align="center" style="color:red">#@ViewBag.donHang.MaDH</h2>
+    <br />
 
-</table>
+    <table class="dathang" align="center">
+        <thead>
+            <tr>
+                <td>Mã đơn hàng: </td>
+                <td colspan="3">@ViewBag.donHang.MaDH</td>
+            </tr>
+            <tr>
+                <td>Khách hàng: </td>
+                <td colspan="3">@ViewBag.TenKH</td>
+            </tr>
+            <tr>
+                <td>Địa chỉ: </td>
+                <td colspan="3">@ViewBag.donHang.DiaChiGiaoHang"</td>
+            </tr>
+            <tr>
+                <td>Ngày đặt: </td>
+                <td colspan="3">@ViewBag.donHang.NgayDat</td>
+            </tr>
+            <tr>
+                <td>Thanh toán: </td>
+                <td colspan="3">@ViewBag.donHang.PhuongThucThanhToan</td>
+            </tr>
+        </thead>
 
+        <tbody class="">
+            <tr>
+                <th>Sản phẩm</th>
+                <th class="td-center">Đơn giá</th>
+                <th class="td-center">Số lượng</th>
+                <th class="td-center">Thành tiền</th>
+            </tr>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@item.sanPham.TenSP</td>
+                    <td class="td-center">
+                        @{
+                            var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                            string dongia = String.Format(format, "{0:c0}", item.chiTietDonHang.DonGia);
+                            string thanhtien = String.Format(format, "{0:c0}", item.chiTietDonHang.DonGia * item.chiTietDonHang.SoLuong);
+                        }
+                        @dongia
+                    </td>
+                    <td class="td-center">@item.chiTietDonHang.SoLuong</td>
+                    <td class="td-center">
+                        @thanhtien
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="3" style="text-align:right;">Tổng tiền: </td>
+                <td class="td-center">
+                    @{
+                        var format1 = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                        string tongtien = String.Format(format1, "{0:c0}", ViewBag.donHang.ThanhTien);
+                    }
+                    @tongtien
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3"></td>
+                <td><a class="btn btn-primary" onclick="Huy()">Trở về</a></td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+<script>
+    function Huy() {
+        history.back();
+    }
+</script>
 <p>
     @Html.ActionLink("Back to List", "Index")
 </p>

@@ -14,21 +14,21 @@ namespace TraSuaLamss.Controllers
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: NGUYENLIEUx
+        // GET: NguyenLieu
         public ActionResult Index()
         {
-            var nGUYENLIEUx = db.NGUYENLIEUx.Include(n => n.NHACUNGCAP);
+            var nGUYENLIEUx = db.NguyenLieu.Include(n => n.NHACUNGCAP);
             return View(nGUYENLIEUx.ToList());
         }
 
-        // GET: NGUYENLIEUx/Details/5
+        // GET: NguyenLieu/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            NguyenLieu nGUYENLIEU = db.NguyenLieu.Find(id);
             if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
@@ -36,14 +36,14 @@ namespace TraSuaLamss.Controllers
             return View(nGUYENLIEU);
         }
 
-        // GET: NGUYENLIEUx/Create
+        // GET: NguyenLieu/Create
         public ActionResult Create()
         {
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC");
+            ViewBag.MaNCC = new SelectList(db.NhaCungCap, "MaNCC", "TenNCC");
             return View();
         }
 
-        // POST: NGUYENLIEUx/Create
+        // POST: NguyenLieu/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -52,32 +52,32 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.NGUYENLIEUx.Add(nGUYENLIEU);
+                db.NguyenLieu.Add(nGUYENLIEU);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            ViewBag.MaNCC = new SelectList(db.NhaCungCap, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
             return View(nGUYENLIEU);
         }
 
-        // GET: NGUYENLIEUx/Edit/5
+        // GET: NguyenLieu/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            NguyenLieu nGUYENLIEU = db.NguyenLieu.Find(id);
             if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            ViewBag.MaNCC = new SelectList(db.NhaCungCap, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
             return View(nGUYENLIEU);
         }
 
-        // POST: NGUYENLIEUx/Edit/5
+        // POST: NguyenLieu/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -90,18 +90,18 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
+            ViewBag.MaNCC = new SelectList(db.NhaCungCap, "MaNCC", "TenNCC", nGUYENLIEU.MaNCC);
             return View(nGUYENLIEU);
         }
 
-        // GET: NGUYENLIEUx/Delete/5
+        // GET: NguyenLieu/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            NguyenLieu nGUYENLIEU = db.NguyenLieu.Find(id);
             if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
@@ -109,13 +109,13 @@ namespace TraSuaLamss.Controllers
             return View(nGUYENLIEU);
         }
 
-        // POST: NGUYENLIEUx/Delete/5
+        // POST: NguyenLieu/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
-            db.NGUYENLIEUx.Remove(nGUYENLIEU);
+            NguyenLieu nGUYENLIEU = db.NguyenLieu.Find(id);
+            db.NguyenLieu.Remove(nGUYENLIEU);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

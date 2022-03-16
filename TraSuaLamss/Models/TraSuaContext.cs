@@ -12,17 +12,17 @@ namespace TraSuaLamss.Models
         {
         }
 
-        public virtual DbSet<ChiTietDonHang> CHITIETDONHANGs { get; set; }
-        public virtual DbSet<DonHang> DONHANGs { get; set; }
-        public virtual DbSet<GioHang> GIOHANGs { get; set; }
-        public virtual DbSet<KhachHang> KHACHHANGs { get; set; }
-        public virtual DbSet<LienHe> LIENHEs { get; set; }
-        public virtual DbSet<NguyenLieu> NGUYENLIEUx { get; set; }
-        public virtual DbSet<NhaCungCap> NHACUNGCAPs { get; set; }
-        public virtual DbSet<NhanVien> NHANVIENs { get; set; }
-        public virtual DbSet<PhanLoai> PHANLOAIs { get; set; }
-        public virtual DbSet<SanPham> SANPHAMs { get; set; }
-        public virtual DbSet<TaiKhoan> TAIKHOANs { get; set; }
+        public virtual DbSet<ChiTietDonHang> ChiTietDonHang { get; set; }
+        public virtual DbSet<DonHang> DonHang { get; set; }
+        public virtual DbSet<GioHang> GioHang { get; set; }
+        public virtual DbSet<KhachHang> KhachHang { get; set; }
+        public virtual DbSet<LienHe> LienHe { get; set; }
+        public virtual DbSet<NguyenLieu> NguyenLieu { get; set; }
+        public virtual DbSet<NhaCungCap> NhaCungCap { get; set; }
+        public virtual DbSet<NhanVien> NhanVien { get; set; }
+        public virtual DbSet<PhanLoai> PhanLoai { get; set; }
+        public virtual DbSet<SanPham> SanPham { get; set; }
+        public virtual DbSet<TaiKhoan> TaiKhoan { get; set; }
         public object NHANVIEN { get; internal set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -96,17 +96,17 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<KhachHang>()
-                .HasMany(e => e.CHITIETDONHANGs)
+                .HasMany(e => e.ChiTietDonHang)
                 .WithRequired(e => e.KHACHHANG)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<KhachHang>()
-                .HasMany(e => e.DONHANGs)
+                .HasMany(e => e.DonHang)
                 .WithRequired(e => e.KHACHHANG)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<KhachHang>()
-                .HasMany(e => e.GIOHANGs)
+                .HasMany(e => e.GioHang)
                 .WithRequired(e => e.KHACHHANG)
                 .WillCascadeOnDelete(false);
 
@@ -127,7 +127,7 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<NguyenLieu>()
-                .HasMany(e => e.SANPHAMs)
+                .HasMany(e => e.SanPham)
                 .WithRequired(e => e.NGUYENLIEU)
                 .WillCascadeOnDelete(false);
 
@@ -140,7 +140,7 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<NhaCungCap>()
-                .HasMany(e => e.NGUYENLIEUx)
+                .HasMany(e => e.NguyenLieu)
                 .WithRequired(e => e.NHACUNGCAP)
                 .WillCascadeOnDelete(false);
 
@@ -169,7 +169,7 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<PhanLoai>()
-                .HasMany(e => e.SANPHAMs)
+                .HasMany(e => e.SanPham)
                 .WithRequired(e => e.PHANLOAI)
                 .WillCascadeOnDelete(false);
 
@@ -186,7 +186,7 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<SanPham>()
-                .HasMany(e => e.GIOHANGs)
+                .HasMany(e => e.GioHang)
                 .WithRequired(e => e.SANPHAM)
                 .WillCascadeOnDelete(false);
 
@@ -199,12 +199,12 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<TaiKhoan>()
-                .HasMany(e => e.KHACHHANGs)
+                .HasMany(e => e.KhachHang)
                 .WithRequired(e => e.TAIKHOAN)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TaiKhoan>()
-                .HasMany(e => e.NHANVIENs)
+                .HasMany(e => e.NhanVien)
                 .WithRequired(e => e.TAIKHOAN)
                 .WillCascadeOnDelete(false);
         }

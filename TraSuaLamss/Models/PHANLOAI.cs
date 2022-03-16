@@ -12,7 +12,7 @@ namespace TraSuaLamss.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PhanLoai()
         {
-            SANPHAMs = new HashSet<SanPham>();
+            SanPham = new HashSet<SanPham>();
         }
 
         [Key]
@@ -24,6 +24,6 @@ namespace TraSuaLamss.Models
         public string TenLoai { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SanPham> SANPHAMs { get; set; }
+        public virtual ICollection<SanPham> SanPham { get; set; }
     }
 }

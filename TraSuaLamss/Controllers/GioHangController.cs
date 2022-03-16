@@ -14,21 +14,21 @@ namespace TraSuaLamss.Controllers
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: GIOHANGs
+        // GET: GioHang
         public ActionResult Index()
         {
-            var gIOHANGs = db.GIOHANGs.Include(g => g.KHACHHANG).Include(g => g.SANPHAM);
+            var gIOHANGs = db.GioHang.Include(g => g.KHACHHANG).Include(g => g.SANPHAM);
             return View(gIOHANGs.ToList());
         }
 
-        // GET: GIOHANGs/Details/5
+        // GET: GioHang/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GioHang gIOHANG = db.GIOHANGs.Find(id);
+            GioHang gIOHANG = db.GioHang.Find(id);
             if (gIOHANG == null)
             {
                 return HttpNotFound();
@@ -36,15 +36,15 @@ namespace TraSuaLamss.Controllers
             return View(gIOHANG);
         }
 
-        // GET: GIOHANGs/Create
+        // GET: GioHang/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH");
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP");
             return View();
         }
 
-        // POST: GIOHANGs/Create
+        // POST: GioHang/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -53,34 +53,34 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.GIOHANGs.Add(gIOHANG);
+                db.GioHang.Add(gIOHANG);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", gIOHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", gIOHANG.MaSP);
             return View(gIOHANG);
         }
 
-        // GET: GIOHANGs/Edit/5
+        // GET: GioHang/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GioHang gIOHANG = db.GIOHANGs.Find(id);
+            GioHang gIOHANG = db.GioHang.Find(id);
             if (gIOHANG == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", gIOHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", gIOHANG.MaSP);
             return View(gIOHANG);
         }
 
-        // POST: GIOHANGs/Edit/5
+        // POST: GioHang/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -93,19 +93,19 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", gIOHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", gIOHANG.MaSP);
             return View(gIOHANG);
         }
 
-        // GET: GIOHANGs/Delete/5
+        // GET: GioHang/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GioHang gIOHANG = db.GIOHANGs.Find(id);
+            GioHang gIOHANG = db.GioHang.Find(id);
             if (gIOHANG == null)
             {
                 return HttpNotFound();
@@ -113,13 +113,13 @@ namespace TraSuaLamss.Controllers
             return View(gIOHANG);
         }
 
-        // POST: GIOHANGs/Delete/5
+        // POST: GioHang/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            GioHang gIOHANG = db.GIOHANGs.Find(id);
-            db.GIOHANGs.Remove(gIOHANG);
+            GioHang gIOHANG = db.GioHang.Find(id);
+            db.GioHang.Remove(gIOHANG);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -21,7 +21,7 @@ namespace TraSuaLamss.Content
         // GET: BaoCaoThongKe
         public ActionResult Index()
         {
-            var Donhang = (from s in db.DONHANGs
+            var Donhang = (from s in db.DonHang
                            group s by new
                            {
                                Column1 = (int?)s.NgayDat.Month
@@ -39,7 +39,7 @@ namespace TraSuaLamss.Content
 
         public ActionResult Details(int month)
         {
-            var Donhang = (from DONHANG in db.DONHANGs
+            var Donhang = (from DONHANG in db.DonHang
                            where
                              (int)DONHANG.NgayDat.Month == month
                            select DONHANG).ToList();

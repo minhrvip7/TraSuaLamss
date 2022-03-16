@@ -14,21 +14,21 @@ namespace TraSuaLamss.Controllers
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: KHACHHANGs
+        // GET: KhachHang
         public ActionResult Index()
         {
-            var kHACHHANGs = db.KHACHHANGs.Include(k => k.TAIKHOAN);
+            var kHACHHANGs = db.KhachHang.Include(k => k.TAIKHOAN);
             return View(kHACHHANGs.ToList());
         }
 
-        // GET: KHACHHANGs/Details/5
+        // GET: KhachHang/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KhachHang kHACHHANG = db.KHACHHANGs.Find(id);
+            KhachHang kHACHHANG = db.KhachHang.Find(id);
             if (kHACHHANG == null)
             {
                 return HttpNotFound();
@@ -36,14 +36,14 @@ namespace TraSuaLamss.Controllers
             return View(kHACHHANG);
         }
 
-        // GET: KHACHHANGs/Create
+        // GET: KhachHang/Create
         public ActionResult Create()
         {
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password");
+            ViewBag.Username = new SelectList(db.TaiKhoan, "Username", "Password");
             return View();
         }
 
-        // POST: KHACHHANGs/Create
+        // POST: KhachHang/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -52,32 +52,32 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.KHACHHANGs.Add(kHACHHANG);
+                db.KhachHang.Add(kHACHHANG);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", kHACHHANG.Username);
+            ViewBag.Username = new SelectList(db.TaiKhoan, "Username", "Password", kHACHHANG.Username);
             return View(kHACHHANG);
         }
 
-        // GET: KHACHHANGs/Edit/5
+        // GET: KhachHang/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KhachHang kHACHHANG = db.KHACHHANGs.Find(id);
+            KhachHang kHACHHANG = db.KhachHang.Find(id);
             if (kHACHHANG == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", kHACHHANG.Username);
+            ViewBag.Username = new SelectList(db.TaiKhoan, "Username", "Password", kHACHHANG.Username);
             return View(kHACHHANG);
         }
 
-        // POST: KHACHHANGs/Edit/5
+        // POST: KhachHang/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -90,18 +90,18 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Username = new SelectList(db.TAIKHOANs, "Username", "Password", kHACHHANG.Username);
+            ViewBag.Username = new SelectList(db.TaiKhoan, "Username", "Password", kHACHHANG.Username);
             return View(kHACHHANG);
         }
 
-        // GET: KHACHHANGs/Delete/5
+        // GET: KhachHang/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KhachHang kHACHHANG = db.KHACHHANGs.Find(id);
+            KhachHang kHACHHANG = db.KhachHang.Find(id);
             if (kHACHHANG == null)
             {
                 return HttpNotFound();
@@ -109,13 +109,13 @@ namespace TraSuaLamss.Controllers
             return View(kHACHHANG);
         }
 
-        // POST: KHACHHANGs/Delete/5
+        // POST: KhachHang/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            KhachHang kHACHHANG = db.KHACHHANGs.Find(id);
-            db.KHACHHANGs.Remove(kHACHHANG);
+            KhachHang kHACHHANG = db.KhachHang.Find(id);
+            db.KhachHang.Remove(kHACHHANG);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

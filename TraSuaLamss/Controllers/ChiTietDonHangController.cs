@@ -14,21 +14,21 @@ namespace TraSuaLamss.Controllers
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: CHITIETDONHANGs
+        // GET: ChiTietDonHang
         public ActionResult Index()
         {
-            var cHITIETDONHANGs = db.CHITIETDONHANGs.Include(c => c.KHACHHANG).Include(c => c.SANPHAM);
-            return View(cHITIETDONHANGs.ToList());
+            var cHITIETDonHang = db.ChiTietDonHang.Include(c => c.KHACHHANG).Include(c => c.SANPHAM);
+            return View(cHITIETDonHang.ToList());
         }
 
-        // GET: CHITIETDONHANGs/Details/5
+        // GET: ChiTietDonHang/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            ChiTietDonHang cHITIETDONHANG = db.ChiTietDonHang.Find(id);
             if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
@@ -36,15 +36,15 @@ namespace TraSuaLamss.Controllers
             return View(cHITIETDONHANG);
         }
 
-        // GET: CHITIETDONHANGs/Create
+        // GET: ChiTietDonHang/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH");
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP");
             return View();
         }
 
-        // POST: CHITIETDONHANGs/Create
+        // POST: ChiTietDonHang/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -53,34 +53,34 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CHITIETDONHANGs.Add(cHITIETDONHANG);
+                db.ChiTietDonHang.Add(cHITIETDONHANG);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
             return View(cHITIETDONHANG);
         }
 
-        // GET: CHITIETDONHANGs/Edit/5
+        // GET: ChiTietDonHang/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            ChiTietDonHang cHITIETDONHANG = db.ChiTietDonHang.Find(id);
             if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
             return View(cHITIETDONHANG);
         }
 
-        // POST: CHITIETDONHANGs/Edit/5
+        // POST: ChiTietDonHang/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -93,19 +93,19 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
             return View(cHITIETDONHANG);
         }
 
-        // GET: CHITIETDONHANGs/Delete/5
+        // GET: ChiTietDonHang/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            ChiTietDonHang cHITIETDONHANG = db.ChiTietDonHang.Find(id);
             if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
@@ -113,13 +113,13 @@ namespace TraSuaLamss.Controllers
             return View(cHITIETDONHANG);
         }
 
-        // POST: CHITIETDONHANGs/Delete/5
+        // POST: ChiTietDonHang/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
-            db.CHITIETDONHANGs.Remove(cHITIETDONHANG);
+            ChiTietDonHang cHITIETDONHANG = db.ChiTietDonHang.Find(id);
+            db.ChiTietDonHang.Remove(cHITIETDONHANG);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

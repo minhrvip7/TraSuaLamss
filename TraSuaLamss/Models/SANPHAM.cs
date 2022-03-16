@@ -12,8 +12,8 @@ namespace TraSuaLamss.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SanPham()
         {
-            CHITIETDONHANGs = new HashSet<ChiTietDonHang>();
-            GIOHANGs = new HashSet<GioHang>();
+            ChiTietDonHang = new HashSet<ChiTietDonHang>();
+            GioHang = new HashSet<GioHang>();
         }
 
         [Key]
@@ -45,10 +45,10 @@ namespace TraSuaLamss.Models
         public string MaLoai { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ChiTietDonHang> CHITIETDONHANGs { get; set; }
+        public virtual ICollection<ChiTietDonHang> ChiTietDonHang { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<GioHang> GIOHANGs { get; set; }
+        public virtual ICollection<GioHang> GioHang { get; set; }
 
         public virtual NguyenLieu NGUYENLIEU { get; set; }
 

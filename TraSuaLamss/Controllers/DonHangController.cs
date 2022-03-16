@@ -14,22 +14,22 @@ namespace TraSuaLamss.Controllers
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: DONHANGs
+        // GET: DonHang
         public ActionResult Index()
         {
-            var dONHANGs = db.DONHANGs.Include(d => d.KHACHHANG);
+            var dONHANGs = db.DonHang.Include(d => d.KHACHHANG);
             return View(dONHANGs.ToList());
         }
 
 
-        // GET: DONHANGs/Details/5
+        // GET: DonHang/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DonHang dONHANG = db.DONHANGs.Find(id);
+            DonHang dONHANG = db.DonHang.Find(id);
             if (dONHANG == null)
             {
                 return HttpNotFound();
@@ -37,14 +37,14 @@ namespace TraSuaLamss.Controllers
             return View(dONHANG);
         }
 
-        // GET: DONHANGs/Create
+        // GET: DonHang/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH");
             return View();
         }
 
-        // POST: DONHANGs/Create
+        // POST: DonHang/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -53,32 +53,32 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.DONHANGs.Add(dONHANG);
+                db.DonHang.Add(dONHANG);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", dONHANG.MaKH);
             return View(dONHANG);
         }
 
-        // GET: DONHANGs/Edit/5
+        // GET: DonHang/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DonHang dONHANG = db.DONHANGs.Find(id);
+            DonHang dONHANG = db.DonHang.Find(id);
             if (dONHANG == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", dONHANG.MaKH);
             return View(dONHANG);
         }
 
-        // POST: DONHANGs/Edit/5
+        // POST: DonHang/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -91,18 +91,18 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", dONHANG.MaKH);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", dONHANG.MaKH);
             return View(dONHANG);
         }
 
-        // GET: DONHANGs/Delete/5
+        // GET: DonHang/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DonHang dONHANG = db.DONHANGs.Find(id);
+            DonHang dONHANG = db.DonHang.Find(id);
             if (dONHANG == null)
             {
                 return HttpNotFound();
@@ -110,13 +110,13 @@ namespace TraSuaLamss.Controllers
             return View(dONHANG);
         }
 
-        // POST: DONHANGs/Delete/5
+        // POST: DonHang/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            DonHang dONHANG = db.DONHANGs.Find(id);
-            db.DONHANGs.Remove(dONHANG);
+            DonHang dONHANG = db.DonHang.Find(id);
+            db.DonHang.Remove(dONHANG);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
