@@ -35,6 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -319,7 +320,6 @@
     <Content Include="Views\KhachHang\Details.cshtml" />
     <Content Include="Views\KhachHang\Edit.cshtml" />
     <Content Include="Views\KhachHang\Index.cshtml" />
-    <Content Include="Views\DonHang\Index.cshtml" />
     <Content Include="Views\ChiTietDonHang\Create.cshtml" />
     <Content Include="Views\ChiTietDonHang\Delete.cshtml" />
     <Content Include="Views\ChiTietDonHang\Details.cshtml" />
@@ -339,6 +339,7 @@
     <Content Include="Views\LienHe\Index.cshtml" />
     <Content Include="Views\GioHang\DatHang.cshtml" />
     <Content Include="Views\GioHang\DatHangLe.cshtml" />
+    <Content Include="Views\GioHang\DatHangTC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

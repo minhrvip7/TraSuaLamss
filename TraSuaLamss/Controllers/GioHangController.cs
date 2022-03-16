@@ -15,6 +15,10 @@ namespace TraSuaLamss.Controllers
         private TraSuaContext db = new TraSuaContext();
         private const string MaKHSession = "MaKHSession";
         private const string ListHangSession = "ListHangSession";
+        private const string ListCTDH = "ListCTDH";
+        private const string DonHang = "DonHang";
+        private const string DonHangLe = "DonHangLe";
+        private const string CTDH = "CTDH";
         public ActionResult Giohang()
         {
             int KHID = 1;
@@ -46,6 +50,7 @@ namespace TraSuaLamss.Controllers
                 MaDH = MaDH + "00" + SLDH.ToString();
             }
             var lischitiet = new List<PhieuDatHang>();
+            var listctdh = new List<ChiTietDonHang>();
             foreach (var item in list)
             {
                 ChiTietDonHang ChitietDH = new ChiTietDonHang
@@ -56,6 +61,7 @@ namespace TraSuaLamss.Controllers
                     SoLuong = item.GH.Soluong,
                     DonGia = item.SP.GiaBan
                 };
+                listctdh.Add(ChitietDH);
                 SanPham sanPham = (from e in db.SanPham
                                    where e.MaSP == item.SP.MaSP
                                    select e).FirstOrDefault();
@@ -63,7 +69,7 @@ namespace TraSuaLamss.Controllers
                 lischitiet.Add(Phieu);
             }
             var NgayDat = DateTime.Today;
-            ViewBag.DonHang = new DonHang()
+            var donhang = new DonHang()
             {
                 MaDH = MaDH,
                 ThanhTien = lischitiet.Sum(x => x.CTDH.SoLuong * x.CTDH.DonGia),
@@ -74,11 +80,13 @@ namespace TraSuaLamss.Controllers
                 MaKH = KHID,
                 GhiChu = ""
             };
+            ViewBag.DonHang = donhang;
             ViewBag.NgayDat = NgayDat.ToString("dd/MM/yyyy");
             ViewBag.TenKH = (from e in db.KhachHang
                              where e.MaKH == KHID
                              select e.TenKH).FirstOrDefault();
-            ViewBag.List = lischitiet as List<PhieuDatHang>;
+            Session[ListCTDH] = listctdh;
+            Session[DonHang] = donhang;
             return View(lischitiet);
         }
 
@@ -142,7 +150,7 @@ namespace TraSuaLamss.Controllers
             {
                 MaDH = MaDH + "00" + SLDH.ToString();
             }
-            var chitietdonhang = new ChiTietDonHang()
+            var ctdh = new ChiTietDonHang()
             {
                 MaHD = MaDH,
                 MaKH = MaKH,
@@ -155,11 +163,11 @@ namespace TraSuaLamss.Controllers
                            select d).FirstOrDefault();
             var chitiet = new PhieuDatHang()
             {
-                CTDH = chitietdonhang,
+                CTDH = ctdh,
                 SP = sanpham,
             };
             var NgayDat = DateTime.Today;
-            ViewBag.DonHang = new DonHang()
+            var donhangle = new DonHang()
             {
                 MaDH = MaDH,
                 ThanhTien = chitiet.SP.GiaBan * chitiet.CTDH.SoLuong,
@@ -174,8 +182,45 @@ namespace TraSuaLamss.Controllers
             ViewBag.TenKH = (from e in db.KhachHang
                              where e.MaKH == MaKH
                              select e.TenKH).FirstOrDefault();
-            ViewBag.Phieu = chitiet as PhieuDatHang;
+            ViewBag.DonHang = donhangle;
+            Session[DonHangLe] = donhangle;
+            Session[CTDH] = ctdh;
             return View(chitiet);
+        }
+        public ActionResult CreateDonHang()
+        {
+            var list = Session[ListCTDH] as List<ChiTietDonHang>;
+            var don = Session[DonHang] as DonHang;
+            foreach (var item in db.GioHang)
+            {
+                if (item.MaKH == don.MaKH)
+                {
+                    db.GioHang.Remove(item);
+                }
+            }
+            db.DonHang.Add(don);
+            foreach (var item in list)
+            {
+                db.ChiTietDonHang.Add(item);
+            }
+
+            db.SaveChanges();
+            return RedirectToAction("DatHangTC");
+        }
+        public ActionResult CreateDonHangLe()
+        {
+            var chitietDH = Session[CTDH] as ChiTietDonHang;
+            var don = Session[DonHangLe] as DonHang;
+            db.DonHang.Add(don);
+            db.ChiTietDonHang.Add(chitietDH);
+
+            db.SaveChanges();
+            return RedirectToAction("DatHangTC");
+        }
+        public ActionResult DatHangTC()
+        {
+            ViewBag.Message = "Đã khởi tạo đơn hàng thành công";
+            return View();
         }
     }
 }

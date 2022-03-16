@@ -96,7 +96,7 @@
                             @{
                                 var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
                                 string dongia = String.Format(format, "{0:c0}", item.SP.GiaBan);
-                                string thantien = String.Format(format, "{0:c0}", item.SP.GiaBan * item.GH.Soluong);
+                                string thanhtien = String.Format(format, "{0:c0}", item.SP.GiaBan * item.GH.Soluong);
                             }
                             @dongia
                         </td>
@@ -118,7 +118,7 @@
                             </script>
                         </td>
                         <td class="td-center">
-                            @thantien
+                            @thanhtien
                         </td>
                         <td class="td-center"><a href="@Url.Action("Delete", "GioHang", new {MaKhach=item.GH.MaKH, MaHang=item.SP.MaSP})"><img class="image-nut" src="~/wwwroot/Images/Xoa.png" /></a> | <a href="#"><img class="image-nut" src="~/wwwroot/Images/Timkiem.png" /></a></td>
                     </tr>

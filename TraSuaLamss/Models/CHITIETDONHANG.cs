@@ -15,7 +15,7 @@ namespace TraSuaLamss.Models
         [Key]
         [StringLength(5)]
         public string MaHD { get; set; }
-
+    
         [StringLength(5)]
         public string MaSP { get; set; }
 

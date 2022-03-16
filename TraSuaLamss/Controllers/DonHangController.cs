@@ -19,7 +19,7 @@ namespace TraSuaLamss.Controllers
             ViewBag.Message = "Đã khởi tạo đơn hàng thành công";
             return View();
         }
-        public ActionResult CreateDonHang(IList<PhieuDatHang> list, DonHang don)
+        /*public ActionResult CreateDonHang(IList<PhieuDatHang> list, DonHang don)
         {
             foreach (var item in list)
             {
@@ -35,6 +35,6 @@ namespace TraSuaLamss.Controllers
             db.DonHang.Add(don);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
+        }*/
     }
 }
