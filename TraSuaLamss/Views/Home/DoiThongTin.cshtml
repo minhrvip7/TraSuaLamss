@@ -24,7 +24,9 @@
             margin-top: 100px;
             margin-bottom: auto;
         }
-
+        .sao{
+            color:red;
+        }
         .abc {
             text-align: center;
         }
@@ -55,30 +57,30 @@
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
                                                     @Html.TextBoxFor(model => model.TenKH, htmlAttributes: new { @class = "form-control" });
-                                                    <label>Họ tên</label>
+                                                    <label>Họ tên<span class="sao">*</span></label>
                                                     @Html.ValidationMessageFor(model => model.TenKH, "", new { @class = "text-danger valid" })
                                                 </div>
                                             </div><div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
                                                     @Html.TextBoxFor(model => model.GioiTinh, htmlAttributes: new { @class = "form-control" })
-                                                    <label>Giới tính</label>
+                                                    <label>Giới tính<span class="sao">*</span></label>
                                                     @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger valid" })
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-floating mb-3">
                                             @Html.TextBoxFor(model => model.DienThoai, htmlAttributes: new { @class = "form-control" })
-                                            <label>Điện thoại</label>
+                                            <label>Điện thoại<span class="sao">*</span></label>
                                             @Html.ValidationMessageFor(model => model.DienThoai, "", new { @class = "text-danger valid" })
                                         </div>
                                         <div class="form-floating mb-3">
                                             @Html.TextBoxFor(model => model.DiaChi, htmlAttributes: new { @class = "form-control" })
-                                            <label>Địa chỉ</label>
+                                            <label>Địa chỉ<span class="sao">*</span></label>
                                             @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger valid" })
                                         </div>
                                         <div class="form-floating mb-3">
                                             @Html.EditorFor(model => model.NgaySinh, new { htmlAttributes = new { @class = "form-control" } })
-                                            <label>Ngày sinh</label>
+                                            <label>Ngày sinh<span class="sao">*</span></label>
                                             @Html.ValidationMessageFor(model => model.NgaySinh, "", new { @class = "text-danger valid" })
                                         </div>
                                         <div class="mt-4 mb-0">

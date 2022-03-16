@@ -144,7 +144,7 @@ namespace TraSuaLamss.Controllers
             { 
                 string username = Session["Username"].ToString();
                 string password = Session["Password"].ToString();
-                var tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == username);
+                var tk = db.TaiKhoan.SingleOrDefault(n => n.Username == username);
                 if (model.Password == password)
                 {
                     var pw = model.NewPassword;
@@ -171,7 +171,7 @@ namespace TraSuaLamss.Controllers
         {
             model.Username = Session["Username"].ToString();
             /*var kh = db.KHACHHANG.SingleOrDefault(n => n.Username == username);*/
-            TaiKhoan tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == model.Username);
+            TaiKhoan tk = db.TaiKhoan.SingleOrDefault(n => n.Username == model.Username);
             KhachHang kh = tk.KHACHHANGs.SingleOrDefault();
             if (ModelState.IsValid)
             {

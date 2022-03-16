@@ -16,14 +16,14 @@ namespace TraSuaLamss.Controllers
         // GET: GIOHANGs
         public ActionResult Index()
         {
-            var gIOHANGs = db.GIOHANGs.Include(g => g.KHACHHANG).Include(g => g.SANPHAM);
+            var gIOHANGs = db.GioHang.Include(g => g.KHACHHANG).Include(g => g.SANPHAM);
             return View(gIOHANGs.ToList());
         }
 
         public ActionResult Giohang()
         {
-            List<XemGioHang> GiohangView = (from e in db.GIOHANGs
-                                            join d in db.SANPHAMs
+            List<XemGioHang> GiohangView = (from e in db.GioHang
+                                            join d in db.SanPham
                                             on e.MaSP equals d.MaSP
                                             where e.MaKH == "KH001"
                                             select new XemGioHang { TenSP = d.TenSP, HinhAnh = d.Anh, GiaBan = d.GiaBan, Soluong = e.Soluong }).ToList();
@@ -89,13 +89,13 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GioHang gIOHANG = db.GIOHANGs.Find(id);
+            GioHang gIOHANG = db.GioHang.Find(id);
             if (gIOHANG == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", gIOHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", gIOHANG.MaSP);
             return View(gIOHANG);
         }
 
@@ -112,8 +112,8 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", gIOHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", gIOHANG.MaSP);
             return View(gIOHANG);
         }
 
@@ -124,7 +124,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            GioHang gIOHANG = db.GIOHANGs.Find(id);
+            GioHang gIOHANG = db.GioHang.Find(id);
             if (gIOHANG == null)
             {
                 return HttpNotFound();
@@ -137,8 +137,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            GioHang gIOHANG = db.GIOHANGs.Find(id);
-            db.GIOHANGs.Remove(gIOHANG);
+            GioHang gIOHANG = db.GioHang.Find(id);
+            db.GioHang.Remove(gIOHANG);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
