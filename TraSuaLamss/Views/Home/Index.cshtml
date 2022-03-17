@@ -8,38 +8,46 @@
 <p align="center">
     <img src="~/Content/Template/assets/images/Menulamss.png" alt="" style="width: 800px; height: 800px" />
 </p>
+<style>
+    table tr td {
+        border: 5px solid #d18352;
+    }
+    .button:hover {
+        background-color: #F7A707;
+    }
+</style>
 <p style="padding-top: 20px; font-size: 20px; color: #d18352" align="center"><b>MỘT SỐ SẢN PHẨM</b></p>
-<table align="center" style="padding-top:20px" cellpadding="50" border="1">
+<table align="center" style="padding-top:20px" cellpadding="50" st border="1">
     <tr>
         <td>
             <a style="text-decoration: none;font-size:16px" href="@Url.Action("Details","DSSANPHAM",new { id="SP006", loai = "ML002" })">
 
                 <img src="~/wwwroot/Images/TraTac.jpg" width="250" height="300" />
-                <p style="font-size:16px;padding-left:5px;"><span>Trà tắc</span></p>
+                <p style="font-size: 18px; padding-left: 5px; color: red; font-weight: bold" align="center"><span>Trà tắc</span></p>
             </a>
         </td>
         <td>
             <a style="text-decoration: none;font-size:16px" href="@Url.Action("Details","DSSANPHAM",new { id="SP002", loai = "ML001" })">
 
                 <img src="~/wwwroot/Images/TraSuaChanChau.jpg" width="250" height="300" />
-                <p style="font-size:16px;padding-left:5px;"><span>Trà sữa trân châu</span></p>
+                <p style="font-size: 18px; padding-left: 5px; color: red; font-weight: bold" align="center"><span>Trà sữa trân châu</span></p>
             </a>
         </td>
         <td>
             <a style="text-decoration: none;font-size:16px" href="@Url.Action("Details","DSSANPHAM",new { id="SP005", loai = "ML002" })">
 
                 <img src="~/wwwroot/Images/TraChanh.jpg" width="250" height="300" />
-                <p style="font-size:16px;padding-left:5px;"><span>Trà chanh</span></p>
+                <p style="font-size: 18px; padding-left: 5px; color: red; font-weight: bold" align="center"><span>Trà chanh</span></p>
             </a>
         </td>
         <td>
             <a style="text-decoration: none;font-size:16px" href="@Url.Action("Details","DSSANPHAM",new { id="SP003", loai = "ML001" })">
 
                 <img src="~/wwwroot/Images/TraSuaChanChauDuongDen.jpg" width="250" height="300" />
-                <p style="font-size:16px;padding-left:5px;"><span>Trà sữa Trân châu đường đen</span></p>
+                <p style="font-size:18px;padding-left:5px; color:red; font-weight:bold" align="center"><span>Trà sữa Trân châu đường đen</span></p>
             </a>
         </td>
     </tr>
 </table>
 <br />
-<p align="center"><a href="/DSSanPham/Index"><input type="button" value="Xem thêm" /></a></p><br /><br />
+<p align="center"><a href="/DSSanPham/Index"><input type="button" class="button" style="color: white; font-weight: bold; background-color: #d18352; font-size:20px; padding:20px 30px" value="Xem thêm" /></a></p><br /><br />

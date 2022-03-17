@@ -20,7 +20,6 @@ figure, header, nav, section, article, aside, footer, figcaption {
     line-height: 0;
     height: 0;
 }
-
 .dropdown-item {
     font-size: 13px;
 }
@@ -92,14 +91,6 @@ body {
     background: #fb5849;
     color: #fff;
 }
-
-::-moz-selection {
-    background: #fb5849;
-    color: #fff;
-}
-
-
-
 .background-header {
     background-color: #d18352;
     height: 120px !important;
@@ -304,10 +295,6 @@ body {
             padding-left: 20px;
             height: 40px;
             line-height: 40px;
-            -webkit-transition: all 0.3s ease 0s;
-            -moz-transition: all 0.3s ease 0s;
-            -o-transition: all 0.3s ease 0s;
-            transition: all 0.3s ease 0s;
             position: relative;
             font-size: 13px;
             font-weight: 400;
