@@ -31,7 +31,7 @@ namespace TraSuaLamss.Controllers
             Session[ListHangSession] = list;
             return View(list);
         }
-        public ActionResult DatHang()
+        public ActionResult Dathang()
         {
             var list = Session[ListHangSession] as List<XemGioHang>;
             int KHID = 1;

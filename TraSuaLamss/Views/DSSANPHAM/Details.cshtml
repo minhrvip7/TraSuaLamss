@@ -99,12 +99,13 @@
                         <p>
                             Số lượng:
                             <input class="updown" type="button" value="-" onclick="Down()">
-                            <input id="soluong" class="inputsl" min="1" type="text" value="@ViewBag.SL">
+                            <input id="Soluong" class="inputsl" min="1" type="text" value="@ViewBag.SL">
                             <input class="updown" type="button" value="+" onclick="Up()">
                             <script>
                                 function Up() {
                                     result = document.getElementById('soluong');
                                     result.value = result.value ? parseInt(result.value) + 1 : 1;
+                                    
                                 }
                                 function Down() {
                                     result = document.getElementById('soluong');
@@ -118,10 +119,10 @@
                     </div>
                     <div id="datmua">
                         <div id="btn" style="float: left; background-color: #FFEFD5; border: 1px solid orangered">
-                            <a style="color: orangered" href="@Url.Action("Add","GioHang",new { MaKhach=1, MaHang=ViewBag.MaSP, soluong=ViewBag.SL  })">THÊM GIỎ HÀNG</a>
+                            <a style="color: orangered" href="@Url.Action("Add","GioHang",new { MaKhach=ViewBag.MaKH, MaHang=ViewBag.MaSP, soluong=ViewBag.SL })">THÊM GIỎ HÀNG</a>
                         </div>
                         <div id="btn" style="float:left;margin-left:30px">
-                            <a href="@Url.Action("DatHangLe","GioHang",new { MaKH=1, MaHang=ViewBag.MaSP,soluong=ViewBag.SL })">ĐẶT MUA</a>
+                            <a href="@Url.Action("DatHangLe","GioHang",new { MaKH=ViewBag.MaKH, MaHang=ViewBag.MaSP,soluong=ViewBag.SL })">ĐẶT MUA</a>
                         </div>
                     </div>
                 </td>
