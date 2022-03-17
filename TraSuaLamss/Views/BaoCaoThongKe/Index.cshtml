@@ -1,39 +1,27 @@
 ﻿@model List<TraSuaLamss.Models.BaoCaoThang>
 @{
     ViewBag.Title = "Index";
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+
 }
 
 
 <table class="table">
     <tr>
-        <th>
-            Tháng
-        </th>
-        <th>
-            Số lượng đơn
-        </th>
-        <th>
-            Doanh thu
-        </th>
+        <th>Tháng</th>
+        <th>Số lượng đơn</th>
+        <th>Doanh thu</th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-<tr>
-    <td>
-        @Html.DisplayFor(modelItem => item.Thang)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.SoLuongDonHang)
-    </td>
-    <td>
-        @Html.DisplayFor(modelItem => item.TongTien)
-    </td>
-    <td>
-        @Html.ActionLink("Chi tiết", "Details", new { month = item.Thang })
-    </td>
-</tr>
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.Thang)</td>
+        <td>@Html.DisplayFor(modelItem => item.SoLuongDonHang)</td>
+        <td>@String.Format(format, "{0:c0}", @item.TongTien)</td>
+        <td>@Html.ActionLink("Chi tiết", "Details", new { month = item.Thang })</td>
+    </tr>
     }
 
 </table>

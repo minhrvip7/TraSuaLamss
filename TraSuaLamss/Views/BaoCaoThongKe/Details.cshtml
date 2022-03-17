@@ -3,12 +3,17 @@
 
 @{
     ViewBag.Title = "Details";
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+
 }
 
 <h2>Details</h2>
 
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MaDH)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.KHACHHANG.TenKH)
         </th>
@@ -41,40 +46,23 @@
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.KHACHHANG.TenKH)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ThanhTien)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.PhuongThucThanhToan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ThanhToan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiaChiGiaoHang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayDat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayGiao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.GhiChu)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.MaDH }) |
-                @Html.ActionLink("Details", "Details", new { id = item.MaDH }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.MaDH })
-            </td>
-        </tr>
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.MaDH)</td>
+        <td>@Html.DisplayFor(modelItem => item.KHACHHANG.TenKH)</td>
+        <td>@String.Format(format, "{0:c0}", @item.ThanhTien)</td>
+        <td>@Html.DisplayFor(modelItem => item.PhuongThucThanhToan)</td>
+        <td>@Html.DisplayFor(modelItem => item.ThanhToan)</td>
+        <td>@Html.DisplayFor(modelItem => item.DiaChiGiaoHang)</td>
+        <td>@Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)</td>
+        <td>@Html.DisplayFor(modelItem => item.NgayDat)</td>
+        <td>@Html.DisplayFor(modelItem => item.NgayGiao)</td>
+        <td>@Html.DisplayFor(modelItem => item.GhiChu)</td>
+        <td>
+            <a href="@Url.Action("Edit", "DonHang", new {id = item.MaDH})">Chỉnh sửa</a> |
+            <a href="@Url.Action("Details", "DonHang", new {id = item.MaDH})">Chi tiết</a> |
+            <a href="@Url.Action("Delete", "DonHang", new {id = item.MaDH})">Xóa</a>
+        </td>
+    </tr>
     }
 
 </table>

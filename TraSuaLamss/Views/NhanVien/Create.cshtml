@@ -36,7 +36,7 @@
                 <div class="col-md-10">
                     Nam&emsp;&emsp;@Html.RadioButtonFor(m => m.GioiTinh, "Nam", new { @class = "form-check-input" })
                     Nữ &emsp;&emsp;@Html.RadioButtonFor(m => m.GioiTinh, "Nữ", new { @class = "form-check-input" })
-                    Không xác định &emsp;&emsp;@Html.RadioButtonFor(m => m.GioiTinh, "Không xác định", new { @class = "form-check-input" })
+                    Khác &emsp;&emsp;@Html.RadioButtonFor(m => m.GioiTinh, "Khác", new { @class = "form-check-input" })
                     @*@Html.EditorFor(model => model.GioiTinh, new { htmlAttributes = new { @class = "form-control" } })*@
                     @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger" })
                 </div>
@@ -52,10 +52,11 @@
 
             <div class="form-group"  style="padding-left:15%">
             @Html.LabelFor(model => model.Username, "Tên đăng nhập", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
-            </div>
+                <div class="col-md-10">
+                    @*@Html.DropDownList("Username", null, htmlAttributes: new { @class = "form-control" })*@
+                    @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                </div>
         </div>
 
             <div class="form-group"  style="padding-left:15%">

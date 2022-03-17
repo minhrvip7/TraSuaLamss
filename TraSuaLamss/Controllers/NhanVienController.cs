@@ -74,6 +74,14 @@ namespace TraSuaLamss.Controllers
             
             if (ModelState.IsValid)
             {
+                var taiKhoan = new TaiKhoan() {
+                    Username = nHANVIEN.Username,
+                    Password = "1",
+                    HoTen = nHANVIEN.TenNV,
+                    PhanQuyen = "Nhân viên"
+                };
+                db.TaiKhoan.Add(taiKhoan);
+                db.SaveChanges();
                 db.NhanVien.Add(nHANVIEN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
