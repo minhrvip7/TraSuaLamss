@@ -13,7 +13,7 @@ namespace TraSuaLamss.Controllers
         private TraSuaContext db = new TraSuaContext();
         private List<SanPham> LaySanPham()
         {
-            return db.SANPHAM.OrderByDescending(s => s.TenSP).ToList();
+            return db.SanPham.OrderByDescending(s => s.TenSP).ToList();
         }
         // GET: DSSANPHAM
         public ActionResult Index(int? page, string Name, string first, string end, string currentFilter, string currentFilter1, string currentFilter2)
