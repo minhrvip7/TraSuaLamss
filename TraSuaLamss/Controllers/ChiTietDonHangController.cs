@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: CHITIETDONHANGs
         public ActionResult Index()
         {
-            var cHITIETDONHANGs = db.CHITIETDONHANGs.Include(c => c.KHACHHANG).Include(c => c.SANPHAM);
+            var cHITIETDONHANGs = db.ChiTietDonHang.Include(c => c.KHACHHANG).Include(c => c.SANPHAM);
             return View(cHITIETDONHANGs.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            ChiTietDonHang cHITIETDONHANG = db.ChiTietDonHang.Find(id);
             if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
@@ -39,8 +39,8 @@ namespace TraSuaLamss.Controllers
         // GET: CHITIETDONHANGs/Create
         public ActionResult Create()
         {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH");
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP");
             return View();
         }
 
@@ -53,13 +53,13 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.CHITIETDONHANGs.Add(cHITIETDONHANG);
+                db.ChiTietDonHang.Add(cHITIETDONHANG);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
             return View(cHITIETDONHANG);
         }
 
@@ -70,13 +70,13 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            ChiTietDonHang cHITIETDONHANG = db.ChiTietDonHang.Find(id);
             if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
             return View(cHITIETDONHANG);
         }
 
@@ -93,8 +93,8 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
+            ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH", cHITIETDONHANG.MaKH);
+            ViewBag.MaSP = new SelectList(db.SanPham, "MaSP", "TenSP", cHITIETDONHANG.MaSP);
             return View(cHITIETDONHANG);
         }
 
@@ -105,7 +105,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            ChiTietDonHang cHITIETDONHANG = db.ChiTietDonHang.Find(id);
             if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
@@ -118,8 +118,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
-            db.CHITIETDONHANGs.Remove(cHITIETDONHANG);
+            ChiTietDonHang cHITIETDONHANG = db.ChiTietDonHang.Find(id);
+            db.ChiTietDonHang.Remove(cHITIETDONHANG);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

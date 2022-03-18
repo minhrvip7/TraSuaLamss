@@ -142,6 +142,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ChiTietDonHangController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
+    <Compile Include="Controllers\DSSanPhamController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -156,19 +157,22 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CHITIETDONHANG.cs" />
+    <Compile Include="Models\ChiTietDonHang.cs" />
+    <Compile Include="Models\ChiTietSanPham.cs" />
     <Compile Include="Models\DangNhapModel.cs" />
-    <Compile Include="Models\DONHANG.cs" />
-    <Compile Include="Models\GIOHANG.cs" />
-    <Compile Include="Models\KHACHHANG.cs" />
-    <Compile Include="Models\LIENHE.cs" />
-    <Compile Include="Models\NGUYENLIEU.cs" />
-    <Compile Include="Models\NHACUNGCAP.cs" />
-    <Compile Include="Models\NHANVIEN.cs" />
-    <Compile Include="Models\PHANLOAI.cs" />
-    <Compile Include="Models\SANPHAM.cs" />
-    <Compile Include="Models\TAIKHOAN.cs" />
+    <Compile Include="Models\DonHang.cs" />
+    <Compile Include="Models\GioHang.cs" />
+    <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\LienHe.cs" />
+    <Compile Include="Models\NguyenLieu.cs" />
+    <Compile Include="Models\NhaCungCap.cs" />
+    <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\PhanLoai.cs" />
+    <Compile Include="Models\PhieuDatHang.cs" />
+    <Compile Include="Models\SanPham.cs" />
+    <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Models\TraSuaContext.cs" />
+    <Compile Include="Models\XemGioHang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
