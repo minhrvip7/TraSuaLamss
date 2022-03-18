@@ -37,6 +37,7 @@ namespace TraSuaLamss.Models
 
         public DateTime NgayGiao { get; set; }
 
+        [Required]
         public int MaKH { get; set; }
 
         [Required]

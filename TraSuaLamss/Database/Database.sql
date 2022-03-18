@@ -323,6 +323,35 @@ INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHa
 ('DH005',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '1/1/2022', '2/1/2022', 5, N'Giao thành công')
 GO
 
+INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
+('DH006',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '2/1/2022', '2/1/2022', 1, N'Giao nhanh'),
+('DH007',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '2/1/2022', '2/1/2022', 2, N'Giao nhanh'),
+('DH008',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '3/2/2022', '2/1/2022', 3, N'Khách hàng không nhận'),
+('DH009',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '3/2/2022', '2/1/2022', 4, N'Trả hàng'),
+('DH010',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '4/3/2022', '2/1/2022', 5, N'Giao thành công'),
+('DH011',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '4/3/2022', '2/1/2022', 1, N'Giao nhanh'),
+('DH012',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '5/4/2022', '2/1/2022', 2, N'Giao nhanh'),
+('DH013',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '5/4/2022', '2/1/2022', 3, N'Khách hàng không nhận'),
+('DH014',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '6/5/2022', '2/1/2022', 4, N'Trả hàng'),
+('DH015',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '6/5/2022', '2/1/2022', 5, N'Giao thành công'),
+('DH016',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '7/6/2022', '2/1/2022', 1, N'Giao nhanh'),
+('DH017',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '7/6/2022', '2/1/2022', 2, N'Giao nhanh'),
+('DH018',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '8/7/2022', '2/1/2022', 3, N'Khách hàng không nhận'),
+('DH019',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '8/7/2022', '2/1/2022', 4, N'Trả hàng'),
+('DH020',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '9/8/2022', '2/1/2022', 5, N'Giao thành công'),
+('DH021',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '9/8/2022', '2/1/2022', 1, N'Giao nhanh'),
+('DH022',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '10/9/2022', '2/1/2022', 2, N'Giao nhanh'),
+('DH023',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '10/9/2022', '2/1/2022', 3, N'Khách hàng không nhận'),
+('DH024',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '11/10/2022', '2/1/2022', 4, N'Trả hàng'),
+('DH025',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '11/10/2022', '2/1/2022', 5, N'Giao thành công'),
+('DH026',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '12/11/2022', '2/1/2022', 1, N'Giao nhanh'),
+('DH027',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '12/11/2022', '2/1/2022', 2, N'Giao nhanh'),
+('DH028',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '12/12/2022', '2/1/2022', 3, N'Khách hàng không nhận'),
+('DH029',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '12/12/2022', '2/1/2022', 4, N'Trả hàng')
+GO
+
+
+
 
 
 
@@ -331,15 +360,15 @@ GO
 --SELECT * FROM DONHANG
 --SELECT * FROM SANPHAM
 
-INSERT INTO CHITIETDONHANG (MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD001', 1,'SP001',4 , 40000)
+INSERT INTO CHITIETDONHANG (MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('DH001', 1,'SP001',4 , 40000)
 GO
-INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD002', 2,'SP002',4 , 50000)
+INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('DH002', 2,'SP002',4 , 50000)
 GO
-INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD003', 3,'SP003',4 , 60000)
+INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('DH003', 3,'SP003',4 , 60000)
 GO
-INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD004', 5,'SP001',4 , 40000)
+INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('DH004', 5,'SP001',4 , 40000)
 GO
-INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('HD005', 4,'SP001',4 , 40000)
+INSERT INTO CHITIETDONHANG(MaHD, MaKH, MaSP, SoLuong, DonGia) VALUES ('DH005', 4,'SP001',4 , 40000)
 GO
 
 --NHACNVIEN

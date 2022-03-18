@@ -151,26 +151,23 @@
     <Compile Include="Controllers\PhanLoaiController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
-    <Compile Include="Controllers\TaiKhoanController.cs" />
-    <Compile Include="Controllers\TimKiemController.cs" />
+    <Compile Include="Controllers\SANPHAMsController.cs" />
+    <Compile Include="Controllers\TAIKHOANsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\ChiTietDonHang.cs" />
-    <Compile Include="Models\ChiTietSanPham.cs" />
-    <Compile Include="Models\DangKyModel.cs" />
-    <Compile Include="Models\DangNhapModel.cs" />
-    <Compile Include="Models\DonHang.cs" />
-    <Compile Include="Models\GioHang.cs" />
-    <Compile Include="Models\KhachHang.cs" />
-    <Compile Include="Models\LienHe.cs" />
-    <Compile Include="Models\NguyenLieu.cs" />
-    <Compile Include="Models\NhaCungCap.cs" />
-    <Compile Include="Models\NhanVien.cs" />
-    <Compile Include="Models\PhanLoai.cs" />
-    <Compile Include="Models\PhieuDatHang.cs" />
-    <Compile Include="Models\SanPham.cs" />
-    <Compile Include="Models\TaiKhoan.cs" />
+    <Compile Include="Models\CHITIETDONHANG.cs" />
+    <Compile Include="Models\DONHANG.cs" />
+    <Compile Include="Models\GIOHANG.cs" />
+    <Compile Include="Models\KHACHHANG.cs" />
+    <Compile Include="Models\LIENHE.cs" />
+    <Compile Include="Models\NGUYENLIEU.cs" />
+    <Compile Include="Models\NHACUNGCAP.cs" />
+    <Compile Include="Models\NHANVIEN.cs" />
+    <Compile Include="Models\PHANLOAI.cs" />
+    <Compile Include="Models\SANPHAM.cs" />
+	<Compile Include="Models\SanPhamTrongDonHang.cs" />
+    <Compile Include="Models\TAIKHOAN.cs" />
     <Compile Include="Models\TraSuaContext.cs" />
     <Compile Include="Models\XemGioHang.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -190,6 +187,15 @@
     <Content Include="Content\bootstrap-utilities.rtl.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.rtl.css" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Img\add_80px.png" />
+    <Content Include="Content\Img\delete_80px.png" />
+    <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Img\icon-call.png" />
+    <Content Include="Content\Img\info_32px.png" />
+    <Content Include="Content\Img\info_80px.png" />
+    <Content Include="Content\Img\search_80px.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Template\assets\css\bootstrap.min.css" />
     <Content Include="Content\Template\assets\css\flex-slider.css" />
@@ -379,8 +385,8 @@
     <Content Include="Views\KhachHang\Create.cshtml" />
     <Content Include="Views\KhachHang\Delete.cshtml" />
     <Content Include="Views\KhachHang\Details.cshtml" />
-    <Content Include="Views\KhachHang\Edit.cshtml" />
-    <Content Include="Views\KhachHang\Index.cshtml" />
+    <Content Include="Views\CHITIETDONHANGs\Edit.cshtml" />
+    <Content Include="Views\CHITIETDONHANGs\Index.cshtml" />
     <Content Include="Views\LichSuGiaoDich\Details.cshtml" />
     <Content Include="Views\LichSuGiaoDich\Index.cshtml" />
     <Content Include="Views\LienHe\Create.cshtml" />
@@ -419,8 +425,10 @@
     <Content Include="Views\TaiKhoan\Details.cshtml" />
     <Content Include="Views\TaiKhoan\Edit.cshtml" />
     <Content Include="Views\TaiKhoan\Index.cshtml" />
-    <Content Include="Views\GioHang\DatHangLe.cshtml" />
-    <Content Include="Views\GioHang\DatHangTC.cshtml" />
+    <Content Include="Views\LichSuGiaoDich\Details.cshtml" />
+    <Content Include="Views\LichSuGiaoDich\Index.cshtml" />
+	<Content Include="Views\BaoCaoThongKe\Index.cshtml" />
+	<Content Include="Views\BaoCaoThongKe\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

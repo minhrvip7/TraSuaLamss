@@ -14,14 +14,14 @@ namespace TraSuaLamss.Controllers
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: CHITIETDONHANGs
+        // GET: ChiTietDonHang
         public ActionResult Index()
         {
-            var cHITIETDONHANGs = db.ChiTietDonHang.Include(c => c.KHACHHANG).Include(c => c.SANPHAM);
-            return View(cHITIETDONHANGs.ToList());
+            var cHITIETDonHang = db.ChiTietDonHang.Include(c => c.KHACHHANG).Include(c => c.SANPHAM);
+            return View(cHITIETDonHang.ToList());
         }
 
-        // GET: CHITIETDONHANGs/Details/5
+        // GET: ChiTietDonHang/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -36,7 +36,7 @@ namespace TraSuaLamss.Controllers
             return View(cHITIETDONHANG);
         }
 
-        // GET: CHITIETDONHANGs/Create
+        // GET: ChiTietDonHang/Create
         public ActionResult Create()
         {
             ViewBag.MaKH = new SelectList(db.KhachHang, "MaKH", "TenKH");
@@ -44,7 +44,7 @@ namespace TraSuaLamss.Controllers
             return View();
         }
 
-        // POST: CHITIETDONHANGs/Create
+        // POST: ChiTietDonHang/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -63,7 +63,7 @@ namespace TraSuaLamss.Controllers
             return View(cHITIETDONHANG);
         }
 
-        // GET: CHITIETDONHANGs/Edit/5
+        // GET: ChiTietDonHang/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -80,7 +80,7 @@ namespace TraSuaLamss.Controllers
             return View(cHITIETDONHANG);
         }
 
-        // POST: CHITIETDONHANGs/Edit/5
+        // POST: ChiTietDonHang/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -98,7 +98,7 @@ namespace TraSuaLamss.Controllers
             return View(cHITIETDONHANG);
         }
 
-        // GET: CHITIETDONHANGs/Delete/5
+        // GET: ChiTietDonHang/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -113,7 +113,7 @@ namespace TraSuaLamss.Controllers
             return View(cHITIETDONHANG);
         }
 
-        // POST: CHITIETDONHANGs/Delete/5
+        // POST: ChiTietDonHang/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)

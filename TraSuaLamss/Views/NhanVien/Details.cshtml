@@ -2,6 +2,8 @@
 
 @{
     ViewBag.Title = "Details";
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+
 }
 
 <h2 style="padding-left:2%">Thông tin chi tiết</h2>
@@ -97,7 +99,8 @@
         </dt>
 
         <dd>
-            &emsp;@Html.DisplayFor(model => model.Luong)
+            &emsp;@String.Format(format, "{0:c0}", Model.Luong)
+
         </dd>
         <br />
     </dl>

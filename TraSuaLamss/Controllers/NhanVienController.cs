@@ -20,11 +20,19 @@ namespace TraSuaLamss.Controllers
         // GET: NhanVien
         public ActionResult Index(string searchStr, int? page)
         {
-            var NhanVien = db.NhanVien.Include(n => n.TAIKHOAN);
-            //Tìm kiếm
-            if (!String.IsNullOrEmpty(searchStr))
+            var nHANVIENs = db.NhanVien.Include(n => n.TAIKHOAN);
+
+            if(searchStr == null)
             {
-                NhanVien = NhanVien.Where(e => e.TenNV.Contains(searchStr));
+                nHANVIENs = nHANVIENs;
+            }
+            else if(searchStr.Any(char.IsDigit))
+            {
+                nHANVIENs = nHANVIENs.Where(e => e.MaNV.Contains(searchStr));
+            }
+            else if (!String.IsNullOrEmpty(searchStr))
+            {
+                nHANVIENs = nHANVIENs.Where(e => e.TenNV.Contains(searchStr));
             }
             //Sắp xếp trước khi phân trang
             NhanVien = NhanVien.OrderBy(e => e.MaNV);
@@ -63,8 +71,17 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "MaNV,TenNV,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai,STK,Luong")] NhanVien nHANVIEN)
         {
+            
             if (ModelState.IsValid)
             {
+                var taiKhoan = new TaiKhoan() {
+                    Username = nHANVIEN.Username,
+                    Password = "1",
+                    HoTen = nHANVIEN.TenNV,
+                    PhanQuyen = "Nhân viên"
+                };
+                db.TaiKhoan.Add(taiKhoan);
+                db.SaveChanges();
                 db.NhanVien.Add(nHANVIEN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
