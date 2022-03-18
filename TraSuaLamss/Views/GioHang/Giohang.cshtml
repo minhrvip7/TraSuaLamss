@@ -1,0 +1,150 @@
+﻿@model List<TraSuaLamss.Models.XemGioHang>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style type="text/css">
+    td.nut {
+        float: right;
+    }
+
+    input.updown {
+        width: 26px;
+        height: 26px;
+        text-align: center;
+    }
+
+    input.inputsl {
+        width: 36px;
+        text-align: center;
+        border: none;
+        height: 30px;
+    }
+
+    td.nut a {
+        clear: both;
+        background-color: red;
+        color: white;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+        td.nut a:hover {
+            background-color: gray;
+            color: pink;
+        }
+
+    td {
+        padding: 10px 20px 10px 10px;
+    }
+
+        td.td-center {
+            text-align: center;
+        }
+
+    .anhsp {
+        height: 100px;
+        width: auto;
+    }
+
+    body {
+        padding-top: 180px;
+    }
+
+    .cap {
+        font-family: Optima;
+    }
+
+    img.image-nut {
+        width: 18px;
+        height: 18px;
+    }
+</style>
+<body style="background-color: #e8e8e8 ">
+    <h3 class="cap" align="center">Giỏ hàng</h3>
+    <br />
+    @if (Model.Count > 0)
+    {
+        <table align="center">
+            <thead>
+                <tr>
+                    <td colspan="7"><div style="float:right; color:red">Số lượng sản phẩm: @Model.Count</div></td>
+                </tr>
+                <tr>
+                    <td>Mã sản phẩm</td>
+                    <td>Sản phẩm</td>
+                    <td></td>
+                    <td class="td-center">Đơn giá</td>
+                    <td class="td-center">Số lượng</td>
+                    <td class="td-center">Thành tiền</td>
+                    <td></td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td>@item.SP.MaSP</td>
+                        <td>@item.SP.TenSP</td>
+                        <td><img class="anhsp" src="~/wwwroot/Images/@item.SP.Anh" /></td>
+                        <td class="td-center">
+                            @{
+                                var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                                string dongia = String.Format(format, "{0:c0}", item.SP.GiaBan);
+                                string thanhtien = String.Format(format, "{0:c0}", item.SP.GiaBan * item.GH.Soluong);
+                            }
+                            @dongia
+                        </td>
+                        <td class="td-center">
+                            <input class="inputsl" value="@item.GH.Soluong" type="text" min="1" id="@item.GH.MaSP" readonly />
+                        </td>
+                        <td class="td-center">
+                            @thanhtien
+                        </td>
+                        @{ 
+                            List<string> Loai = new List<string> {"Tra","TraSua","CaPhe","DoAnVat" };
+                            var rd = new Random();
+                            var num = rd.Next(1, Loai.Count);
+                            var LoaiSP = Loai[num];
+                        }
+                        <td class="td-center"><a href="@Url.Action("Delete", "GioHang", new {MaKhach=item.GH.MaKH, MaHang=item.SP.MaSP})"><img class="image-nut" src="~/wwwroot/Images/Xoa.png" /></a> | <a href="/DSSANPHAM/@LoaiSP"><img class="image-nut" src="~/wwwroot/Images/Timkiem.png" /></a></td>
+                    </tr>
+                    <tr><td colspan="7"></td></tr>
+
+                }
+                <tr>
+                    <td colspan="4"></td>
+                    <td colspan="3">
+                        <table style="float:right">
+                            <tr>
+                                <td class="nut"><a style="background-color:yellow" href="@Url.Action("Index", "DSSANPHAM")">Mua hàng tiếp</a></td>
+                                <td class="nut"><a style="background-color:red" href="@Url.Action("DeleteAll", "GioHang", new {MaKhach=ViewBag.MaKH})">Xóa hết</a></td>
+                                <td class="nut"><a style="background-color:aqua" href="@Url.Action("Dathang", "GioHang")">Đặt hàng</a></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <br />
+        <p style="text-align:center">
+            <img src="https://cdn.pixabay.com/photo/2014/04/03/10/00/shopping-cart-309592_1280.png" style="height:100px;width:auto" /><br /><br />
+            <span>Chưa có sản phẩm nào trong giỏ hàng</span>
+            <br />
+            <a href="@Url.Action("Index", "DSSANPHAM")">Mua hàng</a>
+        </p>
+    }
+    <br />
+</body>
+
+

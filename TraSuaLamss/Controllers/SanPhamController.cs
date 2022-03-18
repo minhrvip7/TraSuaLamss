@@ -35,10 +35,6 @@ namespace TraSuaLamss.Controllers
             }
             return View(sanPham);
         }
-        public List<SanPham> SearhByKey(string key)
-        {
-            return db.SanPham.SqlQuery("Select * from SANPHAM where TenSP like '%"+key+"%'").ToList();
-        }
 
         // GET: SanPhams/Create
         public ActionResult Create()

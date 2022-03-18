@@ -1,0 +1,176 @@
+﻿@model IList<TraSuaLamss.Models.PhieuDatHang>
+@{
+    ViewBag.Title = "DatHang";
+}
+<style type="text/css">
+    tbody.bangsp tr td {
+        border: 1px solid black;
+    }
+
+    td {
+        padding: 10px 20px 10px 10px;
+    }
+
+    button.back b {
+        color: white;
+    }
+
+    button.back {
+        width: 120px;
+        height: 40px;
+        background-color: red;
+        border: none;
+    }
+
+        button.back:hover {
+            background-color: gray;
+            color: pink;
+        }
+
+    button.xacnhan {
+        width: 120px;
+        height: 40px;
+        background-color: lawngreen;
+        border: none;
+    }
+
+        button.xacnhan:hover {
+            background-color: yellow;
+            color: blue;
+        }
+
+    td.nut a {
+        clear: both;
+        background-color: aqua;
+        color: white;
+        width: 120px;
+        height: 40px;
+        line-height: 40px;
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 14px;
+    }
+
+        td.nut a:hover {
+            background-color: gray;
+            color: pink;
+        }
+
+    td.td-center {
+        text-align: center;
+    }
+
+    input.Dien {
+        width: 324px;
+    }
+
+    body {
+        padding-top: 180px;
+    }
+
+    .cap {
+        font-family: Optima;
+    }
+</style>
+<body style="background-color: #e8e8e8 ">
+
+    <h3 class="cap" align="center">Xác nhận đặt hàng</h3>
+    <br />
+
+    <table class="dathang" align="center">
+        <thead>
+            <tr>
+                <td>Mã đơn hàng: </td>
+                <td colspan="3">@ViewBag.DonHang.MaDH</td>
+            </tr>
+            <tr>
+                <td>Khách hàng: </td>
+                <td colspan="3">@ViewBag.TenKH</td>
+            </tr>
+            <tr>
+                <td>Địa chỉ: </td>
+                <td><input class="Dien" name="Diachi" type="text" value="@ViewBag.DonHang.DiaChiGiaoHang" id="Diachi" /></td>
+            </tr>
+            <tr>
+                <td>Ngày đặt: </td>
+                <td>@ViewBag.NgayDat</td>
+            </tr>
+            <tr>
+                <td>Thanh toán: </td>
+                <td>
+                    <select name="Phuongthuc" id="Phuongthuc">
+                        <option selected="selected">Thanh toán khi nhận hàng</option>
+                        <option>Thanh toán qua tài khoản ngân hàng</option>
+                    </select>
+                </td>
+            </tr>
+        </thead>
+        <tbody class="bangsp">
+            <tr>
+                <td>Sản phẩm</td>
+                <td class="td-center">Đơn giá</td>
+                <td class="td-center">Số lượng</td>
+                <td class="td-center">Thành tiền</td>
+            </tr>
+            @foreach (var item in Model)
+            {
+
+                <tr>
+                    <td>@item.SP.TenSP</td>
+                    <td class="td-center">
+                        @{
+                            var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                            string dongia = String.Format(format, "{0:c0}", item.CTDH.DonGia);
+                            string thanhtien = String.Format(format, "{0:c0}", item.CTDH.DonGia * item.CTDH.SoLuong);
+                        }
+                        @dongia
+                    </td>
+                    <td class="td-center">@item.CTDH.SoLuong</td>
+                    <td class="td-center">
+                        @thanhtien
+                    </td>
+                </tr>
+            }
+            <tr>
+                <td colspan="3" style="text-align:right;">Tổng tiền: </td>
+                <td class="td-center">
+                    @{
+                        var format1 = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                        string tongtien = String.Format(format1, "{0:c0}", ViewBag.DonHang.ThanhTien);
+                    }
+                    @tongtien
+                </td>
+            </tr>
+
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>Ghi chú: </td>
+                <td><input class="Dien" name="Ghichu" type="text" value="@ViewBag.DonHang.GhiChu" id="Ghichu" /></td>
+            </tr>
+            <tr>
+                <td class="nut"><button class="back" onclick="Huy()"><b>Hủy</b></button></td>
+                <td colspan="2"></td>
+                <td class="nut"><button class="xacnhan" onclick="Check()">Xác nhận</button></td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+<script>
+    function Huy() {
+        history.back();
+    }
+    function Create() {
+        window.location.href = "@Html.Raw(Url.Action("CreateDonHang", "GioHang"))" + "?diachi=" + document.getElementById('Diachi').value + "&phuongthuc=" + document.getElementById('Phuongthuc').value + "&ghichu=" + document.getElementById('Ghichu').value;
+    }
+    function Check() {
+        if (document.getElementById('Diachi').value == "") {
+            alert("Vui lòng nhập địa chỉ giao hàng!");
+        }
+        else Create();
+    }
+</script>
+
+
