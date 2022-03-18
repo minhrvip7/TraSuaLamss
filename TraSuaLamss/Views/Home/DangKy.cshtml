@@ -19,11 +19,11 @@
         .valid {
             padding-left: 13px;
         }
-
+@*
         .register {
             margin-top: 100px;
             margin-bottom: auto;
-        }
+        }*@
 
         .sao {
             color: red;
@@ -85,7 +85,7 @@
                                                         List<SelectListItem> lst = new List<SelectListItem>();
                                                         lst.Add(new SelectListItem { Text = "Nam", Value = "Nam" });
                                                         lst.Add(new SelectListItem { Text = "Nữ", Value = "Nữ" });
-                                                        @*lst.Add(new SelectListItem { Text = "Không xác định", Value = "Không xác định" });*@
+                                                        lst.Add(new SelectListItem { Text = "Khác", Value = "Khác" });
                                                     }
                                                     @Html.DropDownListFor(model => model.GioiTinh, lst,"--Chọn giới tính--",htmlAttributes: new { @class = "form-control dropdown" })
                                                     <label>Giới tính<label class="sao">*</label></label>

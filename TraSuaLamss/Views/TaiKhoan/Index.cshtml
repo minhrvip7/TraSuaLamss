@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TraSuaLamss.Models.TAIKHOAN>
+﻿@model IEnumerable<TraSuaLamss.Models.TaiKhoan>
 
 @{
     ViewBag.Title = "Index";
@@ -12,10 +12,10 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Password)
+            @Html.DisplayNameFor(model => model.HoTen)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.HoTen)
+            @Html.DisplayNameFor(model => model.Username)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PhanQuyen)
@@ -26,18 +26,18 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Password)
+            @Html.DisplayFor(modelItem => item.HoTen)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.HoTen)
+            @Html.DisplayFor(modelItem => item.Username)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.PhanQuyen)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Username }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Username }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Username })
+            @Html.ActionLink("Edit", "Edit", new { id=item.Username.Trim() }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Username.Trim() }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Username.Trim() })
         </td>
     </tr>
 }

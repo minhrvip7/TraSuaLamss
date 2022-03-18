@@ -13,8 +13,7 @@ namespace TraSuaLamss.Models
         public string TenKH { get; set; }
 
         [Display(Name = "Giới tính")]
-        [StringLength(3, MinimumLength =2, ErrorMessage = "Độ dài ít nhất 2 ký tự.")]
-        [Required(ErrorMessage = "Yêu cầu nhập giới tính")]
+        [Required(ErrorMessage = "Yêu cầu chọn giới tính")]
         public string GioiTinh { set; get; }
 
         [Key]
