@@ -69,11 +69,7 @@
                         <h1 style="font-weight:bold;padding-top:20px">@ViewBag.TenSP</h1>
                         <hr style="margin-right:30px" />
                         <p id="infor">
-                            @{
-                                decimal tien = ViewBag.GiaBan;
-                                string gia = String.Format("{0:0,0} đ", tien);
-                            }
-                            Giá bán : <span style="color:red">@gia</span>
+                            Giá bán : <span style="color:red">@ViewBag.GiaBan</span>
                         </p>
                         <p id="infor">Phân loại : @ViewBag.TenLoai</p>
                         <p id="infor">Nguyên liệu : @ViewBag.TenNL</p>

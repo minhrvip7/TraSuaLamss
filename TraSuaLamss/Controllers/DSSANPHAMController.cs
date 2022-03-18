@@ -105,7 +105,7 @@ namespace TraSuaLamss.Controllers
                 ViewBag.MoTa = item.MoTa;
                 ViewBag.TenLoai = item.TenLoai;
                 ViewBag.TenNl = item.TenNL;
-                ViewBag.GiaBan = item.GiaBan;
+                ViewBag.GiaBan = string.Format("{0:0,0} đ", item.GiaBan);
             }
             var danhsach = from ds in db.SanPham
                            join l in db.PhanLoai on ds.MaLoai equals l.MaLoai
