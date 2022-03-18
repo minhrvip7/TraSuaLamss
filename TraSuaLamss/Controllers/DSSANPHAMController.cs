@@ -84,8 +84,8 @@ namespace TraSuaLamss.Controllers
         {
 
             var tra = from tr in db.SanPham
-                      join l in db.PHANLOAIs on tr.MaLoai equals l.MaLoai
-                      join nl in db.NGUYENLIEUx on tr.MaNL equals nl.MaNL
+                      join l in db.PhanLoai on tr.MaLoai equals l.MaLoai
+                      join nl in db.NguyenLieu on tr.MaNL equals nl.MaNL
                       where tr.MaSP == id
                       select new ChiTietSanPham()
                       {
@@ -176,7 +176,7 @@ namespace TraSuaLamss.Controllers
             ViewBag.currentFilter2 = end;
             ViewBag.currentFilter = Name;
             var sanpham = (from sp in db.SanPham
-                           join l in db.PHANLOAIs on sp.MaLoai equals l.MaLoai
+                           join l in db.PhanLoai on sp.MaLoai equals l.MaLoai
                            where l.TenLoai == "Trà sữa"
                            select sp).ToList();
             int pagesize = 8;
@@ -242,7 +242,7 @@ namespace TraSuaLamss.Controllers
             ViewBag.currentFilter2 = end;
             ViewBag.currentFilter = Name;
             var sanpham = (from sp in db.SanPham
-                           join l in db.PHANLOAIs on sp.MaLoai equals l.MaLoai
+                           join l in db.PhanLoai on sp.MaLoai equals l.MaLoai
                            where l.TenLoai == "Trà"
                            select sp).ToList();
             int pagesize = 8;
@@ -308,7 +308,7 @@ namespace TraSuaLamss.Controllers
             ViewBag.currentFilter2 = end;
             ViewBag.currentFilter = Name;
             var sanpham = (from sp in db.SanPham
-                           join l in db.PHANLOAIs on sp.MaLoai equals l.MaLoai
+                           join l in db.PhanLoai on sp.MaLoai equals l.MaLoai
                            where l.TenLoai == "Cà phê"
                            select sp).ToList();
             int pagesize = 8;
@@ -374,7 +374,7 @@ namespace TraSuaLamss.Controllers
             ViewBag.currentFilter2 = end;
             ViewBag.currentFilter = Name;
             var sanpham = (from sp in db.SanPham
-                           join l in db.PHANLOAIs on sp.MaLoai equals l.MaLoai
+                           join l in db.PhanLoai on sp.MaLoai equals l.MaLoai
                            where l.TenLoai == "Đồ ăn vặt"
                            select sp).ToList();
             int pagesize = 8;
@@ -415,8 +415,8 @@ namespace TraSuaLamss.Controllers
             SLtam += 1;
             ViewBag.SL = SLtam;
             var tra = from tr in db.SanPham
-                      join l in db.PHANLOAIs on tr.MaLoai equals l.MaLoai
-                      join nl in db.NGUYENLIEUx on tr.MaNL equals nl.MaNL
+                      join l in db.PhanLoai on tr.MaLoai equals l.MaLoai
+                      join nl in db.NguyenLieu on tr.MaNL equals nl.MaNL
                       where tr.MaSP == id
                       select new ChiTietSanPham()
                       {
@@ -481,8 +481,8 @@ namespace TraSuaLamss.Controllers
             if (SLtam > 1) { SLtam -= 1; } else { SLtam = 1; }
             ViewBag.SL = SLtam;
             var tra = from tr in db.SanPham
-                      join l in db.PHANLOAIs on tr.MaLoai equals l.MaLoai
-                      join nl in db.NGUYENLIEUx on tr.MaNL equals nl.MaNL
+                      join l in db.PhanLoai on tr.MaLoai equals l.MaLoai
+                      join nl in db.NguyenLieu on tr.MaNL equals nl.MaNL
                       where tr.MaSP == id
                       select new ChiTietSanPham()
                       {

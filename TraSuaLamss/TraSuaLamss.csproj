@@ -139,19 +139,26 @@
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\DSSanPhamController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
+    <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
+    <Compile Include="Controllers\LichSuGiaoDichController.cs" />
     <Compile Include="Controllers\LienHeController.cs" />
     <Compile Include="Controllers\NguyenLieuController.cs" />
     <Compile Include="Controllers\NhaCungCapController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\PhanLoaiController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ChiTietDonHang.cs" />
+    <Compile Include="Models\ChiTietSanPham.cs" />
+    <Compile Include="Models\DangKyModel.cs" />
+    <Compile Include="Models\DangNhapModel.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\KhachHang.cs" />
@@ -349,12 +356,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="fonts\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
