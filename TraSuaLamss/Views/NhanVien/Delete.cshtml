@@ -107,7 +107,9 @@
 
         <div class="form-actions no-color" style="padding-left:5%">
             <input style="color:red" type="submit" value="Xóa" class="btn btn-default" /> |
-            @Html.ActionLink("Trở lại danh sách", "Index")
+            <div style="padding-left:5%">
+                @Html.ActionLink("Trở lại danh sách", "Index", new { @class = "btn btn-dark" })
+            </div>
         </div>
     }
 </div>

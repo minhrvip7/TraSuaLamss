@@ -24,6 +24,7 @@ namespace TraSuaLamss.Models
         public virtual DbSet<SanPham> SanPham { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoan { get; set; }
         public object NHANVIEN { get; internal set; }
+        public object DONHANGs { get; internal set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
