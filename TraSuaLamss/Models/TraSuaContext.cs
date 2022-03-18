@@ -12,7 +12,7 @@ namespace TraSuaLamss.Models
         {
         }
 
-<<<<<<< HEAD
+
         public virtual DbSet<ChiTietDonHang> ChiTietDonHang { get; set; }
         public virtual DbSet<DonHang> DonHang { get; set; }
         public virtual DbSet<GioHang> GioHang { get; set; }
@@ -24,7 +24,7 @@ namespace TraSuaLamss.Models
         public virtual DbSet<PhanLoai> PhanLoai { get; set; }
         public virtual DbSet<SanPham> SanPham { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoan { get; set; }
-=======
+
         public virtual DbSet<ChiTietDonHang> CHITIETDONHANGs { get; set; }
         public virtual DbSet<DonHang> DONHANGs { get; set; }
         public virtual DbSet<GioHang> GIOHANGs { get; set; }
@@ -36,17 +36,16 @@ namespace TraSuaLamss.Models
         public virtual DbSet<PhanLoai> PHANLOAIs { get; set; }
         public virtual DbSet<SanPham> SANPHAMs { get; set; }
         public virtual DbSet<TaiKhoan> TAIKHOAN { get; set; }
->>>>>>> origin/SonDH
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ChiTietDonHang>()
-<<<<<<< HEAD
+
                 .Property(e => e.MaKH);
-=======
-                .Property(e => e.MaKH)
-                .IsUnicode(false);
->>>>>>> origin/SonDH
+
+
+
 
             modelBuilder.Entity<ChiTietDonHang>()
                 .Property(e => e.MaHD)
@@ -85,31 +84,28 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<DonHang>()
-<<<<<<< HEAD
+
                 .Property(e => e.MaKH);
 
             modelBuilder.Entity<GioHang>()
                 .Property(e => e.MaKH);
-=======
-                .Property(e => e.MaKH)
-                .IsUnicode(false);
+
+
 
             modelBuilder.Entity<GioHang>()
-                .Property(e => e.MaKH)
-                .IsUnicode(false);
->>>>>>> origin/SonDH
+                .Property(e => e.MaKH);
+
+
 
             modelBuilder.Entity<GioHang>()
                 .Property(e => e.MaSP)
                 .IsUnicode(false);
 
             modelBuilder.Entity<KhachHang>()
-<<<<<<< HEAD
+
                 .Property(e => e.MaKH);
-=======
-                .Property(e => e.MaKH)
-                .IsUnicode(false);
->>>>>>> origin/SonDH
+
+
 
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.Username)
