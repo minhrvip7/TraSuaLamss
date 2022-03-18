@@ -6,20 +6,23 @@ namespace TraSuaLamss.Models
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("GIOHANG")]
-    public partial class GioHang
+    [Table("CHITIETDONHANG")]
+    public partial class ChiTietDonHang
     {
-        [Key]
-        [Column(Order = 0)]
+        [Required]
         [StringLength(5)]
         public string MaKH { get; set; }
 
         [Key]
-        [Column(Order = 1)]
+        [StringLength(5)]
+        public string MaHD { get; set; }
+
         [StringLength(5)]
         public string MaSP { get; set; }
 
-        public int Soluong { get; set; }
+        public int SoLuong { get; set; }
+
+        public decimal DonGia { get; set; }
 
         public virtual KhachHang KHACHHANG { get; set; }
 

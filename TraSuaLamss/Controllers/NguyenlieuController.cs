@@ -28,7 +28,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
             if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
@@ -48,7 +48,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaNL,TenNL,MaNCC")] NGUYENLIEU nGUYENLIEU)
+        public ActionResult Create([Bind(Include = "MaNL,TenNL,MaNCC")] NguyenLieu nGUYENLIEU)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
             if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
@@ -82,7 +82,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaNL,TenNL,MaNCC")] NGUYENLIEU nGUYENLIEU)
+        public ActionResult Edit([Bind(Include = "MaNL,TenNL,MaNCC")] NguyenLieu nGUYENLIEU)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
             if (nGUYENLIEU == null)
             {
                 return HttpNotFound();
@@ -114,7 +114,7 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            NGUYENLIEU nGUYENLIEU = db.NGUYENLIEUx.Find(id);
+            NguyenLieu nGUYENLIEU = db.NGUYENLIEUx.Find(id);
             db.NGUYENLIEUx.Remove(nGUYENLIEU);
             db.SaveChanges();
             return RedirectToAction("Index");

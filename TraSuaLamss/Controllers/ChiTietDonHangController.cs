@@ -28,7 +28,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
             if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
@@ -49,7 +49,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaHD,MaKH,MaSP,SoLuong,DonGia")] CHITIETDONHANG cHITIETDONHANG)
+        public ActionResult Create([Bind(Include = "MaHD,MaKH,MaSP,SoLuong,DonGia")] ChiTietDonHang cHITIETDONHANG)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +70,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
             if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
@@ -85,7 +85,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaHD,MaKH,MaSP,SoLuong,DonGia")] CHITIETDONHANG cHITIETDONHANG)
+        public ActionResult Edit([Bind(Include = "MaHD,MaKH,MaSP,SoLuong,DonGia")] ChiTietDonHang cHITIETDONHANG)
         {
             if (ModelState.IsValid)
             {
@@ -105,7 +105,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
             if (cHITIETDONHANG == null)
             {
                 return HttpNotFound();
@@ -118,7 +118,7 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            CHITIETDONHANG cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
+            ChiTietDonHang cHITIETDONHANG = db.CHITIETDONHANGs.Find(id);
             db.CHITIETDONHANGs.Remove(cHITIETDONHANG);
             db.SaveChanges();
             return RedirectToAction("Index");

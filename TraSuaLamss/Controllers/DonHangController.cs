@@ -28,7 +28,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
+            DonHang dONHANG = db.DONHANGs.Find(id);
             if (dONHANG == null)
             {
                 return HttpNotFound();
@@ -48,7 +48,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DONHANG dONHANG)
+        public ActionResult Create([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DonHang dONHANG)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
+            DonHang dONHANG = db.DONHANGs.Find(id);
             if (dONHANG == null)
             {
                 return HttpNotFound();
@@ -82,7 +82,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DONHANG dONHANG)
+        public ActionResult Edit([Bind(Include = "MaDH,ThanhTien,PhuongThucThanhToan,ThanhToan,DiaChiGiaoHang,TinhTrangGiaoHang,NgayDat,NgayGiao,MaKH,GhiChu")] DonHang dONHANG)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            DONHANG dONHANG = db.DONHANGs.Find(id);
+            DonHang dONHANG = db.DONHANGs.Find(id);
             if (dONHANG == null)
             {
                 return HttpNotFound();
@@ -114,7 +114,7 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            DONHANG dONHANG = db.DONHANGs.Find(id);
+            DonHang dONHANG = db.DONHANGs.Find(id);
             db.DONHANGs.Remove(dONHANG);
             db.SaveChanges();
             return RedirectToAction("Index");

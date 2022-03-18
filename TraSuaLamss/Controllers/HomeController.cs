@@ -69,7 +69,7 @@ namespace TraSuaLamss.Controllers
                 var username = model.Username;
                 var password = model.Password;
                 
-                TAIKHOAN tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == username && n.Password == password);
+                TaiKhoan tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == username && n.Password == password);
                 if (tk != null)
                 {
                     ViewBag.Success = "Chúc mừng đăng nhập thành công!";

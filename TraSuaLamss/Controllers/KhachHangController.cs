@@ -28,7 +28,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KHACHHANG kHACHHANG = db.KHACHHANGs.Find(id);
+            KhachHang kHACHHANG = db.KHACHHANGs.Find(id);
             if (kHACHHANG == null)
             {
                 return HttpNotFound();
@@ -48,7 +48,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaKH,TenKH,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai")] KHACHHANG kHACHHANG)
+        public ActionResult Create([Bind(Include = "MaKH,TenKH,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai")] KhachHang kHACHHANG)
         {
             if (ModelState.IsValid)
             {
@@ -68,7 +68,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KHACHHANG kHACHHANG = db.KHACHHANGs.Find(id);
+            KhachHang kHACHHANG = db.KHACHHANGs.Find(id);
             if (kHACHHANG == null)
             {
                 return HttpNotFound();
@@ -82,7 +82,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaKH,TenKH,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai")] KHACHHANG kHACHHANG)
+        public ActionResult Edit([Bind(Include = "MaKH,TenKH,GioiTinh,NgaySinh,Username,Email,DiaChi,DienThoai")] KhachHang kHACHHANG)
         {
             if (ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            KHACHHANG kHACHHANG = db.KHACHHANGs.Find(id);
+            KhachHang kHACHHANG = db.KHACHHANGs.Find(id);
             if (kHACHHANG == null)
             {
                 return HttpNotFound();
@@ -114,7 +114,7 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            KHACHHANG kHACHHANG = db.KHACHHANGs.Find(id);
+            KhachHang kHACHHANG = db.KHACHHANGs.Find(id);
             db.KHACHHANGs.Remove(kHACHHANG);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -27,7 +27,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TAIKHOAN tAIKHOAN = db.TAIKHOAN.Find(id);
+            TaiKhoan tAIKHOAN = db.TAIKHOAN.Find(id);
             if (tAIKHOAN == null)
             {
                 return HttpNotFound();
@@ -46,7 +46,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Username,Password,HoTen,PhanQuyen")] TAIKHOAN tAIKHOAN)
+        public ActionResult Create([Bind(Include = "Username,Password,HoTen,PhanQuyen")] TaiKhoan tAIKHOAN)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +65,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TAIKHOAN tAIKHOAN = db.TAIKHOAN.Find(id);
+            TaiKhoan tAIKHOAN = db.TAIKHOAN.Find(id);
             if (tAIKHOAN == null)
             {
                 return HttpNotFound();
@@ -78,7 +78,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Username,Password,HoTen,PhanQuyen")] TAIKHOAN tAIKHOAN)
+        public ActionResult Edit([Bind(Include = "Username,Password,HoTen,PhanQuyen")] TaiKhoan tAIKHOAN)
         {
             if (ModelState.IsValid)
             {
@@ -96,7 +96,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            TAIKHOAN tAIKHOAN = db.TAIKHOAN.Find(id);
+            TaiKhoan tAIKHOAN = db.TAIKHOAN.Find(id);
             if (tAIKHOAN == null)
             {
                 return HttpNotFound();
@@ -109,7 +109,7 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            TAIKHOAN tAIKHOAN = db.TAIKHOAN.Find(id);
+            TaiKhoan tAIKHOAN = db.TAIKHOAN.Find(id);
             db.TAIKHOAN.Remove(tAIKHOAN);
             db.SaveChanges();
             return RedirectToAction("Index");
