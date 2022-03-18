@@ -22,8 +22,9 @@
         [StringLength(30)]
         public string GioiTinh { get; set; }
 
-        [Required(ErrorMessage = "Nhập ngày sinh")]
+        [Required(ErrorMessage = "Nhập/chọn ngày sinh")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime NgaySinh { get; set; }
 
         [Required(ErrorMessage = "Chọn tên đăng nhập")]
@@ -47,7 +48,7 @@
         public string STK { get; set; }
 
         [Required(ErrorMessage ="Nhập tiền lương")]
-        [Display(Name = "Lương")]
+        [Display(Name = "Giá")]
         public decimal Luong { get; set; }
 
         public virtual TaiKhoan TAIKHOAN { get; set; }

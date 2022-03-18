@@ -1,7 +1,7 @@
 ﻿@model IList<TraSuaLamss.Models.SanPhamTrongDonHang>
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Delete";
 }
 
 <p>
@@ -82,7 +82,27 @@
         </table>
     </fieldset>
 </form>
-
-<p>
-    <button type="button" class="btn btn-dark" onclick="history.back()">Trở về</button>
-</p>
+<div class="form-row" style="padding-left:35%">
+    <div class="form-group col-md-1">
+        <a class="btn btn-dark" href="@Url.Action("Index","BaoCaoThongKe")">Quay lại</a>
+    </div>
+    <div class="form-group col-md-1">
+    </div>
+    <div class="form-group col-md-1">
+        
+    </div>
+    <div class="form-group col-md-1">
+    </div>
+    <div class="form-group col-md-1">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <div class="form-actions">
+                <button class="btn btn-danger" type="submit">
+                    Xóa
+                    <img src="~/Content/Img/Delete_24px.png" height="20" width="20" />
+                </button>
+            </div>
+        }
+    </div>
+</div>

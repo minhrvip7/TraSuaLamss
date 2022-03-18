@@ -4,11 +4,10 @@
 @{
     ViewBag.Title = "Details";
     var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
-
+    var thang = Model.FirstOrDefault().NgayDat.Month;
 }
-
-<h2>Details</h2>
-
+<h2 style="padding-left:5%">Đơn hàng tháng: @thang</h2>
+<br />
 <table class="table table-striped table-bordered">
     <thead class="thead-light">
         <tr>
@@ -34,14 +33,14 @@
             <td>@Html.DisplayFor(modelItem => item.TinhTrangGiaoHang)</td>
             <td>@Html.DisplayFor(modelItem => item.NgayDat)</td>
             <td>
-                <a class="btn btn-primary" href="@Url.Action("Edit", "DonHang", new { id = item.MaDH })">Chỉnh sửa</a> |
-                <a class="btn btn-success" href="@Url.Action("Details", "LichSuGiaoDich", new {id = item.MaDH})">Chi tiết</a> |
-                <a class="btn btn-danger" href="@Url.Action("Delete", "DonHang", new { id = item.MaDH })">Xóa</a>
+                <a class="btn btn-info" href="@Url.Action("Details", "LichSuGiaoDich", new {id = item.MaDH})">Chi tiết
+                <img src="~/Content/Img/information_50px.png" height="20" width="20" /></a>
+                <a class="btn btn-danger" href="@Url.Action("Delete", "LichSuGiaoDich", new { id = item.MaDH})">Xóa
+                <img src="~/Content/Img/Delete_24px.png" height="20" width="20" /></a>
             </td>
         </tr>
     }
-
 </table>
-<p>
-    <button type="button" class="btn btn-dark" onclick="history.back()">Trở về</button>
+<p style="padding-left:5%">
+    @Html.ActionLink("Quay lại danh sách","Index",new {@class="btn btn-dark"})
 </p>

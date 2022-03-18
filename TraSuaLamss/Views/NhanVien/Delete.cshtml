@@ -2,114 +2,103 @@
 
 @{
     ViewBag.Title = "Delete";
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
 }
 
-<h2 style="padding-left:2%">Xóa</h2>
-
-<h3 style="padding-left:2%">Chi tiết thông tin về nhân viên </h3>
+<h3 style="padding-left:35%">Chi tiết thông tin về nhân viên: @Html.DisplayFor(model => model.TenNV)</h3>
+<br />
 <div>
-    <hr />
-    <dl class="dl-horizontal" style="padding-left:10%">
-        <dt>
-            Mã nhân viên:
-            @*@Html.DisplayNameFor(model => model.MaNV)*@
-        </dt>
-
-        <dd>
-            &emsp;@Html.DisplayFor(model => model.MaNV)
-        </dd>
-        <br />
-        <dt>
-            Họ và Tên:
-            @*@Html.DisplayNameFor(model => model.TenNV)*@
-        </dt>
-
-        <dd>
-            &emsp;@Html.DisplayFor(model => model.TenNV)
-        </dd>
-        <br />
-        <dt>
-            Tên đăng nhập:
-            @*@Html.DisplayNameFor(model => model.TAIKHOAN.Username)*@
-        </dt>
-
-        <dd>
-            &emsp;@Html.DisplayFor(model => model.TAIKHOAN.Username)
-        </dd>
-        <br />
-        <dt>
-            Giới tính:
-            @*@Html.DisplayNameFor(model => model.GioiTinh)*@
-        </dt>
-
-        <dd>
-            &emsp;@Html.DisplayFor(model => model.GioiTinh)
-        </dd>
-        <br />
-        <dt>
-            Ngày sinh:
-            @*@Html.DisplayNameFor(model => model.NgaySinh)*@
-        </dt>
-
-        <dd>
-            &emsp;@Html.DisplayFor(model => model.NgaySinh)
-        </dd>
-        <br />
-        <dt>
-            Email:
-            @*@Html.DisplayNameFor(model => model.Email)*@
-        </dt>
-
-        <dd>
-            &emsp;@Html.DisplayFor(model => model.Email)
-        </dd>
-        <br />
-        <dt>
-            Địa chỉ:
-            @*@Html.DisplayNameFor(model => model.DiaChi)*@
-        </dt>
-
-        <dd>
-            &emsp;@Html.DisplayFor(model => model.DiaChi)
-        </dd>
-        <br />
-        <dt>
-            Điện thoại:
-            @*@Html.DisplayNameFor(model => model.DienThoai)*@
-        </dt>
-
-        <dd>
-            &emsp;@Html.DisplayFor(model => model.DienThoai)
-        </dd>
-        <br />
-        <dt>
-            Số tài khoản:
-            @*@Html.DisplayNameFor(model => model.STK)*@
-        </dt>
-
-        <dd>
-            &emsp;@Html.DisplayFor(model => model.STK)
-        </dd>
-        <br />
-        <dt>
-            Tiền Lương:
-            @*@Html.DisplayNameFor(model => model.Luong)*@
-        </dt>
-
-        <dd>
-            &emsp;@Html.DisplayFor(model => model.Luong)
-        </dd>
-        <br />
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color" style="padding-left:5%">
-            <input style="color:red" type="submit" value="Xóa" class="btn btn-default" /> |
-            <div style="padding-left:5%">
-                @Html.ActionLink("Trở lại danh sách", "Index", new { @class = "btn btn-dark" })
+    <form style="padding-left:35%">
+        <fieldset disabled>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="input"><strong>Mã nhân viên:</strong></label>
+                    <input type="text" class="form-control" id="input" value="@Html.DisplayFor(model => model.MaNV)">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="input1"><strong>Tên đăng nhập:</strong></label>
+                    <input type="text" class="form-control" id="input1" value="@Html.DisplayFor(model => model.Username)">
+                </div>
             </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="input2"><strong>Họ và Tên:</strong></label>
+                    <input type="text" class="form-control" id="input2" value="@Html.DisplayFor(model => model.TenNV)">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="input3"><strong>Ngày sinh</strong></label>
+                    <input type="text" class="form-control text-right" id="input3" value="@Html.DisplayFor(model => model.NgaySinh)">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="input4"><strong>Giới tính:</strong></label>
+                    <div id="input4">
+                        Nam&emsp;&emsp;@Html.RadioButtonFor(model => model.GioiTinh, "Nam", new { @class = "form-check-input" })
+                        Nữ &emsp;&emsp;@Html.RadioButtonFor(model => model.GioiTinh, "Nữ", new { @class = "form-check-input" })
+                        Khác &emsp;&emsp;@Html.RadioButtonFor(model => model.GioiTinh, "Khác", new { @class = "form-check-input" })
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="input5"><strong>Email:</strong></label>
+                    <input type="text" class="form-control text-right" id="input4" value="@Html.DisplayFor(model => model.Email)">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="input6"><strong>Số điện thoại:</strong></label>
+                    <input type="text" class="form-control text-right" id="input6" value="@Html.DisplayFor(model => model.DienThoai)">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="input7"><strong>Địa chỉ:</strong></label>
+                    <input type="text" class="form-control" id="input7" value="@Html.DisplayFor(model => model.DiaChi)">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label for="input8"><strong>Số tài khoản:</strong></label>
+                    <input type="text" class="form-control text-right" id="input8" value="@Html.DisplayFor(model => model.STK)">
+                </div>
+                <div class="form-group col-md-3">
+                    <label for="input9"><strong>Tiền lương:</strong></label>
+                    <input type="text" class="form-control text-right" id="input9" value="@String.Format(format, "{0:c0}", Model.Luong)">
+                </div>
+            </div>
+        </fieldset>
+    </form>
+    <div class="form-row" style="padding-left:35%">
+        <div class="form-group col-md-1">
+            <a class="btn btn-primary" href="@Url.Action("Edit", "NhanVien", new {id=Model.MaNV}) )">
+                Sửa
+                <img src="~/Content/Img/edit_24px.png" height="20" width="20" />
+            </a>
         </div>
-    }
+        <div class="form-group col-md-1">
+        </div>
+        <div class="form-group col-md-2">
+            @Html.ActionLink("Trở lại", "Index", "", new { @class = "btn btn-dark" })
+        </div>
+        <div class="form-group col-md-1">
+        </div>
+        <div class="form-group col-md-1">
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-actions">
+                    <button class="btn btn-danger" type="submit">
+                        Xóa
+                        <img src="~/Content/Img/Delete_24px.png" height="20" width="20" />
+                    </button>
+                </div>
+            }
+        </div>
+    </div>
 </div>
+
