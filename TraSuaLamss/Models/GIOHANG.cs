@@ -11,8 +11,7 @@ namespace TraSuaLamss.Models
     {
         [Key]
         [Column(Order = 0)]
-        [StringLength(5)]
-        public string MaKH { get; set; }
+        public int MaKH { get; set; }
 
         [Key]
         [Column(Order = 1)]

@@ -13,124 +13,224 @@ namespace TraSuaLamss.Controllers
     public class GioHangController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
-
-        // GET: GIOHANGs
-        public ActionResult Index()
+        private const string MaKHSession = "MaKHSession";
+        private const string ListHangSession = "ListHangSession";
+        private const string ListCTDH = "ListCTDH";
+        private const string DonHang = "DonHang";
+        private const string DonHangLe = "DonHangLe";
+        private const string CTDH = "CTDH";
+        public ActionResult Giohang()
         {
-            var gIOHANGs = db.GIOHANGs.Include(g => g.KHACHHANG).Include(g => g.SANPHAM);
-            return View(gIOHANGs.ToList());
+            int KHID = 1;
+            List<XemGioHang> list = (from e in db.GioHang
+                                     join d in db.SanPham
+                                     on e.MaSP equals d.MaSP
+                                     where e.MaKH == KHID
+                                     select new XemGioHang { GH = e, SP = d }).ToList();
+            ViewBag.MaKH = KHID;
+            Session[ListHangSession] = list;
+            return View(list);
+        }
+        public ActionResult Dathang()
+        {
+            var list = Session[ListHangSession] as List<XemGioHang>;
+            int KHID = 1;
+            string MaDH = "DH";
+            int SLDH = db.DonHang.Count() + 1;
+            if (SLDH < 1000 && SLDH > 99)
+            {
+                MaDH = MaDH + SLDH.ToString();
+            }
+            else if (SLDH < 100 && SLDH > 9)
+            {
+                MaDH = MaDH + "0" + SLDH.ToString();
+            }
+            else
+            {
+                MaDH = MaDH + "00" + SLDH.ToString();
+            }
+            var lischitiet = new List<PhieuDatHang>();
+            var listctdh = new List<ChiTietDonHang>();
+            foreach (var item in list)
+            {
+                ChiTietDonHang ChitietDH = new ChiTietDonHang
+                {
+                    MaKH = KHID,
+                    MaHD = MaDH,
+                    MaSP = item.SP.MaSP,
+                    SoLuong = item.GH.Soluong,
+                    DonGia = item.SP.GiaBan
+                };
+                listctdh.Add(ChitietDH);
+                SanPham sanPham = (from e in db.SanPham
+                                   where e.MaSP == item.SP.MaSP
+                                   select e).FirstOrDefault();
+                var Phieu = new PhieuDatHang { CTDH = ChitietDH, SP = sanPham };
+                lischitiet.Add(Phieu);
+            }
+            var NgayDat = DateTime.Today;
+            var donhang = new DonHang()
+            {
+                MaDH = MaDH,
+                ThanhTien = lischitiet.Sum(x => x.CTDH.SoLuong * x.CTDH.DonGia),
+                PhuongThucThanhToan = "Thanh toán khi nhận hàng",
+                ThanhToan="Chưa thanh toán",
+                DiaChiGiaoHang = "",
+                TinhTrangGiaoHang = "Đang giao",
+                NgayDat = NgayDat,
+                NgayGiao=NgayDat,
+                MaKH = KHID,
+                GhiChu = "Không có ghi chú",
+            };
+            ViewBag.DonHang = donhang;
+            ViewBag.NgayDat = NgayDat.ToString("dd/MM/yyyy");
+            ViewBag.TenKH = (from e in db.KhachHang
+                             where e.MaKH == KHID
+                             select e.TenKH).FirstOrDefault();
+            Session[ListCTDH] = listctdh;
+            Session[DonHang] = donhang;
+            return View(lischitiet);
         }
 
-        // GET: GIOHANGs/Details/5
-        public ActionResult Details(string id)
+        public ActionResult Add(int MaKhach, string MaHang, int soluong)
         {
-            if (id == null)
+            GioHang gioHang = (from e in db.GioHang
+                               where e.MaKH == MaKhach && e.MaSP == MaHang
+                               select e).FirstOrDefault();
+            if (gioHang == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                gioHang = new GioHang();
+                gioHang.MaKH = MaKhach;
+                gioHang.MaSP = MaHang;
+                gioHang.Soluong = soluong;
+                db.GioHang.Add(gioHang);
             }
-            GioHang gIOHANG = db.GIOHANGs.Find(id);
-            if (gIOHANG == null)
+            else
             {
-                return HttpNotFound();
+                gioHang.Soluong += soluong;
             }
-            return View(gIOHANG);
-        }
-
-        // GET: GIOHANGs/Create
-        public ActionResult Create()
-        {
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH");
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
-            return View();
-        }
-
-        // POST: GIOHANGs/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaKH,MaSP,Soluong")] GioHang gIOHANG)
-        {
-            if (ModelState.IsValid)
-            {
-                db.GIOHANGs.Add(gIOHANG);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
-            return View(gIOHANG);
-        }
-
-        // GET: GIOHANGs/Edit/5
-        public ActionResult Edit(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            GioHang gIOHANG = db.GIOHANGs.Find(id);
-            if (gIOHANG == null)
-            {
-                return HttpNotFound();
-            }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
-            return View(gIOHANG);
-        }
-
-        // POST: GIOHANGs/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaKH,MaSP,Soluong")] GioHang gIOHANG)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(gIOHANG).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.MaKH = new SelectList(db.KHACHHANGs, "MaKH", "TenKH", gIOHANG.MaKH);
-            ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", gIOHANG.MaSP);
-            return View(gIOHANG);
-        }
-
-        // GET: GIOHANGs/Delete/5
-        public ActionResult Delete(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            GioHang gIOHANG = db.GIOHANGs.Find(id);
-            if (gIOHANG == null)
-            {
-                return HttpNotFound();
-            }
-            return View(gIOHANG);
-        }
-
-        // POST: GIOHANGs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(string id)
-        {
-            GioHang gIOHANG = db.GIOHANGs.Find(id);
-            db.GIOHANGs.Remove(gIOHANG);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Giohang");
         }
-
-        protected override void Dispose(bool disposing)
+        public ActionResult Delete(int MaKhach, string MaHang)
         {
-            if (disposing)
+            GioHang gioHang = (from e in db.GioHang
+                               where (e.MaKH == MaKhach && e.MaSP == MaHang)
+                               select e).FirstOrDefault();
+            if (gioHang != null)
             {
-                db.Dispose();
+                db.GioHang.Remove(gioHang);
             }
-            base.Dispose(disposing);
+            db.SaveChanges();
+            return RedirectToAction("Giohang");
+        }
+        public ActionResult DeleteAll(int MaKhach)
+        {
+            foreach (var item in db.GioHang)
+            {
+                if (item.MaKH == MaKhach)
+                {
+                    db.GioHang.Remove(item);
+                }
+            }
+            db.SaveChanges();
+            return RedirectToAction("Giohang");
+        }
+        public ActionResult DatHangLe(int MaKH, string MaHang, int soluong)
+        {
+            string MaDH = "DH";
+            int SLDH = db.DonHang.Count() + 1;
+            if (SLDH < 1000 && SLDH > 99)
+            {
+                MaDH = MaDH + SLDH.ToString();
+            }
+            else if (SLDH < 100 && SLDH > 9)
+            {
+                MaDH = MaDH + "0" + SLDH.ToString();
+            }
+            else
+            {
+                MaDH = MaDH + "00" + SLDH.ToString();
+            }
+            var ctdh = new ChiTietDonHang()
+            {
+                MaHD = MaDH,
+                MaKH = MaKH,
+                MaSP = MaHang,
+                SoLuong = soluong,
+                DonGia = (from e in db.SanPham where e.MaSP == MaHang select e.GiaBan).FirstOrDefault(),
+            };
+            var sanpham = (from d in db.SanPham
+                           where d.MaSP == MaHang
+                           select d).FirstOrDefault();
+            var chitiet = new PhieuDatHang()
+            {
+                CTDH = ctdh,
+                SP = sanpham,
+            };
+            var NgayDat = DateTime.Today;
+            var donhangle = new DonHang()
+            {
+                MaDH = MaDH,
+                ThanhTien = chitiet.SP.GiaBan * chitiet.CTDH.SoLuong,
+                PhuongThucThanhToan = "Thanh toán khi nhận hàng",
+                ThanhToan = "Chưa thanh toán",
+                DiaChiGiaoHang = "",
+                TinhTrangGiaoHang = "Đang giao",
+                NgayDat = NgayDat,
+                NgayGiao = NgayDat,
+                MaKH = MaKH,
+                GhiChu = "Không có ghi chú",
+            };
+            ViewBag.NgayDat = NgayDat.ToString("dd/MM/yyyy");
+            ViewBag.TenKH = (from e in db.KhachHang
+                             where e.MaKH == MaKH
+                             select e.TenKH).FirstOrDefault();
+            ViewBag.DonHang = donhangle;
+            Session[DonHangLe] = donhangle;
+            Session[CTDH] = ctdh;
+            return View(chitiet);
+        }
+        public ActionResult CreateDonHang(string phuongthuc,string diachi,string ghichu)
+        {
+            var list = Session[ListCTDH] as List<ChiTietDonHang>;
+            var don = Session[DonHang] as DonHang;
+            don.DiaChiGiaoHang = diachi;
+            don.PhuongThucThanhToan = phuongthuc;
+            don.GhiChu=ghichu;
+            foreach (var item in db.GioHang)
+            {
+                if (item.MaKH == don.MaKH)
+                {
+                    db.GioHang.Remove(item);
+                }
+            }
+            db.DonHang.Add(don);
+            foreach (var item in list)
+            {
+                db.ChiTietDonHang.Add(item);
+            }
+
+            db.SaveChanges();
+            return RedirectToAction("DatHangTC");
+        }
+        public ActionResult CreateDonHangLe(string phuongthuc, string diachi, string ghichu)
+        {
+            var chitietDH = Session[CTDH] as ChiTietDonHang;
+            var don = Session[DonHangLe] as DonHang;
+            don.DiaChiGiaoHang = diachi;
+            don.PhuongThucThanhToan = phuongthuc;
+            don.GhiChu = ghichu;
+            db.DonHang.Add(don);
+            db.ChiTietDonHang.Add(chitietDH);
+
+            db.SaveChanges();
+            return RedirectToAction("DatHangTC");
+        }
+        public ActionResult DatHangTC()
+        {
+            ViewBag.Message = "Đã khởi tạo đơn hàng thành công";
+            return View();
         }
     }
 }
