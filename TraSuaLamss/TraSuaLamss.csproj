@@ -163,6 +163,10 @@
     </Compile>
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\ChiTietSanPham.cs" />
+    <Compile Include="Models\DangKyModel.cs" />
+    <Compile Include="Models\DangNhapModel.cs" />
+    <Compile Include="Models\DoiMatKhau.cs" />
+    <Compile Include="Models\DoiThongTin.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Models\GioHang.cs" />
     <Compile Include="Models\KhachHang.cs" />
