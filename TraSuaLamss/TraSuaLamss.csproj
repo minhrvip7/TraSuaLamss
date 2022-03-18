@@ -158,16 +158,16 @@
     </Compile>
     <Compile Include="Models\CHITIETDONHANG.cs" />
     <Compile Include="Models\DangNhapModel.cs" />
-    <Compile Include="Models\DONHANG.cs" />
-    <Compile Include="Models\GIOHANG.cs" />
-    <Compile Include="Models\KHACHHANG.cs" />
-    <Compile Include="Models\LIENHE.cs" />
-    <Compile Include="Models\NGUYENLIEU.cs" />
-    <Compile Include="Models\NHACUNGCAP.cs" />
-    <Compile Include="Models\NHANVIEN.cs" />
-    <Compile Include="Models\PHANLOAI.cs" />
-    <Compile Include="Models\SANPHAM.cs" />
-    <Compile Include="Models\TAIKHOAN.cs" />
+    <Compile Include="Models\DonHang.cs" />
+    <Compile Include="Models\GioHang.cs" />
+    <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\LienHe.cs" />
+    <Compile Include="Models\NguyenLieu.cs" />
+    <Compile Include="Models\NhaCungCap.cs" />
+    <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\PhanLoai.cs" />
+    <Compile Include="Models\SanPham.cs" />
+    <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Models\TraSuaContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
