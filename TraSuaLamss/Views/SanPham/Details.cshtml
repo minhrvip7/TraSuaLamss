@@ -4,63 +4,47 @@
     ViewBag.Title = "Details";
 }
 
-<h2>Details</h2>
+<style>
+    #infor {
+        font-size: 24px;
+        padding: 15px 0 15px 0;
+    }
 
-<div>
-    <h4>SanPham</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.NGUYENLIEU.TenNL)
-        </dt>
+</style>
+<div style="width: 1280px; margin: 0 auto;padding-top:150px">
+    <table style="margin: 0 auto">
+        <tr>
+        <tr>
+            <td style="width:50%;height:420px" valign="bottom">
+                <img style="float:right;padding-right:20px" src="~/wwwroot/Images/@Model.Anh" width="350" height="400" />
+            </td>
+            <td style="width:50%;padding-left:30px" valign="top">
+                <div style="height:370px">
+                    <h1 style="font-weight:bold;padding-top:20px">@Model.TenSP</h1>
+                    <hr style="margin-right:30px" />
+                    <p id="infor">
+                        @{
+                            var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                            string gia = String.Format(format, "{0:c0}", Model.GiaBan);
+                        }
+                        Giá bán : <span style="color:red">@gia</span>
+                    </p>
+                    <p id="infor">Phân loại : @Model.PHANLOAI.TenLoai</p>
+                    <p id="infor">Nguyên liệu : @Model.NGUYENLIEU.TenNL</p>
+                    <p id="infor">Mô tả : @Model.MoTa</p>
 
-        <dd>
-            @Html.DisplayFor(model => model.NGUYENLIEU.TenNL)
-        </dd>
+                </div>
+                <div >
+                    <p style="font-size:20px">@Html.ActionLink("Chỉnh sửa sản phẩm", "Edit", new { id = Model.MaSP })</p>
+                </div>
+                <p style="float:right">
+                    @Html.ActionLink("Quay lại", "Index")
+                </p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PHANLOAI.TenLoai)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PHANLOAI.TenLoai)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.TenSP)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.TenSP)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GiaBan)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GiaBan)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MoTa)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Anh)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Anh)
-        </dd>
-
-    </dl>
+            </td>
+        </tr>
+        
+    </table>
+    
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaSP }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+

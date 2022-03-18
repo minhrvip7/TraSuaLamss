@@ -26,7 +26,7 @@
         width: 36px;
         text-align: center;
         height: 30px;
-        border:none;
+        border: none;
     }
 
     button.Mua {
@@ -39,10 +39,11 @@
 
     button.Them {
         width: 160px;
-        background-color: orange;
+        background-color: #FFEFD5;
         line-height: 40px;
         color: orangered;
         border: 1px solid orangered;
+        margin-right:30px;
     }
 
     #datmua button:hover {
@@ -87,17 +88,13 @@
                     <div style="height:370px">
                         <h1 style="font-weight:bold;padding-top:20px">@ViewBag.TenSP</h1>
                         <hr style="margin-right:30px" />
-                        <p id="infor">
-                            @{
-                                decimal tien = ViewBag.GiaBan;
-                                string gia = String.Format("{0:0,0} đ", tien);
-                            }
-                            Giá bán : <span style="color:red">@gia</span>
+                        <p id="infor" >
+                            @ViewBag.GiaBan
                         </p>
                         <p id="infor">Phân loại : @ViewBag.TenLoai</p>
                         <p id="infor">Nguyên liệu : @ViewBag.TenNL</p>
                         <p id="infor">Mô tả : @ViewBag.MoTa</p>
-                        <p>
+                        <p id="infor">
                             Số lượng:
                             <input class="updown" type="button" value="-" onclick="Down()">
                             <input id="soluong" class="inputsl" min="1" type="text" value="1">
@@ -139,8 +136,8 @@
                             <div id="product">
                                 <div id="absolute">
                                     @{
-                                        decimal tien1 = sp.GiaBan;
-                                        string gia1 = String.Format("{0:0,0} đ", tien1);
+                                        var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                                        string gia1 = String.Format(format, "{0:c0}", sp.GiaBan);
                                     }
                                     @gia1
                                 </div>
