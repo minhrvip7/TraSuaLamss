@@ -35,9 +35,9 @@ namespace TraSuaLamss.Controllers
             }
             return View(sanPham);
         }
-        public List<SANPHAM> SearhByKey(string key)
+        public List<SanPham> SearhByKey(string key)
         {
-            return db.SANPHAMs.SqlQuery("Select * from SANPHAM where TenSP like '%"+key+"%'").ToList();
+            return db.SanPham.SqlQuery("Select * from SANPHAM where TenSP like '%"+key+"%'").ToList();
         }
 
         // GET: SanPhams/Create
