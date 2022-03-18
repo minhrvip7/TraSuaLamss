@@ -16,22 +16,8 @@ namespace TraSuaLamss.Controllers
         {
             return View();
         }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
         public ActionResult Search()
         {
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
         public bool CheckUsername(string username)
@@ -165,7 +151,7 @@ namespace TraSuaLamss.Controllers
         [HttpGet]
         public ActionResult DoiThongTin(string username)
         {
-            /*username = Session["Username"].ToString();
+            username = Session["Username"].ToString();
             if (username == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -181,8 +167,8 @@ namespace TraSuaLamss.Controllers
             if (doiThongTin == null)
             {
                 return HttpNotFound();
-            }*/
-            return View();
+            }
+            return View(doiThongTin);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
