@@ -17,10 +17,26 @@ namespace TraSuaLamss.Controllers
         private TraSuaContext db = new TraSuaContext();
 
         // GET: SanPhams
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page,string sortOrder)
         {
-
+            ViewBag.TheoLoai = string.IsNullOrEmpty(sortOrder) ? "ten_desc" : "";
+            ViewBag.TheoGia = sortOrder == "gia" ? "gia_desc" : "gia";
             var sanPham = db.SanPham.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI).OrderByDescending(s => s.MaSP);
+            switch (sortOrder)
+            {
+                case "ten_desc":
+                    sanPham =sanPham.OrderByDescending(s => s.MaLoai);
+                    break;
+                case "gia":
+                    sanPham = sanPham.OrderBy(s => s.GiaBan);
+                    break;
+                case "gia_desc":
+                    sanPham = sanPham.OrderByDescending(s => s.GiaBan);
+                    break;
+                default:
+                    sanPham = sanPham.OrderBy(s => s.MaSP);
+                    break;
+            }
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(sanPham.ToPagedList(pageNumber,pageSize));
