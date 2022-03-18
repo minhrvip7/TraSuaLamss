@@ -1,72 +1,158 @@
 ﻿@model IEnumerable<TraSuaLamss.Models.SanPham>
 @{
     ViewBag.Title = "Details";
-    Layout = null;
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <style type="text/css">
-    #datmua a {
-        background-color: red;
-        color: white;
-        line-height: 40px;
-        display: block;
-        float: left;
-        padding-left: 10px;
-        text-align: center;
-        padding-top: 10px;
-        text-decoration: none;
-        font-weight: bold;
-        font-size: 14px;
+    * {
+        margin: 0px;
+        padding: 0px;
     }
 
-        #datmua a:hover {
-            background-color: gray;
-            color: red;
-        }
+    input.updown {
+        width: 26px;
+        height: 26px;
+        text-align: center;
+    }
+
+    #datmua {
+        width: 640px;
+        height: 50px;
+        text-align: left;
+    }
+
+
+    input.inputsl {
+        width: 36px;
+        text-align: center;
+        height: 30px;
+        border:none;
+    }
+
+    button.Mua {
+        width: 160px;
+        background-color: orangered;
+        line-height: 40px;
+        color: white;
+        border: 1px solid red;
+    }
+
+    button.Them {
+        width: 160px;
+        background-color: orange;
+        line-height: 40px;
+        color: orangered;
+        border: 1px solid orangered;
+    }
+
+    #datmua button:hover {
+        background-color: #FF7F50;
+        color: red;
+    }
 
     #product {
         width: 222px;
-        height: 320px;
+        height: 330px;
         float: left;
         display: block;
-        padding: 5px;
-        margin-left: 20px;
-        margin-bottom: 20px;
+        margin: 5px 0 20px 25px;
         text-align: left;
         background-color: #fff;
         border: 1px solid #999;
+        position: relative;
+    }
+
+    #absolute {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        color: red;
+        font-size: 24px;
+        font-family: Arial;
+    }
+
+    #infor {
+        font-size: 24px;
+        padding: 10px 0 10px 0;
     }
 </style>
+<div style="width: 100%">
+    <div style="width: 1280px; margin: 0 auto;padding-top:150px">
+        <table border="0">
+            <tr>
+                <td style="width:50%;height:420px" valign="bottom">
+                    <img style="float:right;padding-right:20px" src="~/wwwroot/Images/@ViewBag.Anh" width="350" height="400" />
+                </td>
+                <td style="width:50%;padding-left:30px" valign="top">
+                    <div style="height:370px">
+                        <h1 style="font-weight:bold;padding-top:20px">@ViewBag.TenSP</h1>
+                        <hr style="margin-right:30px" />
+                        <p id="infor">
+                            @{
+                                decimal tien = ViewBag.GiaBan;
+                                string gia = String.Format("{0:0,0} đ", tien);
+                            }
+                            Giá bán : <span style="color:red">@gia</span>
+                        </p>
+                        <p id="infor">Phân loại : @ViewBag.TenLoai</p>
+                        <p id="infor">Nguyên liệu : @ViewBag.TenNL</p>
+                        <p id="infor">Mô tả : @ViewBag.MoTa</p>
+                        <p>
+                            Số lượng:
+                            <input class="updown" type="button" value="-" onclick="Down()">
+                            <input id="soluong" class="inputsl" min="1" type="text" value="1">
+                            <input class="updown" type="button" value="+" onclick="Up()">
+                            <script>
+                                function Up() {
+                                    result = document.getElementById('soluong');
+                                    result.value = result.value ? parseInt(result.value) + 1 : 1;
 
-<table border="0" style="width:1280px">
-    <tr>
-        <td style="width:50%">
-            <img style="float:right;padding-right:20px" src="~/@ViewBag.Anh" width="300" height="350" />
-        </td>
-        <td style="width:50%" valign="top">
-            <p style="font-weight:bold;color:black;font-size:36px;line-height:50px">@ViewBag.TenSP</p>
-            <hr style="width:50%;float:left;" />
-            <br />
-            <p style="font-size:24px"><span style="color:red">@ViewBag.GiaBan đ</span></p>
-            <p style="font-size: 18px">Phân loại : <span style="">@ViewBag.TenLoai</span></p>
-            <p style="font-size: 18px">Nguyên liệu : <span style="">@ViewBag.TenNL</span></p>
-
-            <p style="clear: left; font-size: 18px">Mô tả : <span style="">@ViewBag.MoTa</span></p>
-            <p>
-                Số lượng:
-                <a href="@Url.Action("GiamSL", "DSSANPHAM", new {id=ViewBag.MaSP,loai=ViewBag.MaLoai,SLtam=ViewBag.SL})"><input class="minus is-form" type="button" value="-"></a>
-                <input aria-label="quantity" class="input-qty" min="1" type="text" value="@ViewBag.SL" style="height:24px;width:50px;text-align:center">
-                <a href="@Url.Action("TangSL", "DSSANPHAM", new {id=ViewBag.MaSP,loai=ViewBag.MaLoai,SLtam=ViewBag.SL})"><input class="plus is-form" type="button" value="+"></a>
-            </p>
-            <div id="datmua">
-                <a href="@Url.Action("DatHangLe","GioHang",new { MaKhach=1, MaHang=ViewBag.MaSP,soluong=ViewBag.SL })">Mua hàng</a>
-            </div>
-            <div id="datmua">
-                <a href="@Url.Action("Add","GioHang",new { MaKhach=1, MaHang=ViewBag.MaSP,soluong=ViewBag.SL })">Thêm vào giỏ hàng</a>
-            </div>
-        </td>
-    </tr>
-</table>
-<br />
-
-
-
+                                }
+                                function Down() {
+                                    result = document.getElementById('soluong');
+                                    if (result.value > 1) {
+                                        result.value = result.value ? parseInt(result.value) - 1 : 1;
+                                    }
+                                    else result.value = "1";
+                                }
+                                function Them() {
+                                    window.location.href = "@Html.Raw(Url.Action("Add", "GioHang", new { MaKhach = ViewBag.MaKH, MaHang = ViewBag.MaSP }))" + "&soluong=" + document.getElementById('soluong').value;
+                                }
+                                function DatHang() {
+                                    window.location.href = "@Html.Raw(Url.Action("DatHangLe", "GioHang", new { MaKH = ViewBag.MaKH, MaHang = ViewBag.MaSP }))" + "&soluong=" + document.getElementById('soluong').value;
+                                }
+                            </script>
+                        </p>
+                    </div>
+                    <div id="datmua">
+                        <button class="Them" onclick="Them()">THÊM GIỎ HÀNG</button>
+                        <button class="Mua" onclick="DatHang()">ĐẶT MUA</button>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="width:1280px">
+                    <p style="font-size:24px;padding:40px 0 20px 25px">Các sản phẩm liên quan khác</p>
+                    <div>
+                        @foreach (var sp in Model)
+                        {
+                            <div id="product">
+                                <div id="absolute">
+                                    @{
+                                        decimal tien1 = sp.GiaBan;
+                                        string gia1 = String.Format("{0:0,0} đ", tien1);
+                                    }
+                                    @gia1
+                                </div>
+                                <a style="text-decoration: none;font-size:16px" href="@Url.Action("Details","DSSANPHAM",new { id=sp.MaSP, loai = sp.MaLoai })">
+                                    <img src="~/wwwroot/Images/@sp.Anh" width="220" height="280" />
+                                    <p style="font-size:16px;padding-left:5px;"><span>@sp.TenSP</span></p>
+                                </a>
+                            </div>
+                        }
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>

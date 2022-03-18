@@ -35,12 +35,12 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SanPham.Find(id);
-            if (sANPHAM == null)
+            SanPham sanPham = db.SanPham.Find(id);
+            if (sanPham == null)
             {
                 return HttpNotFound();
             }
-            return View(sANPHAM);
+            return View(sanPham);
         }
         public List<SanPham> SearhByKey(string key)
         {
@@ -60,11 +60,11 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sANPHAM)
+        public ActionResult Create([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sanPham)
         {
             if (ModelState.IsValid)
             {
-                db.SanPham.Add(sANPHAM);
+                db.SanPham.Add(sanPham);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -81,8 +81,8 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SanPham.Find(id);
-            if (sANPHAM == null)
+            SanPham sanPham = db.SanPham.Find(id);
+            if (sanPham == null)
             {
                 return HttpNotFound();
             }
@@ -96,11 +96,21 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sANPHAM)
+        public ActionResult Edit([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sanPham)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(sANPHAM).State = EntityState.Modified;
+                sanPham.Anh = "";
+                var f = Request.Files["ImageFile"];
+                if (f != null && f.ContentLength > 0)
+                {
+                    string FileName = System.IO.Path.GetFileName(f.FileName);
+                    string UploadPath = Server.MapPath("~/wwwroot/Images/" + FileName);
+                    f.SaveAs(UploadPath);
+                    sanPham.Anh = FileName;
+                }
+
+                db.Entry(sanPham).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -116,12 +126,12 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SanPham.Find(id);
-            if (sANPHAM == null)
+            SanPham sanPham = db.SanPham.Find(id);
+            if (sanPham == null)
             {
                 return HttpNotFound();
             }
-            return View(sANPHAM);
+            return View(sanPham);
         }
 
         // POST: SanPham/Delete/5
@@ -129,8 +139,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            SanPham sANPHAM = db.SanPham.Find(id);
-            db.SanPham.Remove(sANPHAM);
+            SanPham sanPham = db.SanPham.Find(id);
+            db.SanPham.Remove(sanPham);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

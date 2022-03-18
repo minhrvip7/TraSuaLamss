@@ -2,7 +2,7 @@
 @using PagedList.Mvc;
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
-    ViewBag.Title = "Tra";
+    ViewBag.Title = "Ca phe";
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
@@ -20,7 +20,7 @@
 
     #product {
         width: 222px;
-        height: 320px;
+        height: 330px;
         float: left;
         display: block;
         margin: 0 0 30px 25px;
@@ -32,7 +32,7 @@
 
     #absolute {
         position: absolute;
-        left: 10px;
+        left: 15px;
         top: 10px;
         color: red;
         font-size: 24px;
@@ -69,10 +69,14 @@
     #Danhmuc {
         padding: 10px 0 10px 0;
     }
-
+    #button {
+        margin: 10px 0 0 55px;
+        height: 40px;
+        width: 140px;
+        border-radius: 4px;
+    }
     #page {
         margin-left: 25px;
-        display: block;
     }
 </style>
 <div>
@@ -80,14 +84,14 @@
         <table>
             <tr>
                 <td width="280px" valign="top">
-                    <div style="background-color: #FAFAD2; height: 865px;padding-top:150px">
-                        <div style="margin-top:45px;padding:10px 0 0 10px">
+                    <div style="background-color: #FAFAD2; height: 885px;padding-top:150px">
+                        <div style="margin-top:10px;padding:0 0 0 10px">
 
                             <p style="font-size:22px;font-weight:bold">DANH MỤC SẢN PHẨM</p>
                             <p id="Danhmuc"><a href="/DSSANPHAM/Index">tất cả sản phẩm</a></p>
                             <p id="Danhmuc"><a href="/DSSANPHAM/TraSua">Trà sữa</a></p>
                             <p id="Danhmuc"><a href="/DSSANPHAM/Tra">Trà</a></p>
-                            <p id="Danhmuc"><a href="/DSSANPHAM/CaPhe">Cà phê</a></p>
+                            <p id="Danhmuc"><a style="color:red" href="/DSSANPHAM/CaPhe">Cà phê</a></p>
                             <p id="Danhmuc"><a href="/DSSANPHAM/DoAnVat">Đồ ăn vặt</a></p>
 
                         </div>
@@ -101,8 +105,8 @@
                                     <span>Khoảng giá</span><br />
                                     <span style=" padding-left: 5px">@Html.TextBox("first", ViewBag.currentFilter1 as string, new { @class = "timgia" })</span>&nbsp;&nbsp;-&nbsp;
                                     <span>@Html.TextBox("end", ViewBag.currentFilter2 as string, new { @class = "timgia" })</span>
-                                    <span style="color:red;font-size:12px">@ViewBag.Error</span><br />
-                                    <span><input type="submit" value="Tìm kiếm" style="height:30px;margin:10px 0 0 70px" /></span>
+                                    <span style="padding-left: 5px; color: red; font-size: 12px">@ViewBag.Error</span><br />
+                                    <span><input id="button" type="submit" value="Tìm kiếm" /></span>
                                 </p>
                             }
                         </div>
@@ -111,7 +115,7 @@
                 <td width="1000px">
                     <div style="padding-top:150px">
                         <p style="font-size: 22px; margin-left: 25px; padding-top: 10px;">@ViewBag.Loai</p>
-                        <div style=" height: 675px; padding-top:10px">
+                        <div style=" height: 700px; padding-top:10px">
                             @foreach (var sp in Model)
                             {
                                 <div id="product">
@@ -124,7 +128,7 @@
                                     </div>
                                     <a style="text-decoration: none;font-size:16px" href="@Url.Action("Details","DSSANPHAM",new { id=sp.MaSP, loai = sp.MaLoai })">
 
-                                        <img src="~/wwwroot/Images/h4_whisky.jpg" width="220" height="280" />
+                                        <img src="~/wwwroot/Images/@sp.Anh" width="220" height="280" />
                                         <p style="font-size:16px;padding-left:5px;"><span>@sp.TenSP</span></p>
                                     </a>
                                 </div>
@@ -135,7 +139,6 @@
                         <div id="page">
                             @if (Model.PageCount > 1)
                             {
-                                <p>Trang @(Model.PageCount<Model.PageNumber?0 : Model.PageNumber)/@Model.PageCount</p>
                                 @Html.PagedListPager(Model, page => Url.Action("Index", new { page, currentFilter = ViewBag.currentFilter, currentFilter1 = ViewBag.currentFilter1, currentFilter2 = ViewBag.currentFilter2 }))
                             }
                         </div>

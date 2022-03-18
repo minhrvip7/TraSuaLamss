@@ -9,9 +9,8 @@ namespace TraSuaLamss.Models
     [Table("SANPHAM")]
     public partial class SanPham
     {
-        
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SanPham()
         {
             CHITIETDONHANGs = new HashSet<ChiTietDonHang>();
@@ -26,7 +25,7 @@ namespace TraSuaLamss.Models
         [StringLength(30)]
         public string TenSP { get; set; }
 
-        [Required]
+        [Column(TypeName = "money")]
         public decimal GiaBan { get; set; }
 
         [Required]
