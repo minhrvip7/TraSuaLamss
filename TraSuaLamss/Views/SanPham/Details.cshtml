@@ -24,8 +24,8 @@
                     <hr style="margin-right:30px" />
                     <p id="infor">
                         @{
-                            decimal tien = Model.GiaBan;
-                            string gia = String.Format("{0:0,0} đ", tien);
+                            var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                            string gia = String.Format(format, "{0:c0}", Model.GiaBan);
                         }
                         Giá bán : <span style="color:red">@gia</span>
                     </p>

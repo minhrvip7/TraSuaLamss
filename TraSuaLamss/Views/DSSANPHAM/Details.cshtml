@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TraSuaLamss.Models.SanPham> 
+﻿@model IEnumerable<TraSuaLamss.Models.SanPham>
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,53 +8,61 @@
         margin: 0px;
         padding: 0px;
     }
-    #datmua{
-        width: 640px;
-        height: 50px;
-        float: left;
-    }
+
     input.updown {
-        width: 24px;
-        height: 24px;
+        width: 26px;
+        height: 26px;
         text-align: center;
     }
+
+    #datmua {
+        width: 640px;
+        height: 50px;
+        text-align: left;
+    }
+
 
     input.inputsl {
         width: 36px;
         text-align: center;
+        height: 30px;
+        border: none;
     }
 
-    #datmua #btn{
-        height:50px;
-        line-height:50px;
-        width:160px;
-        text-align:center;
-        background-color:orangered;
-        
+    button.Mua {
+        width: 160px;
+        background-color: orangered;
+        line-height: 40px;
+        color: white;
+        border: 1px solid red;
     }
 
-        #datmua #btn a {
-            color:white;
-            text-decoration: none;
-            float: left;
-            width:160px;
-        }
+    button.Them {
+        width: 160px;
+        background-color: #FFEFD5;
+        line-height: 40px;
+        color: orangered;
+        border: 1px solid orangered;
+        margin-right:30px;
+    }
 
-            #datmua #btn a:hover {
-                background-color: #FF7F50;
-                color: red;
-            }
+    #datmua button:hover {
+        background-color: #FF7F50;
+        color: red;
+    }
+
     #product {
         width: 222px;
         height: 330px;
         float: left;
         display: block;
-        margin:5px 0 20px 25px;
+        margin: 5px 0 20px 25px;
         text-align: left;
         background-color: #fff;
         border: 1px solid #999;
-        position:relative;
+        position: relative;
     }
+
     #absolute {
         position: absolute;
         left: 10px;
@@ -63,9 +71,10 @@
         font-size: 24px;
         font-family: Arial;
     }
-    #infor{
-        font-size:24px;
-        padding:10px 0 10px 0;
+
+    #infor {
+        font-size: 24px;
+        padding: 10px 0 10px 0;
     }
 </style>
 <div style="width: 100%">
@@ -79,8 +88,8 @@
                     <div style="height:370px">
                         <h1 style="font-weight:bold;padding-top:20px">@ViewBag.TenSP</h1>
                         <hr style="margin-right:30px" />
-                        <p id="infor">
-                            Giá bán : <span style="color:red">@ViewBag.GiaBan</span>
+                        <p id="infor" >
+                            @ViewBag.GiaBan
                         </p>
                         <p id="infor">Phân loại : @ViewBag.TenLoai</p>
                         <p id="infor">Nguyên liệu : @ViewBag.TenNL</p>
@@ -88,7 +97,7 @@
                         <p id="infor">
                             Số lượng:
                             <input class="updown" type="button" value="-" onclick="Down()">
-                            <input id="soluong" class="inputsl" min="1" type="text" value="@ViewBag.SL">
+                            <input id="soluong" class="inputsl" min="1" type="text" value="1">
                             <input class="updown" type="button" value="+" onclick="Up()">
                             <script>
                                 function Up() {
@@ -103,16 +112,18 @@
                                     }
                                     else result.value = "1";
                                 }
+                                function Them() {
+                                    window.location.href = "@Html.Raw(Url.Action("Add", "GioHang", new { MaKhach = ViewBag.MaKH, MaHang = ViewBag.MaSP }))" + "&soluong=" + document.getElementById('soluong').value;
+                                }
+                                function DatHang() {
+                                    window.location.href = "@Html.Raw(Url.Action("DatHangLe", "GioHang", new { MaKH = ViewBag.MaKH, MaHang = ViewBag.MaSP }))" + "&soluong=" + document.getElementById('soluong').value;
+                                }
                             </script>
                         </p>
                     </div>
                     <div id="datmua">
-                        <div id="btn" style="float: left; background-color: #FFEFD5; border: 1px solid orangered">
-                            <a style="color: orangered" href="@Url.Action("Add","GioHang",new { MaKhach=ViewBag.MaKH, MaHang=ViewBag.MaSP, soluong=ViewBag.SL })">THÊM GIỎ HÀNG</a>
-                        </div>
-                        <div id="btn" style="float:left;margin-left:30px">
-                            <a href="@Url.Action("DatHangLe","GioHang",new { MaKH=ViewBag.MaKH, MaHang=ViewBag.MaSP,soluong=ViewBag.SL })">ĐẶT MUA</a>
-                        </div>
+                        <button class="Them" onclick="Them()">THÊM GIỎ HÀNG</button>
+                        <button class="Mua" onclick="DatHang()">ĐẶT MUA</button>
                     </div>
                 </td>
             </tr>
@@ -125,8 +136,8 @@
                             <div id="product">
                                 <div id="absolute">
                                     @{
-                                        decimal tien1 = sp.GiaBan;
-                                        string gia1 = String.Format("{0:0,0} đ", tien1);
+                                        var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                                        string gia1 = String.Format(format, "{0:c0}", sp.GiaBan);
                                     }
                                     @gia1
                                 </div>
@@ -142,7 +153,3 @@
         </table>
     </div>
 </div>
-<br />
-
-
-

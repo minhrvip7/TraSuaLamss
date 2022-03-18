@@ -7,31 +7,31 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<div style="width: 1280px; margin: 0 auto;padding-top:150px">
-    <table class="table" style="margin: 0 auto" height="800">
+<div style="width: 1280px; margin: 0 auto;padding-top:130px">
+    <p style="font-size: 20px; padding-bottom: 10px">
+        @Html.ActionLink("Thêm mới sản phẩm", "Create")
+    </p>
+    <table class="table" style="margin: 0 auto" min-height="840">
         <tr>
-            <th>
-                <p>Nguyên liệu</p>
+            <th width="200" height="40">
+                <p style="color:dodgerblue">Nguyên liệu</p>
             </th>
-            <th>
-                <p>Phân loại</p>
+            <th width="180">
+                <p style="color:dodgerblue">@Html.ActionLink("Phân loại", "Index", new { sortOrder = ViewBag.TheoTen })</p>
             </th>
-            <th>
-                <p>Tên sản phẩm</p>
+            <th width="160">
+                <p style="color:dodgerblue">Tên sản phẩm</p>
             </th>
-            <th>
-                <p>Giá bán</p>
+            <th width="150">
+                <p  style="color:dodgerblue">@Html.ActionLink("Giá bán", "Index", new { sortOrder = ViewBag.TheoGia })</p>
             </th>
-            <th>
-                <p>Mô tả</p>
+            <th width="240">
+                <p style="color:dodgerblue">Mô tả</p>
             </th>
-            <th>
-                <p>Ảnh </p>
+            <th width="150">
+                <p style="color:dodgerblue">Ảnh </p>
             </th>
-            <th></th>
+            <th width="170"></th>
         </tr>
 
         @foreach (var item in Model)
@@ -48,8 +48,8 @@
                 </td>
                 <td>
                     @{
-                        decimal tien = item.GiaBan;
-                        string gia = String.Format("{0:0,0}", tien);
+                        var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                        string gia = String.Format(format, "{0:c0}", item.GiaBan);
                     }
                     <p>@gia</p>
                 </td>
