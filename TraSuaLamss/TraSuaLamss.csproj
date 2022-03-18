@@ -68,6 +68,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Linq, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Linq.4.3.0\lib\net463\System.Linq.dll</HintPath>
@@ -82,6 +83,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
@@ -122,6 +124,13 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+<<<<<<< HEAD
+=======
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+>>>>>>> origin/SonDH
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -138,18 +147,27 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ChiTietDonHangController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
+<<<<<<< HEAD
     <Compile Include="Controllers\DSSanPhamController.cs" />
+=======
+>>>>>>> origin/SonDH
     <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
+<<<<<<< HEAD
     <Compile Include="Controllers\LichSuGiaoDichController.cs" />
     <Compile Include="Controllers\LienHeController.cs" />
     <Compile Include="Controllers\NguyenLieuController.cs" />
+=======
+    <Compile Include="Controllers\LienHeController.cs" />
+    <Compile Include="Controllers\NguyenlieuController.cs" />
+>>>>>>> origin/SonDH
     <Compile Include="Controllers\NhaCungCapController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\PhanLoaiController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
+<<<<<<< HEAD
     <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Controllers\TimKiemController.cs" />
@@ -159,6 +177,13 @@
     <Compile Include="Models\ChiTietDonHang.cs" />
     <Compile Include="Models\ChiTietSanPham.cs" />
     <Compile Include="Models\DangKyModel.cs" />
+=======
+    <Compile Include="Controllers\TaiKhoanController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CHITIETDONHANG.cs" />
+>>>>>>> origin/SonDH
     <Compile Include="Models\DangNhapModel.cs" />
     <Compile Include="Models\DonHang.cs" />
     <Compile Include="Models\GioHang.cs" />
@@ -168,7 +193,10 @@
     <Compile Include="Models\NhaCungCap.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\PhanLoai.cs" />
+<<<<<<< HEAD
     <Compile Include="Models\PhieuDatHang.cs" />
+=======
+>>>>>>> origin/SonDH
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Models\TraSuaContext.cs" />
@@ -201,21 +229,28 @@
     <Content Include="Content\Template\assets\fonts\flexslider-icon.svg" />
     <Content Include="Content\Template\assets\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\Template\assets\fonts\slick.svg" />
+    <Content Include="Content\Template\assets\images\940ad819128485.5631bccc96fb5.jpg" />
     <Content Include="Content\Template\assets\images\about-thumb-01.jpg" />
     <Content Include="Content\Template\assets\images\about-thumb-02.jpg" />
     <Content Include="Content\Template\assets\images\about-thumb-03.jpg" />
     <Content Include="Content\Template\assets\images\about-video-bg.jpg" />
+    <Content Include="Content\Template\assets\images\Bubble-Tea-Affogato-5-960x540-768x432.jpg" />
+    <Content Include="Content\Template\assets\images\Bubble-Tea-Is-Actually-Pretty-Bad-For-You—Here’s-Why_102149926_stockcreations-1024x683-768x512.jpg" />
+    <Content Include="Content\Template\assets\images\cach-lam-tra-sua-tran-chau-de-lau-khong-bi-cung-chuan-vi.jpg" />
+    <Content Include="Content\Template\assets\images\cd2250e7e5ae2af073bf.jpg" />
     <Content Include="Content\Template\assets\images\chefs-01.jpg" />
     <Content Include="Content\Template\assets\images\chefs-02.jpg" />
     <Content Include="Content\Template\assets\images\chefs-03.jpg" />
     <Content Include="Content\Template\assets\images\close.png" />
     <Content Include="Content\Template\assets\images\klassy-logo.png" />
     <Content Include="Content\Template\assets\images\loading.gif" />
+    <Content Include="Content\Template\assets\images\LOGO.png" />
     <Content Include="Content\Template\assets\images\menu-item-01.jpg" />
     <Content Include="Content\Template\assets\images\menu-item-02.jpg" />
     <Content Include="Content\Template\assets\images\menu-item-03.jpg" />
     <Content Include="Content\Template\assets\images\menu-item-04.jpg" />
     <Content Include="Content\Template\assets\images\menu-item-05.jpg" />
+    <Content Include="Content\Template\assets\images\Menulamss.png" />
     <Content Include="Content\Template\assets\images\Menuorder.png" />
     <Content Include="Content\Template\assets\images\next.png" />
     <Content Include="Content\Template\assets\images\prev.png" />
@@ -233,6 +268,8 @@
     <Content Include="Content\Template\assets\images\tab-item-05.png" />
     <Content Include="Content\Template\assets\images\tab-item-06.png" />
     <Content Include="Content\Template\assets\images\top-left-bg.jpg" />
+    <Content Include="Content\Template\assets\images\tra sua dai loan2.jpg" />
+    <Content Include="Content\Template\assets\images\tra-sua-dai-loan-1.jpg" />
     <Content Include="Content\Template\assets\images\white-logo.png" />
     <Content Include="Content\Template\assets\js\accordions.js" />
     <Content Include="Content\Template\assets\js\bootstrap.min.js" />
@@ -328,6 +365,14 @@
     <Content Include="Views\TaiKhoan\Details.cshtml" />
     <Content Include="Views\TaiKhoan\Edit.cshtml" />
     <Content Include="Views\TaiKhoan\Index.cshtml" />
+<<<<<<< HEAD
+=======
+    <Content Include="Views\SanPham\Create.cshtml" />
+    <Content Include="Views\SanPham\Delete.cshtml" />
+    <Content Include="Views\SanPham\Details.cshtml" />
+    <Content Include="Views\SanPham\Edit.cshtml" />
+    <Content Include="Views\SanPham\Index.cshtml" />
+>>>>>>> origin/SonDH
     <Content Include="Views\PhanLoai\Create.cshtml" />
     <Content Include="Views\PhanLoai\Delete.cshtml" />
     <Content Include="Views\PhanLoai\Details.cshtml" />
@@ -358,11 +403,25 @@
     <Content Include="Views\KhachHang\Details.cshtml" />
     <Content Include="Views\KhachHang\Edit.cshtml" />
     <Content Include="Views\KhachHang\Index.cshtml" />
+<<<<<<< HEAD
+=======
+    <Content Include="Views\GioHang\Create.cshtml" />
+    <Content Include="Views\GioHang\Delete.cshtml" />
+    <Content Include="Views\GioHang\Details.cshtml" />
+    <Content Include="Views\GioHang\Edit.cshtml" />
+    <Content Include="Views\GioHang\Index.cshtml" />
+    <Content Include="Views\DonHang\Create.cshtml" />
+    <Content Include="Views\DonHang\Delete.cshtml" />
+    <Content Include="Views\DonHang\Details.cshtml" />
+    <Content Include="Views\DonHang\Edit.cshtml" />
+    <Content Include="Views\DonHang\Index.cshtml" />
+>>>>>>> origin/SonDH
     <Content Include="Views\ChiTietDonHang\Create.cshtml" />
     <Content Include="Views\ChiTietDonHang\Delete.cshtml" />
     <Content Include="Views\ChiTietDonHang\Details.cshtml" />
     <Content Include="Views\ChiTietDonHang\Edit.cshtml" />
     <Content Include="Views\ChiTietDonHang\Index.cshtml" />
+<<<<<<< HEAD
     <Content Include="Views\GioHang\Dathang.cshtml" />
     <Content Include="Views\GioHang\Giohang.cshtml" />
     <Content Include="Views\SanPham\Create.cshtml" />
@@ -424,6 +483,12 @@
     <Content Include="Views\TaiKhoan\Index.cshtml" />
     <Content Include="Views\GioHang\DatHangLe.cshtml" />
     <Content Include="Views\GioHang\DatHangTC.cshtml" />
+=======
+    <Content Include="Views\Home\View.cshtml" />
+    <Content Include="Views\GioiThieu\Index.cshtml" />
+    <Content Include="Views\Home\DangNhap.cshtml" />
+    <Content Include="Views\SanPham\Search.cshtml" />
+>>>>>>> origin/SonDH
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

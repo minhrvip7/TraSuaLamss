@@ -1,113 +1,96 @@
-﻿@model TraSuaLamss.Models.NhanVien
+﻿@model TraSuaLamss.Models.NHANVIEN
 
 @{
     ViewBag.Title = "Delete";
 }
 
-<h2 style="padding-left:2%">Xóa</h2>
+<h2>Delete</h2>
 
-<h3 style="padding-left:2%">Chi tiết thông tin về nhân viên </h3>
+<h3>Are you sure you want to delete this?</h3>
 <div>
+    <h4>NHANVIEN</h4>
     <hr />
-    <dl class="dl-horizontal" style="padding-left:10%">
+    <dl class="dl-horizontal">
         <dt>
-            Mã nhân viên:
-            @*@Html.DisplayNameFor(model => model.MaNV)*@
+            @Html.DisplayNameFor(model => model.TAIKHOAN.Password)
         </dt>
 
         <dd>
-            &emsp;@Html.DisplayFor(model => model.MaNV)
+            @Html.DisplayFor(model => model.TAIKHOAN.Password)
         </dd>
-        <br />
+
         <dt>
-            Họ và Tên:
-            @*@Html.DisplayNameFor(model => model.TenNV)*@
+            @Html.DisplayNameFor(model => model.TenNV)
         </dt>
 
         <dd>
-            &emsp;@Html.DisplayFor(model => model.TenNV)
+            @Html.DisplayFor(model => model.TenNV)
         </dd>
-        <br />
+
         <dt>
-            Tên đăng nhập:
-            @*@Html.DisplayNameFor(model => model.TAIKHOAN.Username)*@
+            @Html.DisplayNameFor(model => model.GioiTinh)
         </dt>
 
         <dd>
-            &emsp;@Html.DisplayFor(model => model.TAIKHOAN.Username)
+            @Html.DisplayFor(model => model.GioiTinh)
         </dd>
-        <br />
+
         <dt>
-            Giới tính:
-            @*@Html.DisplayNameFor(model => model.GioiTinh)*@
+            @Html.DisplayNameFor(model => model.NgaySinh)
         </dt>
 
         <dd>
-            &emsp;@Html.DisplayFor(model => model.GioiTinh)
+            @Html.DisplayFor(model => model.NgaySinh)
         </dd>
-        <br />
+
         <dt>
-            Ngày sinh:
-            @*@Html.DisplayNameFor(model => model.NgaySinh)*@
+            @Html.DisplayNameFor(model => model.Email)
         </dt>
 
         <dd>
-            &emsp;@Html.DisplayFor(model => model.NgaySinh)
+            @Html.DisplayFor(model => model.Email)
         </dd>
-        <br />
+
         <dt>
-            Email:
-            @*@Html.DisplayNameFor(model => model.Email)*@
+            @Html.DisplayNameFor(model => model.DiaChi)
         </dt>
 
         <dd>
-            &emsp;@Html.DisplayFor(model => model.Email)
+            @Html.DisplayFor(model => model.DiaChi)
         </dd>
-        <br />
+
         <dt>
-            Địa chỉ:
-            @*@Html.DisplayNameFor(model => model.DiaChi)*@
+            @Html.DisplayNameFor(model => model.DienThoai)
         </dt>
 
         <dd>
-            &emsp;@Html.DisplayFor(model => model.DiaChi)
+            @Html.DisplayFor(model => model.DienThoai)
         </dd>
-        <br />
+
         <dt>
-            Điện thoại:
-            @*@Html.DisplayNameFor(model => model.DienThoai)*@
+            @Html.DisplayNameFor(model => model.STK)
         </dt>
 
         <dd>
-            &emsp;@Html.DisplayFor(model => model.DienThoai)
+            @Html.DisplayFor(model => model.STK)
         </dd>
-        <br />
+
         <dt>
-            Số tài khoản:
-            @*@Html.DisplayNameFor(model => model.STK)*@
+            @Html.DisplayNameFor(model => model.Luong)
         </dt>
 
         <dd>
-            &emsp;@Html.DisplayFor(model => model.STK)
+            @Html.DisplayFor(model => model.Luong)
         </dd>
-        <br />
-        <dt>
-            Tiền Lương:
-            @*@Html.DisplayNameFor(model => model.Luong)*@
-        </dt>
 
-        <dd>
-            &emsp;@Html.DisplayFor(model => model.Luong)
-        </dd>
-        <br />
     </dl>
 
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color" style="padding-left:5%">
-            <input style="color:red" type="submit" value="Xóa" class="btn btn-default" /> |
-            @Html.ActionLink("Trở lại danh sách", "Index")
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>
