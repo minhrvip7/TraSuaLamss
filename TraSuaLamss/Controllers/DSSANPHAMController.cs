@@ -11,6 +11,7 @@ namespace TraSuaLamss.Controllers
     public class DSSanPhamController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
+        private string MaKH = "MaKH";
         private List<SanPham> LaySanPham()
         {
             return db.SanPham.OrderByDescending(s => s.TenSP).ToList();
@@ -82,6 +83,8 @@ namespace TraSuaLamss.Controllers
         }
         public ActionResult Details(string id, string loai)
         {
+            ViewBag.MaKH = 1;
+            ViewBag.SL = 1;
             var tra = from tr in db.SanPham
                       join l in db.PhanLoai on tr.MaLoai equals l.MaLoai
                       join nl in db.NguyenLieu on tr.MaNL equals nl.MaNL

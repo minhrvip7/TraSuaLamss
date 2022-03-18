@@ -13,6 +13,17 @@
         height: 50px;
         float: left;
     }
+    input.updown {
+        width: 24px;
+        height: 24px;
+        text-align: center;
+    }
+
+    input.inputsl {
+        width: 36px;
+        text-align: center;
+    }
+
     #datmua #btn{
         height:50px;
         line-height:50px;
@@ -75,16 +86,32 @@
                         <p id="infor">Nguyên liệu : @ViewBag.TenNL</p>
                         <p id="infor">Mô tả : @ViewBag.MoTa</p>
                         <p id="infor">
-                            Số lượng :
-                            <input style="height:24px;width:50px;font-size:24px" type="number" min="1" value="1" id="txtSoLuong" />
+                            Số lượng:
+                            <input class="updown" type="button" value="-" onclick="Down()">
+                            <input id="soluong" class="inputsl" min="1" type="text" value="@ViewBag.SL">
+                            <input class="updown" type="button" value="+" onclick="Up()">
+                            <script>
+                                function Up() {
+                                    result = document.getElementById('soluong');
+                                    result.value = result.value ? parseInt(result.value) + 1 : 1;
+
+                                }
+                                function Down() {
+                                    result = document.getElementById('soluong');
+                                    if (result.value > 1) {
+                                        result.value = result.value ? parseInt(result.value) - 1 : 1;
+                                    }
+                                    else result.value = "1";
+                                }
+                            </script>
                         </p>
                     </div>
                     <div id="datmua">
                         <div id="btn" style="float: left; background-color: #FFEFD5; border: 1px solid orangered">
-                            <a style="color: orangered" href="@Url.Action("ThemGioHang","GioHang",new { id = @ViewBag.MaSP  })">THÊM GIỎ HÀNG</a>
+                            <a style="color: orangered" href="@Url.Action("Add","GioHang",new { MaKhach=ViewBag.MaKH, MaHang=ViewBag.MaSP, soluong=ViewBag.SL })">THÊM GIỎ HÀNG</a>
                         </div>
                         <div id="btn" style="float:left;margin-left:30px">
-                            <a href="@Url.Action("DatMua","GioHang",new { id = @ViewBag.MaSP })">ĐẶT MUA</a>
+                            <a href="@Url.Action("DatHangLe","GioHang",new { MaKH=ViewBag.MaKH, MaHang=ViewBag.MaSP,soluong=ViewBag.SL })">ĐẶT MUA</a>
                         </div>
                     </div>
                 </td>
