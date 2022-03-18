@@ -21,7 +21,7 @@ namespace TraSuaLamss.Models
         public virtual DbSet<NHACUNGCAP> NHACUNGCAPs { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<PHANLOAI> PHANLOAIs { get; set; }
-        public virtual DbSet<SANPHAM> SANPHAMs { get; set; }
+        public virtual DbSet<SanPham> SANPHAMs { get; set; }
         public virtual DbSet<TAIKHOAN> TAIKHOAN { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -172,19 +172,19 @@ namespace TraSuaLamss.Models
                 .WithRequired(e => e.PHANLOAI)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<SANPHAM>()
+            modelBuilder.Entity<SanPham>()
                 .Property(e => e.MaSP)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SANPHAM>()
+            modelBuilder.Entity<SanPham>()
                 .Property(e => e.MaNL)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SANPHAM>()
+            modelBuilder.Entity<SanPham>()
                 .Property(e => e.MaLoai)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<SANPHAM>()
+            modelBuilder.Entity<SanPham>()
                 .HasMany(e => e.GIOHANGs)
                 .WithRequired(e => e.SANPHAM)
                 .WillCascadeOnDelete(false);

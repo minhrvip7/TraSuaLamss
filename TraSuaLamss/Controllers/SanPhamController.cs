@@ -36,7 +36,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SANPHAM sANPHAM = db.SANPHAMs.Find(id);
+            SanPham sANPHAM = db.SANPHAMs.Find(id);
             if (sANPHAM == null)
             {
                 return HttpNotFound();
@@ -57,7 +57,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SANPHAM sANPHAM)
+        public ActionResult Create([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sANPHAM)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SANPHAM sANPHAM = db.SANPHAMs.Find(id);
+            SanPham sANPHAM = db.SANPHAMs.Find(id);
             if (sANPHAM == null)
             {
                 return HttpNotFound();
@@ -93,7 +93,7 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SANPHAM sANPHAM)
+        public ActionResult Edit([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sANPHAM)
         {
             if (ModelState.IsValid)
             {
@@ -113,7 +113,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SANPHAM sANPHAM = db.SANPHAMs.Find(id);
+            SanPham sANPHAM = db.SANPHAMs.Find(id);
             if (sANPHAM == null)
             {
                 return HttpNotFound();
@@ -126,7 +126,7 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            SANPHAM sANPHAM = db.SANPHAMs.Find(id);
+            SanPham sANPHAM = db.SANPHAMs.Find(id);
             db.SANPHAMs.Remove(sANPHAM);
             db.SaveChanges();
             return RedirectToAction("Index");
