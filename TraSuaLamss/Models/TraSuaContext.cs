@@ -12,7 +12,6 @@ namespace TraSuaLamss.Models
         {
         }
 
-
         public virtual DbSet<ChiTietDonHang> ChiTietDonHang { get; set; }
         public virtual DbSet<DonHang> DonHang { get; set; }
         public virtual DbSet<GioHang> GioHang { get; set; }
@@ -25,27 +24,10 @@ namespace TraSuaLamss.Models
         public virtual DbSet<SanPham> SanPham { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoan { get; set; }
 
-        public virtual DbSet<ChiTietDonHang> CHITIETDONHANGs { get; set; }
-        public virtual DbSet<DonHang> DONHANGs { get; set; }
-        public virtual DbSet<GioHang> GIOHANGs { get; set; }
-        public virtual DbSet<KhachHang> KHACHHANGs { get; set; }
-        public virtual DbSet<LienHe> LIENHEs { get; set; }
-        public virtual DbSet<NguyenLieu> NGUYENLIEUx { get; set; }
-        public virtual DbSet<NhaCungCap> NHACUNGCAPs { get; set; }
-        public virtual DbSet<NhanVien> NHANVIENs { get; set; }
-        public virtual DbSet<PhanLoai> PHANLOAIs { get; set; }
-        public virtual DbSet<SanPham> SANPHAMs { get; set; }
-        public virtual DbSet<TaiKhoan> TAIKHOAN { get; set; }
-
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<ChiTietDonHang>()
-
                 .Property(e => e.MaKH);
-
-
-
 
             modelBuilder.Entity<ChiTietDonHang>()
                 .Property(e => e.MaHD)
@@ -84,28 +66,17 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<DonHang>()
-
                 .Property(e => e.MaKH);
 
             modelBuilder.Entity<GioHang>()
                 .Property(e => e.MaKH);
-
-
-
-            modelBuilder.Entity<GioHang>()
-                .Property(e => e.MaKH);
-
-
 
             modelBuilder.Entity<GioHang>()
                 .Property(e => e.MaSP)
                 .IsUnicode(false);
 
             modelBuilder.Entity<KhachHang>()
-
                 .Property(e => e.MaKH);
-
-
 
             modelBuilder.Entity<KhachHang>()
                 .Property(e => e.Username)
