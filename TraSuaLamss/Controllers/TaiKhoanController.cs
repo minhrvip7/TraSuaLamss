@@ -48,14 +48,21 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Username,Password,HoTen,PhanQuyen")] TaiKhoan tAIKHOAN)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.TaiKhoan.Add(tAIKHOAN);
-                db.SaveChanges();
+                if (ModelState.IsValid)
+                {
+                    db.TaiKhoan.Add(tAIKHOAN);
+                    db.SaveChanges();
+
+                }
                 return RedirectToAction("Index");
             }
-
-            return View(tAIKHOAN);
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Lỗi nhập dữ liệu!" + ex.Message;
+                return View(tAIKHOAN);
+            }
         }
 
         // GET: TaiKhoan/Edit/5
@@ -80,13 +87,21 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Username,Password,HoTen,PhanQuyen")] TaiKhoan tAIKHOAN)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.Entry(tAIKHOAN).State = EntityState.Modified;
-                db.SaveChanges();
+                if (ModelState.IsValid)
+                {
+                    db.Entry(tAIKHOAN).State = EntityState.Modified;
+                    db.SaveChanges();
+
+                }
                 return RedirectToAction("Index");
             }
-            return View(tAIKHOAN);
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Lỗi nhập dữ liệu!" + ex.Message;
+                return View(tAIKHOAN);
+            }
         }
 
         // GET: TaiKhoan/Delete/5
@@ -110,9 +125,17 @@ namespace TraSuaLamss.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             TaiKhoan tAIKHOAN = db.TaiKhoan.Find(id);
-            db.TaiKhoan.Remove(tAIKHOAN);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            try
+            {
+                db.TaiKhoan.Remove(tAIKHOAN);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = "Không xóa được bản ghi này!" + ex.Message;
+                return View("Delete", tAIKHOAN);
+            }
         }
 
         protected override void Dispose(bool disposing)
