@@ -1,6 +1,6 @@
-﻿@model IList<TraSuaLamss.Models.PhieuDatHang>
+﻿@model TraSuaLamss.Models.PhieuDatHang
 @{
-    ViewBag.Title = "DatHang";
+    ViewBag.Title = "DatHangLe";
 }
 <style type="text/css">
     tbody.bangsp tr td {
@@ -11,6 +11,17 @@
         padding: 10px 20px 10px 10px;
     }
 
+    button.xacnhan {
+        width: 120px;
+        height: 40px;
+        background-color: lawngreen;
+        border: none;
+    }
+
+        button.xacnhan:hover {
+            background-color: yellow;
+            color: blue;
+        }
     button.back b {
         color: white;
     }
@@ -25,18 +36,6 @@
         button.back:hover {
             background-color: gray;
             color: pink;
-        }
-
-    button.xacnhan {
-        width: 120px;
-        height: 40px;
-        background-color: lawngreen;
-        border: none;
-    }
-
-        button.xacnhan:hover {
-            background-color: yellow;
-            color: blue;
         }
 
     td.nut a {
@@ -91,7 +90,7 @@
             </tr>
             <tr>
                 <td>Địa chỉ: </td>
-                <td><input class="Dien" name="Diachi" type="text" value="@ViewBag.DonHang.DiaChiGiaoHang" id="Diachi" /></td>
+                <td><input class="Dien" name="Diachi" type="text" value="@ViewBag.DonHang.DiaChiGiaoHang" /></td>
             </tr>
             <tr>
                 <td>Ngày đặt: </td>
@@ -100,8 +99,8 @@
             <tr>
                 <td>Thanh toán: </td>
                 <td>
-                    <select name="Phuongthuc" id="Phuongthuc">
-                        <option selected="selected">Thanh toán khi nhận hàng</option>
+                    <select name="Phuongthuc">
+                        <option>Thanh toán khi nhận hàng</option>
                         <option>Thanh toán qua tài khoản ngân hàng</option>
                     </select>
                 </td>
@@ -114,25 +113,23 @@
                 <td class="td-center">Số lượng</td>
                 <td class="td-center">Thành tiền</td>
             </tr>
-            @foreach (var item in Model)
-            {
 
-                <tr>
-                    <td>@item.SP.TenSP</td>
-                    <td class="td-center">
-                        @{
-                            var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
-                            string dongia = String.Format(format, "{0:c0}", item.CTDH.DonGia);
-                            string thanhtien = String.Format(format, "{0:c0}", item.CTDH.DonGia * item.CTDH.SoLuong);
-                        }
-                        @dongia
-                    </td>
-                    <td class="td-center">@item.CTDH.SoLuong</td>
-                    <td class="td-center">
-                        @thanhtien
-                    </td>
-                </tr>
-            }
+            <tr>
+                <td>@Model.SP.TenSP</td>
+                <td class="td-center">
+                    @{
+                        var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                        string dongia = String.Format(format, "{0:c0}", Model.CTDH.DonGia);
+                        string thanhtien = String.Format(format, "{0:c0}", Model.CTDH.DonGia * Model.CTDH.SoLuong);
+                    }
+                    @dongia
+                </td>
+                <td class="td-center">@Model.CTDH.SoLuong</td>
+                <td class="td-center">
+                    @thanhtien
+                </td>
+            </tr>
+
             <tr>
                 <td colspan="3" style="text-align:right;">Tổng tiền: </td>
                 <td class="td-center">
@@ -153,7 +150,7 @@
             <tr>
                 <td class="nut"><button class="back" onclick="Huy()"><b>Hủy</b></button></td>
                 <td colspan="2"></td>
-                <td class="nut"><button class="xacnhan" onclick="Check()">Xác nhận</button></td>
+                <td class="nut"><button class="xacnhan" onclick="Create()">Xác nhận</button></td>
             </tr>
         </tfoot>
     </table>
@@ -170,7 +167,6 @@
             alert("Vui lòng nhập địa chỉ giao hàng!");
         }
         else Create();
-    }
 </script>
 
 

@@ -18,7 +18,7 @@ namespace TraSuaLamss.Models
         public virtual DbSet<KhachHang> KhachHang { get; set; }
         public virtual DbSet<LienHe> LienHe { get; set; }
         public virtual DbSet<NguyenLieu> NguyenLieu { get; set; }
-        public virtual DbSet<NhaCungCap> NHaCungCap { get; set; }
+        public virtual DbSet<NhaCungCap> NhaCungCap { get; set; }
         public virtual DbSet<NhanVien> NhanVien { get; set; }
         public virtual DbSet<PhanLoai> PhanLoai { get; set; }
         public virtual DbSet<SanPham> SanPham { get; set; }

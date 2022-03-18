@@ -35,6 +35,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -262,12 +263,39 @@
     <Content Include="Content\Template\prepros-6.config" />
     <Content Include="Content\Template\prepros.config" />
     <Content Include="wwwroot\Images\h0.png" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="wwwroot\Images\Xoa.png" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.js" />
     <Content Include="Scripts\jquery-3.6.0.slim.min.js" />
+    <Content Include="wwwroot\Images\CaPheCherry.jpg" />
+    <Content Include="wwwroot\Images\CaPheDen.jpg" />
+    <Content Include="wwwroot\Images\CaPheSua.jpg" />
+    <Content Include="wwwroot\Images\h0.png" />
+    <Content Include="wwwroot\Images\h4_whisky.jpg" />
+    <Content Include="wwwroot\Images\HuongDuong.jpg" />
+    <Content Include="wwwroot\Images\HuongDuongVoMan.jpg" />
+    <Content Include="wwwroot\Images\HuongDuongVoNgot.jpg" />
+    <Content Include="wwwroot\Images\KhoBo.jpg" />
+    <Content Include="wwwroot\Images\KhoGa.jpg" />
+    <Content Include="wwwroot\Images\KhoMuc.jpg" />
+    <Content Include="wwwroot\Images\Timkiem.png" />
+    <Content Include="wwwroot\Images\TraChanh.jpg" />
+    <Content Include="wwwroot\Images\TraDao.jpg" />
+    <Content Include="wwwroot\Images\TraSua.jpg" />
+    <Content Include="wwwroot\Images\TraSuaChanChau.jpg" />
+    <Content Include="wwwroot\Images\TraSuaChanChauDuongDen.jpg" />
+    <Content Include="wwwroot\Images\TraTac.jpg" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.esm.js.map" />
+    <Content Include="Scripts\bootstrap.esm.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\jquery-3.6.0.min.map" />
+    <Content Include="Scripts\jquery-3.6.0.slim.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -288,12 +316,53 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\TaiKhoan\Create.cshtml" />
+    <Content Include="Views\TaiKhoan\Delete.cshtml" />
+    <Content Include="Views\TaiKhoan\Details.cshtml" />
+    <Content Include="Views\TaiKhoan\Edit.cshtml" />
+    <Content Include="Views\TaiKhoan\Index.cshtml" />
+    <Content Include="Views\PhanLoai\Create.cshtml" />
+    <Content Include="Views\PhanLoai\Delete.cshtml" />
+    <Content Include="Views\PhanLoai\Details.cshtml" />
+    <Content Include="Views\PhanLoai\Edit.cshtml" />
+    <Content Include="Views\PhanLoai\Index.cshtml" />
+    <Content Include="Views\NhanVien\Create.cshtml" />
+    <Content Include="Views\NhanVien\Delete.cshtml" />
+    <Content Include="Views\NhanVien\Details.cshtml" />
+    <Content Include="Views\NhanVien\Edit.cshtml" />
+    <Content Include="Views\NhanVien\Index.cshtml" />
+    <Content Include="Views\NhaCungCap\Create.cshtml" />
+    <Content Include="Views\NhaCungCap\Delete.cshtml" />
+    <Content Include="Views\NhaCungCap\Details.cshtml" />
+    <Content Include="Views\NhaCungCap\Edit.cshtml" />
+    <Content Include="Views\NhaCungCap\Index.cshtml" />
+    <Content Include="Views\NguyenLieu\Create.cshtml" />
+    <Content Include="Views\NguyenLieu\Delete.cshtml" />
+    <Content Include="Views\NguyenLieu\Details.cshtml" />
+    <Content Include="Views\NguyenLieu\Edit.cshtml" />
+    <Content Include="Views\NguyenLieu\Index.cshtml" />
+    <Content Include="Views\LienHe\Create.cshtml" />
+    <Content Include="Views\LienHe\Delete.cshtml" />
+    <Content Include="Views\LienHe\Details.cshtml" />
+    <Content Include="Views\LienHe\Edit.cshtml" />
+    <Content Include="Views\LienHe\Index.cshtml" />
+    <Content Include="Views\KhachHang\Create.cshtml" />
+    <Content Include="Views\KhachHang\Delete.cshtml" />
+    <Content Include="Views\KhachHang\Details.cshtml" />
+    <Content Include="Views\KhachHang\Edit.cshtml" />
+    <Content Include="Views\KhachHang\Index.cshtml" />
     <Content Include="Views\ChiTietDonHang\Create.cshtml" />
     <Content Include="Views\ChiTietDonHang\Delete.cshtml" />
     <Content Include="Views\ChiTietDonHang\Details.cshtml" />
     <Content Include="Views\ChiTietDonHang\Edit.cshtml" />
     <Content Include="Views\ChiTietDonHang\Index.cshtml" />
-    <Content Include="Views\DonHang\Index.cshtml" />
+    <Content Include="Views\GioHang\Dathang.cshtml" />
+    <Content Include="Views\GioHang\Giohang.cshtml" />
+    <Content Include="Views\SanPham\Create.cshtml" />
+    <Content Include="Views\SanPham\Delete.cshtml" />
+    <Content Include="Views\SanPham\Details.cshtml" />
+    <Content Include="Views\SanPham\Edit.cshtml" />
+    <Content Include="Views\SanPham\Index.cshtml" />
     <Content Include="Views\DSSanPham\CaPhe.cshtml" />
     <Content Include="Views\DSSanPham\Details.cshtml" />
     <Content Include="Views\DSSanPham\DoAnVat.cshtml" />
@@ -346,6 +415,8 @@
     <Content Include="Views\TaiKhoan\Details.cshtml" />
     <Content Include="Views\TaiKhoan\Edit.cshtml" />
     <Content Include="Views\TaiKhoan\Index.cshtml" />
+    <Content Include="Views\GioHang\DatHangLe.cshtml" />
+    <Content Include="Views\GioHang\DatHangTC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
