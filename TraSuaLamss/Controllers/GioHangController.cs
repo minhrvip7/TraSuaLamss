@@ -75,7 +75,7 @@ namespace TraSuaLamss.Controllers
                 ThanhTien = lischitiet.Sum(x => x.CTDH.SoLuong * x.CTDH.DonGia),
                 PhuongThucThanhToan = "Thanh toán khi nhận hàng",
                 ThanhToan="Chưa thanh toán",
-                DiaChiGiaoHang = "...",
+                DiaChiGiaoHang = "",
                 TinhTrangGiaoHang = "Đang giao",
                 NgayDat = NgayDat,
                 NgayGiao=NgayDat,
@@ -175,7 +175,7 @@ namespace TraSuaLamss.Controllers
                 ThanhTien = chitiet.SP.GiaBan * chitiet.CTDH.SoLuong,
                 PhuongThucThanhToan = "Thanh toán khi nhận hàng",
                 ThanhToan = "Chưa thanh toán",
-                DiaChiGiaoHang = "...",
+                DiaChiGiaoHang = "",
                 TinhTrangGiaoHang = "Đang giao",
                 NgayDat = NgayDat,
                 NgayGiao = NgayDat,
@@ -191,10 +191,13 @@ namespace TraSuaLamss.Controllers
             Session[CTDH] = ctdh;
             return View(chitiet);
         }
-        public ActionResult CreateDonHang()
+        public ActionResult CreateDonHang(string phuongthuc,string diachi,string ghichu)
         {
             var list = Session[ListCTDH] as List<ChiTietDonHang>;
             var don = Session[DonHang] as DonHang;
+            don.DiaChiGiaoHang = diachi;
+            don.PhuongThucThanhToan = phuongthuc;
+            don.GhiChu=ghichu;
             foreach (var item in db.GioHang)
             {
                 if (item.MaKH == don.MaKH)
@@ -211,10 +214,13 @@ namespace TraSuaLamss.Controllers
             db.SaveChanges();
             return RedirectToAction("DatHangTC");
         }
-        public ActionResult CreateDonHangLe()
+        public ActionResult CreateDonHangLe(string phuongthuc, string diachi, string ghichu)
         {
             var chitietDH = Session[CTDH] as ChiTietDonHang;
             var don = Session[DonHangLe] as DonHang;
+            don.DiaChiGiaoHang = diachi;
+            don.PhuongThucThanhToan = phuongthuc;
+            don.GhiChu = ghichu;
             db.DonHang.Add(don);
             db.ChiTietDonHang.Add(chitietDH);
 
