@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TraSuaLamss.Models;
@@ -161,8 +162,26 @@ namespace TraSuaLamss.Controllers
             }
             return View(model);
         }
-        public ActionResult DoiThongTin()
+        [HttpGet]
+        public ActionResult DoiThongTin(string username)
         {
+            /*username = Session["Username"].ToString();
+            if (username == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            KhachHang kh = db.KhachHang.SingleOrDefault(n => n.Username == username);
+            DoiThongTinModel doiThongTin = new DoiThongTinModel();
+            doiThongTin.Username = username;
+            doiThongTin.TenKH = kh.TenKH;
+            doiThongTin.GioiTinh = kh.GioiTinh;
+            doiThongTin.DiaChi = kh.DiaChi;
+            doiThongTin.DienThoai = kh.DienThoai;
+            doiThongTin.NgaySinh = kh.NgaySinh;
+            if (doiThongTin == null)
+            {
+                return HttpNotFound();
+            }*/
             return View();
         }
         [HttpPost]
