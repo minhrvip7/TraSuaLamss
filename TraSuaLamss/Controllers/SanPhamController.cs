@@ -18,14 +18,14 @@ namespace TraSuaLamss.Controllers
         public ActionResult Index()
         {
             
-                var sANPHAMs = db.SANPHAMs.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI);
+                var sANPHAMs = db.SanPham.Include(s => s.NGUYENLIEU).Include(s => s.PHANLOAI);
                 return View(sANPHAMs.ToList());
 
         }
         [HttpPost]
         public ActionResult Search(string searchkey)
         {
-            var lstResult = db.SANPHAMs.SqlQuery("Select * from SANPHAM where TenSP like '%" + searchkey + "%'").ToList();
+            var lstResult = db.SanPham.SqlQuery("Select * from SANPHAM where TenSP like '%" + searchkey + "%'").ToList();
             return View(lstResult);
         }
 
@@ -36,7 +36,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SANPHAMs.Find(id);
+            SanPham sANPHAM = db.SanPham.Find(id);
             if (sANPHAM == null)
             {
                 return HttpNotFound();
@@ -47,8 +47,8 @@ namespace TraSuaLamss.Controllers
         // GET: SANPHAMs/Create
         public ActionResult Create()
         {
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL");
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai");
+            ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL");
+            ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai");
             return View();
         }
 
@@ -61,13 +61,13 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.SANPHAMs.Add(sANPHAM);
+                db.SanPham.Add(sANPHAM);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai", sANPHAM.MaLoai);
             return View(sANPHAM);
         }
 
@@ -78,13 +78,13 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SANPHAMs.Find(id);
+            SanPham sANPHAM = db.SanPham.Find(id);
             if (sANPHAM == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai", sANPHAM.MaLoai);
             return View(sANPHAM);
         }
 
@@ -101,8 +101,8 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaNL = new SelectList(db.NGUYENLIEUx, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PHANLOAIs, "MaLoai", "TenLoai", sANPHAM.MaLoai);
+            ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL", sANPHAM.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai", sANPHAM.MaLoai);
             return View(sANPHAM);
         }
 
@@ -113,7 +113,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sANPHAM = db.SANPHAMs.Find(id);
+            SanPham sANPHAM = db.SanPham.Find(id);
             if (sANPHAM == null)
             {
                 return HttpNotFound();
@@ -126,8 +126,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            SanPham sANPHAM = db.SANPHAMs.Find(id);
-            db.SANPHAMs.Remove(sANPHAM);
+            SanPham sANPHAM = db.SanPham.Find(id);
+            db.SanPham.Remove(sANPHAM);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: NHANVIENs
         public ActionResult Index()
         {
-            var nHANVIENs = db.NHANVIENs.Include(n => n.TAIKHOAN);
+            var nHANVIENs = db.NhanVien.Include(n => n.TAIKHOAN);
             return View(nHANVIENs.ToList());
         }
 
@@ -28,7 +28,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
+            NhanVien nHANVIEN = db.NhanVien.Find(id);
             if (nHANVIEN == null)
             {
                 return HttpNotFound();
@@ -39,7 +39,7 @@ namespace TraSuaLamss.Controllers
         // GET: NHANVIENs/Create
         public ActionResult Create()
         {
-            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password");
+            ViewBag.Username = new SelectList(db.TaiKhoan, "Username", "Password");
             return View();
         }
 
@@ -52,12 +52,12 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.NHANVIENs.Add(nHANVIEN);
+                db.NhanVien.Add(nHANVIEN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password", nHANVIEN.Username);
+            ViewBag.Username = new SelectList(db.TaiKhoan, "Username", "Password", nHANVIEN.Username);
             return View(nHANVIEN);
         }
 
@@ -68,12 +68,12 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
+            NhanVien nHANVIEN = db.NhanVien.Find(id);
             if (nHANVIEN == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password", nHANVIEN.Username);
+            ViewBag.Username = new SelectList(db.TaiKhoan, "Username", "Password", nHANVIEN.Username);
             return View(nHANVIEN);
         }
 
@@ -90,7 +90,7 @@ namespace TraSuaLamss.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Username = new SelectList(db.TAIKHOAN, "Username", "Password", nHANVIEN.Username);
+            ViewBag.Username = new SelectList(db.TaiKhoan, "Username", "Password", nHANVIEN.Username);
             return View(nHANVIEN);
         }
 
@@ -101,7 +101,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
+            NhanVien nHANVIEN = db.NhanVien.Find(id);
             if (nHANVIEN == null)
             {
                 return HttpNotFound();
@@ -114,8 +114,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            NhanVien nHANVIEN = db.NHANVIENs.Find(id);
-            db.NHANVIENs.Remove(nHANVIEN);
+            NhanVien nHANVIEN = db.NhanVien.Find(id);
+            db.NhanVien.Remove(nHANVIEN);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -168,6 +168,7 @@
     <Compile Include="Models\NhaCungCap.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\PhanLoai.cs" />
+    <Compile Include="Models\PhieuDatHang.cs" />
     <Compile Include="Models\SanPham.cs" />
     <Compile Include="Models\TaiKhoan.cs" />
     <Compile Include="Models\TraSuaContext.cs" />

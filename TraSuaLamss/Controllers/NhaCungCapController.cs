@@ -17,7 +17,7 @@ namespace TraSuaLamss.Controllers
         // GET: NHACUNGCAPs
         public ActionResult Index()
         {
-            return View(db.NHACUNGCAPs.ToList());
+            return View(db.NhaCungCap.ToList());
         }
 
         // GET: NHACUNGCAPs/Details/5
@@ -27,7 +27,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NhaCungCap nHACUNGCAP = db.NHACUNGCAPs.Find(id);
+            NhaCungCap nHACUNGCAP = db.NhaCungCap.Find(id);
             if (nHACUNGCAP == null)
             {
                 return HttpNotFound();
@@ -50,7 +50,7 @@ namespace TraSuaLamss.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.NHACUNGCAPs.Add(nHACUNGCAP);
+                db.NhaCungCap.Add(nHACUNGCAP);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -65,7 +65,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NhaCungCap nHACUNGCAP = db.NHACUNGCAPs.Find(id);
+            NhaCungCap nHACUNGCAP = db.NhaCungCap.Find(id);
             if (nHACUNGCAP == null)
             {
                 return HttpNotFound();
@@ -96,7 +96,7 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            NhaCungCap nHACUNGCAP = db.NHACUNGCAPs.Find(id);
+            NhaCungCap nHACUNGCAP = db.NhaCungCap.Find(id);
             if (nHACUNGCAP == null)
             {
                 return HttpNotFound();
@@ -109,8 +109,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            NhaCungCap nHACUNGCAP = db.NHACUNGCAPs.Find(id);
-            db.NHACUNGCAPs.Remove(nHACUNGCAP);
+            NhaCungCap nHACUNGCAP = db.NhaCungCap.Find(id);
+            db.NhaCungCap.Remove(nHACUNGCAP);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -30,7 +30,7 @@ namespace TraSuaLamss.Controllers
         }
         public bool CheckUsername(string username)
         {
-            if (db.TAIKHOAN.Count(x => x.Username == username) > 0)
+            if (db.TaiKhoan.Count(x => x.Username == username) > 0)
             {
                 return true;
             }
@@ -41,7 +41,7 @@ namespace TraSuaLamss.Controllers
         }
         public bool CheckEmail(string email)
         {
-            if (db.KHACHHANGs.Count(x => x.Email == email) > 0)
+            if (db.KhachHang.Count(x => x.Email == email) > 0)
             {
                 return true;
             }
@@ -69,7 +69,7 @@ namespace TraSuaLamss.Controllers
                 var username = model.Username;
                 var password = model.Password;
                 
-                TaiKhoan tk = db.TAIKHOAN.SingleOrDefault(n => n.Username == username && n.Password == password);
+                TaiKhoan tk = db.TaiKhoan.SingleOrDefault(n => n.Username == username && n.Password == password);
                 if (tk != null)
                 {
                     ViewBag.Success = "Chúc mừng đăng nhập thành công!";
