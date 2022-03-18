@@ -39,13 +39,15 @@
         </thead>
         <br />
         <br />
-        <tbody  class="table table-striped">
-            <tr>
-                <th>Sản phẩm</th>
-                <th class="td-center">Đơn giá</th>
-                <th class="td-center">Số lượng</th>
-                <th class="td-center">Thành tiền</th>
-            </tr>
+        <tbody class="table table-striped table-bordered">
+            <thead class="thead-light">
+                <tr>
+                    <th>Sản phẩm</th>
+                    <th class="td-center">Đơn giá</th>
+                    <th class="td-center">Số lượng</th>
+                    <th class="td-center">Thành tiền</th>
+                </tr>
+            </thead>
             @foreach (var item in Model)
             {
 
@@ -60,7 +62,7 @@
                         @dongia
                     </td>
                     <td class="td-center">@item.chiTietDonHang.SoLuong</td>
-                    <td class="td-center">
+                    <td class="text-md-right">
                         @thanhtien
                     </td>
                 </tr>
@@ -76,19 +78,8 @@
                 </td>
             </tr>
         </tbody>
-        <tfoot>
-            <tr>
-                <td colspan="3"></td>
-                <td><a class="btn btn-primary" onclick="Huy()">Trở về</a></td>
-            </tr>
-        </tfoot>
     </table>
 </body>
-<script>
-    function Huy() {
-        history.back();
-    }
-</script>
 <p>
-    @Html.ActionLink("Back to List", "Index")
-</p>
+    <button type="button" class="btn btn-dark" onclick="history.back()">Trở về</button>
+</p> 

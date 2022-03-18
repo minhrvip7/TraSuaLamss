@@ -187,7 +187,13 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\Img\add_80px.png" />
+    <Content Include="Content\Img\delete_80px.png" />
+    <Content Include="Content\Img\edit_80px.png" />
     <Content Include="Content\Img\icon-call.png" />
+    <Content Include="Content\Img\info_32px.png" />
+    <Content Include="Content\Img\info_80px.png" />
+    <Content Include="Content\Img\search_80px.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\Template\assets\css\bootstrap.min.css" />
     <Content Include="Content\Template\assets\css\flex-slider.css" />
@@ -340,7 +346,6 @@
     <Content Include="Views\GioHang\Details.cshtml" />
     <Content Include="Views\GioHang\Edit.cshtml" />
     <Content Include="Views\GioHang\Index.cshtml" />
-    <Content Include="Views\DonHang\Create.cshtml" />
     <Content Include="Views\DonHang\Delete.cshtml" />
     <Content Include="Views\DonHang\Details.cshtml" />
     <Content Include="Views\DonHang\Edit.cshtml" />

@@ -6,10 +6,7 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
+<table class="table" style="margin-left: auto">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.KHACHHANG.TenKH)
@@ -71,7 +68,6 @@
             @Html.DisplayFor(modelItem => item.GhiChu)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaDH }) |
             @Html.ActionLink("Details", "Details", new { id=item.MaDH }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.MaDH })
         </td>
