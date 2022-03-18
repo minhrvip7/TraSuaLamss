@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PagedList;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -15,10 +16,24 @@ namespace TraSuaLamss.Controllers
         private TraSuaContext db = new TraSuaContext();
 
         // GET: DONHANGs
-        public ActionResult Index()
+        public ActionResult Index(string searchStr, int? page)
         {
             var dONHANGs = db.DonHang.Include(d => d.KHACHHANG);
-            return View(dONHANGs.ToList());
+
+            if (searchStr == null)
+            {
+                dONHANGs = dONHANGs;
+            }
+            else if (searchStr.Any(char.IsDigit))
+            {
+                dONHANGs = dONHANGs.Where(e => e.MaDH.Contains(searchStr));
+            }
+            //Sắp xếp trước khi phân trang
+            dONHANGs = dONHANGs.OrderBy(e => e.MaDH);
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+
+            return View(dONHANGs.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: DONHANGs/Details/5

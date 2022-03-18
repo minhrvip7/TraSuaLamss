@@ -74,9 +74,15 @@ namespace TraSuaLamss.Controllers
             DonHang dONHANG = db.DonHang.Find(id);
             db.DonHang.Remove(dONHANG);
             var id2 = (from s in db.ChiTietDonHang where s.MaHD == id select s.MaKH).FirstOrDefault();
-            var id3 = (from s in db.ChiTietDonHang where s.MaHD == id select s.MaSP).FirstOrDefault();
-            ChiTietDonHang chiTietDonHang = db.ChiTietDonHang.Find(id,id2,id3);
-            db.ChiTietDonHang.Remove(chiTietDonHang);
+            List<ChiTietDonHang> id3 = (from s in db.ChiTietDonHang where s.MaHD == id select s).ToList();
+            if(id3 != null )
+            {
+                foreach (var item in id3)
+                {
+                    ChiTietDonHang chiTietDonHang = db.ChiTietDonHang.Find(id, id2, item);
+                    db.ChiTietDonHang.Remove(chiTietDonHang);
+                }
+            }
             db.SaveChanges();
             return RedirectToAction("Index","BaoCaoThongKe");
         }
