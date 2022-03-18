@@ -19,7 +19,7 @@
     <br />
 
     <div class="btm btn-default" style="padding-left:5%">
-        @Html.ActionLink("Thêm mới", "Create")
+        @Html.ActionLink("Thêm mới", "Create", "", new { @class = "btn btn-success" })
     </div>
     <p>
         @using (Html.BeginForm())
@@ -32,102 +32,63 @@
             </div>
         }
     </p>
-    <table class="table">
-        <tr>
-            <th>
-                Mã
-                @*@Html.DisplayNameFor(model => model.MaNV)*@
-            </th>
-            <th>
-                Họ và Tên
-                @*@Html.DisplayNameFor(model => model.TenNV)*@
-            </th>
-            <th>
-                Tài khoản
-                @*@Html.DisplayNameFor(model => model.Username)*@
-            </th>
-            <th>
-                Giới tính
-                @*@Html.DisplayNameFor(model => model.GioiTinh)*@
-            </th>
-            <th>
-                Ngày sinh
-                @*@Html.DisplayNameFor(model => model.NgaySinh)*@
-            </th>
-            <th>
-                Email
-                @*@Html.DisplayNameFor(model => model.Email)*@
-            </th>
-            <th>
-                Địa chỉ
-                @*@Html.DisplayNameFor(model => model.DiaChi)*@
-            </th>
-            <th>
-                Số điện thoại
-                @*@Html.DisplayNameFor(model => model.DienThoai)*@
-            </th>
-            <th>
-                STK
-                @*@Html.DisplayNameFor(model => model.STK)*@
-            </th>
-            <th>
-                Tiền lương
-                @*@Html.DisplayNameFor(model => model.Luong)*@
-            </th>
-            <th></th>
-        </tr>
 
-        @foreach (var item in Model)
-        {
+    <table class="table table-hover">
+        <thead class="thead-light">
             <tr>
+                <th>Mã</th>
+                <th>Họ và Tên</th>
+                <th>Tài khoản</th>
+                <th>Giới tính</th>
+                <th>Ngày sinh</th>
+                <th>Email</th>
+                <th>Địa chỉ</th>
+                <th>Số điện thoại</th>
+                <th>Số tài khoản</th>
+                <th>Tiền lương</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.MaNV)</td>
+                <td>@Html.DisplayFor(modelItem => item.TenNV)</td>
+                <td>@Html.DisplayFor(modelItem => item.TAIKHOAN.Username)</td>
+                <td>@Html.DisplayFor(modelItem => item.GioiTinh)</td>
+                <td>@Html.DisplayFor(modelItem => item.NgaySinh)</td>
+                <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                <td>@Html.DisplayFor(modelItem => item.DiaChi)</td>
+                <td>@Html.DisplayFor(modelItem => item.DienThoai)</td>
+                <td>@Html.DisplayFor(modelItem => item.STK)</td>
+                <td>@String.Format(format, "{0:c0}", @item.Luong)</td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.MaNV)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TenNV)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TAIKHOAN.Username)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.GioiTinh)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NgaySinh)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DiaChi)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DienThoai)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.STK)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Luong)
-                </td>
-                <td>
-                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaNV }) |
-                    @Html.ActionLink("Chi tiết", "Details", new { id = item.MaNV }) |
-                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaNV })
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaNV }, new { @class = "btn btn-outline-primary" })
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.MaNV }, new { @class = "btn btn-outline-info" })
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.MaNV }, new { @class = "btn btn-outline-danger" })
                 </td>
             </tr>
-        }
-
+            }
+        </tbody>
     </table>
     <br />
     <br />
     <centrer>
-        <div style="text-align:center">Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber) / @Model.PageCount</div>
+        @*<div style="text-align:center">Trang @(Model.PageCount<Model.PageNumber?0:Model.PageNumber) / @Model.PageCount</div>*@
         <div class="center2" style="text-align:center"><strong>@Html.PagedListPager(Model, page => Url.Action("Index", new { page }))</strong> </div>
+        <div class="center2" style="text-align:center">
+            @if (Model.PageCount > 1)
+            {
+            <strong>
+                @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+            </strong>
+            }
+        </div>
     </centrer>
 
     <br />
     <p style="padding-left:5%">
-        @Html.ActionLink("Trờ lại", "Index")
+        @Html.ActionLink("Trờ lại", "Index", "", new { @class = "btn btn-primary" })
     </p>
 </section>
