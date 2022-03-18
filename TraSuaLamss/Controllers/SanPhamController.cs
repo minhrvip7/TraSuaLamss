@@ -24,7 +24,7 @@ namespace TraSuaLamss.Controllers
         [HttpPost]
         public ActionResult Search(string searchkey)
         {
-            var lstResult = db.SanPham.SqlQuery("Select * from SANPHAM where TenSP like '%" + searchkey + "%'").ToList();
+            var lstResult = db.SanPham.SqlQuery("Select * from SanPham where TenSP like '%" + searchkey + "%'").ToList();
             return View(lstResult);
         }
 
@@ -35,16 +35,16 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sanPham = db.SanPham.Find(id);
-            if (sanPham == null)
+            SanPham SanPham = db.SanPham.Find(id);
+            if (SanPham == null)
             {
                 return HttpNotFound();
             }
-            return View(sanPham);
+            return View(SanPham);
         }
         public List<SanPham> SearhByKey(string key)
         {
-            return db.SanPham.SqlQuery("Select * from SANPHAM where TenSP like '%"+key+"%'").ToList();
+            return db.SanPham.SqlQuery("Select * from SanPham where TenSP like '%"+key+"%'").ToList();
         }
 
         // GET: SanPham/Create
@@ -60,18 +60,18 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sanPham)
+        public ActionResult Create([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham SanPham)
         {
             if (ModelState.IsValid)
             {
-                db.SanPham.Add(sanPham);
+                db.SanPham.Add(SanPham);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai", sANPHAM.MaLoai);
-            return View(sANPHAM);
+            ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL", SanPham.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai", SanPham.MaLoai);
+            return View(SanPham);
         }
 
         // GET: SanPham/Edit/5
@@ -81,14 +81,14 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sanPham = db.SanPham.Find(id);
-            if (sanPham == null)
+            SanPham SanPham = db.SanPham.Find(id);
+            if (SanPham == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai", sANPHAM.MaLoai);
-            return View(sANPHAM);
+            ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL", SanPham.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai", SanPham.MaLoai);
+            return View(SanPham);
         }
 
         // POST: SanPham/Edit/5
@@ -96,27 +96,27 @@ namespace TraSuaLamss.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham sanPham)
+        public ActionResult Edit([Bind(Include = "MaSP,TenSP,GiaBan,MoTa,Anh,MaNL,MaLoai")] SanPham SanPham)
         {
             if (ModelState.IsValid)
             {
-                sanPham.Anh = "";
+                SanPham.Anh = "";
                 var f = Request.Files["ImageFile"];
                 if (f != null && f.ContentLength > 0)
                 {
                     string FileName = System.IO.Path.GetFileName(f.FileName);
                     string UploadPath = Server.MapPath("~/wwwroot/Images/" + FileName);
                     f.SaveAs(UploadPath);
-                    sanPham.Anh = FileName;
+                    SanPham.Anh = FileName;
                 }
 
-                db.Entry(sanPham).State = EntityState.Modified;
+                db.Entry(SanPham).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL", sANPHAM.MaNL);
-            ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai", sANPHAM.MaLoai);
-            return View(sANPHAM);
+            ViewBag.MaNL = new SelectList(db.NguyenLieu, "MaNL", "TenNL", SanPham.MaNL);
+            ViewBag.MaLoai = new SelectList(db.PhanLoai, "MaLoai", "TenLoai", SanPham.MaLoai);
+            return View(SanPham);
         }
 
         // GET: SanPham/Delete/5
@@ -126,12 +126,12 @@ namespace TraSuaLamss.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            SanPham sanPham = db.SanPham.Find(id);
-            if (sanPham == null)
+            SanPham SanPham = db.SanPham.Find(id);
+            if (SanPham == null)
             {
                 return HttpNotFound();
             }
-            return View(sanPham);
+            return View(SanPham);
         }
 
         // POST: SanPham/Delete/5
@@ -139,8 +139,8 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
-            SanPham sanPham = db.SanPham.Find(id);
-            db.SanPham.Remove(sanPham);
+            SanPham SanPham = db.SanPham.Find(id);
+            db.SanPham.Remove(SanPham);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

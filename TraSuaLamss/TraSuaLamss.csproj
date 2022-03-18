@@ -275,7 +275,9 @@
     <Content Include="Content\Template\assets\fonts\slick.woff" />
     <Content Include="Content\Template\prepros-6.config" />
     <Content Include="Content\Template\prepros.config" />
+    <Content Include="wwwroot\Images\CaPheSua.jpg" />
     <Content Include="wwwroot\Images\h0.png" />
+    <Content Include="wwwroot\Images\Xoa.png" />
     <None Include="Scripts\jquery-3.6.0.intellisense.js" />
     <Content Include="Scripts\jquery-3.6.0.js" />
     <Content Include="Scripts\jquery-3.6.0.min.js" />
@@ -284,12 +286,14 @@
     <Content Include="wwwroot\Images\CaPheCherry.jpg" />
     <Content Include="wwwroot\Images\CaPheDen.jpg" />
     <Content Include="wwwroot\Images\h0.png" />
+    <Content Include="wwwroot\Images\h4_whisky.jpg" />
     <Content Include="wwwroot\Images\HuongDuong.jpg" />
     <Content Include="wwwroot\Images\HuongDuongVoMan.jpg" />
     <Content Include="wwwroot\Images\HuongDuongVoNgot.jpg" />
     <Content Include="wwwroot\Images\KhoBo.jpg" />
     <Content Include="wwwroot\Images\KhoGa.jpg" />
     <Content Include="wwwroot\Images\KhoMuc.jpg" />
+    <Content Include="wwwroot\Images\Timkiem.png" />
     <Content Include="wwwroot\Images\TraChanh.jpg" />
     <Content Include="wwwroot\Images\TraDao.jpg" />
     <Content Include="wwwroot\Images\TraSua.jpg" />
