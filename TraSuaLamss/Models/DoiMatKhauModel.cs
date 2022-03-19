@@ -14,7 +14,7 @@ namespace TraSuaLamss.Models
         public string Password { set; get; }
 
         [Required(ErrorMessage = "Nhập mật khẩu mới!")]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "Độ dài mật khẩu ít nhất 6 ký tự.")]
+        [StringLength(20, MinimumLength = 6, ErrorMessage = "Độ dài mật khẩu ít nhất 6 ký tự và không quá 20 ký tự.")]
         [Display(Name = "Mật khẩu mới")]
         public string NewPassword { set; get; }
 
