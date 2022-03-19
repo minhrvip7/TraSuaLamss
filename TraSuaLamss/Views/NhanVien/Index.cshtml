@@ -5,7 +5,11 @@
     ViewBag.Title = "Index";
     var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
 }
-
+<style>
+    #page {
+        margin-left: 25px;
+    }
+</style>
 <section class="team section-bg">
     <h2 style="padding-left:2%">Danh sách nhân viên</h2>
     <br />
@@ -94,7 +98,7 @@
     <br />
     <br />
     <centrer>
-        <div class="center2" style="text-align:center">
+        <div class="center2" style="text-align:center" id="page">
             @if (Model.PageCount > 1)
             {
                 <strong>
