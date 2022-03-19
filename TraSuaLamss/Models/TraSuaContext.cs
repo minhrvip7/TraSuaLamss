@@ -51,7 +51,7 @@ namespace TraSuaLamss.Models
 
             modelBuilder.Entity<DonHang>()
                 .Property(e => e.PhuongThucThanhToan)
-                .IsUnicode(false);
+                .IsUnicode(true);
 
             modelBuilder.Entity<DonHang>()
                 .Property(e => e.ThanhToan)
@@ -59,11 +59,11 @@ namespace TraSuaLamss.Models
 
             modelBuilder.Entity<DonHang>()
                 .Property(e => e.DiaChiGiaoHang)
-                .IsUnicode(false);
+                .IsUnicode(true);
 
             modelBuilder.Entity<DonHang>()
                 .Property(e => e.TinhTrangGiaoHang)
-                .IsUnicode(false);
+                .IsUnicode(true);
 
             modelBuilder.Entity<DonHang>()
                 .Property(e => e.MaKH);
