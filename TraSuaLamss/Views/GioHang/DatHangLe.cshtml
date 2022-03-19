@@ -160,7 +160,7 @@
         history.back();
     }
     function Create() {
-        window.location.href = "@Html.Raw(Url.Action("CreateDonHang", "GioHang"))" + "?diachi=" + document.getElementById('Diachi').value + "&phuongthuc=" + document.getElementById('Phuongthuc').value + "&ghichu=" + document.getElementById('Ghichu').value;
+        window.location.href = "@Html.Raw(Url.Action("CreateDonHangLe", "GioHang"))" + "?diachi=" + document.getElementById('Diachi').value + "&phuongthuc=" + document.getElementById('Phuongthuc').value + "&ghichu=" + document.getElementById('Ghichu').value;
     }
     function Check() {
         if (document.getElementById('Diachi').value == "") {
