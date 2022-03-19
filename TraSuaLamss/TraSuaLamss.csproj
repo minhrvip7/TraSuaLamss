@@ -146,7 +146,6 @@
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\DSSanPhamController.cs" />
     <Compile Include="Controllers\GioHangController.cs" />
-    <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\LienHeController.cs" />
@@ -455,9 +454,9 @@
     <Content Include="Views\GioiThieu\Index.cshtml" />
     <Content Include="Views\Home\DangNhap.cshtml" />
     <Content Include="Views\SanPham\Search.cshtml" />
-	  <Content Include="Views\Home\DangKy.cshtml" />
-	  <Content Include="Views\Home\DoiThongTin.cshtml" />
-	  <Content Include="Views\Home\DoiMatKhau.cshtml" />
+    <Content Include="Views\Home\DangKy.cshtml" />
+    <Content Include="Views\Home\DoiThongTin.cshtml" />
+    <Content Include="Views\Home\DoiMatKhau.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
