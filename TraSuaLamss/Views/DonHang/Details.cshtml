@@ -1,4 +1,4 @@
-﻿@model TraSuaLamss.Models.DONHANG
+﻿@model TraSuaLamss.Models.DonHang
 
 @{
     ViewBag.Title = "Details";
@@ -10,6 +10,13 @@
     <h4>DONHANG</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MaDH)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaDH)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.KHACHHANG.TenKH)
         </dt>

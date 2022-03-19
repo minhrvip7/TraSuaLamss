@@ -1,0 +1,38 @@
+﻿@model List<TraSuaLamss.Models.BaoCaoThang>
+@{
+    ViewBag.Title = "Index";
+    var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+
+}
+
+
+<div class="col-md-8" style="margin: 0px auto;">
+    <table class="table table-striped table-bordered">
+        <thead class="thead-light">
+            <tr>
+                <th class="text-center">
+                    @Html.ActionLink("Tháng", "Index", new { sortOrder = ViewBag.ThangSort })
+                </th>
+                <th class="text-center">
+                    @Html.ActionLink("Số lượng đơn", "Index", new { sortOrder = ViewBag.DoanhSoSort })
+                </th>
+                <th class="text-center">
+                    @Html.ActionLink("Doanh thu", "Index", new { sortOrder = ViewBag.TongTienSort })
+                </th>
+                <th class="text-center"></th>
+            </tr>
+        </thead>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center">@Html.DisplayFor(modelItem => item.Thang)</td>
+                <td class="text-center">@Html.DisplayFor(modelItem => item.SoLuongDonHang)</td>
+                <td class="text-center">@String.Format(format, "{0:c0}", @item.TongTien)</td>
+                <td class="text-center">@Html.ActionLink("Chi tiết", "Details", new { month = item.Thang }, new { @class = "btn btn-primary" })</td>
+            </tr>
+        }
+    </table>
+</div>
+<p style="padding-left:5%">
+    <button type="button" class="btn btn-dark" onclick="history.back()">Trở về</button>
+</p>

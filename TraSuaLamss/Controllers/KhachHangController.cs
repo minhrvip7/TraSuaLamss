@@ -14,14 +14,14 @@ namespace TraSuaLamss.Controllers
     {
         private TraSuaContext db = new TraSuaContext();
 
-        // GET: KHACHHANGs
+        // GET: KhachHang
         public ActionResult Index()
         {
             var kHACHHANGs = db.KhachHang.Include(k => k.TAIKHOAN);
             return View(kHACHHANGs.ToList());
         }
 
-        // GET: KHACHHANGs/Details/5
+        // GET: KhachHang/Details/5
         public ActionResult Details(string id)
         {
             if (id == null)
@@ -36,14 +36,14 @@ namespace TraSuaLamss.Controllers
             return View(kHACHHANG);
         }
 
-        // GET: KHACHHANGs/Create
+        // GET: KhachHang/Create
         public ActionResult Create()
         {
             ViewBag.Username = new SelectList(db.TaiKhoan, "Username", "Password");
             return View();
         }
 
-        // POST: KHACHHANGs/Create
+        // POST: KhachHang/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -61,7 +61,7 @@ namespace TraSuaLamss.Controllers
             return View(kHACHHANG);
         }
 
-        // GET: KHACHHANGs/Edit/5
+        // GET: KhachHang/Edit/5
         public ActionResult Edit(string id)
         {
             if (id == null)
@@ -77,7 +77,7 @@ namespace TraSuaLamss.Controllers
             return View(kHACHHANG);
         }
 
-        // POST: KHACHHANGs/Edit/5
+        // POST: KhachHang/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -94,7 +94,7 @@ namespace TraSuaLamss.Controllers
             return View(kHACHHANG);
         }
 
-        // GET: KHACHHANGs/Delete/5
+        // GET: KhachHang/Delete/5
         public ActionResult Delete(string id)
         {
             if (id == null)
@@ -109,7 +109,7 @@ namespace TraSuaLamss.Controllers
             return View(kHACHHANG);
         }
 
-        // POST: KHACHHANGs/Delete/5
+        // POST: KhachHang/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
