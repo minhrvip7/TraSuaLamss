@@ -12,8 +12,8 @@ namespace TraSuaLamss.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public TaiKhoan()
         {
-            KhachHang = new HashSet<KhachHang>();
-            NhanVien = new HashSet<NhanVien>();
+            KHACHHANGs = new HashSet<KhachHang>();
+            NHANVIENs = new HashSet<NhanVien>();
         }
 
         [Key]
@@ -33,9 +33,9 @@ namespace TraSuaLamss.Models
         public string PhanQuyen { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<KhachHang> KhachHang { get; set; }
+        public virtual ICollection<KhachHang> KHACHHANGs { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NhanVien> NhanVien { get; set; }
+        public virtual ICollection<NhanVien> NHANVIENs { get; set; }
     }
 }

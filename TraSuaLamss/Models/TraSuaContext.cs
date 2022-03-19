@@ -23,8 +23,6 @@ namespace TraSuaLamss.Models
         public virtual DbSet<PhanLoai> PhanLoai { get; set; }
         public virtual DbSet<SanPham> SanPham { get; set; }
         public virtual DbSet<TaiKhoan> TaiKhoan { get; set; }
-        public object NHANVIEN { get; internal set; }
-        public object DONHANGs { get; internal set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -93,17 +91,17 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<KhachHang>()
-                .HasMany(e => e.ChiTietDonHang)
+                .HasMany(e => e.CHITIETDONHANGs)
                 .WithRequired(e => e.KHACHHANG)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<KhachHang>()
-                .HasMany(e => e.DonHang)
+                .HasMany(e => e.DONHANGs)
                 .WithRequired(e => e.KHACHHANG)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<KhachHang>()
-                .HasMany(e => e.GioHang)
+                .HasMany(e => e.GIOHANGs)
                 .WithRequired(e => e.KHACHHANG)
                 .WillCascadeOnDelete(false);
 
@@ -124,7 +122,7 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<NguyenLieu>()
-                .HasMany(e => e.SanPham)
+                .HasMany(e => e.SANPHAMs)
                 .WithRequired(e => e.NGUYENLIEU)
                 .WillCascadeOnDelete(false);
 
@@ -137,7 +135,7 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<NhaCungCap>()
-                .HasMany(e => e.NguyenLieu)
+                .HasMany(e => e.NGUYENLIEUx)
                 .WithRequired(e => e.NHACUNGCAP)
                 .WillCascadeOnDelete(false);
 
@@ -166,7 +164,7 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<PhanLoai>()
-                .HasMany(e => e.SanPham)
+                .HasMany(e => e.SANPHAMs)
                 .WithRequired(e => e.PHANLOAI)
                 .WillCascadeOnDelete(false);
 
@@ -183,7 +181,7 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<SanPham>()
-                .HasMany(e => e.GioHang)
+                .HasMany(e => e.GIOHANGs)
                 .WithRequired(e => e.SANPHAM)
                 .WillCascadeOnDelete(false);
 
@@ -196,12 +194,12 @@ namespace TraSuaLamss.Models
                 .IsUnicode(false);
 
             modelBuilder.Entity<TaiKhoan>()
-                .HasMany(e => e.KhachHang)
+                .HasMany(e => e.KHACHHANGs)
                 .WithRequired(e => e.TAIKHOAN)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<TaiKhoan>()
-                .HasMany(e => e.NhanVien)
+                .HasMany(e => e.NHANVIENs)
                 .WithRequired(e => e.TAIKHOAN)
                 .WillCascadeOnDelete(false);
         }

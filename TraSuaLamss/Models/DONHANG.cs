@@ -33,13 +33,10 @@ namespace TraSuaLamss.Models
         [StringLength(50)]
         public string TinhTrangGiaoHang { get; set; }
 
-        [DataType(DataType.Date)]
         public DateTime NgayDat { get; set; }
 
-        [DataType(DataType.Date)]
         public DateTime NgayGiao { get; set; }
 
-        [Required]
         public int MaKH { get; set; }
 
         [Required]
