@@ -20,6 +20,9 @@ figure, header, nav, section, article, aside, footer, figcaption {
     line-height: 0;
     height: 0;
 }
+.dropdown-item {
+    font-size: 13px;
+}
 
 .dropdown-item {
     font-size: 13px;
@@ -92,7 +95,6 @@ body {
     background: #fb5849;
     color: #fff;
 }
-
 .background-header {
     background-color: #d18352;
     height: 120px !important;

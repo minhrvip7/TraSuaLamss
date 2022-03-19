@@ -48,14 +48,10 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Username,Password,HoTen,PhanQuyen")] TaiKhoan tAIKHOAN)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    db.TaiKhoan.Add(tAIKHOAN);
-                    db.SaveChanges();
-
-                }
+                db.TaiKhoan.Add(tAIKHOAN);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -87,14 +83,10 @@ namespace TraSuaLamss.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Username,Password,HoTen,PhanQuyen")] TaiKhoan tAIKHOAN)
         {
-            try
+            if (ModelState.IsValid)
             {
-                if (ModelState.IsValid)
-                {
-                    db.Entry(tAIKHOAN).State = EntityState.Modified;
-                    db.SaveChanges();
-
-                }
+                db.Entry(tAIKHOAN).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch (Exception ex)
@@ -125,17 +117,9 @@ namespace TraSuaLamss.Controllers
         public ActionResult DeleteConfirmed(string id)
         {
             TaiKhoan tAIKHOAN = db.TaiKhoan.Find(id);
-            try
-            {
-                db.TaiKhoan.Remove(tAIKHOAN);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch (Exception ex)
-            {
-                ViewBag.Error = "Không xóa được bản ghi này!" + ex.Message;
-                return View("Delete", tAIKHOAN);
-            }
+            db.TaiKhoan.Remove(tAIKHOAN);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         protected override void Dispose(bool disposing)
