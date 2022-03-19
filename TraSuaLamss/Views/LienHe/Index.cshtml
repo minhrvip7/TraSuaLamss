@@ -1,14 +1,10 @@
-﻿@model IEnumerable<TraSuaLamss.Models.LIENHE>
+﻿@model IEnumerable<TraSuaLamss.Models.LienHe>
 
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -33,11 +29,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.SDT)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaLH }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaLH }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaLH })
         </td>
     </tr>
 }
