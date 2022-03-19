@@ -17,8 +17,8 @@ namespace TraSuaLamss.Controllers
         // GET: NhanVien
         public ActionResult Index()
         {
-            var NhanVien = db.NhanVien.Include(n => n.TAIKHOAN);
-            return View(NhanVien.ToList());
+            var nHANVIENs = db.NhanVien.Include(n => n.TAIKHOAN);
+            return View(nHANVIENs.ToList());
         }
 
         // GET: NhanVien/Details/5
