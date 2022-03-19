@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TraSuaLamss.Models;
@@ -16,8 +14,18 @@ namespace TraSuaLamss.Controllers
         {
             return View();
         }
-        public ActionResult Search()
+
+        public ActionResult About()
         {
+            ViewBag.Message = "Your application description page.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Your contact page.";
+
             return View();
         }
         public bool CheckUsername(string username)
@@ -47,44 +55,7 @@ namespace TraSuaLamss.Controllers
         {
             return View();
         }
-        [HttpPost]
-        public ActionResult DangKy(DangKyModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                if (CheckUsername(model.Username))
-                {
-                    ModelState.AddModelError("", "Tên đăng nhập đã tồn tại!");
-                }
-                else if (CheckEmail(model.Email))
-                {
-                    ModelState.AddModelError("", "Email đã tồn tại!");
-                }
-                else
-                {
-                    var tk = new TaiKhoan();
-                    var kh = new KhachHang();
-                    tk.Username = model.Username;
-                    tk.Password = model.Password;
-                    tk.HoTen = model.TenKH;
-                    tk.PhanQuyen = "Khách hàng";
-                    db.TaiKhoan.Add(tk);
-                    db.SaveChanges();
-                    kh.TenKH = model.TenKH;
-                    kh.Username = model.Username;
-                    kh.GioiTinh = model.GioiTinh;
-                    kh.NgaySinh = model.NgaySinh;
-                    kh.Email = model.Email;
-                    kh.DiaChi = model.DiaChi;
-                    kh.DienThoai = model.DienThoai;
-                    db.KhachHang.Add(kh);
-                    db.SaveChanges();
-                    return RedirectToAction("DangNhap", "Home");
-                }
-                return View(model);
-            }
-            return View(model);
-        }
+
         [HttpGet]
         public ActionResult DangNhap()
         {
@@ -97,100 +68,28 @@ namespace TraSuaLamss.Controllers
             {
                 var username = model.Username;
                 var password = model.Password;
+                
                 TaiKhoan tk = db.TaiKhoan.SingleOrDefault(n => n.Username == username && n.Password == password);
                 if (tk != null)
                 {
+                    ViewBag.Success = "Chúc mừng đăng nhập thành công!";
                     Session["TAIKHOAN"] = tk;
-                    Session["PhanQuyen"] = tk.PhanQuyen;
                     Session["Hoten"] = tk.HoTen;
-                    Session["Username"] = username;
-                    Session["Password"] = password;
+                    Session["PhanQuyen"] = tk.PhanQuyen;
                     return RedirectToAction("Index");
                 }
                 else
                 {
                     ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không tồn tại!");
-                    return View(model);
                 }
+                return View(model);
             }
             return View(model);
         }
-        public ActionResult DangXuat()
+        public ActionResult Logout()
         {
             Session.Clear();
             return RedirectToAction("Index");
-        }
-        public ActionResult DoiMatKhau()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult DoiMatKhau(DoiMatKhauModel model)
-        {
-            if (ModelState.IsValid)
-            { 
-                string username = Session["Username"].ToString();
-                string password = Session["Password"].ToString();
-                var tk = db.TaiKhoan.SingleOrDefault(n => n.Username == username);
-                if (model.Password == password)
-                {
-                    var pw = model.NewPassword;
-                    tk.Password = model.NewPassword;
-                    db.SaveChanges();
-                    Session["Password"]=pw;
-                    ViewBag.Success="Mật khẩu đã được đổi thành công!";
-                    return View(model);
-                }
-                else
-                {
-                    ViewBag.Error = "Mật khẩu hiện tại không đúng!";
-                }
-            }
-            return View(model);
-        }
-        [HttpGet]
-        public ActionResult DoiThongTin(string username)
-        {
-            username = Session["Username"].ToString();
-            if (username == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            KhachHang kh = db.KhachHang.SingleOrDefault(n => n.Username == username);
-            DoiThongTinModel doiThongTin = new DoiThongTinModel();
-            doiThongTin.Username = username;
-            doiThongTin.TenKH = kh.TenKH;
-            doiThongTin.GioiTinh = kh.GioiTinh;
-            doiThongTin.DiaChi = kh.DiaChi;
-            doiThongTin.DienThoai = kh.DienThoai;
-            doiThongTin.NgaySinh = kh.NgaySinh;
-            if (doiThongTin == null)
-            {
-                return HttpNotFound();
-            }
-            return View(doiThongTin);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult DoiThongTin([Bind(Include = "TenKH,GioiTinh,DienThoai,DiaChi,NgaySinh")] DoiThongTinModel model)
-        {
-            model.Username = Session["Username"].ToString();
-            /*var kh = db.KHACHHANG.SingleOrDefault(n => n.Username == username);*/
-            TaiKhoan tk = db.TaiKhoan.SingleOrDefault(n => n.Username == model.Username);
-            KhachHang kh = tk.KHACHHANGs.SingleOrDefault();
-            if (ModelState.IsValid)
-            {
-                tk.HoTen = model.TenKH;
-                db.SaveChanges();
-                kh.TenKH = model.TenKH;
-                kh.GioiTinh = model.GioiTinh;
-                kh.NgaySinh = model.NgaySinh;
-                kh.DiaChi = model.DiaChi;
-                kh.DienThoai = model.DienThoai;
-                db.SaveChanges();
-                ViewBag.Success = "Cập nhật thành công!";
-            }
-            return View(model);
         }
     }
 }
