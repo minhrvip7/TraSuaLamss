@@ -1,4 +1,4 @@
-namespace TraSuaLamss.Models
+﻿namespace TraSuaLamss.Models
 {
     using System;
     using System.Collections.Generic;
@@ -10,39 +10,45 @@ namespace TraSuaLamss.Models
     public partial class NhanVien
     {
         [Key]
+        [Required(ErrorMessage = "Nhập mã")]
         [StringLength(5)]
         public string MaNV { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Nhập tên")]
         [StringLength(30)]
         public string TenNV { get; set; }
 
-        [Required]
-        [StringLength(10)]
+        [Required(ErrorMessage = "Chọn giới tính")]
+        [StringLength(30)]
         public string GioiTinh { get; set; }
 
+        [Required(ErrorMessage = "Nhập/chọn ngày sinh")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime NgaySinh { get; set; }
 
-        [Required]
-        [StringLength(30)]
+        [Required(ErrorMessage = "Chọn tên đăng nhập")]
+        [StringLength(30, ErrorMessage = "Không nhập quá 30 ký tự")]
         public string Username { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage = "Nhhập email")]
+        [StringLength(50, ErrorMessage = "Không nhập quá 50 ký tự")]
         public string Email { get; set; }
 
-        [Required]
-        [StringLength(200)]
+        [Required(ErrorMessage = "Nhhập địa chỉ")]
+        [StringLength(200, ErrorMessage = "Không nhập quá 200 ký tự ")]
         public string DiaChi { get; set; }
 
-        [Required]
-        [StringLength(20)]
+        [Required(ErrorMessage = "Nhập số điện thoại")]
+        [StringLength(10, MinimumLength = 10, ErrorMessage ="Điện thoại gồm 10 số")]
         public string DienThoai { get; set; }
 
-        [Required]
-        [StringLength(50)]
+        [Required(ErrorMessage ="Nhập số tài khoản")]
+        [StringLength(14, MinimumLength =10, ErrorMessage ="Tài khoản ngân hàng gồm 10 số")]
         public string STK { get; set; }
 
+        [Required(ErrorMessage ="Nhập tiền lương")]
+        [Display(Name = "Giá")]
         public decimal Luong { get; set; }
 
         public virtual TaiKhoan TAIKHOAN { get; set; }
