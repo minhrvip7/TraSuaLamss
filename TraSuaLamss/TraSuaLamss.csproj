@@ -187,6 +187,7 @@
     <Compile Include="Controllers\ChiTietDonHangController.cs" />
     <Compile Include="Controllers\DonHangController.cs" />
     <Compile Include="Controllers\DSSanPhamController.cs" />
+    <Compile Include="Controllers\GioHangController.cs" />
     <Compile Include="Controllers\GioiThieuController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
@@ -198,6 +199,7 @@
     <Compile Include="Controllers\PhanLoaiController.cs" />
     <Compile Include="Controllers\SanPhamController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\TaiKhoanController.cs" />
     <Compile Include="Controllers\TimKiemController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

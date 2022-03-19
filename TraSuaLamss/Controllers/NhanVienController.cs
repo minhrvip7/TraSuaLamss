@@ -1,5 +1,4 @@
-﻿using PagedList;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -8,6 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using TraSuaLamss.Models;
+using PagedList;
+using System.Data.OleDb;
+using System.Data.Entity.Validation;
 
 namespace TraSuaLamss.Controllers
 {

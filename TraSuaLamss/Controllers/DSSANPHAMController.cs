@@ -11,7 +11,7 @@ namespace TraSuaLamss.Controllers
     public class DSSanPhamController : Controller
     {
         private TraSuaContext db = new TraSuaContext();
-        private const string MaKH = "MaKH";
+        private string MaKH = "MaKH";
         private List<SanPham> LaySanPham()
         {
             return db.SanPham.OrderByDescending(s => s.TenSP).ToList();
@@ -84,6 +84,7 @@ namespace TraSuaLamss.Controllers
         public ActionResult Details(string id, string loai)
         {
             ViewBag.MaKH = 1;
+            ViewBag.SL = 1;
             var tra = from tr in db.SanPham
                       join l in db.PhanLoai on tr.MaLoai equals l.MaLoai
                       join nl in db.NguyenLieu on tr.MaNL equals nl.MaNL
@@ -107,7 +108,9 @@ namespace TraSuaLamss.Controllers
                 ViewBag.MoTa = item.MoTa;
                 ViewBag.TenLoai = item.TenLoai;
                 ViewBag.TenNl = item.TenNL;
-                ViewBag.GiaBan = item.GiaBan;
+                var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                string dongia = String.Format(format, "{0:c0}", item.GiaBan);
+                ViewBag.GiaBan = dongia;
             }
             var danhsach = from ds in db.SanPham
                            join l in db.PhanLoai on ds.MaLoai equals l.MaLoai
@@ -151,7 +154,7 @@ namespace TraSuaLamss.Controllers
             int pagesize = 8;
             int pageNumber = (page ?? 1);
             ViewBag.Loai = "TRÀ SỮA";
-
+            
             try
             {
                 if (!String.IsNullOrEmpty(Name) && String.IsNullOrEmpty(first) && String.IsNullOrEmpty(end))
@@ -217,7 +220,7 @@ namespace TraSuaLamss.Controllers
             int pagesize = 8;
             int pageNumber = (page ?? 1);
             ViewBag.Loai = "TRÀ";
-
+            
             try
             {
                 if (!String.IsNullOrEmpty(Name) && String.IsNullOrEmpty(first) && String.IsNullOrEmpty(end))
@@ -283,7 +286,7 @@ namespace TraSuaLamss.Controllers
             int pagesize = 8;
             int pageNumber = (page ?? 1);
             ViewBag.Loai = "CÀ PHÊ";
-
+            
             try
             {
                 if (!String.IsNullOrEmpty(Name) && String.IsNullOrEmpty(first) && String.IsNullOrEmpty(end))
@@ -349,7 +352,7 @@ namespace TraSuaLamss.Controllers
             int pagesize = 8;
             int pageNumber = (page ?? 1);
             ViewBag.Loai = "ĐỒ ĂN VẶT";
-
+            
             try
             {
                 if (!String.IsNullOrEmpty(Name) && String.IsNullOrEmpty(first) && String.IsNullOrEmpty(end))
@@ -378,6 +381,138 @@ namespace TraSuaLamss.Controllers
 
             }
             return View(sanpham.ToPagedList(pageNumber, pagesize));
+        }
+        public ActionResult TangSL(string id, string loai, int SLtam)
+        {
+            SLtam += 1;
+            ViewBag.SL = SLtam;
+            var tra = from tr in db.SanPham
+                      join l in db.PhanLoai on tr.MaLoai equals l.MaLoai
+                      join nl in db.NguyenLieu on tr.MaNL equals nl.MaNL
+                      where tr.MaSP == id
+                      select new ChiTietSanPham()
+                      {
+                          MaSP = tr.MaSP,
+                          TenSP = tr.TenSP,
+                          Anh = tr.Anh,
+                          MoTa = tr.MoTa,
+                          TenLoai = l.TenLoai,
+                          TenNL = nl.TenNL,
+                          GiaBan = tr.GiaBan
+                      };
+            string masp = "";
+            string tensp = "";
+            string anh = "";
+            string mota = "";
+            string tenloai = "";
+            string tennl = "";
+            decimal giaban=0;
+            foreach (var item in tra)
+            {
+                masp = item.MaSP;
+            }
+            foreach (var item in tra)
+            {
+                tensp = item.TenSP;
+            }
+            foreach (var item in tra)
+            {
+                anh = item.Anh;
+            }
+            foreach (var item in tra)
+            {
+                mota = item.MoTa;
+            }
+            foreach (var item in tra)
+            {
+                tenloai = item.TenLoai;
+            }
+            foreach (var item in tra)
+            {
+                tennl = item.TenNL;
+            }
+            foreach (var item in tra)
+            {
+                giaban = item.GiaBan;
+            }
+            ViewBag.MaSP = masp;
+            ViewBag.MaLoai = loai;
+            ViewBag.TenSP = tensp;
+            ViewBag.TenLoai = tenloai;
+            ViewBag.TenNl = tennl;
+            ViewBag.GiaBan = giaban;
+            ViewBag.MoTa = mota;
+            ViewBag.Anh = anh;
+            var danhsach = (from ds in db.SanPham
+                            where ds.MaSP != id && ds.MaLoai == loai
+                            select ds).ToList();
+            return RedirectToAction("Details");
+        }
+        public ActionResult GiamSL(string id, string loai, int SLtam)
+        {
+            if (SLtam > 1) { SLtam -= 1; } else { SLtam = 1; }
+            ViewBag.SL = SLtam;
+            var tra = from tr in db.SanPham
+                      join l in db.PhanLoai on tr.MaLoai equals l.MaLoai
+                      join nl in db.NguyenLieu on tr.MaNL equals nl.MaNL
+                      where tr.MaSP == id
+                      select new ChiTietSanPham()
+                      {
+                          MaSP = tr.MaSP,
+                          TenSP = tr.TenSP,
+                          Anh = tr.Anh,
+                          MoTa = tr.MoTa,
+                          TenLoai = l.TenLoai,
+                          TenNL = nl.TenNL,
+                          GiaBan = tr.GiaBan
+                      };
+            string masp = "";
+            string tensp = "";
+            string anh = "";
+            string mota = "";
+            string tenloai = "";
+            string tennl = "";
+            decimal giaban = 0;
+            foreach (var item in tra)
+            {
+                masp = item.MaSP;
+            }
+            foreach (var item in tra)
+            {
+                tensp = item.TenSP;
+            }
+            foreach (var item in tra)
+            {
+                anh = item.Anh;
+            }
+            foreach (var item in tra)
+            {
+                mota = item.MoTa;
+            }
+            foreach (var item in tra)
+            {
+                tenloai = item.TenLoai;
+            }
+            foreach (var item in tra)
+            {
+                tennl = item.TenNL;
+            }
+            foreach (var item in tra)
+            {
+                giaban = item.GiaBan;
+            }
+            ViewBag.MaSP = masp;
+            ViewBag.MaLoai = loai;
+            ViewBag.TenSP = tensp;
+            ViewBag.TenLoai = tenloai;
+            ViewBag.TenNl = tennl;
+            ViewBag.GiaBan = giaban;
+            ViewBag.MoTa = mota;
+            ViewBag.Anh = anh;
+            var danhsach = (from ds in db.SanPham
+                            where ds.MaSP != id && ds.MaLoai == loai
+                            select ds).ToList();
+            return RedirectToAction("Details");
         }
     }
 }
