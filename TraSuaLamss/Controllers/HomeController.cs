@@ -112,73 +112,6 @@ namespace TraSuaLamss.Controllers
                     ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không tồn tại!");
                     return View(model);
                 }
-                return View(model);
-            }
-            return View(model);
-        }
-        public ActionResult DangXuat()
-        {
-            Session.Clear();
-            return RedirectToAction("Index");
-        }
-        public ActionResult DoiMatKhau()
-        {
-            return View();
-        }
-        public bool CheckUsername(string username)
-        {
-            if (db.TaiKhoan.Count(x => x.Username == username) > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        public bool CheckEmail(string email)
-        {
-            if (db.KhachHang.Count(x => x.Email == email) > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-        [HttpGet]
-        public ActionResult DangKy()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public ActionResult DangNhap()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult DangNhap(DangNhapModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var username = model.Username;
-                var password = model.Password;
-                
-                TaiKhoan tk = db.TaiKhoan.SingleOrDefault(n => n.Username == username && n.Password == password);
-                if (tk != null)
-                {
-                    Session["TAIKHOAN"] = tk;
-                    Session["Hoten"] = tk.HoTen;
-                    Session["PhanQuyen"] = tk.PhanQuyen;
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Tên đăng nhập hoặc mật khẩu không tồn tại!");
-                    return View(model);
-                }
             }
             return View(model);
         }
@@ -258,11 +191,6 @@ namespace TraSuaLamss.Controllers
                 ViewBag.Success = "Cập nhật thành công!";
             }
             return View(model);
-        }
-        public ActionResult Logout()
-        {
-            Session.Clear();
-            return RedirectToAction("Index");
         }
     }
 }
