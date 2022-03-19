@@ -98,12 +98,12 @@ GO
 
 CREATE TABLE DONHANG
 (
-	MaDH VARCHAR(5) PRIMARY KEY NOT NULL,
+	MaDH INT PRIMARY KEY IDENTITY(1,1) NOT NULL,
 	ThanhTien MONEY NOT NULL,
-	PhuongThucThanhToan NVARCHAR(50) nOT NULL,
-	ThanhToan NVARCHAR(30) NOT NULL,
-	DiaChiGiaoHang NVARCHAR(50) NOT NULL,
-	TinhTrangGiaoHang NVARCHAR(50) NOT NULL,
+	PhuongThucThanhToan VARCHAR(50) nOT NULL,
+	ThanhToan VARCHAR(30) NOT NULL,
+	DiaChiGiaoHang VARCHAR(50) NOT NULL,
+	TinhTrangGiaoHang VARCHAR(50) NOT NULL,
 	NgayDat datetime NOT NULL,
 	NgayGiao datetime NOT NULL,
 	MaKH int NOT NULL,
@@ -154,7 +154,7 @@ CREATE TABLE NHANVIEN
 	DiaChi NVARCHAR(200) NOT NULL,
 	DienThoai NVARCHAR(20) NOT NULL,
 	STK VARCHAR(50) NOT NULL,
-	Luong MONEY NOT NULL,
+	Luong money NOT NULL,
 	FOREIGN KEY (Username) REFERENCES TAIKHOAN (Username),
 )
 GO
@@ -322,37 +322,8 @@ INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHa
 GO
 INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
 ('DH005',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '1/1/2022', '2/1/2022', 5, N'Giao thành công')
+>>>>>>>>> Temporary merge branch 2
 GO
-
-INSERT INTO DONHANG(MaDH,PhuongThucThanhToan, ThanhTien, ThanhToan, DiaChiGiaoHang, TinhTrangGiaoHang, NgayDat, NgayGiao, MaKH, GhiChu) VALUES
-('DH006',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '2/1/2022', '2/1/2022', 1, N'Giao nhanh'),
-('DH007',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '2/1/2022', '2/1/2022', 2, N'Giao nhanh'),
-('DH008',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '3/2/2022', '2/1/2022', 3, N'Khách hàng không nhận'),
-('DH009',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '3/2/2022', '2/1/2022', 4, N'Trả hàng'),
-('DH010',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '4/3/2022', '2/1/2022', 5, N'Giao thành công'),
-('DH011',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '4/3/2022', '2/1/2022', 1, N'Giao nhanh'),
-('DH012',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '5/4/2022', '2/1/2022', 2, N'Giao nhanh'),
-('DH013',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '5/4/2022', '2/1/2022', 3, N'Khách hàng không nhận'),
-('DH014',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '6/5/2022', '2/1/2022', 4, N'Trả hàng'),
-('DH015',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '6/5/2022', '2/1/2022', 5, N'Giao thành công'),
-('DH016',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '7/6/2022', '2/1/2022', 1, N'Giao nhanh'),
-('DH017',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '7/6/2022', '2/1/2022', 2, N'Giao nhanh'),
-('DH018',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '8/7/2022', '2/1/2022', 3, N'Khách hàng không nhận'),
-('DH019',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '8/7/2022', '2/1/2022', 4, N'Trả hàng'),
-('DH020',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '9/8/2022', '2/1/2022', 5, N'Giao thành công'),
-('DH021',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '9/8/2022', '2/1/2022', 1, N'Giao nhanh'),
-('DH022',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '10/9/2022', '2/1/2022', 2, N'Giao nhanh'),
-('DH023',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '10/9/2022', '2/1/2022', 3, N'Khách hàng không nhận'),
-('DH024',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '11/10/2022', '2/1/2022', 4, N'Trả hàng'),
-('DH025',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tu Hoàng' , N'Đã giao', '11/10/2022', '2/1/2022', 5, N'Giao thành công'),
-('DH026',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Nguyên Xá', N'Đang giao', '12/11/2022', '2/1/2022', 1, N'Giao nhanh'),
-('DH027',N'Thanh toán qua thẻ ngân hàng', 200000, N'Đã thanh toán', N'Văn trì' , N'Đã giao', '12/11/2022', '2/1/2022', 2, N'Giao nhanh'),
-('DH028',N'Thanh toán khi nhận hàng', 240000, N'Chưa thanh toán', N'Ngọa Long' , N'Giao thất bại', '12/12/2022', '2/1/2022', 3, N'Khách hàng không nhận'),
-('DH029',N'Thanh toán khi nhận hàng', 160000, N'Chưa thanh toán', N'Tây Tựu' , N'Giao thất bại', '12/12/2022', '2/1/2022', 4, N'Trả hàng')
-GO
-
-
-
 
 
 

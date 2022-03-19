@@ -32,11 +32,11 @@ namespace TraSuaLamss.Controllers
                 nHANVIENs = nHANVIENs.Where(e => e.TenNV.Contains(searchStr));
             }
             //Sắp xếp trước khi phân trang
-            nHANVIENs = nHANVIENs.OrderBy(e => e.MaNV);
+            NhanVien = NhanVien.OrderBy(e => e.MaNV);
             int pageSize = 3;
             int pageNumber = (page ?? 1);
 
-            return View(nHANVIENs.ToPagedList(pageNumber, pageSize));
+            return View(NhanVien.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: NhanVien/Details/5

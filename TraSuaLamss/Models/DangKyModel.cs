@@ -18,7 +18,7 @@ namespace TraSuaLamss.Models
 
         [Key]
         [Display(Name = "Tên đăng nhập")]
-        [StringLength(20, MinimumLength = 6, ErrorMessage = "Độ dài tên đăng nhập ít nhất 6 ký tự và không quá 20 ký tự.")]
+        [StringLength(20,MinimumLength = 6, ErrorMessage = "Độ dài tên đăng nhập ít nhất 6 ký tự và không quá 20 ký tự.")]
         [Required(ErrorMessage = "Yêu cầu nhập tên đăng nhập")]
         public string Username { set; get; }
 
@@ -38,7 +38,7 @@ namespace TraSuaLamss.Models
 
         [Phone(ErrorMessage = "{0} sai định dạng")]
         [Required(ErrorMessage = "Yêu cầu nhập điện thoại")]
-        [StringLength(10, MinimumLength = 10, ErrorMessage = "Sai định dạng")]
+        [StringLength(10, MinimumLength=10 , ErrorMessage = "Sai định dạng")]
         [Display(Name = "Điện thoại")]
         public string DienThoai { set; get; }
 

@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Đăng ký";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout ="~/Views/Shared/_Layout.cshtml";
 }
 <!DOCTYPE html>
 <html lang="en">
@@ -81,13 +81,13 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-floating mb-3 mb-md-0">
-                                                    @{
+                                                    @{ 
                                                         List<SelectListItem> lst = new List<SelectListItem>();
                                                         lst.Add(new SelectListItem { Text = "Nam", Value = "Nam" });
                                                         lst.Add(new SelectListItem { Text = "Nữ", Value = "Nữ" });
                                                         lst.Add(new SelectListItem { Text = "Khác", Value = "Khác" });
                                                     }
-                                                    @Html.DropDownListFor(model => model.GioiTinh, lst, "--Chọn giới tính--", htmlAttributes: new { @class = "form-control dropdown" })
+                                                    @Html.DropDownListFor(model => model.GioiTinh, lst,"--Chọn giới tính--",htmlAttributes: new { @class = "form-control dropdown" })
                                                     <label>Giới tính<label class="sao">*</label></label>
                                                     @Html.ValidationMessageFor(model => model.GioiTinh, "", new { @class = "text-danger valid" })
                                                 </div>
