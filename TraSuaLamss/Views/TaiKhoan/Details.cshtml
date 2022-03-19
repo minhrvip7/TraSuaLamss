@@ -7,11 +7,19 @@
 <h2>Details</h2>
 
 <div>
-    <h4>TAIKHOAN</h4>
     <hr />
     <dl class="dl-horizontal">
+
         <dt>
-            @Html.DisplayNameFor(model => model.HoTen)
+            Tên đăng nhập
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Username)
+        </dd>
+
+        <dt>
+            Họ tên
         </dt>
 
         <dd>
@@ -19,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.PhanQuyen)
+            Phân quyền
         </dt>
 
         <dd>
@@ -28,7 +36,8 @@
 
     </dl>
 </div>
-<p>
+<br />
+<div>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Username }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</div>
