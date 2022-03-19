@@ -192,5 +192,10 @@ namespace TraSuaLamss.Controllers
             }
             return View(model);
         }
+        public ActionResult Logout()
+        {
+            Session.Clear();
+            return RedirectToAction("Index");
+        }
     }
 }
