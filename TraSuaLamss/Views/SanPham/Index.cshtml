@@ -1,63 +1,75 @@
-﻿@model IEnumerable<TraSuaLamss.Models.SanPham>
-
+﻿@model PagedList.IPagedList<TraSuaLamss.Models.SanPham>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<div style="width: 1280px; margin: 0 auto;padding-top:20px">
+    <p style="font-size: 20px; padding-bottom: 10px">
+        @Html.ActionLink("Thêm mới sản phẩm", "Create")
+    </p>
+    <table class="table" style="margin: 0 auto" min-height="840">
+        <tr>
+            <th width="200" height="40">
+                <p style="color:dodgerblue">Nguyên liệu</p>
+            </th>
+            <th width="180">
+                <p style="color:dodgerblue">@Html.ActionLink("Phân loại", "Index", new { sortOrder = ViewBag.TheoTen })</p>
+            </th>
+            <th width="160">
+                <p style="color:dodgerblue">Tên sản phẩm</p>
+            </th>
+            <th width="150">
+                <p style="color:dodgerblue">@Html.ActionLink("Giá bán", "Index", new { sortOrder = ViewBag.TheoGia })</p>
+            </th>
+            <th width="240">
+                <p style="color:dodgerblue">Mô tả</p>
+            </th>
+            <th width="150">
+                <p style="color:dodgerblue">Ảnh </p>
+            </th>
+            <th width="170"></th>
+        </tr>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NGUYENLIEU.TenNL)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PHANLOAI.TenLoai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TenSP)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GiaBan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MoTa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Anh)
-        </th>
-        <th></th>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td height="150">
+                    @Html.DisplayFor(modelItem => item.NGUYENLIEU.TenNL)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PHANLOAI.TenLoai)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSP)
+                </td>
+                <td>
+                    @{
+                        var format = System.Globalization.CultureInfo.GetCultureInfo("vi-VN");
+                        string gia = String.Format(format, "{0:c0}", item.GiaBan);
+                    }
+                    <p>@gia</p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MoTa)
+                </td>
+                <td>
+                    @{
+                        string ImagePath = "~/wwwroot/Images/" + item.Anh;
+                    }
+                    <img src="@Url.Content(ImagePath)" width="100" class="img-thumbnail" />
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaSP.Trim() }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.MaSP.Trim() }) |
+                    @Html.ActionLink("Xoá", "Delete", new { id = item.MaSP.Trim() })
+                </td>
+            </tr>
+        }
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.NGUYENLIEU.TenNL)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PHANLOAI.TenLoai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenSP)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GiaBan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MoTa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Anh)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaSP }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaSP }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaSP })
-        </td>
-    </tr>
-}
-
-</table>
+    </table>
+    <div style="margin-left:5px">
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+    </div>
+</div>
