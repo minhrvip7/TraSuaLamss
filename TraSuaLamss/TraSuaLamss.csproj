@@ -522,6 +522,7 @@
     <Content Include="Views\GioHang\DatHangLe.cshtml" />
     <Content Include="Views\GioHang\DatHangTC.cshtml" />
     <Content Include="Views\GioHang\Giohang.cshtml" />
+    <Content Include="Views\DSSanPham\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -17,6 +17,70 @@ namespace TraSuaLamss.Controllers
             return db.SanPham.OrderByDescending(s => s.TenSP).ToList();
         }
         // GET: DSSANPHAM
+        public ActionResult Search(string searchkey, int? page, string Name, string first, string end, string currentFilter, string currentFilter1, string currentFilter2)
+        {
+            if (Name != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                Name = currentFilter;
+            }
+            if (first != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                first = currentFilter1;
+            }
+            if (end != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                end = currentFilter2;
+            }
+            ViewBag.currentFilter1 = first;
+            ViewBag.currentFilter2 = end;
+            ViewBag.currentFilter = Name;
+            var sanpham = LaySanPham();
+            int pagesize = 8;
+            int pageNumber = (page ?? 1);
+            ViewBag.Loai = "TẤT CẢ SẢN PHẨM";
+
+            try
+            {
+                if (!String.IsNullOrEmpty(Name) && String.IsNullOrEmpty(first) && String.IsNullOrEmpty(end))
+                {
+                    sanpham = sanpham.Where(p => p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
+                    return View(sanpham.ToPagedList(pageNumber, pagesize));
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && String.IsNullOrEmpty(Name))
+                {
+                    sanpham = sanpham.Where(p => p.GiaBan >= decimal.Parse(first) && p.GiaBan <= decimal.Parse(end)).ToList();
+                    return View(sanpham.ToPagedList(pageNumber, pagesize));
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && decimal.Parse(end) < decimal.Parse(first))
+                {
+                    ViewBag.Error = "Giá nhập không hợp lệ";
+                }
+                else if (!String.IsNullOrEmpty(first) && !String.IsNullOrEmpty(end) && !String.IsNullOrEmpty(Name))
+                {
+                    sanpham = sanpham.Where(p => p.GiaBan >= decimal.Parse(first) && p.GiaBan <= decimal.Parse(end) && p.TenSP.ToLower().Contains(Name.ToLower())).ToList();
+                    return View(sanpham.ToPagedList(pageNumber, pagesize));
+                }
+            }
+            catch (Exception)
+            {
+                ViewBag.Error = "Giá nhập không hợp lệ";
+
+            }
+            var lstResult = db.SanPham.SqlQuery("Select * from SANPHAM where TenSP like '%" + searchkey + "%'").ToList();
+            return View(lstResult.ToPagedList(pageNumber,pagesize));
+        }
         public ActionResult Index(int? page, string Name, string first, string end, string currentFilter, string currentFilter1, string currentFilter2)
         {
             if (Name != null)
