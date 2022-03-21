@@ -158,17 +158,20 @@ namespace TraSuaLamss.Controllers
             }
             KhachHang kh = db.KhachHang.SingleOrDefault(n => n.Username == username);
             DoiThongTinModel doiThongTin = new DoiThongTinModel();
-            doiThongTin.Username = username;
-            doiThongTin.TenKH = kh.TenKH;
-            doiThongTin.GioiTinh = kh.GioiTinh;
-            doiThongTin.DiaChi = kh.DiaChi;
-            doiThongTin.DienThoai = kh.DienThoai;
-            doiThongTin.NgaySinh = kh.NgaySinh;
-            if (doiThongTin == null)
+            if (kh == null)
             {
-                return HttpNotFound();
+                return RedirectToAction("Index");
             }
-            return View(doiThongTin);
+            else
+            {
+                doiThongTin.Username = username;
+                doiThongTin.TenKH = kh.TenKH;
+                doiThongTin.GioiTinh = kh.GioiTinh;
+                doiThongTin.DiaChi = kh.DiaChi;
+                doiThongTin.DienThoai = kh.DienThoai;
+                doiThongTin.NgaySinh = kh.NgaySinh;
+                return View(doiThongTin);
+            }
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
